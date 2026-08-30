@@ -406,3 +406,185 @@ body:before{
   0%{opacity:.10;scale:1.15;filter:brightness(1.55)}
   100%{opacity:1;scale:1.10;filter:saturate(.9) contrast(1.04)}
 }
+
+
+/* =========================================================
+   V0.5.2 — VISUAL FX
+   Ajout d'effets visibles SANS modifier la disposition du HUD.
+   ========================================================= */
+
+/* Respiration lumineuse de l'ensemble du HUD */
+.hud{
+  animation:hudAmbient 4.8s ease-in-out infinite;
+}
+@keyframes hudAmbient{
+  0%,100%{filter:brightness(1)}
+  50%{filter:brightness(1.07)}
+}
+
+/* Les panneaux prennent un halo beaucoup plus visible */
+.panel{
+  box-shadow:
+    inset 0 0 0 1px #101710,
+    inset 0 0 22px rgba(111,160,100,.035),
+    0 0 16px rgba(119,177,102,.08);
+}
+.profile{
+  box-shadow:
+    inset 0 0 0 1px #101710,
+    inset 0 0 34px rgba(111,170,101,.07),
+    0 0 26px rgba(119,190,105,.16);
+  animation:profileGlow 3.2s ease-in-out infinite;
+}
+@keyframes profileGlow{
+  0%,100%{
+    box-shadow:
+      inset 0 0 0 1px #101710,
+      inset 0 0 30px rgba(111,170,101,.055),
+      0 0 18px rgba(119,190,105,.10);
+  }
+  50%{
+    box-shadow:
+      inset 0 0 0 1px #182318,
+      inset 0 0 46px rgba(125,190,112,.13),
+      0 0 34px rgba(135,215,118,.24);
+  }
+}
+
+/* Lumière de fond derrière le personnage */
+.avatar-stage{
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 72%,rgba(132,210,115,.22),transparent 28%),
+    radial-gradient(circle at 50% 50%,rgba(92,151,86,.11),transparent 52%),
+    repeating-linear-gradient(180deg,transparent 0 3px,rgba(160,180,150,.025) 4px);
+  box-shadow:
+    inset 0 0 40px rgba(107,181,93,.08),
+    inset 0 -28px 48px rgba(94,186,82,.09);
+  animation:stageEnergy 2.6s ease-in-out infinite;
+}
+@keyframes stageEnergy{
+  0%,100%{
+    filter:brightness(1);
+    box-shadow:
+      inset 0 0 34px rgba(107,181,93,.07),
+      inset 0 -24px 42px rgba(94,186,82,.08);
+  }
+  50%{
+    filter:brightness(1.10);
+    box-shadow:
+      inset 0 0 58px rgba(130,220,112,.16),
+      inset 0 -36px 60px rgba(111,218,93,.15);
+  }
+}
+
+/* Faisceau vertical discret mais clairement visible */
+.avatar-stage .player-corners{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 43%,
+      rgba(130,210,112,.025) 46%,
+      rgba(154,235,133,.11) 50%,
+      rgba(130,210,112,.025) 54%,
+      transparent 57%,
+      transparent 100%
+    );
+  animation:energyBeam 2.8s ease-in-out infinite;
+}
+@keyframes energyBeam{
+  0%,100%{opacity:.45;transform:scaleX(.92)}
+  50%{opacity:1;transform:scaleX(1.08)}
+}
+
+/* Le personnage a maintenant un vrai mouvement idle visible */
+.avatar-stage img{
+  position:relative;
+  z-index:2;
+  transform-origin:50% 88%;
+  animation:playerIdle 2.15s ease-in-out infinite !important;
+  filter:
+    saturate(.94)
+    contrast(1.08)
+    drop-shadow(0 0 5px rgba(160,235,135,.22))
+    drop-shadow(0 11px 14px rgba(88,180,78,.18));
+  will-change:transform,filter;
+}
+@keyframes playerIdle{
+  0%{
+    transform:translate3d(0,0,0) rotate(-.25deg) scale(1);
+    filter:
+      saturate(.94) contrast(1.08)
+      drop-shadow(0 0 4px rgba(160,235,135,.18))
+      drop-shadow(0 10px 12px rgba(88,180,78,.16));
+  }
+  25%{
+    transform:translate3d(-1px,-5px,0) rotate(.35deg) scale(1.008);
+  }
+  50%{
+    transform:translate3d(1px,-10px,0) rotate(.15deg) scale(1.018);
+    filter:
+      saturate(1) contrast(1.1)
+      drop-shadow(0 0 11px rgba(170,245,145,.42))
+      drop-shadow(0 16px 20px rgba(99,200,85,.30));
+  }
+  75%{
+    transform:translate3d(0,-4px,0) rotate(-.35deg) scale(1.006);
+  }
+  100%{
+    transform:translate3d(0,0,0) rotate(-.25deg) scale(1);
+  }
+}
+
+/* Pulsation des barres d'XP */
+.bar i,
+.segmented i{
+  animation:xpGlow 2.1s ease-in-out infinite;
+}
+@keyframes xpGlow{
+  0%,100%{filter:brightness(.95);box-shadow:0 0 5px rgba(156,184,132,.25)}
+  50%{filter:brightness(1.28);box-shadow:0 0 13px rgba(170,225,145,.58)}
+}
+
+/* Voyant système plus vivant */
+.online{
+  text-shadow:0 0 7px rgba(120,235,105,.55);
+  animation:onlinePulse 1.55s ease-in-out infinite;
+}
+@keyframes onlinePulse{
+  0%,100%{opacity:.72}
+  50%{opacity:1}
+}
+
+/* Scan lumineux horizontal dans la zone PLAYER */
+.avatar-stage::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  left:7%;
+  right:7%;
+  top:-3%;
+  width:auto;
+  height:2px;
+  background:linear-gradient(90deg,transparent,rgba(179,240,155,.75),transparent);
+  box-shadow:0 0 9px rgba(151,232,126,.8);
+  opacity:.7;
+  animation:playerScan 4.2s linear infinite;
+  pointer-events:none;
+}
+@keyframes playerScan{
+  from{top:2%}
+  to{top:94%}
+}
+
+/* Respect de l'accessibilité système */
+@media (prefers-reduced-motion: reduce){
+  .hud,.profile,.avatar-stage,.avatar-stage img,.bar i,.segmented i,.online,.avatar-stage::after,.avatar-stage .player-corners{
+    animation:none !important;
+  }
+}
