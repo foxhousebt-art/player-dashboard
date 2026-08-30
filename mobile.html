@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Saisie quotidienne — System Player</title>
+<style>
+:root{--bg:#050706;--panel:#0a0d0a;--line:#424b3e;--text:#d5dbc8;--muted:#8d9585;--green:#9dad83;--good:#73c267}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Courier New",monospace;padding:18px}
+main{max-width:560px;margin:auto}
+h1{font-size:20px;font-weight:400;margin:8px 0 4px}.sub{color:var(--muted);font-size:12px;margin-bottom:18px}
+.panel{border:1px solid var(--line);background:var(--panel);padding:14px;margin-bottom:12px}
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+input,select,button{width:100%;background:#050705;color:var(--text);border:1px solid var(--line);padding:12px;font:16px "Courier New";border-radius:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field{margin-bottom:12px}
+.toggle{display:flex;align-items:center;gap:10px;border:1px solid var(--line);padding:12px}.toggle input{width:auto;transform:scale(1.4)}
+button{background:#101710;border-color:var(--green);color:#dce5d3;cursor:pointer}
+#status{font-size:12px;margin-top:12px;min-height:20px}.good{color:var(--good)}.bad{color:#d65d4c}
+.rules{font-size:11px;color:var(--muted);line-height:1.55}
+</style>
+</head>
+<body>
+<main>
+  <h1>// SAISIE QUOTIDIENNE</h1>
+  <div class="sub">SYSTEME PLAYER — téléphone</div>
+
+  <form id="dailyForm" class="panel">
+    <div class="field">
+      <label>DATE</label>
+      <input id="date" type="date" required>
+    </div>
+
+    <div class="grid">
+      <div class="field"><label>PAGES LUES</label><input id="pages" type="number" min="0" value="0"></div>
+      <div class="field"><label>APPRENTISSAGE (MIN)</label><input id="learningMinutes" type="number" min="0" value="0"></div>
+    </div>
+
+    <div class="field toggle">
+      <input id="sport" type="checkbox">
+      <label for="sport" style="margin:0;color:var(--text)">SÉANCE DE SPORT EFFECTUÉE</label>
+    </div>
+
+    <div class="grid">
+      <div class="field"><label>REPAS CONFORMES</label><input id="compliantMeals" type="number" min="0" max="10" value="0"></div>
+      <div class="field"><label>ACTIONS UTILES TRAVAIL</label><input id="workActions" type="number" min="0" value="0"></div>
+    </div>
+
+    <div class="field">
+      <label>DÉPENSES DU JOUR (€)</label>
+      <input id="expenses" type="number" min="0" step="0.01" value="0">
+    </div>
+
+    <div class="field">
+      <label>CIGARETTE AUJOURD'HUI ?</label>
+      <select id="cigaretteSmoked" required>
+        <option value="" selected>— À RENSEIGNER —</option>
+        <option value="false">NON — aucune cigarette</option>
+        <option value="true">OUI — cigarette fumée</option>
+      </select>
+    </div>
+
+    <button type="submit">VALIDER LA JOURNÉE</button>
+    <div id="status"></div>
+  </form>
+
+  <div class="panel rules">
+    1 page = 1 XP • 30 min apprentissage = 20 XP • sport = 40 XP/séance • repas conforme = 10 XP • action travail = 2 XP • finance = +10 XP si trajectoire respectée.<br><br>
+    SPORT : 4 séances = objectif atteint ; 5/6 = bonus renforcé ; 7 = semaine exceptionnelle ; semaine terminée à 0–3 = pénalité.<br><br>
+    SANS CIGARETTE : jours 1 à 9 = +5 XP/jour ; à partir du 10e jour = +10 XP/jour. Cigarette fumée = streak remis à 0. Absence de saisie = aucun XP.<br><br>
+    DIMANCHE : RECOVERY DAY. Les actions réalisées rapportent leurs XP normalement, mais aucun Perfect Day n'est exigé.
+  </div>
+
+<script src="config.js"></script>
+<script>
+const cfg=window.PLAYER_CONFIG||{};
+const $=id=>document.getElementById(id);
+
+function todayLocal(){
+  const d=new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+}
+$("date").value=todayLocal();
+
+function payload(){
+  return {
+    date:$("date").value,
+    pages:Number($("pages").value)||0,
+    learningMinutes:Number($("learningMinutes").value)||0,
+    sport:$("sport").checked,
+    compliantMeals:Number($("compliantMeals").value)||0,
+    workActions:Number($("workActions").value)||0,
+    expenses:Number($("expenses").value)||0,
+    cigaretteSmoked:$("cigaretteSmoked").value === "" ? null : $("cigaretteSmoked").value === "true"
+  };
+}
+
+function saveLocal(entry){
+  let entries=[];
+  try{entries=JSON.parse(localStorage.getItem("playerEntries")||"[]")}catch(e){}
+  entries=entries.filter(x=>String(x.date).slice(0,10)!==entry.date);
+  entries.push(entry);
+  entries.sort((a,b)=>a.date.localeCompare(b.date));
+  localStorage.setItem("playerEntries",JSON.stringify(entries));
+}
+
+$("dailyForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const entry=payload();
+  const status=$("status");
+  status.className="";
+  status.textContent="ENREGISTREMENT...";
+
+  try{
+    if(cfg.WEB_APP_URL){
+      const res=await fetch(cfg.WEB_APP_URL,{
+        method:"POST",
+        headers:{"Content-Type":"text/plain;charset=utf-8"},
+        body:JSON.stringify({action:"saveEntry",entry})
+      });
+      const out=await res.json();
+      if(!out.ok) throw new Error(out.error||"Erreur serveur");
+    }else{
+      saveLocal(entry);
+    }
+
+    status.className="good";
+    status.textContent=cfg.WEB_APP_URL ? "✓ JOURNÉE ENREGISTRÉE — DASHBOARD EN COURS DE SYNCHRONISATION" : "✓ JOURNÉE ENREGISTRÉE — MODE LOCAL";
+  }catch(err){
+    console.error(err);
+    status.className="bad";
+    status.textContent="✕ ERREUR : "+err.message;
+  }
+});
+</script>
+</main>
+</body>
+</html>

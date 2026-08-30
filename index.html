@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>System Player v0.4</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scanlines"></div>
+  <canvas id="fxCanvas"></canvas>
+
+  <main class="hud" id="hud">
+    <header class="topbar panel">
+      <div class="brand">// SYSTEME PLAYER <span>v0.4</span></div>
+      <div class="mode">MODE : PERMANENT</div>
+      <div class="clock"><span id="date"></span> <span id="time"></span></div>
+    </header>
+
+    <section class="content">
+      <section class="left-column">
+        <section class="summary panel">
+          <div class="level-block">
+            <div class="eyebrow">NIVEAU GLOBAL</div>
+            <div class="level-number" id="globalLevel">01</div>
+          </div>
+          <div class="xp-block">
+            <div class="eyebrow">XP GLOBALE</div>
+            <div class="metric"><span id="globalXp">84</span> / <span id="globalXpTarget">300</span> XP</div>
+            <div class="bar large"><i id="globalXpBar"></i></div>
+            <div class="subline">PROCHAIN NIVEAU : <span id="xpRemaining">216</span> XP</div>
+          </div>
+          <div class="mini-card">
+            <span>RANG ACTUEL</span>
+            <b id="rank">NOVICE I</b>
+            <small>XP TOTALE <strong id="totalXp">84</strong></small>
+            <small>JOURS ACTIFS <strong id="activeDays">1</strong> / 365</small>
+          </div>
+          <div class="mini-card centered">
+            <span>STREAK</span>
+            <b>🔥 <span id="streak">1</span></b>
+            <small>MEILLEUR : <strong id="bestStreak">1</strong></small>
+          </div>
+          <div class="mini-card centered">
+            <span>RECORD</span>
+            <b>🏆 <span id="record">1</span></b>
+            <small>JOURS</small>
+          </div>
+        </section>
+
+        <section class="fundamentals panel">
+          <div class="section-title">// 6 FONDAMENTAUX</div>
+          <div id="statGrid" class="stat-grid"></div>
+        </section>
+
+        <section class="bottom-grid">
+          <section class="finance panel">
+            <div class="section-title">// FINANCES</div>
+            <div class="finance-inner">
+              <div class="finance-numbers">
+                <div><span>BUDGET MENSUEL</span><strong id="budgetMonthly">1 000 €</strong></div>
+                <div><span>DÉPENSES TOTALES</span><strong id="spentTotal">0 €</strong></div>
+                <div><span>BUDGET RESTANT</span><strong class="good" id="budgetRemaining">1 000 €</strong></div>
+              </div>
+              <div class="trajectory">
+                <div class="trajectory-head">
+                  <span>// TRAJECTOIRE BUDGÉTAIRE</span>
+                  <strong class="good" id="trajectoryGap">+33,33 €</strong>
+                </div>
+                <div class="trajectory-bar"><i id="trajectoryMarker"></i></div>
+                <div class="trajectory-scale"><span>-</span><span>0 €</span><span>+</span></div>
+                <div class="trajectory-cards">
+                  <div><span>DÉPENSÉ À CE JOUR</span><b id="spentToDate">0 €</b></div>
+                  <div><span>TRAJECTOIRE PRÉVUE</span><b id="plannedToDate">33,33 €</b></div>
+                  <div><span>ÉCART</span><b class="good" id="gapDetail">+33,33 €</b></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="skill panel">
+            <div class="section-title">// COMPÉTENCE EN COURS</div>
+            <div class="skill-name">🔒 DISCIPLINE I</div>
+            <p>Nécessite : niveau 3 dans les 6 fondamentaux</p>
+            <div id="skillRows" class="skill-rows"></div>
+            <div class="skill-progress">
+              <span>PROGRESSION GLOBALE</span>
+              <b id="skillProgressText">0 / 6</b>
+              <div class="bar"><i id="skillBar"></i></div>
+            </div>
+          </section>
+        </section>
+
+        <footer class="week panel">
+          <span>SEMAINE 1 / 4</span>
+          <div class="days">
+            <b class="active">LUN</b><b>MAR</b><b>MER</b><b>JEU</b><b>VEN</b><b>SAM</b><b>DIM</b>
+          </div>
+          <div class="shortcuts">[ L ] +1 NIVEAU &nbsp;&nbsp; [ R ] RESET</div>
+          <span class="online">● SYSTEME EN LIGNE</span>
+        </footer>
+      </section>
+
+      <aside class="right-column">
+        <section class="profile panel">
+          <div class="section-title">// PLAYER</div>
+          <div class="player-name">BRIAN</div>
+          <div class="player-rank" id="profileRank">NOVICE I</div>
+          <div class="avatar-stage" id="avatarStage">
+            <div class="player-corners"></div>
+            <img src="sprites/brian_lvl_001_base.png" alt="Avatar pixel art de Brian" id="avatar" />
+            <div class="player-stage-label">
+              <span>FORME ACTUELLE</span>
+              <b id="evolutionStage">RECRUE</b>
+            </div>
+          </div>
+        </section>
+
+        <section class="status panel">
+          <div class="section-title">// STATUT</div>
+          <div class="status-grid">
+            <div><span>♥</span><b>100/100</b><small>VIE</small></div>
+            <div><span>ϟ</span><b>100/100</b><small>ÉNERGIE</small></div>
+            <div><span>⬡</span><b>100/100</b><small>DISCIPLINE</small></div>
+          </div>
+          <div class="segmented"><i style="width:94%"></i></div>
+        </section>
+
+        <section class="priority panel">
+          <div class="section-title">// OBJECTIF PRIORITAIRE</div>
+          <div class="priority-row">
+            <div class="target">◎</div>
+            <div>
+              <strong id="priorityName">SPORT</strong>
+              <span>Attribut le plus en retard</span>
+            </div>
+            <b id="priorityPct">0%</b>
+          </div>
+          <div class="bar danger"><i id="priorityBar"></i></div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <div id="levelUp" class="level-up">
+    <div class="level-card">
+      <span>LEVEL UP</span>
+      <strong id="levelUpNumber">02</strong>
+      <p>PROGRESSION CONFIRMÉE</p>
+    </div>
+  </div>
+
+  <button id="testLevel" class="dev-button" title="Test animation Level Up">TEST LEVEL UP</button>
+  <script src="config.js"></script>
+  <script src="character_evolution.js"></script>
+  <script src="progression_engine.js"></script>
+  <script src="data_sync.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
