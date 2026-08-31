@@ -110,9 +110,19 @@ function livingData(level){
 
 function stopLivingFrames(){
   if(livingFrameTimer){
+    cancelAnimationFrame(livingFrameTimer);
     clearTimeout(livingFrameTimer);
     livingFrameTimer = null;
   }
+}
+
+function preloadLivingFrames(frames){
+  if(!frames || !frames.length) return;
+  frames.forEach(src=>{
+    const img = new Image();
+    img.decoding = "async";
+    img.src = src;
+  });
 }
 
 function playLivingFrames(frames, frameMs, loop, onDone){
@@ -122,29 +132,38 @@ function playLivingFrames(frames, frameMs, loop, onDone){
     return;
   }
 
+  preloadLivingFrames(frames);
   stopLivingFrames();
   const token = ++livingAnimationToken;
   let i = 0;
+  let last = 0;
 
-  const tick = ()=>{
+  avatar.src = frames[0];
+  avatar.style.opacity = "1";
+  avatar.classList.remove("sprite-transition-out","sprite-transition-in");
+
+  const tick = (ts)=>{
     if(token !== livingAnimationToken) return;
-    avatar.src = frames[i];
-    avatar.style.opacity = "1";
-    avatar.classList.remove("sprite-transition-out","sprite-transition-in");
-    i++;
+    if(!last) last = ts;
 
-    if(i >= frames.length){
-      if(loop) i = 0;
-      else{
-        livingFrameTimer = null;
-        if(onDone) onDone();
-        return;
+    if(ts - last >= frameMs){
+      last = ts - ((ts - last) % frameMs);
+      i++;
+      if(i >= frames.length){
+        if(loop) i = 0;
+        else{
+          livingFrameTimer = null;
+          if(onDone) onDone();
+          return;
+        }
       }
+      avatar.src = frames[i];
+      avatar.style.opacity = "1";
     }
-    livingFrameTimer = setTimeout(tick, frameMs);
+    livingFrameTimer = requestAnimationFrame(tick);
   };
 
-  tick();
+  livingFrameTimer = requestAnimationFrame(tick);
 }
 
 function scheduleLivingAction(level){
@@ -164,7 +183,7 @@ function scheduleLivingAction(level){
 
     livingBusy = true;
     const state = Math.random() < 0.60 ? "think" : "move";
-    const speed = state === "think" ? 220 : 155;
+    const speed = state === "think" ? 125 : 95;
 
     playLivingFrames(data.set[state], speed, false, ()=>{
       livingBusy = false;
@@ -184,8 +203,9 @@ function startLivingIdle(level){
   currentLivingSpriteKey = data.key;
   livingBusy = false;
 
-  // Slow enough to feel like a Game Boy idle, not a GIF.
-  playLivingFrames(data.set.idle, 185, true);
+  // Preload current evolution and use a smoother Game Boy cadence.
+  preloadLivingFrames([...(data.set.idle||[]), ...(data.set.think||[]), ...(data.set.move||[]), ...(data.set.levelup||[])]);
+  playLivingFrames(data.set.idle, 105, true);
   scheduleLivingAction(level);
 }
 
@@ -211,7 +231,7 @@ function playLivingLevelUp(level){
   livingBusy = true;
   if(livingDecisionTimer) clearTimeout(livingDecisionTimer);
 
-  playLivingFrames(data.set.levelup, 105, false, ()=>{
+  playLivingFrames(data.set.levelup, 85, false, ()=>{
     livingBusy = false;
     startLivingIdle(level);
   });
