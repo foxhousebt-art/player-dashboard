@@ -409,182 +409,403 @@ body:before{
 
 
 /* =========================================================
-   V0.5.2 — VISUAL FX
-   Ajout d'effets visibles SANS modifier la disposition du HUD.
+   PLAYER V0.5.3 — FUTURISTIC BLACK
+   - fond noir/neutre
+   - aucune nappe verte dans les encadrés
+   - effets visibles sur les contours et lignes
+   - personnage totalement préservé
    ========================================================= */
 
-/* Respiration lumineuse de l'ensemble du HUD */
-.hud{
-  animation:hudAmbient 4.8s ease-in-out infinite;
-}
-@keyframes hudAmbient{
-  0%,100%{filter:brightness(1)}
-  50%{filter:brightness(1.07)}
+:root{
+  --fx-line: rgba(190,220,185,.42);
+  --fx-cold: rgba(170,205,215,.24);
+  --fx-green: rgba(126,170,110,.16);
+  --fx-white: rgba(230,240,232,.22);
 }
 
-/* Les panneaux prennent un halo beaucoup plus visible */
-.panel{
-  box-shadow:
-    inset 0 0 0 1px #101710,
-    inset 0 0 22px rgba(111,160,100,.035),
-    0 0 16px rgba(119,177,102,.08);
-}
-.profile{
-  box-shadow:
-    inset 0 0 0 1px #101710,
-    inset 0 0 34px rgba(111,170,101,.07),
-    0 0 26px rgba(119,190,105,.16);
-  animation:profileGlow 3.2s ease-in-out infinite;
-}
-@keyframes profileGlow{
-  0%,100%{
-    box-shadow:
-      inset 0 0 0 1px #101710,
-      inset 0 0 30px rgba(111,170,101,.055),
-      0 0 18px rgba(119,190,105,.10);
-  }
-  50%{
-    box-shadow:
-      inset 0 0 0 1px #182318,
-      inset 0 0 46px rgba(125,190,112,.13),
-      0 0 34px rgba(135,215,118,.24);
-  }
+/* Fond général : noir, sans voile vert */
+html,
+body{
+  background:#030403 !important;
 }
 
-/* Lumière de fond derrière le personnage */
-.avatar-stage{
-  overflow:hidden;
-  background:
-    radial-gradient(ellipse at 50% 72%,rgba(132,210,115,.22),transparent 28%),
-    radial-gradient(circle at 50% 50%,rgba(92,151,86,.11),transparent 52%),
-    repeating-linear-gradient(180deg,transparent 0 3px,rgba(160,180,150,.025) 4px);
-  box-shadow:
-    inset 0 0 40px rgba(107,181,93,.08),
-    inset 0 -28px 48px rgba(94,186,82,.09);
-  animation:stageEnergy 2.6s ease-in-out infinite;
-}
-@keyframes stageEnergy{
-  0%,100%{
-    filter:brightness(1);
-    box-shadow:
-      inset 0 0 34px rgba(107,181,93,.07),
-      inset 0 -24px 42px rgba(94,186,82,.08);
-  }
-  50%{
-    filter:brightness(1.10);
-    box-shadow:
-      inset 0 0 58px rgba(130,220,112,.16),
-      inset 0 -36px 60px rgba(111,218,93,.15);
-  }
-}
-
-/* Faisceau vertical discret mais clairement visible */
-.avatar-stage .player-corners{
-  position:absolute;
+body::before{
+  content:"";
+  position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:0;
+  z-index:999;
   background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 43%,
-      rgba(130,210,112,.025) 46%,
-      rgba(154,235,133,.11) 50%,
-      rgba(130,210,112,.025) 54%,
-      transparent 57%,
-      transparent 100%
+    repeating-linear-gradient(
+      180deg,
+      rgba(255,255,255,.012) 0px,
+      rgba(255,255,255,.012) 1px,
+      transparent 2px,
+      transparent 5px
     );
-  animation:energyBeam 2.8s ease-in-out infinite;
-}
-@keyframes energyBeam{
-  0%,100%{opacity:.45;transform:scaleX(.92)}
-  50%{opacity:1;transform:scaleX(1.08)}
+  mix-blend-mode:screen;
+  opacity:.28;
 }
 
-/* Le personnage a maintenant un vrai mouvement idle visible */
-.avatar-stage img{
+/* Gros cadres : noir à l'intérieur, lumière uniquement autour */
+.panel,
+.profile{
   position:relative;
-  z-index:2;
-  transform-origin:50% 88%;
-  animation:playerIdle 2.15s ease-in-out infinite !important;
-  filter:
-    saturate(.94)
-    contrast(1.08)
-    drop-shadow(0 0 5px rgba(160,235,135,.22))
-    drop-shadow(0 11px 14px rgba(88,180,78,.18));
-  will-change:transform,filter;
-}
-@keyframes playerIdle{
-  0%{
-    transform:translate3d(0,0,0) rotate(-.25deg) scale(1);
-    filter:
-      saturate(.94) contrast(1.08)
-      drop-shadow(0 0 4px rgba(160,235,135,.18))
-      drop-shadow(0 10px 12px rgba(88,180,78,.16));
-  }
-  25%{
-    transform:translate3d(-1px,-5px,0) rotate(.35deg) scale(1.008);
-  }
-  50%{
-    transform:translate3d(1px,-10px,0) rotate(.15deg) scale(1.018);
-    filter:
-      saturate(1) contrast(1.1)
-      drop-shadow(0 0 11px rgba(170,245,145,.42))
-      drop-shadow(0 16px 20px rgba(99,200,85,.30));
-  }
-  75%{
-    transform:translate3d(0,-4px,0) rotate(-.35deg) scale(1.006);
-  }
-  100%{
-    transform:translate3d(0,0,0) rotate(-.25deg) scale(1);
-  }
+  isolation:isolate;
+  overflow:hidden;
+  background:#050605 !important;
+  box-shadow:
+    0 0 0 1px rgba(170,205,165,.18),
+    0 0 12px rgba(175,215,185,.10),
+    0 0 28px rgba(120,155,145,.055) !important;
 }
 
-/* Pulsation des barres d'XP */
-.bar i,
-.segmented i{
-  animation:xpGlow 2.1s ease-in-out infinite;
-}
-@keyframes xpGlow{
-  0%,100%{filter:brightness(.95);box-shadow:0 0 5px rgba(156,184,132,.25)}
-  50%{filter:brightness(1.28);box-shadow:0 0 13px rgba(170,225,145,.58)}
+/* Lueur froide en haut + bas, sans teinter le centre */
+.panel::before,
+.profile::before{
+  content:"";
+  position:absolute;
+  left:4%;
+  right:4%;
+  top:-1px;
+  height:1px;
+  z-index:4;
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(220,235,225,.15) 18%,
+    rgba(190,225,205,.75) 50%,
+    rgba(220,235,225,.15) 82%,
+    transparent
+  );
+  box-shadow:
+    0 0 6px rgba(205,235,215,.45),
+    0 0 14px rgba(145,190,165,.22);
+  animation:topLinePulse 3.6s ease-in-out infinite;
 }
 
-/* Voyant système plus vivant */
-.online{
-  text-shadow:0 0 7px rgba(120,235,105,.55);
-  animation:onlinePulse 1.55s ease-in-out infinite;
+.panel::after,
+.profile::after{
+  content:"";
+  position:absolute;
+  left:-35%;
+  top:0;
+  width:28%;
+  height:100%;
+  z-index:3;
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(220,235,230,.035),
+    rgba(220,235,230,.12),
+    rgba(220,235,230,.035),
+    transparent
+  );
+  transform:skewX(-18deg);
+  animation:panelSweep 7s linear infinite;
 }
-@keyframes onlinePulse{
-  0%,100%{opacity:.72}
+
+@keyframes topLinePulse{
+  0%,100%{opacity:.45}
   50%{opacity:1}
 }
 
-/* Scan lumineux horizontal dans la zone PLAYER */
-.avatar-stage::after{
-  content:"";
-  position:absolute;
-  z-index:3;
-  left:7%;
-  right:7%;
-  top:-3%;
-  width:auto;
-  height:2px;
-  background:linear-gradient(90deg,transparent,rgba(179,240,155,.75),transparent);
-  box-shadow:0 0 9px rgba(151,232,126,.8);
-  opacity:.7;
-  animation:playerScan 4.2s linear infinite;
-  pointer-events:none;
-}
-@keyframes playerScan{
-  from{top:2%}
-  to{top:94%}
+@keyframes panelSweep{
+  0%{left:-35%}
+  100%{left:115%}
 }
 
-/* Respect de l'accessibilité système */
-@media (prefers-reduced-motion: reduce){
-  .hud,.profile,.avatar-stage,.avatar-stage img,.bar i,.segmented i,.online,.avatar-stage::after,.avatar-stage .player-corners{
-    animation:none !important;
-  }
+/* Stat cards : aucune couleur de fond ajoutée */
+.stat-card{
+  position:relative;
+  overflow:hidden;
+  background:#060706 !important;
+  box-shadow:
+    0 0 0 1px rgba(175,205,170,.12),
+    0 0 8px rgba(185,215,190,.055) !important;
+}
+
+/* Petit trait lumineux qui passe sur le bord supérieur */
+.stat-card::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-45%;
+  width:38%;
+  height:1px;
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(220,240,225,.82),
+    transparent
+  );
+  box-shadow:0 0 7px rgba(195,230,205,.5);
+  animation:cardEdgeSweep 5.4s linear infinite;
+}
+
+@keyframes cardEdgeSweep{
+  from{left:-45%}
+  to{left:115%}
+}
+
+/* Les petits encadrés restent noirs */
+.mini-card,
+.trajectory-cards div,
+.skill-row,
+.status-grid div,
+.priority-row,
+.days b{
+  background:#050605 !important;
+  box-shadow:
+    0 0 0 1px rgba(165,195,160,.10),
+    0 0 5px rgba(185,215,190,.035) !important;
+}
+
+/* Une ligne froide marque les sections sans remplir les blocs */
+.skill-row,
+.status-grid div,
+.trajectory-cards div{
+  border-top-color:rgba(195,220,200,.10) !important;
+}
+
+/* Jour actif : visible mais pas "vert fluo" */
+.days .active{
+  background:#070807 !important;
+  box-shadow:
+    0 0 0 1px rgba(205,225,205,.26),
+    0 0 7px rgba(205,230,215,.17),
+    0 0 16px rgba(145,180,160,.08) !important;
+}
+
+/* Barres XP : remplissages d'origine, halo blanc/vert très faible */
+.bar,
+.segmented{
+  filter:
+    drop-shadow(0 0 2px rgba(220,235,220,.22))
+    drop-shadow(0 0 5px rgba(130,165,125,.10));
+}
+
+/* Titres / séparateurs : plus nets, pas plus saturés */
+.panel-title,
+.section-title,
+.brand{
+  text-shadow:
+    0 0 4px rgba(220,235,225,.18),
+    0 0 9px rgba(145,175,155,.08);
+}
+
+/* Coins HUD plus présents */
+.player-corners{
+  opacity:.82 !important;
+  filter:drop-shadow(0 0 4px rgba(210,230,215,.18));
+}
+
+/* =========================================================
+   AVATAR — AUCUN EFFET
+   ========================================================= */
+.avatar-stage{
+  background:#050605 !important;
+  box-shadow:none !important;
+  filter:none !important;
+}
+
+.avatar-glow,
+.avatar-stage::before,
+.avatar-stage::after{
+  display:none !important;
+  content:none !important;
+  opacity:0 !important;
+  background:none !important;
+  box-shadow:none !important;
+}
+
+.avatar-stage img,
+.avatar-stage img.sprite-transition-out,
+.avatar-stage img.sprite-transition-in{
+  position:relative;
+  z-index:5 !important;
+  opacity:1 !important;
+  mix-blend-mode:normal !important;
+  filter:none !important;
+  box-shadow:none !important;
+}
+
+
+/* =========================================================
+   V0.5.5 — SOBER TERMINAL DESIGN
+   Based on the approved visual direction:
+   charcoal / neutral lines / minimal color / living avatar.
+   ========================================================= */
+
+:root{
+  --bg:#020302 !important;
+  --panel:#050706 !important;
+  --line:#30352f !important;
+  --line-soft:#171b17 !important;
+  --text:#d5d8ce !important;
+  --muted:#7f867d !important;
+  --green:#a9ba8c !important;
+  --good:#89b96f !important;
+}
+
+/* No green wash over the page. */
+html,body{
+  background:#020302 !important;
+}
+body:before{
+  background:
+    radial-gradient(circle at 72% 24%,rgba(210,220,205,.018),transparent 30%),
+    linear-gradient(180deg,#030403,#010201) !important;
+}
+
+/* Panels: thin neutral outlines only. */
+.panel{
+  background:linear-gradient(180deg,rgba(6,8,7,.97),rgba(2,3,3,.99)) !important;
+  border-color:#2b302b !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    0 0 12px rgba(220,230,220,.018) !important;
+}
+.panel:after{
+  opacity:.13 !important;
+  background:linear-gradient(90deg,transparent,#dce5d7,transparent) !important;
+  filter:drop-shadow(0 0 3px rgba(220,230,215,.2)) !important;
+}
+
+/* Six fundamentals: remove category-colored frames. */
+.stat-card{
+  border-color:#242924 !important;
+  background:rgba(4,6,5,.62) !important;
+  box-shadow:none !important;
+}
+.stat-card .detail{
+  border-top-color:#171b17 !important;
+}
+
+/* Keep category color only as a restrained signal in icon/title/bar. */
+.stat-card .icon,
+.stat-card h3{
+  filter:saturate(.55) brightness(.93);
+}
+.stat-card .bar i{
+  filter:saturate(.48) brightness(.92);
+  box-shadow:none !important;
+}
+
+/* Smaller items: quiet monochrome separators. */
+.mini-card,
+.trajectory-cards div,
+.skill-row,
+.status-grid div,
+.days b{
+  border-color:#242924 !important;
+  box-shadow:none !important;
+}
+.skill-row{
+  border-bottom:1px solid #151915;
+}
+.trajectory-cards div{
+  background:rgba(5,7,6,.48) !important;
+}
+.days .active{
+  border-color:#68725f !important;
+  color:#cbd2bf !important;
+  box-shadow:0 0 7px rgba(215,225,210,.05) !important;
+}
+
+/* Progress bars: cleaner, less neon. */
+.bar{
+  border-color:#343a34 !important;
+  background:#030403 !important;
+}
+.bar i{
+  box-shadow:0 0 5px rgba(190,205,180,.13) !important;
+}
+.segmented{
+  border-color:#242924 !important;
+}
+.segmented i{
+  filter:saturate(.45);
+}
+
+/* Finance gradient remains meaningful but less saturated. */
+.trajectory-bar{
+  filter:saturate(.62) brightness(.88);
+  border-color:#30352f !important;
+}
+
+/* PLAYER stage: slightly lighter neutral charcoal so black hair/shirt stay visible. */
+.avatar-stage{
+  overflow:hidden !important;
+  background:
+    radial-gradient(ellipse at 50% 52%,rgba(220,225,215,.075),transparent 34%),
+    linear-gradient(180deg,#0a0d0b 0%,#070907 58%,#050605 100%) !important;
+  border-color:#303630 !important;
+  box-shadow:
+    inset 0 0 30px rgba(220,225,215,.018),
+    inset 0 -18px 34px rgba(255,255,255,.012) !important;
+}
+
+/* Very faint Game Boy / terminal grid behind character, no green halo. */
+.avatar-stage::before{
+  display:block !important;
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  width:auto !important;
+  height:auto !important;
+  left:0 !important;
+  top:0 !important;
+  background:
+    repeating-linear-gradient(180deg,transparent 0 5px,rgba(220,225,215,.015) 6px),
+    repeating-linear-gradient(90deg,transparent 0 34px,rgba(220,225,215,.010) 35px) !important;
+  box-shadow:none !important;
+  opacity:.65 !important;
+  pointer-events:none !important;
+}
+.avatar-stage::after{
+  display:none !important;
+}
+
+/* Animated PNG frames are transparent: no screen blend, no transparency bug. */
+.avatar-stage img,
+.avatar-stage img.sprite-transition-out,
+.avatar-stage img.sprite-transition-in{
+  width:70% !important;
+  max-height:94% !important;
+  height:94% !important;
+  object-fit:contain !important;
+  image-rendering:pixelated !important;
+  opacity:1 !important;
+  mix-blend-mode:normal !important;
+  filter:
+    drop-shadow(0 3px 0 rgba(0,0,0,.40))
+    drop-shadow(0 0 1px rgba(230,235,225,.15)) !important;
+  animation:none !important;
+  transform:none !important;
+  position:relative !important;
+  z-index:3 !important;
+}
+
+/* Never put a glow under/behind the character. */
+.avatar-glow{
+  display:none !important;
+}
+
+/* Player corners stay sober and behind the sprite. */
+.player-corners{
+  opacity:.56 !important;
+  z-index:1 !important;
+}
+
+/* Level-up overlay also reduced in saturation. */
+.level-up{
+  background:radial-gradient(circle,rgba(210,220,205,.08),rgba(0,0,0,.78)) !important;
+}
+.level-card{
+  border-color:#aab3a5 !important;
+  box-shadow:0 0 35px rgba(210,220,205,.11) !important;
 }

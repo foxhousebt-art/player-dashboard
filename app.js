@@ -86,6 +86,138 @@ function updateCharacterSprite(level){
   },1500);
 }
 
+
+/* =========================================================
+   V0.5.5 — LIVING CHARACTER ENGINE
+   ========================================================= */
+const CHARACTER_ANIMATIONS = window.CHARACTER_ANIMATIONS || {};
+let livingFrameTimer = null;
+let livingDecisionTimer = null;
+let livingAnimationToken = 0;
+let currentLivingSpriteKey = "";
+let livingBusy = false;
+
+function livingSpriteKey(path){
+  const m = String(path || "").match(/(brian_lvl_[^/]+)\.png$/);
+  return m ? m[1] : "";
+}
+
+function livingData(level){
+  const evo = getCharacterEvolution(level);
+  const key = livingSpriteKey(evo.sprite);
+  return {evo, key, set: CHARACTER_ANIMATIONS[key] || null};
+}
+
+function stopLivingFrames(){
+  if(livingFrameTimer){
+    clearTimeout(livingFrameTimer);
+    livingFrameTimer = null;
+  }
+}
+
+function playLivingFrames(frames, frameMs, loop, onDone){
+  const avatar = $("avatar");
+  if(!avatar || !frames || !frames.length){
+    if(onDone) onDone();
+    return;
+  }
+
+  stopLivingFrames();
+  const token = ++livingAnimationToken;
+  let i = 0;
+
+  const tick = ()=>{
+    if(token !== livingAnimationToken) return;
+    avatar.src = frames[i];
+    avatar.style.opacity = "1";
+    avatar.classList.remove("sprite-transition-out","sprite-transition-in");
+    i++;
+
+    if(i >= frames.length){
+      if(loop) i = 0;
+      else{
+        livingFrameTimer = null;
+        if(onDone) onDone();
+        return;
+      }
+    }
+    livingFrameTimer = setTimeout(tick, frameMs);
+  };
+
+  tick();
+}
+
+function scheduleLivingAction(level){
+  if(livingDecisionTimer) clearTimeout(livingDecisionTimer);
+
+  // A spontaneous gesture every 14–32 seconds.
+  const delay = 14000 + Math.floor(Math.random() * 18000);
+
+  livingDecisionTimer = setTimeout(()=>{
+    if(livingBusy){
+      scheduleLivingAction(level);
+      return;
+    }
+
+    const data = livingData(level);
+    if(!data.set) return;
+
+    livingBusy = true;
+    const state = Math.random() < 0.60 ? "think" : "move";
+    const speed = state === "think" ? 220 : 155;
+
+    playLivingFrames(data.set[state], speed, false, ()=>{
+      livingBusy = false;
+      startLivingIdle(level);
+    });
+  }, delay);
+}
+
+function startLivingIdle(level){
+  const data = livingData(level);
+  if(!data.set){
+    updateCharacterSprite(level);
+    return;
+  }
+
+  setText("evolutionStage", data.evo.stage);
+  currentLivingSpriteKey = data.key;
+  livingBusy = false;
+
+  // Slow enough to feel like a Game Boy idle, not a GIF.
+  playLivingFrames(data.set.idle, 185, true);
+  scheduleLivingAction(level);
+}
+
+function ensureLivingCharacter(level){
+  const data = livingData(level);
+
+  if(!data.set){
+    updateCharacterSprite(level);
+    return;
+  }
+
+  setText("evolutionStage", data.evo.stage);
+
+  if(currentLivingSpriteKey !== data.key || !livingFrameTimer){
+    startLivingIdle(level);
+  }
+}
+
+function playLivingLevelUp(level){
+  const data = livingData(level);
+  if(!data.set) return;
+
+  livingBusy = true;
+  if(livingDecisionTimer) clearTimeout(livingDecisionTimer);
+
+  playLivingFrames(data.set.levelup, 105, false, ()=>{
+    livingBusy = false;
+    startLivingIdle(level);
+  });
+}
+/* ========================================================= */
+
 function rankForLevel(level){
   if(level>=100) return "TRANSCENDANT";
   if(level>=95) return "PRÉ-TRANSCENDANT";
@@ -158,7 +290,7 @@ function renderSnapshot(snapshot){
   const globalBar = $("globalXpBar");
   if(globalBar) globalBar.style.width = g.progress + "%";
 
-  updateCharacterSprite(g.level);
+  ensureLivingCharacter(g.level);
 
   const grid = $("statGrid");
   if(grid){
@@ -247,6 +379,7 @@ function renderSnapshot(snapshot){
   // Animation uniquement lorsqu'un nouveau snapshot fait réellement monter le niveau.
   if(renderedGlobalLevel !== null && g.level > renderedGlobalLevel){
     showLevelUp(g.level);
+    playLivingLevelUp(g.level);
   }
   renderedGlobalLevel = g.level;
 }
