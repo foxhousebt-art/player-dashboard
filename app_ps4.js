@@ -88,7 +88,7 @@ function updateCharacterSprite(level){
 
 
 /* =========================================================
-   V0.5.7 — PS4 LIGHTWEIGHT CHARACTER ENGINE
+   V0.5.8 — PS4 BALANCED CHARACTER ENGINE
    One sprite only. Motion is compositor-friendly transforms,
    so the old PS4 browser never has to decode/swap frames.
    ========================================================= */
@@ -108,7 +108,7 @@ function ensureLivingCharacter(level){
 
 function schedulePs4Gesture(){
   if(ps4GestureTimer) clearTimeout(ps4GestureTimer);
-  const delay = 18000 + Math.floor(Math.random()*18000);
+  const delay = 6500 + Math.floor(Math.random()*5500);
   ps4GestureTimer = setTimeout(()=>{
     const avatar = $("avatar");
     if(!avatar) return;
@@ -118,7 +118,7 @@ function schedulePs4Gesture(){
     setTimeout(()=>{
       avatar.classList.remove("ps4-think","ps4-move");
       schedulePs4Gesture();
-    },1300);
+    },1650);
   },delay);
 }
 

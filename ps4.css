@@ -124,3 +124,106 @@ body::before{
 .bar i,.trajectory-bar i,.segmented i{
   transition:none !important;
 }
+
+/* =========================================================
+   V0.5.8 — PS4 BALANCED
+   Restore visible life/light using ONLY cheap compositor work:
+   opacity + translate/scale. No blur, no animated shadow, no filters.
+   ========================================================= */
+
+/* One global moving light layer only. */
+body::after{
+  content:"" !important;
+  display:block !important;
+  position:fixed !important;
+  top:-12% !important;
+  bottom:-12% !important;
+  left:-46% !important;
+  width:34% !important;
+  pointer-events:none !important;
+  z-index:2 !important;
+  opacity:0 !important;
+  background:linear-gradient(100deg,
+    rgba(255,255,255,0) 0%,
+    rgba(205,225,210,.018) 34%,
+    rgba(215,235,220,.075) 50%,
+    rgba(205,225,210,.018) 66%,
+    rgba(255,255,255,0) 100%) !important;
+  transform:translate3d(0,0,0) !important;
+  will-change:transform,opacity !important;
+  animation:ps4GlobalSweep 8.5s linear infinite !important;
+}
+
+@keyframes ps4GlobalSweep{
+  0%,15%{transform:translate3d(0,0,0);opacity:0}
+  22%{opacity:.75}
+  68%{opacity:.55}
+  82%,100%{transform:translate3d(430%,0,0);opacity:0}
+}
+
+/* A single local pulse around the player window. */
+.avatar-stage::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  inset:1px !important;
+  pointer-events:none !important;
+  z-index:1 !important;
+  opacity:.14 !important;
+  border:1px solid rgba(200,225,205,.18) !important;
+  background:linear-gradient(180deg,rgba(210,230,215,.018),transparent 44%,rgba(210,230,215,.012)) !important;
+  animation:ps4PlayerPulse 3.8s ease-in-out infinite !important;
+  will-change:opacity !important;
+}
+
+@keyframes ps4PlayerPulse{
+  0%,100%{opacity:.11}
+  50%{opacity:.32}
+}
+
+/* Make the character visibly alive while remaining transform-only. */
+.avatar-stage img,
+.avatar-stage img.sprite-transition-out,
+.avatar-stage img.sprite-transition-in{
+  animation:ps4BreathBalanced 2.25s ease-in-out infinite !important;
+  will-change:transform !important;
+}
+
+@keyframes ps4BreathBalanced{
+  0%,100%{transform:translate3d(0,1px,0) scale3d(1,1,1)}
+  50%{transform:translate3d(0,-4px,0) scale3d(1.012,1.018,1)}
+}
+
+.avatar-stage img.ps4-think{
+  animation:ps4ThinkBalanced 1.65s ease-in-out 1 !important;
+}
+@keyframes ps4ThinkBalanced{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg) scale3d(1,1,1)}
+  25%{transform:translate3d(-4px,-2px,0) rotate(-1.15deg) scale3d(1.008,1.008,1)}
+  55%{transform:translate3d(-2px,-4px,0) rotate(-.45deg) scale3d(1.014,1.014,1)}
+  78%{transform:translate3d(2px,-1px,0) rotate(.65deg) scale3d(1.006,1.006,1)}
+}
+
+.avatar-stage img.ps4-move{
+  animation:ps4MoveBalanced 1.65s ease-in-out 1 !important;
+}
+@keyframes ps4MoveBalanced{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  20%{transform:translate3d(5px,-3px,0) rotate(1.1deg)}
+  48%{transform:translate3d(-4px,-5px,0) rotate(-1deg)}
+  72%{transform:translate3d(3px,-2px,0) rotate(.7deg)}
+}
+
+/* A little life in the corner brackets only; opacity is cheap. */
+.player-corners{
+  opacity:.72 !important;
+  animation:ps4Corners 3.2s ease-in-out infinite !important;
+  will-change:opacity !important;
+}
+@keyframes ps4Corners{
+  0%,100%{opacity:.55}
+  50%{opacity:.92}
+}
+
+/* Keep UI above the global sweep and avoid layout/repaint-heavy effects. */
+.hud{position:relative !important;z-index:3 !important}
