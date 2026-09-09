@@ -1,0 +1,126 @@
+/* =========================================================
+   SYSTEME PLAYER V0.5.7 — PS4 PERFORMANCE MODE
+   Same layout / palette / content, but built for the PS4's old
+   browser: one moving layer, no blur animation, no frame swapping.
+   ========================================================= */
+
+/* The old PS4 browser struggles when many panels animate at once. */
+.panel::after,
+.profile::after,
+.stat-card::after,
+.avatar-stage::before,
+body::before{
+  animation:none !important;
+}
+
+/* Keep the approved look but make all expensive filters static/cheap. */
+.panel::after,
+.profile::after,
+.stat-card::after{
+  display:none !important;
+}
+
+.scanlines{
+  opacity:.045 !important;
+  background:repeating-linear-gradient(180deg,transparent 0 3px,rgba(255,255,255,.035) 4px,transparent 5px) !important;
+}
+
+/* Static lighting: visually close to the normal dashboard, zero animation cost. */
+.panel{
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.01),0 0 7px rgba(220,230,220,.012) !important;
+}
+.section-title,.brand{
+  text-shadow:0 0 3px rgba(220,235,225,.10) !important;
+}
+.player-corners{
+  filter:none !important;
+}
+.stat-card .icon,.stat-card h3,.stat-card .bar i,.segmented i,.trajectory-bar{
+  filter:none !important;
+}
+
+/* Character stage keeps the same charcoal appearance. */
+.avatar-stage{
+  background:radial-gradient(ellipse at 50% 52%,rgba(220,225,215,.065),transparent 34%),linear-gradient(180deg,#0a0d0b 0%,#070907 58%,#050605 100%) !important;
+  box-shadow:inset 0 0 16px rgba(220,225,215,.012) !important;
+  contain:layout paint;
+}
+.avatar-stage::before{
+  display:block !important;
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  background:repeating-linear-gradient(180deg,transparent 0 5px,rgba(220,225,215,.011) 6px) !important;
+  opacity:.45 !important;
+  pointer-events:none !important;
+}
+
+/* One sprite, one compositor layer. */
+.avatar-stage img,
+.avatar-stage img.sprite-transition-out,
+.avatar-stage img.sprite-transition-in{
+  width:70% !important;
+  height:94% !important;
+  max-height:94% !important;
+  object-fit:contain !important;
+  image-rendering:pixelated !important;
+  opacity:1 !important;
+  filter:none !important;
+  box-shadow:none !important;
+  mix-blend-mode:normal !important;
+  transform-origin:50% 88% !important;
+  backface-visibility:hidden !important;
+  -webkit-backface-visibility:hidden !important;
+  will-change:transform;
+  animation:ps4Breath 3.2s ease-in-out infinite !important;
+}
+
+@keyframes ps4Breath{
+  0%,100%{transform:translate3d(0,0,0) scale3d(1,1,1)}
+  50%{transform:translate3d(0,-2px,0) scale3d(1.006,1.006,1)}
+}
+
+/* Occasional gestures use transform only; no images are swapped. */
+.avatar-stage img.ps4-think{
+  animation:ps4Think 1.3s ease-in-out 1 !important;
+}
+@keyframes ps4Think{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  40%,65%{transform:translate3d(-2px,-1px,0) rotate(-1deg)}
+}
+
+.avatar-stage img.ps4-move{
+  animation:ps4Move 1.3s ease-in-out 1 !important;
+}
+@keyframes ps4Move{
+  0%,100%{transform:translate3d(0,0,0)}
+  35%{transform:translate3d(3px,-2px,0) rotate(.7deg)}
+  70%{transform:translate3d(-2px,-1px,0) rotate(-.5deg)}
+}
+
+.avatar-stage img.ps4-levelup{
+  animation:ps4Levelup .95s cubic-bezier(.2,.7,.25,1) 1 !important;
+}
+@keyframes ps4Levelup{
+  0%{transform:translate3d(0,0,0) scale3d(1,1,1)}
+  20%{transform:translate3d(0,3px,0) scale3d(1.02,.97,1)}
+  52%{transform:translate3d(0,-22px,0) scale3d(1.03,1.03,1)}
+  78%{transform:translate3d(0,2px,0) scale3d(1.02,.98,1)}
+  100%{transform:translate3d(0,0,0) scale3d(1,1,1)}
+}
+
+/* No canvas work on PS4. */
+#fxCanvas{display:none !important}
+
+/* Level-up overlay: same spirit, no blur/filter animation. */
+.level-up{
+  background:rgba(0,0,0,.78) !important;
+}
+.level-card{
+  box-shadow:none !important;
+}
+
+/* Avoid unnecessary transitions/repaints in progress bars on old WebKit. */
+.bar i,.trajectory-bar i,.segmented i{
+  transition:none !important;
+}
