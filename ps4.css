@@ -318,3 +318,50 @@ progress, .progress, .progress-bar, [class*="progress"]{
 .ps4-fx-scan{
   will-change:background-position,opacity;
 }
+
+
+/* === V0.6.2 PS4 STATIC HIGHLIGHT ===
+   No animated light on dashboard items.
+   Only a static white/neutral highlight around existing item borders.
+*/
+
+/* Disable the global moving overlays from V0.6.1 */
+body::before,
+body::after,
+#ps4-global-light-fx{
+  display:none !important;
+}
+
+/* Static highlight on main dashboard item borders */
+.panel,
+.card,
+.stat-card,
+.module,
+.fundamental,
+.finance-panel,
+[class*="panel"],
+[class*="card"]{
+  border-color:rgba(235,245,238,.42) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.035),
+    0 0 7px rgba(220,245,228,.10) !important;
+}
+
+/* Slightly brighter highlight for the PLAYER area, still static */
+.avatar-stage,
+.player-card,
+[class*="player"]{
+  border-color:rgba(240,250,244,.50) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.045),
+    0 0 8px rgba(225,248,232,.12) !important;
+}
+
+/* Keep progress/items readable without animated glow */
+.stat-card:hover,
+.panel:hover,
+.card:hover{
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.035),
+    0 0 7px rgba(220,245,228,.10) !important;
+}

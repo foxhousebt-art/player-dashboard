@@ -159,47 +159,7 @@
   <script src="data_sync.js"></script>
   <script src="app_ps4.js?v=060"></script>
 
-<script>
-/* V0.6.1 PS4 LIGHT FX — intentionally low-cost */
-(function(){
-  var x=-160, dir=1, tick=0;
-  function ps4LightTick(){
-    tick++;
-    x += 2.2 * dir;
-    if(x > 160){ x=160; dir=-1; }
-    if(x < -160){ x=-160; dir=1; }
-    if(document.body){
-      document.body.style.setProperty("--ps4-fx-x", x+"%");
-      /* body::before cannot be addressed directly, so move a single overlay */
-      var fx=document.getElementById("ps4-global-light-fx");
-      if(fx){
-        fx.style.backgroundPosition=x+"% 0";
-        fx.style.opacity=(0.25 + ((tick%20)/20)*0.10);
-      }
-    }
-  }
-  function initPS4FX(){
-    if(document.getElementById("ps4-global-light-fx")) return;
-    var fx=document.createElement("div");
-    fx.id="ps4-global-light-fx";
-    fx.style.position="fixed";
-    fx.style.left="0"; fx.style.top="0"; fx.style.right="0"; fx.style.bottom="0";
-    fx.style.pointerEvents="none";
-    fx.style.zIndex="9999";
-    fx.style.opacity=".30";
-    fx.style.background="linear-gradient(115deg,rgba(150,255,205,0) 0%,rgba(150,255,205,0.025) 43%,rgba(220,255,232,0.11) 50%,rgba(150,255,205,0.025) 57%,rgba(150,255,205,0) 100%)";
-    fx.style.backgroundSize="260% 100%";
-    fx.style.backgroundPosition="-160% 0";
-    document.body.appendChild(fx);
-    setInterval(ps4LightTick, 120);
-  }
-  if(document.readyState==="loading"){
-    document.addEventListener("DOMContentLoaded",initPS4FX);
-  }else{
-    initPS4FX();
-  }
-})();
-</script>
+
 
 </body>
 </html>
