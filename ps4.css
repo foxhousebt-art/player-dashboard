@@ -227,3 +227,39 @@ body::after{
 
 /* Keep UI above the global sweep and avoid layout/repaint-heavy effects. */
 .hud{position:relative !important;z-index:3 !important}
+
+
+/* =========================================================
+   V0.5.9 — PS4 NATIVE MOTION
+   Visual motion is driven by JavaScript, not CSS keyframes.
+   Only transform + opacity are updated.
+   ========================================================= */
+body::after{display:none !important;}
+.avatar-stage::after{animation:none !important; -webkit-animation:none !important;}
+.player-corners{animation:none !important; -webkit-animation:none !important;}
+.avatar-stage img,
+.avatar-stage img.sprite-transition-out,
+.avatar-stage img.sprite-transition-in,
+.avatar-stage img.ps4-think,
+.avatar-stage img.ps4-move,
+.avatar-stage img.ps4-levelup{
+  animation:none !important;
+  -webkit-animation:none !important;
+  transition:none !important;
+  -webkit-transition:none !important;
+}
+#ps4LightSweep{
+  position:fixed;
+  top:-15%;
+  bottom:-15%;
+  left:-42%;
+  width:30%;
+  z-index:2;
+  pointer-events:none;
+  opacity:0;
+  background:-webkit-linear-gradient(350deg,rgba(255,255,255,0) 0%,rgba(205,225,210,.018) 34%,rgba(225,240,228,.095) 50%,rgba(205,225,210,.018) 66%,rgba(255,255,255,0) 100%);
+  background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(205,225,210,.018) 34%,rgba(225,240,228,.095) 50%,rgba(205,225,210,.018) 66%,rgba(255,255,255,0) 100%);
+  transform:translate3d(0,0,0);
+  -webkit-transform:translate3d(0,0,0);
+}
+.hud{position:relative !important;z-index:3 !important;}

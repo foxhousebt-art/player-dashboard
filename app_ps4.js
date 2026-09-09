@@ -301,9 +301,90 @@ function renderSnapshot(snapshot){
 
 function tickClock(){
   const n=new Date();
-  setText("date","DATE : "+n.toLocaleDateString("fr-FR").replaceAll("/","."));
+  setText("date","DATE : "+n.toLocaleDateString("fr-FR").split("/").join("."));
   setText("time","HEURE : "+n.toLocaleTimeString("fr-FR"));
 }
+
+/* =========================================================
+   V0.5.9 — PS4 NATIVE MOTION ENGINE
+   Old WebKit fallback: no CSS animation dependency.
+   One avatar + one light layer, transform/opacity only.
+   ========================================================= */
+var ps4MotionStarted = false;
+var ps4MotionRAF = null;
+var ps4MotionLast = 0;
+var ps4GestureUntil = 0;
+var ps4GestureType = 0;
+var ps4NextGesture = 0;
+
+function ps4Now(){ return (window.performance && performance.now) ? performance.now() : Date.now(); }
+function ps4RAF(fn){
+  var raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame;
+  if(raf) return raf(fn);
+  return setTimeout(function(){ fn(ps4Now()); },33);
+}
+function startPs4NativeMotion(){
+  if(ps4MotionStarted) return;
+  ps4MotionStarted = true;
+  ps4NextGesture = ps4Now() + 5000;
+  var avatar = $("avatar");
+  var sweep = $("ps4LightSweep");
+  var corners = document.querySelector(".player-corners");
+  if(avatar){
+    avatar.style.webkitTransformOrigin = "50% 88%";
+    avatar.style.transformOrigin = "50% 88%";
+  }
+  function frame(t){
+    if(!t) t = ps4Now();
+    if(t - ps4MotionLast >= 30){
+      ps4MotionLast = t;
+      var sec = t / 1000;
+      var breath = Math.sin(sec * 2.55);
+      var y = -1.5 - breath * 2.5;
+      var sx = 1 + (breath + 1) * 0.0035;
+      var sy = 1 + (breath + 1) * 0.006;
+      var x = 0, rot = 0;
+
+      if(t >= ps4NextGesture && t >= ps4GestureUntil){
+        ps4GestureType = Math.random() < 0.55 ? 1 : 2;
+        ps4GestureUntil = t + 1450;
+        ps4NextGesture = t + 6500 + Math.random()*4500;
+      }
+      if(t < ps4GestureUntil){
+        var gp = 1 - ((ps4GestureUntil - t) / 1450);
+        var wave = Math.sin(gp * Math.PI * 2);
+        if(ps4GestureType === 1){
+          x = -2.2 + wave*1.4; rot = -0.7 + wave*0.4; y -= Math.sin(gp*Math.PI)*2;
+        }else{
+          x = wave*3.2; rot = wave*0.65; y -= Math.sin(gp*Math.PI)*2.5;
+        }
+      }
+
+      if(avatar){
+        var tr = "translate3d("+x.toFixed(2)+"px,"+y.toFixed(2)+"px,0) rotate("+rot.toFixed(2)+"deg) scale3d("+sx.toFixed(4)+","+sy.toFixed(4)+",1)";
+        avatar.style.webkitTransform = tr;
+        avatar.style.transform = tr;
+      }
+
+      if(sweep){
+        var cycle = (t % 9000) / 9000;
+        var pos = -5 + cycle * 520;
+        var op = (cycle < .10 || cycle > .92) ? 0 : Math.min(.72, Math.sin((cycle-.10)/.82*Math.PI)*.72);
+        var st = "translate3d("+pos.toFixed(1)+"%,0,0)";
+        sweep.style.webkitTransform = st;
+        sweep.style.transform = st;
+        sweep.style.opacity = op.toFixed(3);
+      }
+
+      if(corners){
+        corners.style.opacity = (0.55 + ((breath+1)/2)*0.35).toFixed(3);
+      }
+    }
+    ps4MotionRAF = ps4RAF(frame);
+  }
+  ps4MotionRAF = ps4RAF(frame);
+}
+/* ========================================================= */
 
 /* ---------- PS4 FX ---------- */
 function resizeCanvas(){ /* disabled on PS4 */ }
@@ -341,9 +422,10 @@ window.addEventListener("player-data-update",e=>renderSnapshot(e.detail));
 window.addEventListener("resize",resizeCanvas);
 window.addEventListener("keydown",devKeyboard,true);
 window.addEventListener("DOMContentLoaded",()=>{
+  startPs4NativeMotion();
   resizeCanvas();
   tickClock();
   setInterval(tickClock,1000);
 });
 
-console.log("SYSTEME PLAYER V0.5.7 PS4 — mode léger chargé");
+console.log("SYSTEME PLAYER V0.5.9 PS4 — native motion chargé");

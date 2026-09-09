@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>System Player PS4</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="ps4.css" />
+  <link rel="stylesheet" href="ps4.css?v=059" />
 </head>
 <body>
+  <div id="ps4LightSweep" aria-hidden="true"></div>
   <div class="scanlines"></div>
   <canvas id="fxCanvas"></canvas>
 
   <main class="hud" id="hud">
     <header class="topbar panel">
-      <div class="brand">// SYSTEME PLAYER <span>v0.5.8 PS4 BALANCED</span></div>
+      <div class="brand">// SYSTEME PLAYER <span>v0.5.9 PS4 NATIVE MOTION</span></div>
       <div class="mode">MODE : PERMANENT</div>
       <div class="clock"><span id="date"></span> <span id="time"></span></div>
     </header>
@@ -156,6 +157,6 @@
   <script src="character_evolution.js"></script>
   <script src="progression_engine.js"></script>
   <script src="data_sync.js"></script>
-  <script src="app_ps4.js"></script>
+  <script src="app_ps4.js?v=059"></script>
 </body>
 </html>
