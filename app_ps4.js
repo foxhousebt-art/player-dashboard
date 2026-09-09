@@ -429,3 +429,14 @@ window.addEventListener("DOMContentLoaded",()=>{
 });
 
 console.log("SYSTEME PLAYER V0.5.9 PS4 — native motion chargé");
+
+/* V0.6.0 PS4 VIDEO MODE ENGINE */
+var ps4VideoKey="",ps4VideoReturnTimer=null;
+function startPs4NativeMotion(){}
+function ps4EvolutionKey(e){var f=((e&&e.sprite)||"sprites/brian_lvl_001_base.png").split("/").pop();return f.replace(/\.png$/i,"");}
+function ps4SetVideo(key,kind,loop){var v=$("avatarVideo");if(!v)return;var src="ps4_media/"+key+"_"+kind+".mp4?v=060";if(v.getAttribute("data-src")!==src){v.setAttribute("data-src",src);v.loop=!!loop;v.src=src;try{v.load()}catch(e){}}else v.loop=!!loop;var b=$("videoStartButton");function ok(){if(b)b.classList.remove("show")}function fail(){if(b)b.classList.add("show")}try{var r=v.play();if(r&&typeof r.then==="function")r.then(ok).catch(fail);else setTimeout(function(){v.paused?fail():ok()},500)}catch(e){fail()}}
+function updateCharacterSprite(level){var e=getCharacterEvolution(level);setText("evolutionStage",e.stage);var k=ps4EvolutionKey(e);if(k===ps4VideoKey)return;ps4VideoKey=k;ps4SetVideo(k,"idle",true)}
+function ensureLivingCharacter(level){updateCharacterSprite(level)}
+function playLivingLevelUp(level){var e=getCharacterEvolution(level),k=ps4EvolutionKey(e);ps4VideoKey=k;if(ps4VideoReturnTimer)clearTimeout(ps4VideoReturnTimer);ps4SetVideo(k,"levelup",false);ps4VideoReturnTimer=setTimeout(function(){ps4SetVideo(k,"idle",true)},1900)}
+window.addEventListener("DOMContentLoaded",function(){var b=$("videoStartButton"),v=$("avatarVideo");if(b&&v){b.addEventListener("click",function(){try{var p=v.play();if(p&&p.catch)p.catch(function(){});b.classList.remove("show")}catch(e){}});setTimeout(function(){if(v.paused)b.classList.add("show")},1000)}});
+console.log("SYSTEME PLAYER V0.6.0 PS4 — video mode chargé");

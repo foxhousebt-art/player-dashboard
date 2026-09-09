@@ -263,3 +263,6 @@ body::after{display:none !important;}
   -webkit-transform:translate3d(0,0,0);
 }
 .hud{position:relative !important;z-index:3 !important;}
+
+/* V0.6.0 PS4 VIDEO MODE */
+#ps4LightSweep{display:none!important}.avatar-stage img{display:none!important}.avatar-stage{overflow:hidden!important;background:#070908!important}.ps4-avatar-video{position:absolute!important;left:0!important;top:0!important;width:100%!important;height:100%!important;object-fit:cover!important;opacity:1!important;z-index:0!important;background:#070908!important;transform:none!important;-webkit-transform:none!important}.player-corners,.player-stage-label{z-index:3!important}.video-start-button{display:none;position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);border:1px solid rgba(190,215,195,.32);background:rgba(4,7,5,.88);color:#c8d7ca;font:600 11px/1 monospace;letter-spacing:.08em;padding:10px 12px}.video-start-button.show{display:block}*,*::before,*::after{animation-duration:0s!important;-webkit-animation-duration:0s!important}.level-up.show .level-card{animation:none!important;-webkit-animation:none!important}

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>System Player PS4</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="ps4.css?v=059" />
+  <link rel="stylesheet" href="ps4.css?v=060" />
 </head>
 <body>
   <div id="ps4LightSweep" aria-hidden="true"></div>
@@ -14,7 +14,7 @@
 
   <main class="hud" id="hud">
     <header class="topbar panel">
-      <div class="brand">// SYSTEME PLAYER <span>v0.5.9 PS4 NATIVE MOTION</span></div>
+      <div class="brand">// SYSTEME PLAYER <span>v0.6.0 PS4 VIDEO MODE</span></div>
       <div class="mode">MODE : PERMANENT</div>
       <div class="clock"><span id="date"></span> <span id="time"></span></div>
     </header>
@@ -110,7 +110,7 @@
           <div class="player-rank" id="profileRank">NOVICE I</div>
           <div class="avatar-stage" id="avatarStage">
             <div class="player-corners"></div>
-            <img src="sprites/brian_lvl_001_base.png" alt="Avatar pixel art de Brian" id="avatar" />
+            <video id="avatarVideo" class="ps4-avatar-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="sprites/brian_lvl_001_base.png"><source src="ps4_media/brian_lvl_001_base_idle.mp4?v=060" type="video/mp4" /></video><button id="videoStartButton" class="video-start-button" type="button">▶ ACTIVER ANIMATION</button>
             <div class="player-stage-label">
               <span>FORME ACTUELLE</span>
               <b id="evolutionStage">RECRUE</b>
@@ -157,6 +157,6 @@
   <script src="character_evolution.js"></script>
   <script src="progression_engine.js"></script>
   <script src="data_sync.js"></script>
-  <script src="app_ps4.js?v=059"></script>
+  <script src="app_ps4.js?v=060"></script>
 </body>
 </html>
