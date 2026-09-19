@@ -1,0 +1,22 @@
+PLAYER V1.2.1 — UI POLISH / FUNCTIONAL PASS
+
+Corrigé à partir de la vidéo utilisateur :
+- alignement des overlays dynamiques avec l'image maître via le vrai ratio 1672×941 ;
+- suppression de l'effet de textes fantômes/superposés grâce à des masques opaques propres ;
+- tailles typographiques stabilisées indépendamment du viewport ;
+- difficulté, XP catégories, niveau et résumé rendus plus lisibles ;
+- menu gauche réellement fonctionnel :
+  Objectifs = panneau d'objectifs réels,
+  Paramètres = difficulté + budget,
+  Monde = état du monde,
+  Citations = panneau dédié,
+  Analyse = navigation réelle ;
+- hotspot CITATIONS ajouté ;
+- panneau latéral cohérent avec la DA, fermable par × ou Échap ;
+- page Analyse : synchronisation forcée après chargement pour éviter la page vide ;
+- état “Synchronisation des données…” visible jusqu'à réception réelle ;
+- tous les paramètres, moteur XP, Living City, cascades, trafic, mécanoïdes, personnage et Google Sheets conservés.
+
+IMPORTANT : garder le config.js actuellement connecté.
+Commit : V1.2.1 UI Polish
+Test : index.html?v=121 puis analyse.html?v=121

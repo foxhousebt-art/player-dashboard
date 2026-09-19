@@ -4,10 +4,10 @@ const set=(id,v)=>{const e=$(id);if(e)e.textContent=v};
 function clock(){const n=new Date();set("date","DATE : "+n.toLocaleDateString("fr-FR").replaceAll("/","."));set("time","HEURE : "+n.toLocaleTimeString("fr-FR"))}
 function render(s){
   set("grossXp",s.grossXp||0);set("penaltyXp","-"+(s.penaltyTotal||0));set("netXp",s.globalXp||0);
-  set("perfectDays",s.entries.filter(e=>e.perfectDay).length);
+  set("perfectDays",(s.entries||[]).filter(e=>e.perfectDay).length);
   set("difficultyName",`${s.difficulty.level} — ${s.difficulty.name}`);
   set("difficultyText",`Coefficient de pénalité ×${s.difficulty.penalty.toFixed(2)} • bonus XP ×${s.difficulty.reward.toFixed(2)} • grâce ${s.difficulty.grace}j`);
-  const last30=s.entries.slice(-30);
+  const last30=(s.entries||[]).slice(-30);
   const compliant=last30.filter(e=>e.perfectDay||e.recoveryDay).length;
   const consistency=last30.length?Math.round(compliant/last30.length*100):0;
   set("consistencyScore",consistency+"%");
@@ -46,4 +46,6 @@ function render(s){
   document.body.className=`analysis-page world-tier-${wt}`;
 }
 window.addEventListener("player-data-update",e=>render(e.detail));
-window.addEventListener("DOMContentLoaded",()=>{clock();setInterval(clock,1000)});
+window.addEventListener("DOMContentLoaded",()=>{clock();setInterval(clock,1000);
+  setTimeout(()=>window.PlayerDataSync&&window.PlayerDataSync.refresh(),80);
+});

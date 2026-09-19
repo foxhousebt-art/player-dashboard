@@ -40,9 +40,11 @@
 <!-- Invisible interaction map follows the actual menu in the artwork. -->
 <nav id="hotspots">
  <a class="dash" href="index.html" title="Dashboard"></a><a class="analysis" href="analyse.html" title="Analyse"></a>
- <button class="objectives" data-msg="OBJECTIFS — module à venir"></button><button class="settings" data-msg="PARAMÈTRES — difficulté disponible en haut"></button>
- <button class="world" data-msg="MONDE VIVANT — la vallée s'intensifie avec ta progression"></button>
+ <button class="objectives" data-panel="objectives"></button><button class="settings" data-panel="settings"></button>
+ <button class="world" data-panel="world"></button><button class="citations" data-panel="citations"></button>
 </nav>
-<div id="worldFlash"></div><div id="eventBanner"><b>ÉVÉNEMENT MONDE</b><span></span></div><div id="toast"></div>
+<div id="worldFlash"></div><div id="eventBanner"><b>ÉVÉNEMENT MONDE</b><span></span></div>
+<div id="sidePanel" aria-hidden="true"><button id="panelClose">×</button><small id="panelKicker">PLAYER SYSTEM</small><h2 id="panelTitle"></h2><div id="panelBody"></div></div>
+<div id="toast"></div>
 <script src="config.js"></script><script src="progression_engine.js"></script><script src="data_sync.js"></script><script src="living_world.js"></script>
-<script src="living_city.js"></script></body></html>
+<script src="living_city.js"></script><script src="ui_polish.js"></script></body></html>
