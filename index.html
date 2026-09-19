@@ -1,10 +1,10 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PLAYER — Living World</title><link rel="stylesheet" href="living_world.css"></head><body>
-<div id="scene">
+<div id="scene"><canvas id="world3d" aria-hidden="true"></canvas>
  <div class="master"></div><div class="daylight"></div>
  <div class="waterfall w1"></div><div class="waterfall w2"></div><div class="waterfall w3"></div>
- <img class="moving-ship s1" src="world_ship.png"><img class="moving-ship s2" src="world_ship.png">
- <img class="moving-mech m1" src="world_mech.png"><img class="moving-mech m2" src="world_mech.png">
+ 
+ 
  <div class="steam st1"></div><div class="steam st2"></div><div class="fireflies"></div>
 </div>
 
@@ -32,4 +32,4 @@
 </nav>
 <div id="toast"></div>
 <script src="config.js"></script><script src="progression_engine.js"></script><script src="data_sync.js"></script><script src="living_world.js"></script>
-</body></html>
+<script src="world_engine_3d.js"></script></body></html>

@@ -1,0 +1,21 @@
+PLAYER V1.1.0 — DEPTH ENGINE
+
+Base : V1.0.1 RECOVERY (la version qui fonctionne).
+Aucun nouveau fond n'a été généré.
+
+NOUVEAU :
+- moteur 3D autonome en Canvas, sans bibliothèque externe ;
+- vaisseaux reconstruits en volumes ombrés, avec perspective réelle ;
+- trajectoires avec profondeur : taille, opacité et vitesse évoluent avec la distance ;
+- plusieurs appareils peuvent entrer/sortir de la vallée ;
+- mécanoïdes articulés : jambes/bras, marche, pauses, travail, retour ;
+- certains transportent une caisse ;
+- tri profondeur loin -> proche ;
+- brouillard atmosphérique selon la distance ;
+- les anciens sprites plats mobiles sont désactivés ;
+- eau, lumière, brume, HUD, Google Sheets et personnage restent ceux de la version fonctionnelle.
+
+IMPORTANT : conserver le config.js actuellement connecté dans GitHub.
+
+Commit : V1.1.0 Depth Engine
+Test : index.html?v=110
