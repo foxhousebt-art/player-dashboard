@@ -1,9 +1,6 @@
 (()=>{"use strict";
 const BASE_W=1672,BASE_H=941,dynamic=document.getElementById("dynamic"),hotspots=document.getElementById("hotspots");
-function fit(){
- const s=Math.max(innerWidth/BASE_W,innerHeight/BASE_H),x=(innerWidth-BASE_W*s)/2,y=(innerHeight-BASE_H*s)/2;
- const tr=`translate(${x}px,${y}px) scale(${s})`; if(dynamic)dynamic.style.transform=tr;if(hotspots)hotspots.style.transform=tr;
-}
+function fit(){const s=Math.max(innerWidth/BASE_W,innerHeight/BASE_H),x=(innerWidth-BASE_W*s)/2,y=(innerHeight-BASE_H*s)/2,tr=`translate(${x}px,${y}px) scale(${s})`;if(dynamic)dynamic.style.transform=tr;if(hotspots)hotspots.style.transform=tr}
 addEventListener("resize",fit);fit();
 
 let state=null;

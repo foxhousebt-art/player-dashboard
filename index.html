@@ -1,5 +1,5 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PLAYER — Living World</title><link rel="stylesheet" href="living_world.css"></head><body>
+<title>PLAYER — Living World</title><link rel="stylesheet" href="living_world.css"><link rel="stylesheet" href="finished_ui.css?v=124"></head><body>
 <div id="scene">
  <div class="master"></div><div class="daylight"></div>
  <div class="waterfall w1"></div><div class="waterfall w2"></div><div class="waterfall w3"></div>
@@ -23,26 +23,23 @@
 
 <!-- Dynamic values are placed directly over the corresponding displays in the approved artwork. -->
 <div id="dynamic">
- <div class="date"><span id="date">--</span><strong id="time">--:--</strong><small id="weekLabel">--</small></div>
- <button class="difficulty difficulty-card" id="difficultyCard" type="button"><small>MODE</small><b id="difficultyName">ENGAGÉ</b><span id="difficultyLevel">II</span></button>
- <div class="player-live"><img id="playerSprite" src="sprites/animated/brian_lvl_001_base/idle_00.png" alt="Personnage"></div>
- <div class="level"><strong id="globalLevel">1</strong><span><b id="xpIntoLevel">0</b> / <b id="xpLevelCost">120</b> XP</span></div>
- <button class="metric r" data-stat="lecture" type="button"><b id="readingValue">0 XP</b><small id="readingLevel">NIV. 1</small></button>
- <button class="metric l" data-stat="apprentissage" type="button"><b id="learningValue">0 XP</b><small id="learningLevel">NIV. 1</small></button>
- <button class="metric sp" data-stat="sport" type="button"><b id="sportValue">0 / 4</b><small id="sportStatus">EN COURS</small></button>
- <button class="metric wo" data-stat="travail" type="button"><b id="workValue">0 XP</b><small id="workLevel">NIV. 1</small></button>
- <button class="metric fi" data-stat="finance" type="button"><b id="financeValue">0 €</b><small>RESTANT</small></button>
- <button class="metric nu" data-stat="nutrition" type="button"><b id="nutritionValue">0 XP</b><small id="nutritionLevel">NIV. 1</small></button>
- <button class="metric sm" data-stat="tabac" type="button"><b id="smokeValue">0 J</b><small id="smokeStatus">INCONNU</small></button>
- <div class="summary"><span class="gain">+<b id="grossXp">0</b></span><span class="loss">-<b id="penaltyXp">0</b></span><span class="bonus">+<b id="comebackXp">0</b></span><span class="net">+<b id="totalXp">0</b></span></div>
+<section class="ui-clock"><span id="date">—</span><strong id="time">--:--</strong><small id="weekLabel">—</small></section>
+<button class="ui-mode" id="difficultyCard" type="button"><small>MODE DE DIFFICULTÉ</small><strong id="difficultyName">ENGAGÉ</strong><b id="difficultyLevel">II</b></button>
+<section class="ui-player-level"><small>NIVEAU</small><strong id="globalLevel">1</strong><span><b id="xpIntoLevel">0</b> / <b id="xpLevelCost">120</b> XP</span></section>
+<button class="ui-stat stat-reading" data-stat="lecture"><b id="readingXp">0 XP</b><small id="readingLevel">NIV. 1</small></button>
+<button class="ui-stat stat-learning" data-stat="apprentissage"><b id="learningXp">0 XP</b><small id="learningLevel">NIV. 1</small></button>
+<button class="ui-stat stat-sport" data-stat="sport"><b id="sportWeek">0 / 4</b><small id="sportStatus">EN COURS</small></button>
+<button class="ui-stat stat-work" data-stat="travail"><b id="workXp">0 XP</b><small id="workLevel">NIV. 1</small></button>
+<button class="ui-stat stat-finance" data-stat="finance"><b id="financeRemaining">0 €</b><small id="financeStatus">RESTANT</small></button>
+<button class="ui-stat stat-nutrition" data-stat="nutrition"><b id="nutritionXp">0 XP</b><small id="nutritionLevel">NIV. 1</small></button>
+<button class="ui-stat stat-smoke" data-stat="tabac"><b id="smokeStreak">0 J</b><small id="smokeStatus">INCONNU</small></button>
+<section class="ui-summary"><span class="gain">+<b id="grossXp">0</b></span><span class="loss">-<b id="penaltyXp">0</b></span><span class="come">+<b id="comebackXp">0</b></span><span class="net">+<b id="netXp">0</b></span></section>
 </div>
-
-<!-- Invisible interaction map follows the actual menu in the artwork. -->
 <nav id="hotspots">
  <a class="dash" href="index.html" title="Dashboard"></a><a class="analysis" href="analyse.html" title="Analyse"></a>
  <button class="objectives" data-panel="objectives"></button><button class="settings" data-panel="settings"></button>
  <button class="world" data-panel="mode" title="Mode de difficulté"></button><button class="citations" data-panel="citations"></button>
-<span id="modeMenuLabel">MODE</span></nav>
+</nav>
 <div id="worldFlash"></div><div id="eventBanner"><b>ÉVÉNEMENT MONDE</b><span></span></div>
 <div id="sidePanel" aria-hidden="true"><button id="panelClose">×</button><small id="panelKicker">PLAYER SYSTEM</small><h2 id="panelTitle"></h2><div id="panelBody"></div></div>
 <div id="toast"></div>
