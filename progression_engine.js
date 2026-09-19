@@ -79,6 +79,13 @@
     const clean=normalizeEntries(entries);
     const difficulty=difficultyFrom(settings);
     const monthlyBudget=Math.max(0,Number(settings.monthlyBudget??1000));
+    const goals={
+      reading:Math.max(1,Number(settings.readingGoal??10)),
+      learning:Math.max(1,Number(settings.learningGoal??30)),
+      sport:Math.max(1,Number(settings.sportGoal??4)),
+      nutrition:Math.max(1,Number(settings.nutritionGoal??3)),
+      work:Math.max(1,Number(settings.workGoal??1))
+    };
     const today=new Date(); today.setHours(12,0,0,0);
 
     let readingGross=0,learningGross=0,sportBase=0,nutritionGross=0,workGross=0,financeGross=0;
@@ -108,7 +115,7 @@
       const fx=financeOk?10:0; financeGross+=fx;
 
       const isSunday=date.getDay()===0;
-      const perfectDay=!isSunday&&entry.pages>=10&&entry.learningMinutes>=30&&entry.compliantMeals>=3&&entry.workActions>=1&&financeOk;
+      const perfectDay=!isSunday&&entry.pages>=goals.reading&&entry.learningMinutes>=goals.learning&&entry.compliantMeals>=goals.nutrition&&entry.workActions>=goals.work&&financeOk;
       if(perfectDay)perfectDayBonus+=50;
 
       let smokingXpToday=0;
@@ -197,7 +204,7 @@
         todayXp:lastEntry?lastEntry.smokingXpToday:0,
         status:lastEntry&&lastEntry.cigaretteSmoked===false?"SANS CIGARETTE":lastEntry&&lastEntry.cigaretteSmoked===true?"RESET":"INCONNU"},
       global,attrs,entries:enriched,activeDays:enriched.length,
-      finance:{monthlyBudget,spentThisMonth,budgetRemaining,plannedToDate,trajectoryGap},
+      finance:{monthlyBudget,spentThisMonth,budgetRemaining,plannedToDate,trajectoryGap},goals,
       sportWeek:{sessions:currentWeekSessions,target:4,max:7,status:currentWeekStatus.label,tone:currentWeekStatus.tone,
         baseXp:sportBase,weeklyAdjustmentXp:sportWeeklyXp},
       lastEntry,

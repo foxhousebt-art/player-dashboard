@@ -20,6 +20,10 @@
     const localDifficulty = Number(localStorage.getItem("playerDifficulty") || 0);
     const effectiveSettings = Object.assign({}, settings || {});
     if(localDifficulty >= 1 && localDifficulty <= 4) effectiveSettings.difficulty = localDifficulty;
+    const localGameSettings = JSON.parse(localStorage.getItem("playerGameSettings") || "{}");
+    ["monthlyBudget","readingGoal","learningGoal","sportGoal","nutritionGoal","workGoal"].forEach(k=>{
+      if(localGameSettings[k] !== undefined && localGameSettings[k] !== "") effectiveSettings[k]=Number(localGameSettings[k]);
+    });
     const snapshot = window.PlayerEngine.compute(entries, effectiveSettings);
     const hash = JSON.stringify(snapshot);
     if(hash === lastPayloadHash) return;

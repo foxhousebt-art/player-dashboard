@@ -1,0 +1,6 @@
+window.PLAYER_CONFIG = {
+  WEB_APP_URL: "",
+  POLL_INTERVAL_MS: 5000,
+  MONTHLY_BUDGET: 1000,
+  DEV_MODE: true
+};

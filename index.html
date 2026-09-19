@@ -1,5 +1,5 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PLAYER — Living World</title><link rel="stylesheet" href="living_world.css"><link rel="stylesheet" href="integrated_hud.css?v=126"></head><body>
+<title>PLAYER — Living World</title><link rel="stylesheet" href="living_world.css"><link rel="stylesheet" href="integrated_hud.css?v=131"></head><body>
 <div id="scene">
  <div class="master"></div><div class="daylight"></div>
  <div class="waterfall w1"></div><div class="waterfall w2"></div><div class="waterfall w3"></div>
@@ -23,7 +23,7 @@
 
 <!-- Dynamic values are placed directly over the corresponding displays in the approved artwork. -->
 <div id="dynamic">
-<section class="hud-clock"><span id="date">—</span><strong id="time">--:--</strong><small id="weekLabel">—</small></section>
+<div class="hud-quote-top" id="quoteTop"></div><div class="hud-quote-player" id="quotePlayer"></div><section class="hud-clock"><span id="date">—</span><strong id="time">--:--</strong><small id="weekLabel">—</small></section>
 <button class="hud-mode" id="difficultyCard" type="button"><small>MODE</small><strong id="difficultyName">ENGAGÉ</strong><b id="difficultyLevel">II</b></button>
 <section class="hud-level"><small>NIVEAU</small><strong id="globalLevel">1</strong><span><b id="xpIntoLevel">0</b> / <b id="xpLevelCost">120</b> XP</span></section>
 
@@ -46,4 +46,4 @@
 <div id="sidePanel" aria-hidden="true"><button id="panelClose">×</button><small id="panelKicker">PLAYER SYSTEM</small><h2 id="panelTitle"></h2><div id="panelBody"></div></div>
 <div id="toast"></div>
 <script src="config.js"></script><script src="progression_engine.js"></script><script src="data_sync.js"></script><script src="living_world.js"></script>
-<script src="living_city.js"></script><script src="ui_polish.js"></script><script src="coherent_ui.js"></script></body></html>
+<script src="living_city.js"></script><script src="ui_polish.js"></script><script src="coherent_ui.js"></script><script src="customization.js?v=131"></script></body></html>
