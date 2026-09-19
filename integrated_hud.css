@@ -51,3 +51,17 @@
 .save-game-settings{width:100%;margin-top:14px;padding:11px;border:1px solid rgba(236,190,82,.55);background:rgba(236,190,82,.08);color:#f1ca68;font-weight:800;cursor:pointer}
 .save-game-settings:hover{background:rgba(236,190,82,.14)}
 .saved-msg{margin-top:8px;color:#6fe0ac;font-size:10px}
+
+/* V1.3.2 — absolute anti-duplicate rules */
+#dynamic .hud-clock,#dynamic .hud-mode,#dynamic .hud-level,
+#dynamic .hud-stat,#dynamic .hud-summary{
+  background:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+#dynamic .hud-stat{overflow:visible!important}
+#dynamic .hud-stat:before,#dynamic .hud-stat:after,
+#dynamic .hud-clock:before,#dynamic .hud-mode:before,
+#dynamic .hud-level:before,#dynamic .hud-summary:before{background:transparent!important;box-shadow:none!important}
+.hud-quote-top{left:617px!important;top:73px!important;width:475px!important;height:78px!important;padding:0 28px!important;font-size:16px!important;line-height:1.25!important}
+.hud-quote-player{left:20px!important;top:645px!important;width:170px!important;height:42px!important;font-size:9px!important}

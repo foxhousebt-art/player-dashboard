@@ -54,9 +54,14 @@ function renderPanel(name){
       setTimeout(()=>location.reload(),120);
    });
  }else{
-   title.textContent="CITATIONS";
+   title.textContent="CITATIONS — MODIFICATION EN DIRECT";
    const q=JSON.parse(localStorage.getItem("playerQuotes")||"{}");
    body.innerHTML=`<div class="edit-field"><label>CITATION PRINCIPALE — HAUT DU DASHBOARD</label><textarea id="quote1">${q.top||"Les petites actions d’aujourd’hui créent les grandes victoires de demain."}</textarea></div><div class="edit-field"><label>CITATION DU JOUEUR — SOUS LE NIVEAU</label><textarea id="quote2">${q.player||"Un meilleur toi construit un meilleur monde."}</textarea></div><button class="save-game-settings" id="saveQuotes">ENREGISTRER LES CITATIONS</button><div id="quotesSaved"></div>`;
+   ["quote1","quote2"].forEach(id=>body.querySelector("#"+id)?.addEventListener("input",()=>{
+      const top=body.querySelector("#quote1")?.value||"", player=body.querySelector("#quote2")?.value||"";
+      const a=document.getElementById("quoteTop"),b=document.getElementById("quotePlayer");
+      if(a)a.textContent="« "+top+" »"; if(b)b.textContent="« "+player+" »";
+   }));
    body.querySelector("#saveQuotes").onclick=()=>{
       localStorage.setItem("playerQuotes",JSON.stringify({top:body.querySelector("#quote1").value.trim(),player:body.querySelector("#quote2").value.trim()}));
       window.dispatchEvent(new Event("player-quotes-update"));

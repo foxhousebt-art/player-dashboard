@@ -1,5 +1,4 @@
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#070a08;font-family:Arial,Helvetica,sans-serif;color:#eef4ef}#scene{position:fixed;inset:0;overflow:hidden}.master{position:absolute;inset:0;background:url("living_world_master_final.png") center center/cover no-repeat}.daylight{position:absolute;inset:0;background:radial-gradient(circle at 91% 8%,rgba(255,215,135,.16),transparent 18%),linear-gradient(180deg,rgba(255,190,90,.025),transparent 45%);mix-blend-mode:screen;animation:light 6s ease-in-out infinite alternate;pointer-events:none}.waterfall{position:absolute;width:.55vw;min-width:4px;background:linear-gradient(180deg,transparent,rgba(225,248,255,.82),rgba(105,205,245,.2),transparent);filter:blur(1.5px);opacity:.65;animation:flow 1.7s linear infinite}.w1{right:5.9%;top:45%;height:31%}.w2{right:22.7%;top:32%;height:18%}.w3{right:45.7%;top:21%;height:12%;opacity:.38}.moving-ship{position:absolute;width:7.1vw;height:auto;filter:drop-shadow(-8px 3px 8px rgba(255,140,40,.25));z-index:2}.s1{top:10%;left:-10%;animation:shipA 24s linear infinite}.s2{top:20%;left:-12%;width:4.8vw;opacity:.8;animation:shipB 31s linear infinite 7s}.moving-mech{position:absolute;width:4.8vw;height:auto;z-index:2;filter:drop-shadow(0 5px 6px rgba(0,0,0,.5))}.m1{bottom:9%;left:46%;animation:mechA 18s ease-in-out infinite}.m2{bottom:17%;left:68%;width:3.5vw;animation:mechB 22s ease-in-out infinite 4s}.steam{position:absolute;width:9vw;height:4vw;border-radius:50%;background:rgba(235,245,238,.11);filter:blur(18px);animation:steam 10s ease-in-out infinite}.st1{left:29%;top:14%}.st2{left:50%;top:24%;animation-delay:-5s}.fireflies{position:absolute;inset:0;opacity:.24;background-image:radial-gradient(circle,#ffd47a 0 1px,transparent 2px),radial-gradient(circle,#8fe0ff 0 1px,transparent 2px);background-size:260px 230px,340px 300px;animation:flies 28s linear infinite;pointer-events:none}
-#dynamic{position:fixed;inset:0;z-index:5;pointer-events:none}.date{position:absolute;left:13.3%;top:21.1%;width:20.9%;height:9.8%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(7,14,16,.82);border-radius:8px}.date span{font-size:.8vw;font-weight:700}.date strong{font-size:2.25vw;line-height:1}.date small{font-size:.63vw;margin-top:.4vw}.difficulty{position:absolute;left:65.2%;top:21.1%;width:14.4%;height:9.7%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(7,14,16,.82);border-radius:8px;font-size:.72vw}.difficulty>b{color:#ffc95c;margin-bottom:.45vw}.difficulty button{pointer-events:auto;background:#0b1214;color:#e9eeee;border:1px solid #647078;border-radius:4px;padding:.28vw .55vw;margin:0 .14vw;font-weight:800}.difficulty button.on{border-color:#ffbb42;color:#ffd56f;box-shadow:0 0 12px rgba(255,175,55,.35)}.level{position:absolute;left:1.5%;top:59.5%;width:9.1%;height:10%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,10,10,.72)}.level strong{font-size:2.1vw;color:#ffc65c}.level span{font-size:.65vw}.metric{position:absolute;top:42.4%;width:7.9%;height:12.5%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:1.1vw;background:linear-gradient(180deg,transparent 0 48%,rgba(4,9,9,.84) 55% 100%)}.metric b{font-size:1vw}.metric small{font-size:.58vw;color:#d1d7d3;margin-top:.35vw}.r{left:13.5%}.l{left:22.1%}.sp{left:30.8%}.wo{left:39.4%}.fi{left:48.1%}.nu{left:56.7%}.sm{left:65.3%}.summary{position:absolute;left:32.2%;top:64.8%;width:16.2%;height:7.5%;display:flex;align-items:center;justify-content:space-around;background:rgba(5,11,12,.78);font-size:1vw}.summary .gain{color:#65e7a2}.summary .loss{color:#ff6b65}.summary .bonus{color:#ffd258}.summary .net{color:#59b8ff}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#070a08;font-family:Arial,Helvetica,sans-serif;color:#eef4ef}#scene{position:fixed;inset:0;overflow:hidden}.master{position:absolute;inset:0;background:url("living_world_master_v132.png") center center/cover no-repeat}.daylight{position:absolute;inset:0;background:radial-gradient(circle at 91% 8%,rgba(255,215,135,.16),transparent 18%),linear-gradient(180deg,rgba(255,190,90,.025),transparent 45%);mix-blend-mode:screen;animation:light 6s ease-in-out infinite alternate;pointer-events:none}.waterfall{position:absolute;width:.55vw;min-width:4px;background:linear-gradient(180deg,transparent,rgba(225,248,255,.82),rgba(105,205,245,.2),transparent);filter:blur(1.5px);opacity:.65;animation:flow 1.7s linear infinite}.w1{right:5.9%;top:45%;height:31%}.w2{right:22.7%;top:32%;height:18%}.w3{right:45.7%;top:21%;height:12%;opacity:.38}.moving-ship{position:absolute;width:7.1vw;height:auto;filter:drop-shadow(-8px 3px 8px rgba(255,140,40,.25));z-index:2}.s1{top:10%;left:-10%;animation:shipA 24s linear infinite}.s2{top:20%;left:-12%;width:4.8vw;opacity:.8;animation:shipB 31s linear infinite 7s}.moving-mech{position:absolute;width:4.8vw;height:auto;z-index:2;filter:drop-shadow(0 5px 6px rgba(0,0,0,.5))}.m1{bottom:9%;left:46%;animation:mechA 18s ease-in-out infinite}.m2{bottom:17%;left:68%;width:3.5vw;animation:mechB 22s ease-in-out infinite 4s}.steam{position:absolute;width:9vw;height:4vw;border-radius:50%;background:rgba(235,245,238,.11);filter:blur(18px);animation:steam 10s ease-in-out infinite}.st1{left:29%;top:14%}.st2{left:50%;top:24%;animation-delay:-5s}.fireflies{position:absolute;inset:0;opacity:.24;background-image:radial-gradient(circle,#ffd47a 0 1px,transparent 2px),radial-gradient(circle,#8fe0ff 0 1px,transparent 2px);background-size:260px 230px,340px 300px;animation:flies 28s linear infinite;pointer-events:none}
 #hotspots{position:fixed;inset:0;z-index:8;pointer-events:none}#hotspots a,#hotspots button{position:absolute;left:1.2%;width:10.2%;height:4.5%;background:transparent;border:0;pointer-events:auto;cursor:pointer}.dash{top:18.3%}.analysis{top:23.2%}.objectives{top:28.1%}.settings{top:33%}.world{top:37.9%}#toast{position:fixed;z-index:20;left:50%;bottom:4%;transform:translate(-50%,140%);background:rgba(5,10,10,.95);border:1px solid #dca04c;color:#f4ead6;padding:12px 18px;transition:.3s;font-size:12px}#toast.show{transform:translate(-50%,0)}
 @keyframes light{to{opacity:.55}}@keyframes flow{to{background-position:0 240px}}@keyframes shipA{0%{transform:translateX(0) translateY(0) scale(.7)}45%{transform:translateX(72vw) translateY(4vh) scale(1)}100%{transform:translateX(120vw) translateY(9vh) scale(1.25)}}@keyframes shipB{0%{transform:translateX(0) translateY(0) scale(.6)}100%{transform:translateX(125vw) translateY(-5vh) scale(.95)}}@keyframes mechA{0%,10%{transform:translateX(0)}45%{transform:translateX(11vw)}50%,62%{transform:translateX(11vw) scaleX(-1)}95%,100%{transform:translateX(0) scaleX(-1)}}@keyframes mechB{0%,15%{transform:translateX(0)}50%{transform:translateX(8vw)}55%,70%{transform:translateX(8vw) scaleX(-1)}100%{transform:translateX(0) scaleX(-1)}}@keyframes steam{to{transform:translate(-3vw,-2vw) scale(1.4);opacity:.25}}@keyframes flies{to{background-position:120px -160px,-90px -210px}}
 @media(max-aspect-ratio:16/10){.master{background-size:auto 100%;background-position:center}.date,.difficulty,.level,.metric,.summary,#hotspots{opacity:.96}}
@@ -82,17 +81,6 @@
 #eventBanner.show{transform:translateX(0)}#eventBanner b{display:block;color:#86dcff;font-size:10px;letter-spacing:1.4px}#eventBanner span{font-size:11px;color:#eef7f8}
 
 /* ===== V1.2.1 UI POLISH — reference-coordinate layout ===== */
-#dynamic,#hotspots{width:1672px!important;height:941px!important;inset:auto!important;left:0!important;top:0!important;transform-origin:0 0!important}
-#dynamic .date{background:rgba(5,12,14,.965);box-shadow:inset 0 0 18px rgba(83,151,164,.07)}
-#dynamic .difficulty{background:rgba(5,12,14,.97);box-shadow:inset 0 0 18px rgba(83,151,164,.07)}
-#dynamic .level{background:rgba(4,10,11,.96);border-radius:4px}
-#dynamic .metric{background:linear-gradient(180deg,transparent 0 45%,rgba(4,10,11,.98) 53% 100%)}
-#dynamic .summary{background:rgba(4,10,11,.97);border-radius:3px}
-#dynamic .date span{font-size:13px}#dynamic .date strong{font-size:36px}#dynamic .date small{font-size:10px}
-#dynamic .difficulty{font-size:12px}#dynamic .difficulty button{padding:5px 10px;margin:0 2px}
-#dynamic .level strong{font-size:34px}#dynamic .level span{font-size:10px}
-#dynamic .metric b{font-size:16px}#dynamic .metric small{font-size:9px;margin-top:5px}
-#dynamic .summary{font-size:16px}
 #hotspots a,#hotspots button{left:1.2%;width:10.2%;height:4.5%}.citations{top:42.8%}
 #sidePanel{position:fixed;z-index:30;right:2.2%;top:13%;width:min(390px,31vw);max-height:72vh;overflow:auto;padding:25px 25px 22px;background:linear-gradient(145deg,rgba(5,14,17,.97),rgba(8,19,21,.94));border:1px solid rgba(121,214,229,.34);box-shadow:0 18px 55px rgba(0,0,0,.55),inset 0 0 35px rgba(63,177,202,.04);backdrop-filter:blur(16px);transform:translateX(120%);opacity:0;transition:transform .32s ease,opacity .32s ease;color:#e9f2ef}
 #sidePanel.open{transform:translateX(0);opacity:1}#panelClose{position:absolute;right:11px;top:8px;border:0;background:transparent;color:#dce8e7;font-size:25px;cursor:pointer}
@@ -103,18 +91,6 @@
 @media(max-width:800px){#sidePanel{width:90vw;right:5vw;top:10%}}
 
 /* ===== V1.2.2 COHERENT UI ===== */
-#dynamic .date{left:13.45%;top:21.15%;width:20.65%;height:9.45%;border:1px solid rgba(121,211,225,.16);background:#071012!important}
-#dynamic .date:before{content:"HORLOGE // PARIS";position:absolute;top:7px;left:11px;font-size:7px;letter-spacing:1.2px;color:#69cfe1;opacity:.75}
-#dynamic .date strong{font-variant-numeric:tabular-nums;letter-spacing:1px}
-#dynamic .difficulty-card{position:absolute;left:65.35%;top:21.15%;width:14.05%;height:9.45%;pointer-events:auto!important;cursor:pointer;border:1px solid rgba(230,184,76,.35);border-radius:7px;background:#071012!important;color:#edf3ef;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;align-content:center;align-items:center;padding:12px 17px;text-align:left;box-shadow:inset 0 0 18px rgba(229,184,78,.035)}
-#dynamic .difficulty-card:hover{border-color:rgba(242,196,83,.78);box-shadow:0 0 18px rgba(229,184,78,.12),inset 0 0 18px rgba(229,184,78,.04)}
-#dynamic .difficulty-card small{grid-column:1;color:#7bcfdf;font-size:7px;letter-spacing:1.4px}
-#dynamic .difficulty-card b{grid-column:1;color:#f1c75f;font-size:13px;letter-spacing:.8px;margin-top:3px}
-#dynamic .difficulty-card span{grid-column:2;grid-row:1/3;color:#f1c75f;font-size:25px;font-weight:800;border-left:1px solid rgba(241,199,95,.2);padding-left:13px}
-#dynamic .metric{border:0;color:#edf3ef;cursor:pointer;pointer-events:auto!important;border-radius:0;padding-left:0;padding-right:0}
-#dynamic .metric:hover{box-shadow:inset 0 -2px 0 rgba(108,217,235,.62),0 0 18px rgba(73,187,207,.08)}
-#dynamic .metric:focus-visible,#dynamic .difficulty-card:focus-visible{outline:1px solid #e9bf58;outline-offset:2px}
-#dynamic .summary{border:1px solid rgba(103,196,211,.12)}
 #hotspots a,#hotspots button{border-radius:3px}
 #hotspots a:focus-visible,#hotspots button:focus-visible{outline:1px solid rgba(232,190,87,.8)}
 #sidePanel{z-index:40}
@@ -131,7 +107,6 @@
    ========================================================== */
 
 /* CLOCK */
-#dynamic .date{
  left:13.05%!important; top:21.65%!important;
  width:21.75%!important; height:11.15%!important;
  padding:16px 14px 9px!important;
@@ -140,13 +115,8 @@
  box-shadow:inset 0 0 28px rgba(69,177,197,.05),0 5px 15px rgba(0,0,0,.28)!important;
  overflow:hidden!important;
 }
-#dynamic .date:before{content:"HORLOGE // PARIS"!important;top:5px!important}
-#dynamic .date span{font-size:11px!important;margin-top:2px!important}
-#dynamic .date strong{font-size:31px!important;line-height:1!important;margin:2px 0!important}
-#dynamic .date small{font-size:8px!important}
 
 /* MODE — covers the entire baked MODE + 1/2/3/4 + recommendation block */
-#dynamic .difficulty-card{
  left:61.15%!important; top:21.65%!important;
  width:21.35%!important; height:11.2%!important;
  padding:15px 22px!important;
@@ -154,12 +124,8 @@
  border:1px solid rgba(229,184,78,.35)!important;
  box-shadow:inset 0 0 28px rgba(229,184,78,.04),0 5px 15px rgba(0,0,0,.28)!important;
 }
-#dynamic .difficulty-card small{font-size:8px!important}
-#dynamic .difficulty-card b{font-size:16px!important}
-#dynamic .difficulty-card span{font-size:29px!important}
 
 /* PLAYER LEVEL — completely erases NIVEAU 42 and its baked bar/text */
-#dynamic .level{
  left:1.15%!important; top:58.0%!important;
  width:10.1%!important; height:13.7%!important;
  background:#061012!important;
@@ -167,14 +133,10 @@
  box-shadow:inset 0 0 25px rgba(223,180,79,.035)!important;
  z-index:7!important;
 }
-#dynamic .level:before{
  content:"NIVEAU";display:block;color:#8ba3a3;font-size:8px;letter-spacing:1.3px;margin-bottom:2px
 }
-#dynamic .level strong{font-size:34px!important;line-height:1!important}
-#dynamic .level span{font-size:9px!important;margin-top:5px}
 
 /* STAT CARDS — cover the whole baked numerical strip, not only its bottom half */
-#dynamic .metric{
  top:45.25%!important;
  height:13.2%!important;
  padding:19px 4px 11px!important;
@@ -184,18 +146,8 @@
  border-bottom:1px solid rgba(255,255,255,.06)!important;
  box-shadow:inset 0 0 18px rgba(0,0,0,.22)!important;
 }
-#dynamic .metric b{font-size:15px!important;line-height:1.1!important}
-#dynamic .metric small{font-size:8px!important;margin-top:7px!important;letter-spacing:.3px}
-#dynamic .metric.r{border-color:rgba(55,220,148,.28)!important}
-#dynamic .metric.l{border-color:rgba(68,166,255,.28)!important}
-#dynamic .metric.sp{border-color:rgba(255,94,79,.28)!important}
-#dynamic .metric.wo{border-color:rgba(238,194,70,.28)!important}
-#dynamic .metric.fi{border-color:rgba(53,220,166,.28)!important}
-#dynamic .metric.nu{border-color:rgba(255,138,72,.28)!important}
-#dynamic .metric.sm{border-color:rgba(189,91,255,.28)!important}
 
 /* DAILY SUMMARY — fully replaces baked icons and numbers */
-#dynamic .summary{
  left:31.35%!important; top:62.55%!important;
  width:18.2%!important; height:10.2%!important;
  padding:22px 10px 7px!important;
@@ -203,11 +155,9 @@
  border:1px solid rgba(91,193,211,.20)!important;
  box-shadow:inset 0 0 24px rgba(73,183,204,.035)!important;
 }
-#dynamic .summary:before{
  content:"RÉSUMÉ XP";position:absolute;top:7px;left:12px;
  color:#82d3e2;font-size:8px;letter-spacing:1.2px
 }
-#dynamic .summary span{font-size:14px!important;font-weight:800}
 
 /* Left menu: the artwork says MONDE; this overlay turns that item into MODE */
 #modeMenuLabel{

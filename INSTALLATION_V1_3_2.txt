@@ -1,0 +1,28 @@
+PLAYER V1.3.2 — VISUAL FIX
+
+Cette version corrige précisément les 3 zones montrées sur les captures :
+
+1. DOUBLONS
+- suppression des anciennes règles CSS HUD encore présentes dans living_world.css ;
+- un seul moteur visuel contrôle désormais les données dynamiques ;
+- aucun rectangle noir dynamique ne recouvre les cartes ;
+- les barres de progression restent visibles.
+
+2. HEURE / MODE / CITATION
+- anciens textes statiques supprimés directement du master ;
+- une seule heure ;
+- un seul mode ;
+- une seule citation centrale.
+
+3. CITATIONS MODIFIABLES
+- menu CITATIONS = éditeur ;
+- frappe = aperçu direct sur le dashboard ;
+- ENREGISTRER = sauvegarde persistante ;
+- citation principale + citation sous le niveau modifiables.
+
+IMPORTANT :
+- conserver le config.js actuel ;
+- copier/remplacer tous les autres fichiers ;
+- laisser .DS_Store décoché ;
+- commit : V1.3.2 Visual Fix
+- test : index.html?v=132
