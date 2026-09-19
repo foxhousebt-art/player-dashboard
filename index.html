@@ -1,50 +1,34 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PLAYER — Living World</title><link rel="stylesheet" href="living_world.css"></head>
-<body>
-<div id="world" class="world tier-1" aria-hidden="true">
-  <div class="world-image"></div><div class="world-grade"></div><div class="sun"></div>
-  <div class="waterfall wf1"></div><div class="waterfall wf2"></div><div class="waterfall wf3"></div>
-  <div class="mist m1"></div><div class="mist m2"></div>
-  <div class="ship-path ship1"><i></i></div><div class="ship-path ship2"><i></i></div><div class="ship-path ship3"><i></i></div>
-  <div class="bot-path bot1"><i></i></div><div class="bot-path bot2"><i></i></div><div class="bot-path bot3"><i></i></div>
-  <div class="world-sparks"></div>
+<title>PLAYER — Living World</title><link rel="stylesheet" href="living_world.css"></head><body>
+<div id="scene">
+ <div class="master"></div><div class="daylight"></div>
+ <div class="waterfall w1"></div><div class="waterfall w2"></div><div class="waterfall w3"></div>
+ <img class="moving-ship s1" src="world_ship.png"><img class="moving-ship s2" src="world_ship.png">
+ <img class="moving-mech m1" src="world_mech.png"><img class="moving-mech m2" src="world_mech.png">
+ <div class="steam st1"></div><div class="steam st2"></div><div class="fireflies"></div>
 </div>
 
-<main class="hud">
- <aside class="rail glass">
-  <div class="brand">PLAYER<small>DISCIPLINE AUJOURD'HUI<br>LIBERTÉ DEMAIN</small></div>
-  <nav><a class="active" href="index.html">◆ DASHBOARD</a><a href="analyse.html">▣ ANALYSE</a><button data-toast="Objectifs : module en préparation">☷ OBJECTIFS</button><button data-toast="Paramètres : utilise le sélecteur de difficulté">⚙ PARAMÈTRES</button><button id="worldBtn">◎ MONDE</button></nav>
-  <div class="hero"><div id="avatarStage" class="avatar-stage"><img id="avatar" src="sprites/animated/recrue/idle_01.png" alt="Personnage"></div>
-   <span>NIVEAU</span><strong id="globalLevel">1</strong><div class="mini-bar"><i id="globalProgress"></i></div><small><b id="xpIntoLevel">0</b> / <b id="xpLevelCost">120</b> XP</small>
-  </div>
- </aside>
+<!-- Dynamic values are placed directly over the corresponding displays in the approved artwork. -->
+<div id="dynamic">
+ <div class="date"><span id="date">--</span><strong id="time">--:--</strong><small id="weekLabel">--</small></div>
+ <div class="difficulty"><b id="difficultyName">ENGAGÉ</b><div><button data-diff="1">1</button><button data-diff="2">2</button><button data-diff="3">3</button><button data-diff="4">4</button></div></div>
+ <div class="level"><strong id="globalLevel">1</strong><span><b id="xpIntoLevel">0</b> / <b id="xpLevelCost">120</b> XP</span></div>
+ <div class="metric r"><b id="readingValue">0 XP</b><small id="readingLevel">NIV. 1</small></div>
+ <div class="metric l"><b id="learningValue">0 XP</b><small id="learningLevel">NIV. 1</small></div>
+ <div class="metric sp"><b id="sportValue">0 / 4</b><small id="sportStatus">EN COURS</small></div>
+ <div class="metric wo"><b id="workValue">0 XP</b><small id="workLevel">NIV. 1</small></div>
+ <div class="metric fi"><b id="financeValue">0 €</b><small>RESTANT</small></div>
+ <div class="metric nu"><b id="nutritionValue">0 XP</b><small id="nutritionLevel">NIV. 1</small></div>
+ <div class="metric sm"><b id="smokeValue">0 J</b><small id="smokeStatus">INCONNU</small></div>
+ <div class="summary"><span class="gain">+<b id="grossXp">0</b></span><span class="loss">-<b id="penaltyXp">0</b></span><span class="bonus">+<b id="comebackXp">0</b></span><span class="net">+<b id="totalXp">0</b></span></div>
+</div>
 
- <section class="command">
-  <header class="command-top">
-   <div class="glass clockbox"><b id="date">DATE</b><strong id="time">--:--</strong><small id="weekLabel">SEMAINE</small></div>
-   <div class="glass quote">« Les petites actions d'aujourd'hui<br>créent les grandes victoires de demain. »</div>
-   <div class="glass difficulty"><span>MODE : <b id="difficultyName">ENGAGÉ</b></span><div class="diff-buttons"><button data-diff="1">1</button><button data-diff="2" class="on">2</button><button data-diff="3">3</button><button data-diff="4">4</button></div><small id="difficultyEffect">Engagement équilibré</small></div>
-  </header>
-
-  <section class="stats">
-   <article class="stat reading"><h3>▰ LECTURE</h3><strong><span id="readingXp">0</span> XP</strong><div class="bar"><i id="readingBar"></i></div><small>NIV. <b id="readingLevel">1</b></small></article>
-   <article class="stat learning"><h3>◉ APPRENTISSAGE</h3><strong><span id="learningXp">0</span> XP</strong><div class="bar"><i id="learningBar"></i></div><small>NIV. <b id="learningLevel">1</b></small></article>
-   <article class="stat sport"><h3>◆ SPORT</h3><strong><span id="sportSessions">0</span> / 4</strong><div class="bar"><i id="sportBar"></i></div><small id="sportStatus">EN COURS</small></article>
-   <article class="stat work"><h3>▣ RECHERCHE D'EMPLOI</h3><strong><span id="workXp">0</span> XP</strong><div class="bar"><i id="workBar"></i></div><small>NIV. <b id="workLevel">1</b></small></article>
-   <article class="stat finance"><h3>◍ ARGENT</h3><strong><span id="financeRemaining">0</span> €</strong><div class="bar"><i id="financeBar"></i></div><small>RESTANT</small></article>
-   <article class="stat nutrition"><h3>♨ NUTRITION</h3><strong><span id="nutritionXp">0</span> XP</strong><div class="bar"><i id="nutritionBar"></i></div><small>NIV. <b id="nutritionLevel">1</b></small></article>
-   <article class="stat smoke"><h3>⊘ SANS CIGARETTE</h3><strong><span id="smokeStreak">0</span> J</strong><div class="bar"><i id="smokeBar"></i></div><small id="smokeStatus">INCONNU</small></article>
-   <article class="stat rest"><h3>▱ REPOS</h3><strong id="restStatus">ACTIF</strong><div class="bar"><i></i></div><small>DIMANCHE</small></article>
-  </section>
-
-  <section class="lower">
-   <article class="glass calendar"><h4>CALENDRIER DE LA SEMAINE</h4><div id="days"><b>LUN</b><b>MAR</b><b>MER</b><b>JEU</b><b>VEN</b><b>SAM</b><b>DIM</b></div></article>
-   <article class="glass ledger"><h4>RÉSUMÉ DU JOUR</h4><div><span>↑ <b id="grossXp">0</b><small>XP gagnés</small></span><span class="loss">↓ <b id="penaltyXp">0</b><small>XP perdus</small></span><span>★ <b id="comebackXp">0</b><small>Retour</small></span><span>ϟ <b id="totalXp">0</b><small>XP nets</small></span></div></article>
-   <article class="glass reward"><h4>PROCHAINE RÉCOMPENSE</h4><strong>NIVEAU <span id="nextLevel">2</span></strong><small id="xpRemaining">120 XP restants</small></article>
-  </section>
- </section>
-</main>
-<div id="worldInfo" class="world-info"><b>MONDE VIVANT</b><span>La vallée évolue avec ton niveau. Les routes, lumières et activités gagnent en intensité avec ta progression.</span></div>
+<!-- Invisible interaction map follows the actual menu in the artwork. -->
+<nav id="hotspots">
+ <a class="dash" href="index.html" title="Dashboard"></a><a class="analysis" href="analyse.html" title="Analyse"></a>
+ <button class="objectives" data-msg="OBJECTIFS — module à venir"></button><button class="settings" data-msg="PARAMÈTRES — difficulté disponible en haut"></button>
+ <button class="world" data-msg="MONDE VIVANT — la vallée s'intensifie avec ta progression"></button>
+</nav>
 <div id="toast"></div>
 <script src="config.js"></script><script src="progression_engine.js"></script><script src="data_sync.js"></script><script src="living_world.js"></script>
 </body></html>

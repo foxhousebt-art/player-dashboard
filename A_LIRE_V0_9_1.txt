@@ -1,0 +1,11 @@
+V0.9.1 — LIVING WORLD FAITHFUL
+Correction majeure : la maquette définitive EST désormais l'interface, pas un wallpaper sous un second dashboard.
+- Le HUD de la maquette reste visible.
+- Les données réelles sont superposées dans les zones prévues.
+- Difficulté 1-4 cliquable.
+- Menu Dashboard/Analyse cliquable.
+- Vaisseaux et mécanoïdes utilisent des éléments extraits du même univers graphique.
+- Cascades, brume, lumière et particules sont animées.
+IMPORTANT : conserver le config.js actuellement connecté dans GitHub.
+Après copie : Commit 'V0.9.1 Living World Faithful' puis Push origin.
+Test : index.html?v=091
