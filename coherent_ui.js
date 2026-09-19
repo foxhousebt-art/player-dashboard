@@ -4,7 +4,7 @@ const row=(a,b)=>`<div class="panel-row"><span>${a}</span><b>${b}</b></div>`;
 function open(titleText,html){title.textContent=titleText;body.innerHTML=html;panel.classList.add("open");panel.setAttribute("aria-hidden","false")}
 function pct(x){return Math.max(0,Math.min(100,Math.round(x)))}
 window.addEventListener("player-data-update",e=>state=e.detail);
-document.getElementById("difficultyCard")?.addEventListener("click",()=>document.querySelector('[data-panel="settings"]')?.click());
+document.getElementById("difficultyCard")?.addEventListener("click",()=>document.querySelector('[data-panel="mode"]')?.click());
 document.querySelectorAll("[data-stat]").forEach(btn=>btn.addEventListener("click",()=>{
  const s=state;if(!s)return;const k=btn.dataset.stat,A=s.attrs;
  let t="",v="",sub="",extra="",p=0;

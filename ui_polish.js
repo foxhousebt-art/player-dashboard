@@ -24,10 +24,22 @@ function renderPanel(name){
    const d=s?.difficulty?.level||+(localStorage.getItem("playerDifficulty")||2);
    body.innerHTML=`${row("Difficulté actuelle",s?.difficulty?.name||"ENGAGÉ")}<div class="panel-diffs">${[1,2,3,4].map(n=>`<button data-panel-diff="${n}" class="${n===d?"on":""}">${n}</button>`).join("")}</div>${row("Budget mensuel",`${Math.round(s?.finance?.monthlyBudget||1000)} €`)}<p class="panel-note">Changer la difficulté recharge le moteur de progression. Les données enregistrées ne sont pas supprimées.</p>`;
    body.querySelectorAll("[data-panel-diff]").forEach(b=>b.onclick=()=>{localStorage.setItem("playerDifficulty",b.dataset.panelDiff);location.reload()});
- }else if(name==="world"){
-   title.textContent="ÉTAT DU MONDE";
-   const lvl=s?.global?.level||1,tier=lvl>=95?5:lvl>=62?4:lvl>=35?3:lvl>=10?2:1;
-   body.innerHTML=row("Niveau joueur",lvl)+row("Intensité du monde",`PALIER ${tier} / 5`)+row("Trafic aérien","ACTIF")+row("Mécanoïdes","ACTIFS")+row("Maintenance","ACTIVE")+`<p class="panel-note">La cité est une représentation visuelle de ta progression. Les événements d’ambiance ne modifient jamais tes XP.</p>`;
+ }else if(name==="mode"){
+   title.textContent="MODE DE DIFFICULTÉ";
+   const d=s?.difficulty?.level||+(localStorage.getItem("playerDifficulty")||2);
+   const names={1:"EXPLORATEUR",2:"ENGAGÉ",3:"DISCIPLINÉ",4:"IMPITOYABLE"};
+   const rules={
+     1:"Récompenses +8 % · pénalités ×0,45 · grâce 3 · comeback 15",
+     2:"Récompenses +4 % · pénalités ×0,75 · grâce 2 · comeback 20",
+     3:"Récompenses normales · pénalités ×1 · grâce 1 · comeback 25",
+     4:"Récompenses normales · pénalités ×1,35 · aucune grâce · comeback 35"
+   };
+   body.innerHTML=`${row("Mode actif",s?.difficulty?.name||names[d])}<div class="panel-diffs">${[1,2,3,4].map(n=>`<button data-panel-diff="${n}" class="${n===d?"on":""}" title="${names[n]}">${["","I","II","III","IV"][n]}</button>`).join("")}</div><p class="panel-note" id="modeRule">${rules[d]}</p><div class="panel-row"><span>XP net actuel</span><b>${s?.globalXp??"—"} XP</b></div><p class="panel-note">Changer de mode recalcule immédiatement tout l’historique avec les coefficients du mode choisi. Tes saisies ne sont jamais modifiées.</p>`;
+   body.querySelectorAll("[data-panel-diff]").forEach(b=>b.onclick=()=>{
+      localStorage.setItem("playerDifficulty",b.dataset.panelDiff);
+      window.PlayerDataSync?.refresh();
+      setTimeout(()=>location.reload(),120);
+   });
  }else{
    title.textContent="MOTIVATION";
    body.innerHTML=`<div class="quote-card">« Les petites actions d’aujourd’hui créent les grandes victoires de demain. »</div><div class="quote-card">« Un jour meilleur commence maintenant. »</div><div class="quote-card">« Discipline aujourd’hui. Liberté demain. »</div>`;

@@ -1,0 +1,26 @@
+PLAYER V1.2.3 — FINAL CLEANUP
+
+Corrections fonctionnelles :
+- ANALYSE reste une page dédiée.
+- OBJECTIFS reste un panneau dédié : il ne mène plus vers Analyse.
+- l'ancien item MONDE devient MODE et ouvre directement le choix de difficulté.
+- la carte MODE du haut ouvre le même sélecteur : une seule logique partout.
+- BUG DIFFICULTÉ CORRIGÉ : le réglage local choisi par le joueur prime désormais sur
+  une valeur difficulty ancienne/default renvoyée par Google Sheets.
+- changer EXPLORATEUR / ENGAGÉ / DISCIPLINÉ / IMPITOYABLE recalcule donc réellement
+  XP positifs, pénalités, comeback et niveau global à partir de tout l'historique.
+
+Corrections graphiques :
+- masque complet de l'ancienne heure imprimée ;
+- masque complet de l'ancien bloc de difficulté ;
+- masque complet de l'ancien niveau 42 ;
+- masque complet des anciennes valeurs imprimées dans les cartes ;
+- masque complet de l'ancien résumé XP ;
+- valeurs live réaffichées seules, propres et cohérentes.
+
+Tout le reste est conservé : Living City, cascade, vaisseaux, mécanoïdes, personnage,
+Google Sheets, règles XP, Analyse et animations.
+
+IMPORTANT : conserver le config.js actuellement connecté.
+Commit : V1.2.3 Final Cleanup
+Test : index.html?v=123

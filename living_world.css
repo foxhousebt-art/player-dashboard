@@ -123,3 +123,100 @@
 #panelBody .stat-head span{font-size:10px;color:#8fd7e4;letter-spacing:1px}
 #panelBody .progress-track{height:7px;background:rgba(255,255,255,.07);border-radius:5px;overflow:hidden;margin:10px 0 16px}
 #panelBody .progress-track i{display:block;height:100%;background:linear-gradient(90deg,#55c5d8,#d9ba66)}
+
+/* ==========================================================
+   V1.2.3 — FINAL CLEANUP
+   Full replacement surfaces: no baked demo value can remain
+   visible beneath the live interface.
+   ========================================================== */
+
+/* CLOCK */
+#dynamic .date{
+ left:13.05%!important; top:21.65%!important;
+ width:21.75%!important; height:11.15%!important;
+ padding:16px 14px 9px!important;
+ background:#071113!important;
+ border:1px solid rgba(115,205,220,.25)!important;
+ box-shadow:inset 0 0 28px rgba(69,177,197,.05),0 5px 15px rgba(0,0,0,.28)!important;
+ overflow:hidden!important;
+}
+#dynamic .date:before{content:"HORLOGE // PARIS"!important;top:5px!important}
+#dynamic .date span{font-size:11px!important;margin-top:2px!important}
+#dynamic .date strong{font-size:31px!important;line-height:1!important;margin:2px 0!important}
+#dynamic .date small{font-size:8px!important}
+
+/* MODE — covers the entire baked MODE + 1/2/3/4 + recommendation block */
+#dynamic .difficulty-card{
+ left:61.15%!important; top:21.65%!important;
+ width:21.35%!important; height:11.2%!important;
+ padding:15px 22px!important;
+ background:#071113!important;
+ border:1px solid rgba(229,184,78,.35)!important;
+ box-shadow:inset 0 0 28px rgba(229,184,78,.04),0 5px 15px rgba(0,0,0,.28)!important;
+}
+#dynamic .difficulty-card small{font-size:8px!important}
+#dynamic .difficulty-card b{font-size:16px!important}
+#dynamic .difficulty-card span{font-size:29px!important}
+
+/* PLAYER LEVEL — completely erases NIVEAU 42 and its baked bar/text */
+#dynamic .level{
+ left:1.15%!important; top:58.0%!important;
+ width:10.1%!important; height:13.7%!important;
+ background:#061012!important;
+ border:1px solid rgba(223,180,79,.22)!important;
+ box-shadow:inset 0 0 25px rgba(223,180,79,.035)!important;
+ z-index:7!important;
+}
+#dynamic .level:before{
+ content:"NIVEAU";display:block;color:#8ba3a3;font-size:8px;letter-spacing:1.3px;margin-bottom:2px
+}
+#dynamic .level strong{font-size:34px!important;line-height:1!important}
+#dynamic .level span{font-size:9px!important;margin-top:5px}
+
+/* STAT CARDS — cover the whole baked numerical strip, not only its bottom half */
+#dynamic .metric{
+ top:45.25%!important;
+ height:13.2%!important;
+ padding:19px 4px 11px!important;
+ justify-content:center!important;
+ background:#071113!important;
+ border-top:1px solid rgba(255,255,255,.06)!important;
+ border-bottom:1px solid rgba(255,255,255,.06)!important;
+ box-shadow:inset 0 0 18px rgba(0,0,0,.22)!important;
+}
+#dynamic .metric b{font-size:15px!important;line-height:1.1!important}
+#dynamic .metric small{font-size:8px!important;margin-top:7px!important;letter-spacing:.3px}
+#dynamic .metric.r{border-color:rgba(55,220,148,.28)!important}
+#dynamic .metric.l{border-color:rgba(68,166,255,.28)!important}
+#dynamic .metric.sp{border-color:rgba(255,94,79,.28)!important}
+#dynamic .metric.wo{border-color:rgba(238,194,70,.28)!important}
+#dynamic .metric.fi{border-color:rgba(53,220,166,.28)!important}
+#dynamic .metric.nu{border-color:rgba(255,138,72,.28)!important}
+#dynamic .metric.sm{border-color:rgba(189,91,255,.28)!important}
+
+/* DAILY SUMMARY — fully replaces baked icons and numbers */
+#dynamic .summary{
+ left:31.35%!important; top:62.55%!important;
+ width:18.2%!important; height:10.2%!important;
+ padding:22px 10px 7px!important;
+ background:#071113!important;
+ border:1px solid rgba(91,193,211,.20)!important;
+ box-shadow:inset 0 0 24px rgba(73,183,204,.035)!important;
+}
+#dynamic .summary:before{
+ content:"RÉSUMÉ XP";position:absolute;top:7px;left:12px;
+ color:#82d3e2;font-size:8px;letter-spacing:1.2px
+}
+#dynamic .summary span{font-size:14px!important;font-weight:800}
+
+/* Left menu: the artwork says MONDE; this overlay turns that item into MODE */
+#modeMenuLabel{
+ position:absolute;left:3.15%;top:38.85%;z-index:2;
+ width:6.4%;height:2.5%;display:flex;align-items:center;
+ background:#071113;color:#d9e7e5;font-size:12px;font-weight:700;
+ letter-spacing:.5px;pointer-events:none;
+}
+#hotspots .world{top:37.9%!important}
+
+/* panel polish */
+#sidePanel .panel-diffs button{font-size:12px;font-weight:800}

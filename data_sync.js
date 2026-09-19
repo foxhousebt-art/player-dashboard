@@ -16,7 +16,11 @@
   }
 
   function dispatch(entries, settings){
-    const snapshot = window.PlayerEngine.compute(entries, settings);
+    // Difficulty is a PLAYER-side choice. It must override a stale/default cloud value.
+    const localDifficulty = Number(localStorage.getItem("playerDifficulty") || 0);
+    const effectiveSettings = Object.assign({}, settings || {});
+    if(localDifficulty >= 1 && localDifficulty <= 4) effectiveSettings.difficulty = localDifficulty;
+    const snapshot = window.PlayerEngine.compute(entries, effectiveSettings);
     const hash = JSON.stringify(snapshot);
     if(hash === lastPayloadHash) return;
     lastPayloadHash = hash;
