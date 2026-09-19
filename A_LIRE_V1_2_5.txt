@@ -1,0 +1,24 @@
+PLAYER V1.2.5 — CLEAN MASTER
+
+Correction fondamentale du problème visible sur la capture 18:32 :
+les grands rectangles noirs n'existent plus.
+
+La cause était architecturale : les anciennes valeurs de démonstration faisaient partie
+des pixels de living_world_master.png. Les versions précédentes tentaient de les cacher
+avec des blocs HTML opaques, ce qui masquait les cartes et donnait l'impression que les
+scores disparaissaient.
+
+V1.2.5 crée living_world_master_clean.png :
+- les anciennes valeurs statiques sont supprimées DIRECTEMENT de l'artwork ;
+- les cadres, couleurs, illustrations et bordures restent visibles ;
+- les données live sont ensuite posées seules, sans fond opaque ;
+- horloge et mode restent dans leurs cadres d'origine ;
+- niveau, 7 scores et résumé XP restent dans leurs cases ;
+- aucune grande surface noire ne recouvre plus le dashboard.
+
+Le correctif de difficulté V1.2.3 est conservé.
+Living City, animations, Google Sheets, XP, pénalités et Analyse sont conservés.
+
+IMPORTANT : garder le config.js actuellement connecté.
+Commit : V1.2.5 Clean Master
+Test : index.html?v=125
