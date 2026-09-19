@@ -101,3 +101,25 @@
 .panel-diffs{display:flex;gap:7px;margin:13px 0}.panel-diffs button{flex:1;padding:9px 4px;background:#0a1416;border:1px solid #56686b;color:#eaf1ef;cursor:pointer}.panel-diffs button.on{border-color:#e5b84e;color:#ffd36e;box-shadow:0 0 13px rgba(229,184,78,.17)}
 .quote-card{padding:13px 12px;margin:10px 0;border:1px solid rgba(115,203,219,.18);background:rgba(13,29,31,.55);font-size:12px;line-height:1.5}
 @media(max-width:800px){#sidePanel{width:90vw;right:5vw;top:10%}}
+
+/* ===== V1.2.2 COHERENT UI ===== */
+#dynamic .date{left:13.45%;top:21.15%;width:20.65%;height:9.45%;border:1px solid rgba(121,211,225,.16);background:#071012!important}
+#dynamic .date:before{content:"HORLOGE // PARIS";position:absolute;top:7px;left:11px;font-size:7px;letter-spacing:1.2px;color:#69cfe1;opacity:.75}
+#dynamic .date strong{font-variant-numeric:tabular-nums;letter-spacing:1px}
+#dynamic .difficulty-card{position:absolute;left:65.35%;top:21.15%;width:14.05%;height:9.45%;pointer-events:auto!important;cursor:pointer;border:1px solid rgba(230,184,76,.35);border-radius:7px;background:#071012!important;color:#edf3ef;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;align-content:center;align-items:center;padding:12px 17px;text-align:left;box-shadow:inset 0 0 18px rgba(229,184,78,.035)}
+#dynamic .difficulty-card:hover{border-color:rgba(242,196,83,.78);box-shadow:0 0 18px rgba(229,184,78,.12),inset 0 0 18px rgba(229,184,78,.04)}
+#dynamic .difficulty-card small{grid-column:1;color:#7bcfdf;font-size:7px;letter-spacing:1.4px}
+#dynamic .difficulty-card b{grid-column:1;color:#f1c75f;font-size:13px;letter-spacing:.8px;margin-top:3px}
+#dynamic .difficulty-card span{grid-column:2;grid-row:1/3;color:#f1c75f;font-size:25px;font-weight:800;border-left:1px solid rgba(241,199,95,.2);padding-left:13px}
+#dynamic .metric{border:0;color:#edf3ef;cursor:pointer;pointer-events:auto!important;border-radius:0;padding-left:0;padding-right:0}
+#dynamic .metric:hover{box-shadow:inset 0 -2px 0 rgba(108,217,235,.62),0 0 18px rgba(73,187,207,.08)}
+#dynamic .metric:focus-visible,#dynamic .difficulty-card:focus-visible{outline:1px solid #e9bf58;outline-offset:2px}
+#dynamic .summary{border:1px solid rgba(103,196,211,.12)}
+#hotspots a,#hotspots button{border-radius:3px}
+#hotspots a:focus-visible,#hotspots button:focus-visible{outline:1px solid rgba(232,190,87,.8)}
+#sidePanel{z-index:40}
+#panelBody .stat-head{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;margin-bottom:14px}
+#panelBody .stat-head strong{font-size:29px;color:#f0c66b}
+#panelBody .stat-head span{font-size:10px;color:#8fd7e4;letter-spacing:1px}
+#panelBody .progress-track{height:7px;background:rgba(255,255,255,.07);border-radius:5px;overflow:hidden;margin:10px 0 16px}
+#panelBody .progress-track i{display:block;height:100%;background:linear-gradient(90deg,#55c5d8,#d9ba66)}

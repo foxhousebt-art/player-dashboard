@@ -20,16 +20,16 @@ function renderPanel(name){
    title.textContent="OBJECTIFS";
    body.innerHTML=s?row("Lecture","≥ 10 pages / jour")+row("Apprentissage","≥ 30 min / jour")+row("Sport",`${s.sportWeek.sessions} / 4 cette semaine`)+row("Nutrition","≥ 3 repas conformes")+row("Recherche d’emploi","≥ 1 action utile")+row("Finance",`${Math.round(s.finance.budgetRemaining)} € restants`)+`<p class="panel-note">Perfect Day : lecture + apprentissage + nutrition + travail + trajectoire finance. Le sport reste suivi à la semaine.</p>`:`<p class="panel-note">Synchronisation des objectifs…</p>`;
  }else if(name==="settings"){
-   title.textContent="PARAMÈTRES";
+   title.textContent="PARAMÈTRES DE JEU";
    const d=s?.difficulty?.level||+(localStorage.getItem("playerDifficulty")||2);
    body.innerHTML=`${row("Difficulté actuelle",s?.difficulty?.name||"ENGAGÉ")}<div class="panel-diffs">${[1,2,3,4].map(n=>`<button data-panel-diff="${n}" class="${n===d?"on":""}">${n}</button>`).join("")}</div>${row("Budget mensuel",`${Math.round(s?.finance?.monthlyBudget||1000)} €`)}<p class="panel-note">Changer la difficulté recharge le moteur de progression. Les données enregistrées ne sont pas supprimées.</p>`;
    body.querySelectorAll("[data-panel-diff]").forEach(b=>b.onclick=()=>{localStorage.setItem("playerDifficulty",b.dataset.panelDiff);location.reload()});
  }else if(name==="world"){
-   title.textContent="MONDE";
+   title.textContent="ÉTAT DU MONDE";
    const lvl=s?.global?.level||1,tier=lvl>=95?5:lvl>=62?4:lvl>=35?3:lvl>=10?2:1;
    body.innerHTML=row("Niveau joueur",lvl)+row("Intensité du monde",`PALIER ${tier} / 5`)+row("Trafic aérien","ACTIF")+row("Mécanoïdes","ACTIFS")+row("Maintenance","ACTIVE")+`<p class="panel-note">La cité est une représentation visuelle de ta progression. Les événements d’ambiance ne modifient jamais tes XP.</p>`;
  }else{
-   title.textContent="CITATIONS";
+   title.textContent="MOTIVATION";
    body.innerHTML=`<div class="quote-card">« Les petites actions d’aujourd’hui créent les grandes victoires de demain. »</div><div class="quote-card">« Un jour meilleur commence maintenant. »</div><div class="quote-card">« Discipline aujourd’hui. Liberté demain. »</div>`;
  }
 }

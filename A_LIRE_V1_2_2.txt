@@ -1,0 +1,18 @@
+PLAYER V1.2.2 — COHERENT UI
+Passe de finition basée sur la vidéo du 19/09 à 17:52.
+
+Corrections :
+- une seule horloge dynamique, forcée sur Europe/Paris ;
+- masque propre de l'heure statique de l'artwork ;
+- difficulté simplifiée : une seule carte MODE / nom / niveau romain ;
+- clic sur la difficulté -> Paramètres de jeu (plus de double logique) ;
+- suppression des 4 petits boutons de difficulté du bandeau principal ;
+- chaque carte Lecture / Apprentissage / Sport / Travail / Finance / Nutrition / Sans cigarette devient un accès au détail correspondant ;
+- menu gauche garde une fonction unique et compréhensible par entrée ;
+- Objectifs / Paramètres de jeu / État du monde / Motivation utilisent le même panneau latéral ;
+- alignements et masques renforcés pour éliminer les superpositions visuelles ;
+- Living City, animations, moteur XP, personnage, données et Analyse conservés.
+
+IMPORTANT : conserver le config.js connecté.
+Commit : V1.2.2 Coherent UI
+Test : index.html?v=122

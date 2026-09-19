@@ -24,16 +24,16 @@
 <!-- Dynamic values are placed directly over the corresponding displays in the approved artwork. -->
 <div id="dynamic">
  <div class="date"><span id="date">--</span><strong id="time">--:--</strong><small id="weekLabel">--</small></div>
- <div class="difficulty"><b id="difficultyName">ENGAGÉ</b><div><button data-diff="1">1</button><button data-diff="2">2</button><button data-diff="3">3</button><button data-diff="4">4</button></div></div>
+ <button class="difficulty difficulty-card" id="difficultyCard" type="button"><small>MODE</small><b id="difficultyName">ENGAGÉ</b><span id="difficultyLevel">II</span></button>
  <div class="player-live"><img id="playerSprite" src="sprites/animated/brian_lvl_001_base/idle_00.png" alt="Personnage"></div>
  <div class="level"><strong id="globalLevel">1</strong><span><b id="xpIntoLevel">0</b> / <b id="xpLevelCost">120</b> XP</span></div>
- <div class="metric r"><b id="readingValue">0 XP</b><small id="readingLevel">NIV. 1</small></div>
- <div class="metric l"><b id="learningValue">0 XP</b><small id="learningLevel">NIV. 1</small></div>
- <div class="metric sp"><b id="sportValue">0 / 4</b><small id="sportStatus">EN COURS</small></div>
- <div class="metric wo"><b id="workValue">0 XP</b><small id="workLevel">NIV. 1</small></div>
- <div class="metric fi"><b id="financeValue">0 €</b><small>RESTANT</small></div>
- <div class="metric nu"><b id="nutritionValue">0 XP</b><small id="nutritionLevel">NIV. 1</small></div>
- <div class="metric sm"><b id="smokeValue">0 J</b><small id="smokeStatus">INCONNU</small></div>
+ <button class="metric r" data-stat="lecture" type="button"><b id="readingValue">0 XP</b><small id="readingLevel">NIV. 1</small></button>
+ <button class="metric l" data-stat="apprentissage" type="button"><b id="learningValue">0 XP</b><small id="learningLevel">NIV. 1</small></button>
+ <button class="metric sp" data-stat="sport" type="button"><b id="sportValue">0 / 4</b><small id="sportStatus">EN COURS</small></button>
+ <button class="metric wo" data-stat="travail" type="button"><b id="workValue">0 XP</b><small id="workLevel">NIV. 1</small></button>
+ <button class="metric fi" data-stat="finance" type="button"><b id="financeValue">0 €</b><small>RESTANT</small></button>
+ <button class="metric nu" data-stat="nutrition" type="button"><b id="nutritionValue">0 XP</b><small id="nutritionLevel">NIV. 1</small></button>
+ <button class="metric sm" data-stat="tabac" type="button"><b id="smokeValue">0 J</b><small id="smokeStatus">INCONNU</small></button>
  <div class="summary"><span class="gain">+<b id="grossXp">0</b></span><span class="loss">-<b id="penaltyXp">0</b></span><span class="bonus">+<b id="comebackXp">0</b></span><span class="net">+<b id="totalXp">0</b></span></div>
 </div>
 
@@ -47,4 +47,4 @@
 <div id="sidePanel" aria-hidden="true"><button id="panelClose">×</button><small id="panelKicker">PLAYER SYSTEM</small><h2 id="panelTitle"></h2><div id="panelBody"></div></div>
 <div id="toast"></div>
 <script src="config.js"></script><script src="progression_engine.js"></script><script src="data_sync.js"></script><script src="living_world.js"></script>
-<script src="living_city.js"></script><script src="ui_polish.js"></script></body></html>
+<script src="living_city.js"></script><script src="ui_polish.js"></script><script src="coherent_ui.js"></script></body></html>
