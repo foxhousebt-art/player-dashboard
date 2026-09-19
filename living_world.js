@@ -8,3 +8,23 @@ function render(s){if(!s)return;const g=s.global;set("globalLevel",g.level);set(
 document.querySelectorAll("[data-diff]").forEach(b=>b.onclick=()=>{localStorage.setItem("playerDifficulty",b.dataset.diff);location.reload()});
 document.querySelectorAll("[data-msg]").forEach(b=>b.onclick=()=>{const t=$("toast");t.textContent=b.dataset.msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2300)});
 window.addEventListener("player-data-update",e=>render(e.detail));window.addEventListener("DOMContentLoaded",()=>{clock();setInterval(clock,1000)});
+
+const PLAYER_FORMS=[
+ [1,"brian_lvl_001_base"],[5,"brian_lvl_005_determine"],[10,"brian_lvl_010_combattant"],
+ [17,"brian_lvl_017_aguerri"],[20,"brian_lvl_020_veteran"],[35,"brian_lvl_035_elite"],
+ [50,"brian_lvl_050_maitre"],[62,"brian_lvl_062_maitre_superieur"],[75,"brian_lvl_075_ascendant"],
+ [84,"brian_lvl_084_ascendant_2"],[95,"brian_lvl_095_pre_transcendant"],[100,"brian_lvl_100_transcendant"]
+];
+let liveLevel=1, frameIndex=1, lastFrame=0;
+function formFor(level){let f=PLAYER_FORMS[0][1];for(const [min,name] of PLAYER_FORMS){if(level>=min)f=name}return f}
+function playerLoop(ts){
+ const img=$("playerSprite");
+ if(img && ts-lastFrame>190){
+   lastFrame=ts; frameIndex=frameIndex%6+1;
+   img.src=`sprites/animated/${formFor(liveLevel)}/idle_${String(frameIndex).padStart(2,"0")}.png`;
+ }
+ requestAnimationFrame(playerLoop);
+}
+requestAnimationFrame(playerLoop);
+const oldRender=render;
+render=function(s){oldRender(s); if(s&&s.global)liveLevel=s.global.level;};

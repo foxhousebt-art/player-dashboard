@@ -1,0 +1,14 @@
+PLAYER V1.0.0 — WORLD ENGINE
+Cette version ne redessine pas le dashboard : elle améliore uniquement l'intégration vivante validée.
+- personnage Metal Slug reconnecté aux vrais sprites et animé ;
+- vaisseaux sur plans de profondeur distincts, vitesse/taille cohérentes ;
+- mécanoïdes intégrés à deux plans du terrain, avec pauses et retours ;
+- mouvements GPU translate3d plus fluides ;
+- acteurs plus petits et moins parasites ;
+- cascades accélérées et brume adoucie ;
+- masques d'occlusion/fondu pour réduire l'impression d'objets flottants.
+IMPORTANT : conserver le config.js actuel de GitHub.
+Copier/remplacer les autres fichiers.
+Commit : V1.0.0 World Engine
+Push origin
+Tester : index.html?v=100

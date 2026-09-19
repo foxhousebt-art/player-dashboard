@@ -3,8 +3,10 @@
 <div id="scene">
  <div class="master"></div><div class="daylight"></div>
  <div class="waterfall w1"></div><div class="waterfall w2"></div><div class="waterfall w3"></div>
- <img class="moving-ship s1" src="world_ship.png"><img class="moving-ship s2" src="world_ship.png">
- <img class="moving-mech m1" src="world_mech.png"><img class="moving-mech m2" src="world_mech.png">
+ <div class="ship-layer far"><img class="ship s1" src="world_ship.png"></div>
+ <div class="ship-layer mid"><img class="ship s2" src="world_ship.png"></div>
+ <div class="mech-layer rear"><img class="mech m1" src="world_mech.png"></div>
+ <div class="mech-layer front"><img class="mech m2" src="world_mech.png"></div>
  <div class="steam st1"></div><div class="steam st2"></div><div class="fireflies"></div>
 </div>
 
@@ -12,6 +14,7 @@
 <div id="dynamic">
  <div class="date"><span id="date">--</span><strong id="time">--:--</strong><small id="weekLabel">--</small></div>
  <div class="difficulty"><b id="difficultyName">ENGAGÉ</b><div><button data-diff="1">1</button><button data-diff="2">2</button><button data-diff="3">3</button><button data-diff="4">4</button></div></div>
+ <div class="player-live"><img id="playerSprite" alt="Personnage"></div>
  <div class="level"><strong id="globalLevel">1</strong><span><b id="xpIntoLevel">0</b> / <b id="xpLevelCost">120</b> XP</span></div>
  <div class="metric r"><b id="readingValue">0 XP</b><small id="readingLevel">NIV. 1</small></div>
  <div class="metric l"><b id="learningValue">0 XP</b><small id="learningLevel">NIV. 1</small></div>
