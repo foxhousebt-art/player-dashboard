@@ -1,0 +1,5 @@
+V0.5.1
+- Visuel conservé.
+- Cigarette : J1-J9 +5 XP/jour ; J10+ +10 XP/jour ; cigarette = reset ; absence de saisie = 0 XP.
+- Dimanche = Recovery Day : XP normaux mais pas de Perfect Day obligatoire.
+- Code.gs migration-safe : setupSystem() n'efface plus les données existantes.

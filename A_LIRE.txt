@@ -1,0 +1,20 @@
+PLAYER V0.5.3 — FUTURISTIC BLACK
+
+Changements visuels :
+- fond noir/neutre ;
+- suppression du voile vert dans les encadrés ;
+- effets lumineux uniquement sur les contours et lignes ;
+- balayages lumineux discrets sur les cadres ;
+- scanlines très légères ;
+- personnage totalement opaque et non modifié.
+
+IMPORTANT :
+Garde ton config.js actuel sur GitHub, car il contient ton URL Apps Script.
+Ne remplace pas ton config.js par celui du ZIP si tu veux garder la synchro Google Sheets.
+
+Pour tester :
+1. Dézippe.
+2. Ouvre index.html.
+3. Pour GitHub, remplace les fichiers SAUF config.js.
+4. Commit.
+5. Cmd + Shift + R.

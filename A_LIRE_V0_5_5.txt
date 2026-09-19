@@ -1,0 +1,27 @@
+PLAYER V0.5.5 — SOBER LIVING
+
+DESIGN
+- Même structure générale que le dashboard existant.
+- Encadrés des items rendus sobres et neutres.
+- Pas de voile vert sur le fond.
+- Couleurs des catégories conservées seulement comme petits repères.
+- Zone du personnage légèrement éclaircie en gris/charbon pour que ses cheveux
+  et son haut noirs restent lisibles.
+- Aucun halo vert derrière le personnage.
+
+PERSONNAGE
+- Les 12 évolutions originales sont conservées.
+- Les frames sont dérivées directement des sprites existants.
+- RECRUE → DÉTERMINÉ → COMBATTANT → AGUERRI → VÉTÉRAN → ÉLITE →
+  MAÎTRE → MAÎTRE SUPÉRIEUR → ASCENDANT → ASCENDANT II →
+  PRÉ-TRANSCENDANT → TRANSCENDANT.
+- IDLE permanent.
+- RÉFLEXION ou MOUVEMENT spontané toutes les 14 à 32 secondes.
+- LEVEL-UP : saut automatique lors d'une vraie montée de niveau.
+
+IMPORTANT POUR GITHUB
+Si ton config.js actuel contient déjà ton URL Apps Script, GARDE CE config.js.
+Ne remplace pas ton config.js connecté par celui du ZIP.
+
+TEST LOCAL
+Dézippe le dossier puis ouvre index.html.

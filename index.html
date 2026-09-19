@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>System Player v0.4</title>
+  <title>PLAYER HD — Evolution</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="world-tier-1">
+  <div class="world-bg living-valley" aria-hidden="true"><div class="valley-photo"></div><div class="valley-depth"></div><div class="water-shimmer water-a"></div><div class="water-shimmer water-b"></div><div class="air-lane lane-a"><i></i></div><div class="air-lane lane-b"><i></i></div><div class="air-lane lane-c"><i></i></div><div class="mech-route route-a"><i></i></div><div class="mech-route route-b"><i></i></div><div class="world-particles"></div><div class="sun-bloom"></div></div>
   <div class="scanlines"></div>
   <canvas id="fxCanvas"></canvas>
 
   <main class="hud" id="hud">
     <header class="topbar panel">
-      <div class="brand">// SYSTEME PLAYER <span>v0.5.6</span></div>
-      <div class="mode">MODE : PERMANENT</div>
+      <div class="brand">// SYSTEME PLAYER <span>v0.8.0 LIVING VALLEY</span></div>
+      <div class="mode">MODE : HD / PERMANENT</div>
+      <nav class="top-nav"><a class="active" href="index.html">DASHBOARD</a><a href="analyse.html">ANALYSE</a></nav>
+      <div class="difficulty-control"><span>DIFFICULTÉ</span><select id="difficultySelect" aria-label="Niveau de difficulté"><option value="1">I — EXPLORATEUR</option><option value="2">II — ENGAGÉ</option><option value="3">III — DISCIPLINÉ</option><option value="4">IV — IMPITOYABLE</option></select></div>
       <div class="clock"><span id="date"></span> <span id="time"></span></div>
     </header>
 
@@ -29,6 +32,7 @@
             <div class="metric"><span id="globalXp">84</span> / <span id="globalXpTarget">300</span> XP</div>
             <div class="bar large"><i id="globalXpBar"></i></div>
             <div class="subline">PROCHAIN NIVEAU : <span id="xpRemaining">216</span> XP</div>
+            <div class="xp-ledger"><span>GAGNÉ <b id="grossXp">0</b></span><span class="loss">PERDU <b id="penaltyXp">0</b></span><span class="comeback">RETOUR <b id="comebackXp">0</b></span></div>
           </div>
           <div class="mini-card">
             <span>RANG ACTUEL</span>
@@ -48,7 +52,7 @@
           </div>
         </section>
 
-        <section class="fundamentals panel">
+        <section class="fundamentals panel evolution-panel">
           <div class="section-title">// 6 FONDAMENTAUX</div>
           <div id="statGrid" class="stat-grid"></div>
         </section>
@@ -96,13 +100,13 @@
           <div class="days">
             <b class="active">LUN</b><b>MAR</b><b>MER</b><b>JEU</b><b>VEN</b><b>SAM</b><b>DIM</b>
           </div>
-          <div class="shortcuts">[ L ] +1 NIVEAU &nbsp;&nbsp; [ R ] RESET</div>
+          <div class="shortcuts">[ ANALYSE ] Tendances • constance • écarts</div>
           <span class="online">● SYSTEME EN LIGNE</span>
         </footer>
       </section>
 
       <aside class="right-column">
-        <section class="profile panel">
+        <section class="profile panel evolution-panel">
           <div class="section-title">// PLAYER</div>
           <div class="player-name">BRIAN</div>
           <div class="player-rank" id="profileRank">NOVICE I</div>
@@ -118,6 +122,7 @@
 
         <section class="status panel">
           <div class="section-title">// STATUT</div>
+          <div class="difficulty-readout"><span>MODE ACTIF</span><b id="difficultyName">ENGAGÉ</b><small id="difficultyEffect">Pénalités modérées • bonus d'engagement</small></div>
           <div class="status-grid">
             <div><span>♥</span><b>100/100</b><small>VIE</small></div>
             <div><span>ϟ</span><b>100/100</b><small>ÉNERGIE</small></div>

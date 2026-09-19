@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PLAYER HD — Analyse</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="analysis.css">
+</head>
+<body class="analysis-page world-tier-1">
+<div class="world-bg living-valley" aria-hidden="true"><div class="valley-photo"></div><div class="valley-depth"></div><div class="water-shimmer water-a"></div><div class="air-lane lane-a"><i></i></div><div class="world-particles"></div><div class="sun-bloom"></div></div>
+<main class="analysis-shell">
+<header class="topbar panel">
+  <div class="brand">// SYSTEME PLAYER <span>v0.8.0 LIVING VALLEY</span></div>
+  <nav class="top-nav"><a href="index.html">DASHBOARD</a><a class="active" href="analyse.html">ANALYSE</a></nav>
+  <div class="clock"><span id="date"></span> <span id="time"></span></div>
+</header>
+<section class="analysis-hero panel">
+ <div><div class="eyebrow">CENTRE D'ANALYSE</div><h1>RAPPORT DE PROGRESSION</h1><p>Lecture des constantes, de la régularité et des écarts au système choisi.</p></div>
+ <div class="score-ring"><strong id="consistencyScore">--</strong><span>CONSTANCE</span></div>
+</section>
+<section class="analysis-kpis">
+ <article class="panel kpi"><span>XP GAGNÉ</span><strong id="grossXp">0</strong><small>avant pénalités</small></article>
+ <article class="panel kpi danger-kpi"><span>XP PERDU</span><strong id="penaltyXp">0</strong><small>écarts au planning</small></article>
+ <article class="panel kpi"><span>XP NET</span><strong id="netXp">0</strong><small>progression réelle</small></article>
+ <article class="panel kpi"><span>PERFECT DAYS</span><strong id="perfectDays">0</strong><small>journées complètes</small></article>
+</section>
+<section class="analysis-grid">
+ <article class="panel analysis-card wide">
+   <div class="section-title">// 30 DERNIERS JOURS</div>
+   <div id="trendBars" class="trend-bars"></div>
+ </article>
+ <article class="panel analysis-card">
+   <div class="section-title">// DIFFICULTÉ</div>
+   <strong class="analysis-big" id="difficultyName">—</strong>
+   <p id="difficultyText">—</p>
+ </article>
+ <article class="panel analysis-card">
+   <div class="section-title">// RÉGULARITÉ</div>
+   <div id="regularityList" class="analysis-list"></div>
+ </article>
+ <article class="panel analysis-card wide">
+   <div class="section-title">// LECTURE DU SYSTÈME</div>
+   <div id="insights" class="insights"></div>
+ </article>
+ <article class="panel analysis-card">
+   <div class="section-title">// FINANCE</div>
+   <div id="financeAnalysis" class="analysis-list"></div>
+ </article>
+ <article class="panel analysis-card">
+   <div class="section-title">// SPORT</div>
+   <div id="sportAnalysis" class="analysis-list"></div>
+ </article>
+</section>
+<footer class="analysis-footer panel"><a href="index.html">← RETOUR AU DASHBOARD</a><span>Les tendances décrivent les données enregistrées ; elles n'établissent pas de causalité.</span></footer>
+</main>
+<script src="config.js"></script><script src="progression_engine.js"></script><script src="data_sync.js"></script><script src="analysis.js"></script>
+</body></html>

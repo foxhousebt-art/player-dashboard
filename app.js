@@ -110,19 +110,9 @@ function livingData(level){
 
 function stopLivingFrames(){
   if(livingFrameTimer){
-    cancelAnimationFrame(livingFrameTimer);
     clearTimeout(livingFrameTimer);
     livingFrameTimer = null;
   }
-}
-
-function preloadLivingFrames(frames){
-  if(!frames || !frames.length) return;
-  frames.forEach(src=>{
-    const img = new Image();
-    img.decoding = "async";
-    img.src = src;
-  });
 }
 
 function playLivingFrames(frames, frameMs, loop, onDone){
@@ -132,38 +122,29 @@ function playLivingFrames(frames, frameMs, loop, onDone){
     return;
   }
 
-  preloadLivingFrames(frames);
   stopLivingFrames();
   const token = ++livingAnimationToken;
   let i = 0;
-  let last = 0;
 
-  avatar.src = frames[0];
-  avatar.style.opacity = "1";
-  avatar.classList.remove("sprite-transition-out","sprite-transition-in");
-
-  const tick = (ts)=>{
+  const tick = ()=>{
     if(token !== livingAnimationToken) return;
-    if(!last) last = ts;
+    avatar.src = frames[i];
+    avatar.style.opacity = "1";
+    avatar.classList.remove("sprite-transition-out","sprite-transition-in");
+    i++;
 
-    if(ts - last >= frameMs){
-      last = ts - ((ts - last) % frameMs);
-      i++;
-      if(i >= frames.length){
-        if(loop) i = 0;
-        else{
-          livingFrameTimer = null;
-          if(onDone) onDone();
-          return;
-        }
+    if(i >= frames.length){
+      if(loop) i = 0;
+      else{
+        livingFrameTimer = null;
+        if(onDone) onDone();
+        return;
       }
-      avatar.src = frames[i];
-      avatar.style.opacity = "1";
     }
-    livingFrameTimer = requestAnimationFrame(tick);
+    livingFrameTimer = setTimeout(tick, frameMs);
   };
 
-  livingFrameTimer = requestAnimationFrame(tick);
+  tick();
 }
 
 function scheduleLivingAction(level){
@@ -183,7 +164,7 @@ function scheduleLivingAction(level){
 
     livingBusy = true;
     const state = Math.random() < 0.60 ? "think" : "move";
-    const speed = state === "think" ? 125 : 95;
+    const speed = state === "think" ? 220 : 155;
 
     playLivingFrames(data.set[state], speed, false, ()=>{
       livingBusy = false;
@@ -203,9 +184,8 @@ function startLivingIdle(level){
   currentLivingSpriteKey = data.key;
   livingBusy = false;
 
-  // Preload current evolution and use a smoother Game Boy cadence.
-  preloadLivingFrames([...(data.set.idle||[]), ...(data.set.think||[]), ...(data.set.move||[]), ...(data.set.levelup||[])]);
-  playLivingFrames(data.set.idle, 105, true);
+  // Slow enough to feel like a Game Boy idle, not a GIF.
+  playLivingFrames(data.set.idle, 185, true);
   scheduleLivingAction(level);
 }
 
@@ -231,7 +211,7 @@ function playLivingLevelUp(level){
   livingBusy = true;
   if(livingDecisionTimer) clearTimeout(livingDecisionTimer);
 
-  playLivingFrames(data.set.levelup, 85, false, ()=>{
+  playLivingFrames(data.set.levelup, 105, false, ()=>{
     livingBusy = false;
     startLivingIdle(level);
   });
@@ -300,6 +280,17 @@ function renderSnapshot(snapshot){
   setText("rank", rank);
   setText("profileRank", rank);
   setText("totalXp", snapshot.globalXp);
+  setText("grossXp", snapshot.grossXp || snapshot.globalXp);
+  setText("penaltyXp", "-" + (snapshot.penaltyTotal || 0));
+  setText("comebackXp", "+" + (snapshot.comebackBonus || 0));
+  setText("difficultyName", snapshot.difficulty ? snapshot.difficulty.name : "ENGAGÉ");
+  const diffEffects={
+    1:"Pénalités douces • +8% XP • 3 jours de grâce",
+    2:"Pénalités modérées • +4% XP • 2 jours de grâce",
+    3:"Équilibre strict • XP standard • 1 jour de grâce",
+    4:"Pénalités renforcées • aucune grâce • retour fortement récompensé"
+  };
+  setText("difficultyEffect", diffEffects[snapshot.difficulty?.level || 2]);
   setText("activeDays", snapshot.activeDays);
 
   // Streak complet sera calculé côté moteur dans une prochaine itération.
@@ -311,6 +302,9 @@ function renderSnapshot(snapshot){
   if(globalBar) globalBar.style.width = g.progress + "%";
 
   ensureLivingCharacter(g.level);
+  document.body.classList.remove("world-tier-1","world-tier-2","world-tier-3","world-tier-4","world-tier-5");
+  const wt = g.level>=95?5:g.level>=62?4:g.level>=35?3:g.level>=10?2:1;
+  document.body.classList.add("world-tier-"+wt);
 
   const grid = $("statGrid");
   if(grid){
@@ -482,3 +476,15 @@ window.addEventListener("DOMContentLoaded",()=>{
 });
 
 console.log("SYSTEME PLAYER V0.5 — automatisation XP chargée");
+
+function setupDifficulty(){
+  const sel=$("difficultySelect");
+  if(!sel)return;
+  const current=String(localStorage.getItem("playerDifficulty")||"2");
+  sel.value=current;
+  sel.addEventListener("change",()=>{
+    localStorage.setItem("playerDifficulty",sel.value);
+    location.reload();
+  });
+}
+window.addEventListener("DOMContentLoaded",setupDifficulty);

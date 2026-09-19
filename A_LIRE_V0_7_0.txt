@@ -1,0 +1,27 @@
+PLAYER V0.7.0 — EVOLUTION HD
+
+NOUVEAUTÉS
+- Version principale HD (la branche PS4 reste séparée).
+- 4 difficultés : Explorateur, Engagé, Discipliné, Impitoyable.
+- Pertes d'XP mesurées uniquement sur les journées réellement saisies.
+- Donnée absente = jamais considérée automatiquement comme un échec.
+- Dimanche = Recovery Day, aucune pénalité quotidienne.
+- Bonus de retour après une série de journées incomplètes.
+- Décor du dashboard évolutif selon le niveau global.
+- Nouvelle page analyse.html liée au dashboard.
+- Rapport XP brut / XP perdu / XP net / constance / tendances / finance / sport.
+- Architecture pensée comme première étape vers un futur PLAYER BUILDER adaptatif.
+
+IMPORTANT POUR GITHUB
+CONSERVER votre config.js actuel déjà connecté à Apps Script.
+Ne remplacez PAS le config.js live par celui de ce ZIP.
+
+DIFFICULTÉ
+I Explorateur : pénalités x0,45 ; gains x1,08 ; 3 jours de grâce.
+II Engagé : pénalités x0,75 ; gains x1,04 ; 2 jours de grâce.
+III Discipliné : pénalités x1 ; gains x1 ; 1 jour de grâce.
+IV Impitoyable : pénalités x1,35 ; gains x1 ; aucune grâce ; bonus de retour supérieur.
+
+NOTE
+Cette V0.7.0 est une première version fonctionnelle du nouveau concept.
+Le futur agent IA n'est volontairement pas inclus : le moteur utilisateur doit d'abord être éprouvé.
