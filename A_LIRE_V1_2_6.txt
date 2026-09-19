@@ -1,0 +1,20 @@
+PLAYER V1.2.6 — INTEGRATED HUD
+
+Cette version applique exactement la correction demandée :
+- aucun grand rectangle HTML noir n'est utilisé pour masquer le dashboard ;
+- les anciennes valeurs de démonstration ont été retirées directement de l'artwork,
+  uniquement dans les zones de texte concernées ;
+- cadres, illustrations, couleurs, barres décoratives et identité graphique restent visibles ;
+- les vraies données live sont posées exactement dans les zones originales ;
+- chaque carte affiche maintenant la donnée du jour + XP/statut + niveau ;
+- l'heure utilise le cadre original ;
+- la difficulté utilise le cadre original ;
+- le niveau utilise la zone originale sous le personnage ;
+- le résumé XP utilise le panneau original ;
+- correction des anciens IDs incohérents (readingXp vs readingValue, etc.) qui empêchaient
+  certaines valeurs live d'apparaître ;
+- tous les calculs, difficulté, Living City, animations et Google Sheets sont conservés.
+
+IMPORTANT : conserver le config.js actuellement connecté.
+Commit : V1.2.6 Integrated HUD
+Test : index.html?v=126

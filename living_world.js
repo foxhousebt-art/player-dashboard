@@ -1,9 +1,21 @@
 "use strict";
 const $=id=>document.getElementById(id),set=(id,v)=>{const e=$(id);if(e)e.textContent=v};
 function clock(){const n=new Date(),tz="Europe/Paris";set("date",n.toLocaleDateString("fr-FR",{timeZone:tz,weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase());set("time",n.toLocaleTimeString("fr-FR",{timeZone:tz,hour:"2-digit",minute:"2-digit",hour12:false}));const parts=new Intl.DateTimeFormat("en-CA",{timeZone:tz,year:"numeric",month:"numeric",day:"numeric"}).formatToParts(n).reduce((a,p)=>(a[p.type]=p.value,a),{}),d=+parts.day,m=+parts.month,y=+parts.year,days=new Date(Date.UTC(y,m,0)).getUTCDate();set("weekLabel","JOUR "+d+" / "+days)}
-function render(s){if(!s)return;const g=s.global;set("globalLevel",g.level);set("xpIntoLevel",Math.round(g.xpIntoLevel));set("xpLevelCost",g.level>=100?0:Math.round(g.nextFloor-g.currentFloor));set("difficultyName",s.difficulty.name);set("difficultyLevel",["","I","II","III","IV"][s.difficulty.level]||s.difficulty.level);
- document.querySelectorAll("[data-diff]").forEach(b=>b.classList.toggle("on",+b.dataset.diff===s.difficulty.level));
- const A=s.attrs;set("readingValue",A.lecture.xp+" XP");set("readingLevel","NIV. "+A.lecture.level);set("learningValue",A.apprentissage.xp+" XP");set("learningLevel","NIV. "+A.apprentissage.level);set("sportValue",s.sportWeek.sessions+" / 4");set("sportStatus",s.sportWeek.status);set("workValue",A.travail.xp+" XP");set("workLevel","NIV. "+A.travail.level);set("financeValue",Math.round(s.finance.budgetRemaining)+" €");set("nutritionValue",A.nutrition.xp+" XP");set("nutritionLevel","NIV. "+A.nutrition.level);set("smokeValue",s.smoking.streak+" J");set("smokeStatus",s.smoking.status);set("grossXp",s.grossXp||0);set("penaltyXp",s.penaltyTotal||0);set("comebackXp",s.comebackBonus||0);set("totalXp",s.globalXp||0);
+function render(s){
+ if(!s)return;
+ const g=s.global,A=s.attrs,e=s.lastEntry||{};
+ set("globalLevel",g.level);set("xpIntoLevel",Math.round(g.xpIntoLevel));set("xpLevelCost",g.level>=100?0:Math.round(g.nextFloor-g.currentFloor));
+ set("difficultyName",s.difficulty.name);set("difficultyLevel",["","I","II","III","IV"][s.difficulty.level]||s.difficulty.level);
+
+ set("readingToday",(e.pages??0)+" / 10");set("readingValue",A.lecture.xp+" XP");set("readingLevel","NIV. "+A.lecture.level);
+ set("learningToday",(e.learningMinutes??0)+" / 30");set("learningValue",A.apprentissage.xp+" XP");set("learningLevel","NIV. "+A.apprentissage.level);
+ set("sportToday",(e.sport?1:0)+" / 1");set("sportValue",s.sportWeek.sessions+" / 4");set("sportStatus",s.sportWeek.status);
+ set("workToday",(e.workActions??0)+" / 1");set("workValue",A.travail.xp+" XP");set("workLevel","NIV. "+A.travail.level);
+ set("financeToday",(e.expenses??0)+" €");set("financeValue",Math.round(s.finance.budgetRemaining)+" €");
+ set("nutritionToday",(e.compliantMeals??0)+" / 3");set("nutritionValue",A.nutrition.xp+" XP");set("nutritionLevel","NIV. "+A.nutrition.level);
+ set("smokeValue",s.smoking.streak+" J");set("smokeToday",s.smoking.todayXp?("+"+s.smoking.todayXp+" XP"):"0 XP");set("smokeStatus",s.smoking.status);
+
+ set("grossXp",s.grossXp||0);set("penaltyXp",s.penaltyTotal||0);set("comebackXp",s.comebackBonus||0);set("totalXp",s.globalXp||0);
 }
 document.querySelectorAll("[data-diff]").forEach(b=>b.onclick=()=>{localStorage.setItem("playerDifficulty",b.dataset.diff);location.reload()});
 document.querySelectorAll("[data-msg]").forEach(b=>b.onclick=()=>{const t=$("toast");t.textContent=b.dataset.msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2300)});

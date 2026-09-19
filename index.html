@@ -1,5 +1,5 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PLAYER — Living World</title><link rel="stylesheet" href="living_world.css"><link rel="stylesheet" href="finished_ui.css?v=125"></head><body>
+<title>PLAYER — Living World</title><link rel="stylesheet" href="living_world.css"><link rel="stylesheet" href="integrated_hud.css?v=126"></head><body>
 <div id="scene">
  <div class="master"></div><div class="daylight"></div>
  <div class="waterfall w1"></div><div class="waterfall w2"></div><div class="waterfall w3"></div>
@@ -23,17 +23,19 @@
 
 <!-- Dynamic values are placed directly over the corresponding displays in the approved artwork. -->
 <div id="dynamic">
-<section class="ui-clock"><span id="date">—</span><strong id="time">--:--</strong><small id="weekLabel">—</small></section>
-<button class="ui-mode" id="difficultyCard" type="button"><small>MODE DE DIFFICULTÉ</small><strong id="difficultyName">ENGAGÉ</strong><b id="difficultyLevel">II</b></button>
-<section class="ui-player-level"><small>NIVEAU</small><strong id="globalLevel">1</strong><span><b id="xpIntoLevel">0</b> / <b id="xpLevelCost">120</b> XP</span></section>
-<button class="ui-stat stat-reading" data-stat="lecture"><b id="readingXp">0 XP</b><small id="readingLevel">NIV. 1</small></button>
-<button class="ui-stat stat-learning" data-stat="apprentissage"><b id="learningXp">0 XP</b><small id="learningLevel">NIV. 1</small></button>
-<button class="ui-stat stat-sport" data-stat="sport"><b id="sportWeek">0 / 4</b><small id="sportStatus">EN COURS</small></button>
-<button class="ui-stat stat-work" data-stat="travail"><b id="workXp">0 XP</b><small id="workLevel">NIV. 1</small></button>
-<button class="ui-stat stat-finance" data-stat="finance"><b id="financeRemaining">0 €</b><small id="financeStatus">RESTANT</small></button>
-<button class="ui-stat stat-nutrition" data-stat="nutrition"><b id="nutritionXp">0 XP</b><small id="nutritionLevel">NIV. 1</small></button>
-<button class="ui-stat stat-smoke" data-stat="tabac"><b id="smokeStreak">0 J</b><small id="smokeStatus">INCONNU</small></button>
-<section class="ui-summary"><span class="gain">+<b id="grossXp">0</b></span><span class="loss">-<b id="penaltyXp">0</b></span><span class="come">+<b id="comebackXp">0</b></span><span class="net">+<b id="netXp">0</b></span></section>
+<section class="hud-clock"><span id="date">—</span><strong id="time">--:--</strong><small id="weekLabel">—</small></section>
+<button class="hud-mode" id="difficultyCard" type="button"><small>MODE</small><strong id="difficultyName">ENGAGÉ</strong><b id="difficultyLevel">II</b></button>
+<section class="hud-level"><small>NIVEAU</small><strong id="globalLevel">1</strong><span><b id="xpIntoLevel">0</b> / <b id="xpLevelCost">120</b> XP</span></section>
+
+<button class="hud-stat s-read" data-stat="lecture"><strong id="readingToday">—</strong><em>pages</em><b id="readingValue">0 XP</b><small id="readingLevel">NIV. 1</small></button>
+<button class="hud-stat s-learn" data-stat="apprentissage"><strong id="learningToday">—</strong><em>minutes</em><b id="learningValue">0 XP</b><small id="learningLevel">NIV. 1</small></button>
+<button class="hud-stat s-sport" data-stat="sport"><strong id="sportToday">—</strong><em>séance</em><b id="sportValue">0 / 4</b><small id="sportStatus">EN COURS</small></button>
+<button class="hud-stat s-work" data-stat="travail"><strong id="workToday">—</strong><em>tâches</em><b id="workValue">0 XP</b><small id="workLevel">NIV. 1</small></button>
+<button class="hud-stat s-fin" data-stat="finance"><strong id="financeToday">—</strong><em>aujourd’hui</em><b id="financeValue">0 €</b><small>RESTANT</small></button>
+<button class="hud-stat s-nutri" data-stat="nutrition"><strong id="nutritionToday">—</strong><em>repas</em><b id="nutritionValue">0 XP</b><small id="nutritionLevel">NIV. 1</small></button>
+<button class="hud-stat s-smoke" data-stat="tabac"><strong id="smokeValue">0 J</strong><em>consécutifs</em><b id="smokeToday">—</b><small id="smokeStatus">INCONNU</small></button>
+
+<section class="hud-summary"><span class="gain">+<b id="grossXp">0</b><small>XP gagnés</small></span><span class="loss">-<b id="penaltyXp">0</b><small>XP perdus</small></span><span class="come">+<b id="comebackXp">0</b><small>Bonus</small></span><span class="net">+<b id="totalXp">0</b><small>XP nets</small></span></section>
 </div>
 <nav id="hotspots">
  <a class="dash" href="index.html" title="Dashboard"></a><a class="analysis" href="analyse.html" title="Analyse"></a>
