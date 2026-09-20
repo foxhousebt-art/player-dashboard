@@ -1,49 +1,17 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PLAYER — Living World</title><link rel="stylesheet" href="living_world.css?v=132"><link rel="stylesheet" href="integrated_hud.css?v=132"></head><body>
-<div id="scene">
- <div class="master"></div><div class="daylight"></div>
- <div class="waterfall w1"></div><div class="waterfall w2"></div><div class="waterfall w3"></div>
- <div id="livingActors" aria-hidden="true">
-  <img class="depth-ship ship-a" src="world_ship.png">
-  <img class="depth-ship ship-b" src="world_ship.png">
-  <img class="depth-ship ship-c" src="world_ship.png">
-  <div class="worker-route wr1"><img class="depth-mech" src="world_mech.png"></div>
-  <div class="worker-route wr2"><img class="depth-mech" src="world_mech.png"></div>
-  <div class="worker-route wr3"><img class="depth-mech" src="world_mech.png"></div>
-  <div class="cargo-lift lift1"><span></span></div>
-  <div class="cargo-lift lift2"><span></span></div>
-  <div class="world-event beacon1"></div><div class="world-event beacon2"></div>
-  <div class="drone-swarm"><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="traffic-lights"><i></i><i></i><i></i><i></i></div>
-  <div class="energy-pulse ep1"></div><div class="energy-pulse ep2"></div>
-  <div class="bridge-traffic bt1"></div><div class="bridge-traffic bt2"></div>
- </div>
- <div class="steam st1"></div><div class="steam st2"></div><div class="fireflies"></div>
-</div>
-
-<!-- Dynamic values are placed directly over the corresponding displays in the approved artwork. -->
-<div id="dynamic">
-<div class="hud-quote-top" id="quoteTop"></div><div class="hud-quote-player" id="quotePlayer"></div><section class="hud-clock"><span id="date">—</span><strong id="time">--:--</strong><small id="weekLabel">—</small></section>
-<button class="hud-mode" id="difficultyCard" type="button"><small>MODE</small><strong id="difficultyName">ENGAGÉ</strong><b id="difficultyLevel">II</b></button>
-<section class="hud-level"><small>NIVEAU</small><strong id="globalLevel">1</strong><span><b id="xpIntoLevel">0</b> / <b id="xpLevelCost">120</b> XP</span></section>
-
-<button class="hud-stat s-read" data-stat="lecture"><strong id="readingToday">—</strong><em>pages</em><b id="readingValue">0 XP</b><small id="readingLevel">NIV. 1</small></button>
-<button class="hud-stat s-learn" data-stat="apprentissage"><strong id="learningToday">—</strong><em>minutes</em><b id="learningValue">0 XP</b><small id="learningLevel">NIV. 1</small></button>
-<button class="hud-stat s-sport" data-stat="sport"><strong id="sportToday">—</strong><em>séance</em><b id="sportValue">0 / 4</b><small id="sportStatus">EN COURS</small></button>
-<button class="hud-stat s-work" data-stat="travail"><strong id="workToday">—</strong><em>tâches</em><b id="workValue">0 XP</b><small id="workLevel">NIV. 1</small></button>
-<button class="hud-stat s-fin" data-stat="finance"><strong id="financeToday">—</strong><em>aujourd’hui</em><b id="financeValue">0 €</b><small>RESTANT</small></button>
-<button class="hud-stat s-nutri" data-stat="nutrition"><strong id="nutritionToday">—</strong><em>repas</em><b id="nutritionValue">0 XP</b><small id="nutritionLevel">NIV. 1</small></button>
-<button class="hud-stat s-smoke" data-stat="tabac"><strong id="smokeValue">0 J</strong><em>consécutifs</em><b id="smokeToday">—</b><small id="smokeStatus">INCONNU</small></button>
-
-<section class="hud-summary"><span class="gain">+<b id="grossXp">0</b><small>XP gagnés</small></span><span class="loss">-<b id="penaltyXp">0</b><small>XP perdus</small></span><span class="come">+<b id="comebackXp">0</b><small>Bonus</small></span><span class="net">+<b id="totalXp">0</b><small>XP nets</small></span></section>
-</div>
-<nav id="hotspots">
- <a class="dash" href="index.html" title="Dashboard"></a><a class="analysis" href="analyse.html" title="Analyse"></a>
- <button class="objectives" data-panel="objectives"></button><button class="settings" data-panel="settings"></button>
- <button class="world" data-panel="mode" title="Mode de difficulté"></button><button class="citations" data-panel="citations"></button>
-</nav>
-<div id="worldFlash"></div><div id="eventBanner"><b>ÉVÉNEMENT MONDE</b><span></span></div>
-<div id="sidePanel" aria-hidden="true"><button id="panelClose">×</button><small id="panelKicker">PLAYER SYSTEM</small><h2 id="panelTitle"></h2><div id="panelBody"></div></div>
-<div id="toast"></div>
-<script src="config.js"></script><script src="progression_engine.js?v=132"></script><script src="data_sync.js?v=132"></script><script src="living_world.js?v=132"></script>
-<script src="living_city.js?v=132"></script><script src="ui_polish.js?v=132"></script><script src="coherent_ui.js?v=132"></script><script src="customization.js?v=132"></script></body></html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PLAYER — System</title><link rel="stylesheet" href="simple.css?v=200"></head>
+<body><div class="glow"></div><main class="shell">
+<header class="top panel"><div><b>// PLAYER SYSTEM</b><small>DISCIPLINE AUJOURD'HUI · LIBERTÉ DEMAIN</small></div><nav><button data-view="dashboard" class="active">DASHBOARD</button><button data-view="analysis">ANALYSE</button><button data-view="objectives">OBJECTIFS</button><button data-view="settings">PARAMÈTRES</button><button data-view="difficulty">MODE</button><button data-view="quotes">CITATIONS</button></nav><div class="clock"><b id="clock">--:--</b><small id="date">—</small></div></header>
+<section id="dashboard" class="view active">
+<div class="quote panel" id="quoteTop">« — »</div>
+<div class="summary panel"><div><small>NIVEAU GLOBAL</small><strong id="globalLevel">1</strong></div><div class="xp"><small>XP GLOBAL</small><b><span id="globalXp">0</span> XP</b><div class="bar"><i id="globalBar"></i></div><em id="globalDetail">0 / 120 XP</em></div><div><small>MODE</small><b id="modeName">ENGAGÉ</b></div></div>
+<div class="stats panel"><h2>// 6 FONDAMENTAUX</h2><div id="statGrid"></div></div>
+<div class="lower"><section class="panel finance"><h2>// FINANCES</h2><div class="triplet"><div><small>BUDGET</small><b id="budget">—</b></div><div><small>DÉPENSÉ</small><b id="spent">—</b></div><div><small>RESTANT</small><b id="remaining">—</b></div></div><div class="bar"><i id="financeBar"></i></div><p id="trajectory">—</p></section>
+<section class="panel player"><h2>// PLAYER</h2><video id="avatarVideo" autoplay muted loop playsinline></video><div><b id="rank">RECRUE</b><small id="quotePlayer">« — »</small></div></section></div>
+<div class="week panel"><b id="weekText">SEMAINE</b><span id="smoke">SANS CIGARETTE : —</span><span id="perfect">PERFECT DAY : —</span></div>
+</section>
+<section id="analysis" class="view"><div class="panel page"><h1>ANALYSE</h1><div id="analysisBody"></div></div></section>
+<section id="objectives" class="view"><div class="panel page"><h1>OBJECTIFS</h1><div id="objectiveBody"></div></div></section>
+<section id="settings" class="view"><div class="panel page"><h1>PARAMÈTRES</h1><form id="settingsForm" class="formgrid"></form><button class="save" id="saveSettings" type="button">ENREGISTRER</button><p id="settingsMsg"></p></div></section>
+<section id="difficulty" class="view"><div class="panel page"><h1>MODE DE DIFFICULTÉ</h1><p>Le mode agit réellement sur les récompenses, les pénalités, la grâce et le bonus de retour.</p><div id="difficultyGrid" class="difficulty-grid"></div></div></section>
+<section id="quotes" class="view"><div class="panel page"><h1>CITATIONS</h1><label>Citation principale<textarea id="quoteInputTop"></textarea></label><label>Citation sous le joueur<textarea id="quoteInputPlayer"></textarea></label><button class="save" id="saveQuotes" type="button">ENREGISTRER</button><p id="quoteMsg"></p></div></section>
+</main><script src="config.js"></script><script src="progression_engine.js?v=200"></script><script src="data_sync.js?v=200"></script><script src="simple.js?v=200"></script></body></html>

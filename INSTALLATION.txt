@@ -1,16 +1,30 @@
-PLAYER V1.3.1 — GITHUB READY
+PLAYER SIMPLE V2.0 — VERSION STABLE ET FONCTIONNELLE
+
+OBJECTIF
+Retour au design sobre de l'ancien dashboard / PS4. Aucun monde 3D, aucun HUD superposé.
+Uniquement les fonctions demandées.
+
+FONCTIONS
+- Dashboard + 6 fondamentaux + niveaux + barres XP.
+- Analyse.
+- Objectifs.
+- Paramètres modifiables : budget, lecture, apprentissage, sport, nutrition, recherche d'emploi.
+- 4 modes de difficulté qui recalculent réellement récompenses et pénalités.
+- 2 citations modifiables, avec aperçu direct et sauvegarde.
+- Google Sheets via le config.js existant.
+- Version PS4 conservée séparément dans ps4.html.
+
+INSTALLATION GITHUB
+1. Repository > Show in Finder.
+2. Copier TOUT le contenu de ce dossier à la racine de player-dashboard.
+3. NE PAS remplacer/supprimer votre config.js existant.
+4. config.example.js peut être copié.
+5. Laisser les .DS_Store décochés.
+6. Commit : PLAYER Simple V2.0
+7. Push origin.
+
+PC : index.html?v=200
+PS4 : ps4.html?v=200
 
 IMPORTANT
-1. Ouvre GitHub Desktop > Repository > Show in Finder.
-2. Copie le CONTENU de ce dossier directement à la racine de player-dashboard.
-3. NE REMPLACE PAS ton config.js actuel.
-4. Les fichiers nouveaux importants sont :
-   customization.js
-   integrated_hud.css
-   living_world_master_final.png
-5. Commit : V1.3.1 GitHub Ready
-6. Push origin.
-7. Test : index.html?v=131
-
-Ce paquet a été nettoyé : pas d'anciennes versions A_LIRE, pas de doublons d'images master,
-pas de Code.gs, pas de fichiers de développement inutiles.
+Cette version ne dépend pas des fichiers Living World. Elle repart volontairement sur une base simple.
