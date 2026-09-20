@@ -1,0 +1,11 @@
+PLAYER PS4 V1.2.1 — CLASSIC GLOW + MOBILE FIX
+
+Correction unique : restauration de mobile.html (saisie quotidienne).
+La base dashboard V1.2 et ses fonctionnalités ne sont pas modifiées.
+
+IMPORTANT : conserver votre config.js actuel dans le dépôt GitHub.
+Le ZIP n'inclut volontairement aucun config.js.
+
+Déploiement : copier/remplacer les fichiers du ZIP dans le dépôt, sans supprimer config.js, Commit puis Push origin.
+Saisie téléphone : mobile.html?v=121
+Dashboard PS4 : ps4.html?v=121
