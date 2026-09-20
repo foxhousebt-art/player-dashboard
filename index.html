@@ -1,21 +1,169 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PLAYER // PS4</title><link rel="stylesheet" href="ps4.css?v=100"></head>
-<body><div class="scanlines"></div><main class="hud">
-<header class="topbar"><div class="brand">PLAYER <b>v1.0</b><span>SYSTÈME DE PROGRESSION PERSONNELLE</span></div><div class="motto">DISCIPLINE &nbsp;//&nbsp; PROGRESSION &nbsp;//&nbsp; LIBERTÉ</div><div class="clock"><span id="date"></span><strong id="time"></strong></div><div class="mode">MODE <strong id="difficultyName">ENGAGÉ</strong></div></header>
-<div class="layout">
-<nav class="side-nav"><button class="dashboard-tab active">⌂ <span>TABLEAU DE BORD</span></button><button data-panel="analysis">▥ <span>ANALYSE</span></button><button data-panel="objectives">◎ <span>OBJECTIFS</span></button><button data-panel="settings">⚙ <span>PARAMÈTRES</span></button><button data-panel="difficulty">◇ <span>MODE</span></button><button data-panel="quotes">❞ <span>CITATIONS</span></button><div class="side-art"><span>PETITS EFFORTS</span><b>GRANDS RÉSULTATS</b></div><div class="online">● EN LIGNE</div></nav>
-<div class="workspace">
-<section class="hero">
- <article class="profile panel"><div class="title">// PROFIL JOUEUR</div><div class="profile-body"><div class="avatar-stage"><div class="identity"><b>BRIAN</b><span id="profileRank">NOVICE I</span><small id="evolutionStage">RECRUE</small></div><video id="avatarVideo" autoplay muted loop playsinline webkit-playsinline preload="auto"><source src="ps4_media/brian_lvl_001_base_idle.mp4?v=100" type="video/mp4"></video><button id="videoStartButton">▶ ACTIVER</button><div id="stageQuote">DISCIPLINE AUJOURD’HUI<br>LIBERTÉ DEMAIN</div></div><div class="global"><div class="level"><span>NIVEAU GLOBAL</span><strong id="globalLevel">01</strong></div><div class="global-xp"><b><span id="globalXp">0</span> / <span id="globalXpTarget">300</span> XP</b><div class="bar gold"><i id="globalXpBar"></i></div><small>PROCHAIN NIVEAU : <b id="xpRemaining">0</b> XP</small></div><div class="summary"><div>🔥 <span>SÉRIE</span><b><i id="streak">0</i> jour</b></div><div>🏆 <span>MEILLEUR</span><b><i id="bestStreak">0</i> jour</b></div><div>▣ <span>JOURS ACTIFS</span><b><i id="activeDays">0</i> / 365</b></div></div></div></div><span id="rank" hidden></span><span id="totalXp" hidden></span><span id="record" hidden></span></article>
- <article class="quote panel"><div class="title">// CITATION DU JOUR</div><div class="quote-main"><span>“</span><blockquote id="mainQuote">Discipline aujourd’hui — liberté demain.</blockquote></div><div class="quote-mountains"></div></article>
-</section>
-<section class="domains panel"><div class="title">// MES DOMAINES DE PROGRESSION</div><div id="statGrid" class="stat-grid"></div></section>
-<section class="finance panel"><div class="finance-head"><span>●</span><div><b>BUDGET &amp; FINANCES</b><small>SUIVI MENSUEL</small></div></div><div class="budget"><small>BUDGET TOTAL</small><b id="budgetMonthly">1 000 €</b></div><div class="trajectory"><div class="trajectory-value" id="trajectoryBubble">0 €</div><div class="trajectory-bar"><i id="trajectoryMarker"></i></div><div class="trajectory-scale"><span>-500 €</span><span>0 €</span><span>+500 €</span><span>+ BUDGET</span></div></div><div class="finance-kpis"><div><small>DÉPENSÉ</small><b id="spentTotal">0 €</b></div><div><small>TRAJECTOIRE</small><b id="trajectoryGap">+0 €</b></div><div><small>RESTANT</small><b id="budgetRemaining">0 €</b></div></div><span id="spentToDate" hidden></span><span id="plannedToDate" hidden></span><span id="gapDetail" hidden></span></section>
-<section class="bottom">
- <article class="week panel"><div class="title">// CALENDRIER DE LA SEMAINE</div><span class="week-num">SEMAINE 1 / 4</span><div class="days"><b>LUN</b><b>MAR</b><b>MER</b><b>JEU</b><b>VEN</b><b>SAM</b><b>DIM</b></div></article>
- <article class="skill panel"><div class="title">// DISCIPLINE I</div><div class="skill-name">PROGRESSION DES 6 FONDAMENTAUX</div><div id="skillRows"></div><div class="skill-progress"><span>PROGRESSION</span><b id="skillProgressText">0 / 6</b><div class="bar"><i id="skillBar"></i></div></div></article>
- <article class="priority panel"><div class="title">// OBJECTIF PRIORITAIRE</div><div class="priority-row"><span>◎</span><div><strong id="priorityName">SPORT</strong><small>Attribut le plus en retard</small></div><b id="priorityPct">0%</b></div><div class="bar danger"><i id="priorityBar"></i></div></article>
-</section>
-<footer><span>● SYSTÈME EN LIGNE</span><b>MODE LOCAL &nbsp; | &nbsp; SAUVEGARDE AUTOMATIQUE ACTIVÉE</b><i>PLAYER v1.0 &nbsp; | &nbsp; LIFE TRACKER SYSTEM</i></footer>
-</div></div></main>
-<div id="systemPanel" class="system-panel" aria-hidden="true"><div class="system-window"><button id="closePanel">×</button><div id="systemPanelBody"></div></div></div><div id="levelUp" class="level-up"><div class="level-card"><span>LEVEL UP</span><strong id="levelUpNumber">02</strong><p>PROGRESSION CONFIRMÉE</p></div></div><button id="testLevel" hidden>TEST</button>
-<script src="config.js"></script><script src="character_evolution.js"></script><script src="progression_engine.js"></script><script src="data_sync.js"></script><script src="app_ps4.js?v=100"></script><script src="ps4_controls.js?v=100"></script></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>System Player</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="ps4.css?v=110" />
+</head>
+<body>
+  <div id="ps4LightSweep" aria-hidden="true"></div>
+  <div class="scanlines"></div>
+  <canvas id="fxCanvas"></canvas>
+
+  <main class="hud" id="hud">
+    <header class="topbar panel">
+      <div class="brand">// SYSTEME PLAYER <span>v0.6.0 PS4 VIDEO MODE</span></div>
+      <div class="mode">MODE : <strong id="difficultyName">ENGAGÉ</strong></div>
+      <nav class="ps4-menu">
+        <button data-panel="analysis">ANALYSE</button><button data-panel="objectives">OBJECTIFS</button><button data-panel="settings">PARAMÈTRES</button><button data-panel="difficulty">DIFFICULTÉ</button><button data-panel="quotes">CITATIONS</button>
+      </nav>
+      <div class="clock"><span id="date"></span> <span id="time"></span></div>
+    </header><div class="ps4-quote" id="mainQuote">« Les petites actions d’aujourd’hui créent les grandes victoires de demain. »</div>
+
+    <section class="content">
+      <section class="left-column">
+        <section class="summary panel">
+          <div class="level-block">
+            <div class="eyebrow">NIVEAU GLOBAL</div>
+            <div class="level-number" id="globalLevel">01</div>
+          </div>
+          <div class="xp-block">
+            <div class="eyebrow">XP GLOBALE</div>
+            <div class="metric"><span id="globalXp">84</span> / <span id="globalXpTarget">300</span> XP</div>
+            <div class="bar large"><i id="globalXpBar"></i></div>
+            <div class="subline">PROCHAIN NIVEAU : <span id="xpRemaining">216</span> XP</div>
+          </div>
+          <div class="mini-card">
+            <span>RANG ACTUEL</span>
+            <b id="rank">NOVICE I</b>
+            <small>XP TOTALE <strong id="totalXp">84</strong></small>
+            <small>JOURS ACTIFS <strong id="activeDays">1</strong> / 365</small>
+          </div>
+          <div class="mini-card centered">
+            <span>STREAK</span>
+            <b>🔥 <span id="streak">1</span></b>
+            <small>MEILLEUR : <strong id="bestStreak">1</strong></small>
+          </div>
+          <div class="mini-card centered">
+            <span>RECORD</span>
+            <b>🏆 <span id="record">1</span></b>
+            <small>JOURS</small>
+          </div>
+        </section>
+
+        <section class="fundamentals panel">
+          <div class="section-title">// 6 FONDAMENTAUX</div>
+          <div id="statGrid" class="stat-grid"></div>
+        </section>
+
+        <section class="bottom-grid">
+          <section class="finance panel">
+            <div class="section-title">// FINANCES</div>
+            <div class="finance-inner">
+              <div class="finance-numbers">
+                <div><span>BUDGET MENSUEL</span><strong id="budgetMonthly">1 000 €</strong></div>
+                <div><span>DÉPENSES TOTALES</span><strong id="spentTotal">0 €</strong></div>
+                <div><span>BUDGET RESTANT</span><strong class="good" id="budgetRemaining">1 000 €</strong></div>
+              </div>
+              <div class="trajectory">
+                <div class="trajectory-head">
+                  <span>// TRAJECTOIRE BUDGÉTAIRE</span>
+                  <strong class="good" id="trajectoryGap">+33,33 €</strong>
+                </div>
+                <div class="trajectory-bar"><i id="trajectoryMarker"></i></div>
+                <div class="trajectory-scale"><span>-</span><span>0 €</span><span>+</span></div>
+                <div class="trajectory-cards">
+                  <div><span>DÉPENSÉ À CE JOUR</span><b id="spentToDate">0 €</b></div>
+                  <div><span>TRAJECTOIRE PRÉVUE</span><b id="plannedToDate">33,33 €</b></div>
+                  <div><span>ÉCART</span><b class="good" id="gapDetail">+33,33 €</b></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="skill panel">
+            <div class="section-title">// COMPÉTENCE EN COURS</div>
+            <div class="skill-name">🔒 DISCIPLINE I</div>
+            <p>Nécessite : niveau 3 dans les 6 fondamentaux</p>
+            <div id="skillRows" class="skill-rows"></div>
+            <div class="skill-progress">
+              <span>PROGRESSION GLOBALE</span>
+              <b id="skillProgressText">0 / 6</b>
+              <div class="bar"><i id="skillBar"></i></div>
+            </div>
+          </section>
+        </section>
+
+        <footer class="week panel">
+          <span>SEMAINE 1 / 4</span>
+          <div class="days">
+            <b class="active">LUN</b><b>MAR</b><b>MER</b><b>JEU</b><b>VEN</b><b>SAM</b><b>DIM</b>
+          </div>
+          <div class="shortcuts">[ L ] +1 NIVEAU &nbsp;&nbsp; [ R ] RESET</div>
+          <span class="online">● SYSTEME EN LIGNE</span>
+        </footer>
+      </section>
+
+      <aside class="right-column">
+        <section class="profile panel">
+          <div class="section-title">// PLAYER</div>
+          <div class="player-name">BRIAN</div>
+          <div class="player-rank" id="profileRank">NOVICE I</div>
+          <div class="avatar-stage" id="avatarStage">
+            <div class="player-corners"></div>
+            <video id="avatarVideo" class="ps4-avatar-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="sprites/brian_lvl_001_base.png"><source src="ps4_media/brian_lvl_001_base_idle.mp4?v=060" type="video/mp4" /></video><button id="videoStartButton" class="video-start-button" type="button">▶ ACTIVER ANIMATION</button>
+            <div class="player-stage-label">
+              <span>FORME ACTUELLE</span>
+              <b id="evolutionStage">RECRUE</b>
+            </div>
+          </div>
+        </section>
+
+        <section class="status panel">
+          <div class="section-title">// STATUT</div>
+          <div class="status-grid">
+            <div><span>♥</span><b>100/100</b><small>VIE</small></div>
+            <div><span>ϟ</span><b>100/100</b><small>ÉNERGIE</small></div>
+            <div><span>⬡</span><b>100/100</b><small>DISCIPLINE</small></div>
+          </div>
+          <div class="segmented"><i style="width:94%"></i></div>
+        </section>
+
+        <section class="priority panel">
+          <div class="section-title">// OBJECTIF PRIORITAIRE</div>
+          <div class="priority-row">
+            <div class="target">◎</div>
+            <div>
+              <strong id="priorityName">SPORT</strong>
+              <span>Attribut le plus en retard</span>
+            </div>
+            <b id="priorityPct">0%</b>
+          </div>
+          <div class="bar danger"><i id="priorityBar"></i></div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <div id="systemPanel" class="system-panel" aria-hidden="true"><div class="system-window panel"><button id="closePanel" class="close-panel">×</button><div id="systemPanelBody"></div></div></div>
+  <div id="levelUp" class="level-up">
+    <div class="level-card">
+      <span>LEVEL UP</span>
+      <strong id="levelUpNumber">02</strong>
+      <p>PROGRESSION CONFIRMÉE</p>
+    </div>
+  </div>
+
+  <button id="testLevel" class="dev-button" title="Test animation Level Up">TEST LEVEL UP</button>
+  <script src="config.js"></script>
+  <script src="character_evolution.js"></script>
+  <script src="progression_engine.js"></script>
+  <script src="data_sync.js"></script>
+  <script src="app_ps4.js?v=110"></script><script src="ps4_controls.js?v=110"></script>
+
+
+
+</body>
+</html>

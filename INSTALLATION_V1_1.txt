@@ -1,0 +1,20 @@
+PLAYER PS4 V1.1 — CLASSIC LIGHT
+
+BASE
+- Retour au format classique stable demandé.
+- Moteur, synchronisation, calculs, menus et contrôles conservés.
+- Modification volontairement limitée à la couche visuelle.
+
+VISUEL
+- fond noir conservé ;
+- légères lueurs sur les cadres ;
+- couleurs sobres et distinctes sur les items ;
+- personnage vidéo conservé, avec correction légère de contraste/saturation ;
+- aucun effet animé lourd ajouté afin de préserver la PS4.
+
+INSTALLATION
+1. NE PAS supprimer/remplacer votre config.js actuel.
+2. Copier tous les fichiers de ce ZIP à la racine de player-dashboard.
+3. Accepter le remplacement des fichiers existants, sauf config.js.
+4. Commit + Push.
+5. Tester ps4.html?v=110.

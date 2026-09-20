@@ -1,1 +1,408 @@
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#02070b;color:#eaf6ff;font-family:'Arial Narrow',Arial,sans-serif}body{background:radial-gradient(circle at 86% -10%,#073a63 0,transparent 25%),linear-gradient(145deg,#02070c,#03111a 55%,#010609)}body:before{content:"";position:fixed;inset:0;background:linear-gradient(120deg,transparent 0 78%,rgba(0,147,255,.045) 78% 79%,transparent 79%),repeating-linear-gradient(0deg,transparent 0 4px,rgba(60,150,205,.025) 4px 5px);pointer-events:none}.scanlines{position:fixed;inset:0;opacity:.055;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 3px,#000 3px 4px)}.hud{width:99.2vw;height:98.8vh;margin:.6vh auto}.panel,.topbar,.side-nav,footer{position:relative;background:linear-gradient(145deg,rgba(4,17,28,.985),rgba(1,8,14,.995));border:1px solid #1574a9;box-shadow:inset 0 0 0 1px rgba(69,197,255,.07),0 0 8px rgba(0,154,255,.18)}.panel:before,.topbar:before{content:"";position:absolute;left:9px;right:9px;top:-1px;height:1px;background:linear-gradient(90deg,transparent,#54d2ff,transparent)}.topbar{height:8vh;display:flex;align-items:center;padding:0 1.8vw}.brand{font-weight:900;font-size:2.2vw;letter-spacing:.1em;text-shadow:0 0 11px rgba(87,202,255,.65)}.brand>b{font-size:.9vw;color:#a8dff7}.brand span{display:block;font-size:.53vw;font-weight:500;letter-spacing:.27em;color:#7fc7ea}.motto{margin:auto;color:#71c6ec;font-size:.62vw;letter-spacing:.28em}.clock{display:flex;gap:1.1vw;align-items:center;font-size:.7vw;color:#b8def0}.clock strong{font-size:1.7vw;color:#fff}.mode{margin-left:1vw;border:1px solid #e5aa2d;box-shadow:0 0 8px rgba(255,181,35,.28);padding:.55vh .75vw;font-size:.52vw;color:#a6bbc5}.mode strong{display:block;color:#ffdc66;font-size:.7vw}.layout{display:grid;grid-template-columns:12.7vw 1fr;gap:.65vw;height:90.2vh;margin-top:.55vh}.side-nav{display:flex;flex-direction:column;gap:.7vh;padding:.7vh .55vw;overflow:hidden}.side-nav button{height:8.4vh;border:1px solid #1687c7;background:linear-gradient(180deg,#071b2a,#03101a);color:#d6f1ff;text-align:left;padding:0 1vw;font-size:.76vw;font-weight:700;letter-spacing:.04em;box-shadow:inset 0 0 15px rgba(0,144,230,.09),0 0 8px rgba(0,150,255,.16)}.side-nav button:first-letter{font-size:1.45vw}.side-nav button span{margin-left:.65vw}.side-nav button.active{border-color:#ffbf32;color:#ffe57b;background:linear-gradient(180deg,#392704,#100c03);box-shadow:0 0 14px rgba(255,180,25,.48),inset 0 0 18px rgba(255,183,35,.14)}.side-art{flex:1;margin:.5vh -.55vw -.2vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 1.2vw 3.8vh;background:linear-gradient(180deg,transparent 18%,rgba(1,9,15,.1) 45%,rgba(2,10,16,.45)),radial-gradient(ellipse at 50% 95%,#123958 0,#071c2c 34%,transparent 67%);border-top:1px solid #0c3d5c;color:#6da7c3;font-size:.52vw;letter-spacing:.16em}.side-art b{color:#b5d7e7;margin-top:.35vh}.online{height:3.1vh;color:#59ff89;font-size:.5vw;display:flex;align-items:center;padding-left:.45vw}.workspace{display:grid;grid-template-rows:23.4vh 31.4vh 10.4vh 22.8vh 3vh;gap:.55vh;min-width:0}.hero{display:grid;grid-template-columns:1.65fr .95fr;gap:.65vw}.profile,.quote,.domains,.finance,.week,.skill,.priority{padding:.55vh .65vw}.title{font-size:.63vw;letter-spacing:.12em;font-weight:700;color:#d7f0fb}.profile-body{height:calc(100% - 2vh);display:grid;grid-template-columns:36% 64%;gap:.7vw;margin-top:.25vh}.avatar-stage{position:relative;overflow:hidden;border:1px solid #185a80;background:radial-gradient(ellipse at 50% 92%,rgba(255,165,35,.32),transparent 27%),linear-gradient(90deg,#07131c,#0b1821 45%,#04111b);box-shadow:inset 0 0 25px #000}.avatar-stage:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 49%,rgba(38,174,242,.08) 50%,transparent 51%),linear-gradient(180deg,transparent 70%,rgba(255,153,20,.08));pointer-events:none}.avatar-stage video{position:absolute;left:4%;bottom:-2%;width:92%;height:91%;object-fit:contain;z-index:2;filter:contrast(1.08) saturate(1.08)}.identity{position:absolute;z-index:4;right:.55vw;top:.35vh;text-align:right}.identity b{display:block;font-size:1.2vw;letter-spacing:.12em}.identity span{font-size:.67vw;color:#c2eaff;display:block}.identity small{font-size:.5vw;color:#ffd263}.avatar-stage #stageQuote{position:absolute;z-index:3;bottom:.55vh;width:100%;text-align:center;font-size:.48vw;letter-spacing:.17em;color:#8dc3db}.avatar-stage button{display:none;position:absolute;z-index:8;bottom:.5vh;left:50%;transform:translateX(-50%);background:#071824;border:1px solid #2f9bcf;color:#fff}.avatar-stage button.show{display:block}.global{display:grid;grid-template-columns:23% 1fr;grid-template-rows:1fr 5.5vh;gap:.5vh .8vw;padding:.6vh .2vw}.level span{font-size:.58vw;color:#a7c3d0;display:block}.level strong{font-size:4vw;line-height:.92;color:#fff1bd;text-shadow:0 0 12px rgba(255,196,57,.42)}.global-xp{padding-top:2.8vh}.global-xp>b{font-size:.82vw}.global-xp small{font-size:.5vw;color:#8eabb8}.bar{height:.8vh;border:1px solid #31586d;background:#02070a;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#5eea76,#fff064);box-shadow:0 0 7px rgba(255,232,84,.35)}.bar.gold{height:1.25vh;margin:.65vh 0}.bar.gold i{background:linear-gradient(90deg,#ffc637,#fff77a)}.summary{grid-column:1/3;display:grid;grid-template-columns:repeat(3,1fr);gap:.5vw}.summary>div{border:1px solid #1c5576;background:#05121c;padding:.55vh .65vw;font-size:.85vw}.summary span{font-size:.48vw;color:#8faebd;margin-left:.35vw}.summary b{display:block;font-size:.65vw;margin-left:1.45vw}.summary i{font-style:normal}.quote{overflow:hidden}.quote-main{height:58%;display:grid;grid-template-columns:3.2vw 1fr;align-items:center;padding:0 1.1vw}.quote-main>span{font:4.1vw Georgia;color:#ffd35b;text-shadow:0 0 11px rgba(255,196,48,.35)}.quote blockquote{margin:0;font:italic 1vw Georgia;color:#fff;line-height:1.5;text-align:center}.quote-mountains{height:42%;margin:0 -.65vw -.55vh;background:linear-gradient(180deg,transparent,rgba(2,8,14,.1)),linear-gradient(160deg,transparent 0 52%,#102d43 52% 58%,#071c2d 58% 66%,#03101a 66%);border-top:1px solid #123b57}.domains{overflow:hidden}.stat-grid{height:calc(100% - 2.1vh);display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:.55vw;margin-top:.35vh}.stat-card{--tone:#39c9ff;display:grid;grid-template-columns:2.65vw 1fr;grid-template-rows:auto 1fr;padding:.65vh .65vw;background:linear-gradient(145deg,#07131d,#02090e);border:1px solid var(--tone);box-shadow:inset 0 0 15px rgba(0,0,0,.3),0 0 8px color-mix(in srgb,var(--tone) 33%,transparent)}.stat-card[data-tone=yellow]{--tone:#ffd33e}.stat-card[data-tone=purple]{--tone:#b452ff}.stat-card[data-tone=red]{--tone:#ff5063}.stat-card[data-tone=cyan]{--tone:#27c7ff}.stat-card[data-tone=green]{--tone:#3bf098}.stat-card[data-tone=teal]{--tone:#28e8d2}.stat-card[data-tone=orange]{--tone:#ff8a3d}.stat-card[data-tone=blue]{--tone:#5a86ff}.stat-card .icon{grid-row:1/3;width:2.2vw;height:2.2vw;border:1px solid var(--tone);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--tone);font-size:1.15vw;box-shadow:0 0 9px color-mix(in srgb,var(--tone) 38%,transparent)}.stat-card h3{display:inline;margin:0;color:var(--tone);font-size:.72vw}.stat-card .lvl{float:right;font-size:.46vw;color:#c3d5dc}.stat-card .xp{font-size:.6vw;margin:.35vh 0}.stat-card .pct{float:right}.stat-card .bar{height:.7vh}.stat-card .detail{grid-column:2;display:grid;grid-template-columns:1fr auto;gap:.15vh .35vw;border-top:1px solid rgba(120,190,220,.15);padding-top:.35vh}.stat-card .detail span{font-size:.42vw;color:#7798a8}.stat-card .detail b{font-size:.5vw}.finance{display:grid;grid-template-columns:13% 11% 1fr 22%;align-items:center}.finance-head{display:flex;gap:.45vw;align-items:center;color:#ffd23e}.finance-head>span{font-size:1.25vw}.finance-head b{display:block;font-size:.67vw}.finance-head small,.budget small,.finance-kpis small{display:block;font-size:.42vw;color:#84a9ba}.budget b{font-size:.88vw}.trajectory{position:relative;padding:1.2vh .8vw 0}.trajectory-value{position:absolute;top:-.75vh;left:50%;transform:translateX(-50%);background:#ff5257;color:#111;font-weight:900;font-size:.58vw;padding:.25vh .55vw;border-radius:2px;box-shadow:0 0 8px rgba(255,65,70,.45)}.trajectory-bar{height:1.45vh;border:1px solid #6d7d7f;background:linear-gradient(90deg,#ff313d 0,#ffb02d 34%,#fff55d 50%,#75f35f 72%,#00e887 100%);box-shadow:0 0 9px rgba(102,255,126,.18)}.trajectory-bar i{position:absolute;top:.65vh;width:3px;height:2.5vh;background:#fff;box-shadow:0 0 7px #fff}.trajectory-scale{display:flex;justify-content:space-between;font-size:.43vw;margin-top:.2vh}.finance-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.35vw}.finance-kpis div{border:1px solid #225674;padding:.45vh;text-align:center}.finance-kpis b{font-size:.78vw;color:#65f29a}.finance-kpis .bad,.bad{color:#ff5a62!important}.finance-kpis .good,.good{color:#6bf19b!important}.bottom{display:grid;grid-template-columns:1.2fr .9fr 1.05fr;gap:.65vw}.week-num{display:block;text-align:center;font-size:.5vw;margin:.4vh}.days{display:grid;grid-template-columns:repeat(7,1fr);gap:.25vw}.days b{height:8.4vh;border:1px solid #1b5578;display:flex;align-items:center;justify-content:center;font-size:.54vw;color:#c0dce8}.days b.active{border-color:#ffd036;color:#ffe576;box-shadow:0 0 10px rgba(255,203,42,.4)}.skill-name{font-size:.48vw;color:#ffd65a;margin:.4vh 0}.skill-row{display:grid;grid-template-columns:1fr auto auto;gap:.3vw;font-size:.42vw;padding:.13vh;border-bottom:1px solid rgba(92,167,203,.13)}.skill-row .ok{color:#61f47b}.skill-row .x{color:#ff5661}.skill-progress{font-size:.43vw;margin-top:.25vh}.skill-progress>b{float:right}.priority-row{display:grid;grid-template-columns:2vw 1fr auto;align-items:center;margin:2vh .3vw 1.1vh}.priority-row>span{font-size:1.4vw;color:#ff5a63}.priority-row strong{display:block;font-size:.76vw}.priority-row small{font-size:.44vw;color:#829fac}.priority-row>b{font-size:.8vw}footer{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:0 1vw;font-size:.43vw;color:#77a5ba}footer span{color:#5bff89}footer b{text-align:center;font-weight:400}footer i{text-align:right;font-style:normal}.system-panel{display:none;position:fixed;inset:0;z-index:50;background:rgba(0,4,8,.94);align-items:center;justify-content:center}.system-panel.open{display:flex}.system-window{position:relative;width:88vw;min-height:65vh;max-height:88vh;overflow:auto;padding:2vw;background:linear-gradient(145deg,#071723,#02090e);border:1px solid #2c9bd0;box-shadow:0 0 25px rgba(0,157,235,.2)}#closePanel{position:absolute;right:1vw;top:1vh;width:2.2vw;height:2.2vw;background:#06131c;border:1px solid #3a87ac;color:#fff;font-size:1.2vw}.system-window h2{font-size:1.3vw;color:#ffd55d}.system-window h3{font-size:.8vw}.panel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.7vw}.panel-box,.objective-row{border:1px solid #245b78;background:#06131c;padding:1vw}.panel-box span{display:block;color:#82a8ba;font-size:.6vw}.panel-box b{font-size:1.35vw}.objective-row{display:grid;grid-template-columns:1fr 1fr auto;margin:.5vh 0;font-size:.72vw}.objective-row em{color:#70ef94}.analysis-row{display:grid;grid-template-columns:1fr auto 2fr;gap:.8vw;align-items:center;margin:.6vh 0;font-size:.65vw}.settings-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1vw}.settings-grid label,.system-window label{font-size:.65vw;color:#acd0df}.settings-grid input,.system-window textarea{display:block;width:100%;margin-top:.4vh;background:#02090e;border:1px solid #2b6c8c;color:#fff;padding:.75vw;font-size:.8vw}.system-window textarea{min-height:10vh}.action,.difficulty{background:#071923;border:1px solid #2a7ba1;color:#dff5ff;padding:.9vw}.difficulty-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.7vw}.difficulty{min-height:10vh;text-align:left}.difficulty.active{border-color:#ffd15a;color:#ffe69a;box-shadow:0 0 10px rgba(255,195,45,.25)}.difficulty b,.difficulty small{display:block}.difficulty small{margin-top:.7vh;color:#8faebb}.level-up{display:none;position:fixed;inset:0;z-index:60;align-items:center;justify-content:center;background:rgba(0,5,9,.72)}.level-up.show{display:flex}.level-card{border:1px solid #ffd15a;background:#06121a;padding:2vw 5vw;text-align:center}.level-card strong{font-size:5vw}.hidden-data{display:none}@media(max-width:1200px){.brand{font-size:1.8vw}.side-nav button{font-size:.65vw}}
+/* =========================================================
+   SYSTEME PLAYER V0.5.7 — PS4 PERFORMANCE MODE
+   Same layout / palette / content, but built for the PS4's old
+   browser: one moving layer, no blur animation, no frame swapping.
+   ========================================================= */
+
+/* The old PS4 browser struggles when many panels animate at once. */
+.panel::after,
+.profile::after,
+.stat-card::after,
+.avatar-stage::before,
+body::before{
+  animation:none !important;
+}
+
+/* Keep the approved look but make all expensive filters static/cheap. */
+.panel::after,
+.profile::after,
+.stat-card::after{
+  display:none !important;
+}
+
+.scanlines{
+  opacity:.045 !important;
+  background:repeating-linear-gradient(180deg,transparent 0 3px,rgba(255,255,255,.035) 4px,transparent 5px) !important;
+}
+
+/* Static lighting: visually close to the normal dashboard, zero animation cost. */
+.panel{
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.01),0 0 7px rgba(220,230,220,.012) !important;
+}
+.section-title,.brand{
+  text-shadow:0 0 3px rgba(220,235,225,.10) !important;
+}
+.player-corners{
+  filter:none !important;
+}
+.stat-card .icon,.stat-card h3,.stat-card .bar i,.segmented i,.trajectory-bar{
+  filter:none !important;
+}
+
+/* Character stage keeps the same charcoal appearance. */
+.avatar-stage{
+  background:radial-gradient(ellipse at 50% 52%,rgba(220,225,215,.065),transparent 34%),linear-gradient(180deg,#0a0d0b 0%,#070907 58%,#050605 100%) !important;
+  box-shadow:inset 0 0 16px rgba(220,225,215,.012) !important;
+  contain:layout paint;
+}
+.avatar-stage::before{
+  display:block !important;
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  background:repeating-linear-gradient(180deg,transparent 0 5px,rgba(220,225,215,.011) 6px) !important;
+  opacity:.45 !important;
+  pointer-events:none !important;
+}
+
+/* One sprite, one compositor layer. */
+.avatar-stage img,
+.avatar-stage img.sprite-transition-out,
+.avatar-stage img.sprite-transition-in{
+  width:70% !important;
+  height:94% !important;
+  max-height:94% !important;
+  object-fit:contain !important;
+  image-rendering:pixelated !important;
+  opacity:1 !important;
+  filter:none !important;
+  box-shadow:none !important;
+  mix-blend-mode:normal !important;
+  transform-origin:50% 88% !important;
+  backface-visibility:hidden !important;
+  -webkit-backface-visibility:hidden !important;
+  will-change:transform;
+  animation:ps4Breath 3.2s ease-in-out infinite !important;
+}
+
+@keyframes ps4Breath{
+  0%,100%{transform:translate3d(0,0,0) scale3d(1,1,1)}
+  50%{transform:translate3d(0,-2px,0) scale3d(1.006,1.006,1)}
+}
+
+/* Occasional gestures use transform only; no images are swapped. */
+.avatar-stage img.ps4-think{
+  animation:ps4Think 1.3s ease-in-out 1 !important;
+}
+@keyframes ps4Think{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  40%,65%{transform:translate3d(-2px,-1px,0) rotate(-1deg)}
+}
+
+.avatar-stage img.ps4-move{
+  animation:ps4Move 1.3s ease-in-out 1 !important;
+}
+@keyframes ps4Move{
+  0%,100%{transform:translate3d(0,0,0)}
+  35%{transform:translate3d(3px,-2px,0) rotate(.7deg)}
+  70%{transform:translate3d(-2px,-1px,0) rotate(-.5deg)}
+}
+
+.avatar-stage img.ps4-levelup{
+  animation:ps4Levelup .95s cubic-bezier(.2,.7,.25,1) 1 !important;
+}
+@keyframes ps4Levelup{
+  0%{transform:translate3d(0,0,0) scale3d(1,1,1)}
+  20%{transform:translate3d(0,3px,0) scale3d(1.02,.97,1)}
+  52%{transform:translate3d(0,-22px,0) scale3d(1.03,1.03,1)}
+  78%{transform:translate3d(0,2px,0) scale3d(1.02,.98,1)}
+  100%{transform:translate3d(0,0,0) scale3d(1,1,1)}
+}
+
+/* No canvas work on PS4. */
+#fxCanvas{display:none !important}
+
+/* Level-up overlay: same spirit, no blur/filter animation. */
+.level-up{
+  background:rgba(0,0,0,.78) !important;
+}
+.level-card{
+  box-shadow:none !important;
+}
+
+/* Avoid unnecessary transitions/repaints in progress bars on old WebKit. */
+.bar i,.trajectory-bar i,.segmented i{
+  transition:none !important;
+}
+
+/* =========================================================
+   V0.5.8 — PS4 BALANCED
+   Restore visible life/light using ONLY cheap compositor work:
+   opacity + translate/scale. No blur, no animated shadow, no filters.
+   ========================================================= */
+
+/* One global moving light layer only. */
+body::after{
+  content:"" !important;
+  display:block !important;
+  position:fixed !important;
+  top:-12% !important;
+  bottom:-12% !important;
+  left:-46% !important;
+  width:34% !important;
+  pointer-events:none !important;
+  z-index:2 !important;
+  opacity:0 !important;
+  background:linear-gradient(100deg,
+    rgba(255,255,255,0) 0%,
+    rgba(205,225,210,.018) 34%,
+    rgba(215,235,220,.075) 50%,
+    rgba(205,225,210,.018) 66%,
+    rgba(255,255,255,0) 100%) !important;
+  transform:translate3d(0,0,0) !important;
+  will-change:transform,opacity !important;
+  animation:ps4GlobalSweep 8.5s linear infinite !important;
+}
+
+@keyframes ps4GlobalSweep{
+  0%,15%{transform:translate3d(0,0,0);opacity:0}
+  22%{opacity:.75}
+  68%{opacity:.55}
+  82%,100%{transform:translate3d(430%,0,0);opacity:0}
+}
+
+/* A single local pulse around the player window. */
+.avatar-stage::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  inset:1px !important;
+  pointer-events:none !important;
+  z-index:1 !important;
+  opacity:.14 !important;
+  border:1px solid rgba(200,225,205,.18) !important;
+  background:linear-gradient(180deg,rgba(210,230,215,.018),transparent 44%,rgba(210,230,215,.012)) !important;
+  animation:ps4PlayerPulse 3.8s ease-in-out infinite !important;
+  will-change:opacity !important;
+}
+
+@keyframes ps4PlayerPulse{
+  0%,100%{opacity:.11}
+  50%{opacity:.32}
+}
+
+/* Make the character visibly alive while remaining transform-only. */
+.avatar-stage img,
+.avatar-stage img.sprite-transition-out,
+.avatar-stage img.sprite-transition-in{
+  animation:ps4BreathBalanced 2.25s ease-in-out infinite !important;
+  will-change:transform !important;
+}
+
+@keyframes ps4BreathBalanced{
+  0%,100%{transform:translate3d(0,1px,0) scale3d(1,1,1)}
+  50%{transform:translate3d(0,-4px,0) scale3d(1.012,1.018,1)}
+}
+
+.avatar-stage img.ps4-think{
+  animation:ps4ThinkBalanced 1.65s ease-in-out 1 !important;
+}
+@keyframes ps4ThinkBalanced{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg) scale3d(1,1,1)}
+  25%{transform:translate3d(-4px,-2px,0) rotate(-1.15deg) scale3d(1.008,1.008,1)}
+  55%{transform:translate3d(-2px,-4px,0) rotate(-.45deg) scale3d(1.014,1.014,1)}
+  78%{transform:translate3d(2px,-1px,0) rotate(.65deg) scale3d(1.006,1.006,1)}
+}
+
+.avatar-stage img.ps4-move{
+  animation:ps4MoveBalanced 1.65s ease-in-out 1 !important;
+}
+@keyframes ps4MoveBalanced{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  20%{transform:translate3d(5px,-3px,0) rotate(1.1deg)}
+  48%{transform:translate3d(-4px,-5px,0) rotate(-1deg)}
+  72%{transform:translate3d(3px,-2px,0) rotate(.7deg)}
+}
+
+/* A little life in the corner brackets only; opacity is cheap. */
+.player-corners{
+  opacity:.72 !important;
+  animation:ps4Corners 3.2s ease-in-out infinite !important;
+  will-change:opacity !important;
+}
+@keyframes ps4Corners{
+  0%,100%{opacity:.55}
+  50%{opacity:.92}
+}
+
+/* Keep UI above the global sweep and avoid layout/repaint-heavy effects. */
+.hud{position:relative !important;z-index:3 !important}
+
+
+/* =========================================================
+   V0.5.9 — PS4 NATIVE MOTION
+   Visual motion is driven by JavaScript, not CSS keyframes.
+   Only transform + opacity are updated.
+   ========================================================= */
+body::after{display:none !important;}
+.avatar-stage::after{animation:none !important; -webkit-animation:none !important;}
+.player-corners{animation:none !important; -webkit-animation:none !important;}
+.avatar-stage img,
+.avatar-stage img.sprite-transition-out,
+.avatar-stage img.sprite-transition-in,
+.avatar-stage img.ps4-think,
+.avatar-stage img.ps4-move,
+.avatar-stage img.ps4-levelup{
+  animation:none !important;
+  -webkit-animation:none !important;
+  transition:none !important;
+  -webkit-transition:none !important;
+}
+#ps4LightSweep{
+  position:fixed;
+  top:-15%;
+  bottom:-15%;
+  left:-42%;
+  width:30%;
+  z-index:2;
+  pointer-events:none;
+  opacity:0;
+  background:-webkit-linear-gradient(350deg,rgba(255,255,255,0) 0%,rgba(205,225,210,.018) 34%,rgba(225,240,228,.095) 50%,rgba(205,225,210,.018) 66%,rgba(255,255,255,0) 100%);
+  background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(205,225,210,.018) 34%,rgba(225,240,228,.095) 50%,rgba(205,225,210,.018) 66%,rgba(255,255,255,0) 100%);
+  transform:translate3d(0,0,0);
+  -webkit-transform:translate3d(0,0,0);
+}
+.hud{position:relative !important;z-index:3 !important;}
+
+/* V0.6.0 PS4 VIDEO MODE */
+#ps4LightSweep{display:none!important}.avatar-stage img{display:none!important}.avatar-stage{overflow:hidden!important;background:#070908!important}.ps4-avatar-video{position:absolute!important;left:0!important;top:0!important;width:100%!important;height:100%!important;object-fit:cover!important;opacity:1!important;z-index:0!important;background:#070908!important;transform:none!important;-webkit-transform:none!important}.player-corners,.player-stage-label{z-index:3!important}.video-start-button{display:none;position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);border:1px solid rgba(190,215,195,.32);background:rgba(4,7,5,.88);color:#c8d7ca;font:600 11px/1 monospace;letter-spacing:.08em;padding:10px 12px}.video-start-button.show{display:block}*,*::before,*::after{animation-duration:0s!important;-webkit-animation-duration:0s!important}.level-up.show .level-card{animation:none!important;-webkit-animation:none!important}
+
+
+/* === V0.6.1 PS4 LIGHT FX ===
+   PS4-safe: no blur/filter/box-shadow animation.
+   Static highlights + one global moving scan layer.
+*/
+body::before{
+  content:"";
+  position:fixed;
+  left:0; top:0; right:0; bottom:0;
+  pointer-events:none;
+  z-index:9998;
+  opacity:.34;
+  background:
+    linear-gradient(115deg,
+      rgba(150,255,205,0) 0%,
+      rgba(150,255,205,.035) 42%,
+      rgba(205,255,225,.12) 49%,
+      rgba(150,255,205,.035) 56%,
+      rgba(150,255,205,0) 100%);
+  background-size:260% 100%;
+  background-position:-160% 0;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  left:0; top:0; right:0; bottom:0;
+  pointer-events:none;
+  z-index:9997;
+  opacity:.28;
+  background:
+    radial-gradient(ellipse at 18% 18%, rgba(132,255,186,.10), transparent 25%),
+    radial-gradient(ellipse at 68% 43%, rgba(132,255,186,.07), transparent 28%),
+    radial-gradient(ellipse at 42% 80%, rgba(132,255,186,.06), transparent 30%);
+}
+
+/* Gentle permanent edge illumination without animated shadows */
+.card, .panel, .module, .stat-card, .fundamental, .finance-panel,
+[class*="card"], [class*="panel"]{
+  border-color:rgba(177,230,196,.24);
+}
+
+/* Highlight progress tracks without animating layout */
+progress, .progress, .progress-bar, [class*="progress"]{
+  position:relative;
+}
+
+/* JS-controlled class; transform only */
+.ps4-fx-scan{
+  will-change:background-position,opacity;
+}
+
+
+/* === V0.6.2 PS4 STATIC HIGHLIGHT ===
+   No animated light on dashboard items.
+   Only a static white/neutral highlight around existing item borders.
+*/
+
+/* Disable the global moving overlays from V0.6.1 */
+body::before,
+body::after,
+#ps4-global-light-fx{
+  display:none !important;
+}
+
+/* Static highlight on main dashboard item borders */
+.panel,
+.card,
+.stat-card,
+.module,
+.fundamental,
+.finance-panel,
+[class*="panel"],
+[class*="card"]{
+  border-color:rgba(235,245,238,.42) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.035),
+    0 0 7px rgba(220,245,228,.10) !important;
+}
+
+/* Slightly brighter highlight for the PLAYER area, still static */
+.avatar-stage,
+.player-card,
+[class*="player"]{
+  border-color:rgba(240,250,244,.50) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.045),
+    0 0 8px rgba(225,248,232,.12) !important;
+}
+
+/* Keep progress/items readable without animated glow */
+.stat-card:hover,
+.panel:hover,
+.card:hover{
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.035),
+    0 0 7px rgba(220,245,228,.10) !important;
+}
+
+/* V0.7 — requested functional panels, PS4-safe */
+.topbar{position:relative}.ps4-menu{display:flex;gap:4px;align-items:center;justify-content:center}.ps4-menu button{font:700 9px/1 monospace;letter-spacing:.04em;color:#aeb9ae;background:#090d0b;border:1px solid rgba(235,245,238,.24);padding:6px 7px}.ps4-menu button:focus,.ps4-menu button:hover{color:#fff0b0;border-color:#d2bc70}.ps4-quote{margin:5px 0 7px;border:1px solid rgba(235,245,238,.22);background:#070b09;color:#c8d2c8;text-align:center;font:600 11px/1.3 monospace;padding:7px;box-shadow:0 0 7px rgba(220,245,228,.08)}.system-panel{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.82);padding:5vh 8vw}.system-panel.open{display:block}.system-window{position:relative;max-width:1050px;max-height:88vh;margin:auto;overflow:auto;padding:24px;background:#070b09!important}.system-window h2{color:#d6c77e;font:700 18px/1 monospace;margin:0 0 20px}.system-window h3{color:#9eaa9a;font:700 11px/1 monospace;margin:24px 0 10px}.close-panel{position:absolute;right:12px;top:10px;border:1px solid #66705e;background:#090d0b;color:#d8ddc8;font-size:22px}.panel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.panel-box,.objective-row,.analysis-row{border:1px solid #293128;background:#080c09;padding:12px}.panel-box span{display:block;color:#8c9585;font:10px monospace}.panel-box b{display:block;color:#d8ddc8;font:700 20px monospace;margin-top:7px}.analysis-row{display:grid;grid-template-columns:180px 90px 1fr;align-items:center;gap:10px;margin:6px 0}.objective-row{display:grid;grid-template-columns:220px 1fr 70px;gap:10px;margin:7px 0}.objective-row em{color:#78d06c;font-style:normal}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.settings-grid label,.system-window>label{display:flex;flex-direction:column;gap:6px;color:#aeb9ae;font:10px monospace}.settings-grid input,.system-window textarea{background:#050706;color:#d8ddc8;border:1px solid #66705e;padding:10px;font:12px monospace}.system-window textarea{min-height:80px;margin-bottom:14px}.action,.difficulty{border:1px solid #66705e;background:#0a0e0b;color:#d8ddc8;padding:11px;font:700 11px monospace}.action{margin-top:16px}.difficulty-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.difficulty{text-align:left}.difficulty.active{border-color:#d6c77e;color:#fff0b0}.difficulty small{display:block;margin-top:7px;color:#8c9585;line-height:1.4}#panelMsg{color:#78d06c;font:10px monospace}
+
+/* =========================================================
+   V1.1 CLASSIC LIGHT — PS4 SAFE
+   Base: last stable classic layout. Visual enhancement only.
+   No engine/data/control logic changed.
+   ========================================================= */
+:root{--fx-blue:#58bff0;--fx-gold:#e6c15c;--fx-violet:#9c72dc;--fx-red:#dc6963;--fx-green:#79bd75;--fx-cyan:#69b9c8}
+body{background:#020403!important}
+.panel{border-color:rgba(140,165,148,.27)!important;box-shadow:inset 0 0 0 1px rgba(185,210,192,.018),0 0 8px rgba(83,154,191,.035)!important}
+.topbar{border-bottom-color:rgba(83,167,205,.28)!important;box-shadow:0 2px 10px rgba(42,130,171,.04)!important}
+.summary{box-shadow:inset 0 1px rgba(115,183,216,.05),0 0 10px rgba(73,142,175,.035)!important}
+.level-number{color:#e9eddc!important;text-shadow:0 0 10px rgba(220,234,186,.10)!important}
+#globalXpBar{background:linear-gradient(90deg,#b9d77f,#d6d990)!important;box-shadow:0 0 7px rgba(185,215,127,.18)!important}
+.mini-card{background:linear-gradient(180deg,rgba(9,14,11,.72),rgba(4,7,5,.86))!important}
+.stat-card{background:linear-gradient(180deg,rgba(8,12,9,.78),rgba(3,6,4,.88))!important;transition:none!important}
+.stat-card[data-tone="cyan"]{--accent:#62b9d8!important;box-shadow:inset 2px 0 rgba(98,185,216,.32),0 0 8px rgba(98,185,216,.035)!important}
+.stat-card[data-tone="purple"]{--accent:#9b79cb!important;box-shadow:inset 2px 0 rgba(155,121,203,.30),0 0 8px rgba(155,121,203,.035)!important}
+.stat-card[data-tone="red"]{--accent:#cf6c68!important;box-shadow:inset 2px 0 rgba(207,108,104,.30),0 0 8px rgba(207,108,104,.035)!important}
+.stat-card[data-tone="green"]{--accent:#82ba78!important;box-shadow:inset 2px 0 rgba(130,186,120,.30),0 0 8px rgba(130,186,120,.035)!important}
+.stat-card[data-tone="amber"]{--accent:#cdb66a!important;box-shadow:inset 2px 0 rgba(205,182,106,.30),0 0 8px rgba(205,182,106,.035)!important}
+.stat-card .icon,.stat-card h3{text-shadow:0 0 7px color-mix(in srgb,var(--accent) 32%,transparent)!important}
+.stat-card .bar i{box-shadow:0 0 6px color-mix(in srgb,var(--accent) 25%,transparent)!important}
+.finance{box-shadow:inset 0 1px rgba(205,182,106,.05),0 0 9px rgba(205,182,106,.025)!important}
+.trajectory-bar{box-shadow:0 0 7px rgba(190,195,115,.10)!important}
+.skill{box-shadow:inset 0 1px rgba(98,185,216,.04),0 0 9px rgba(98,185,216,.025)!important}
+.profile{box-shadow:inset 0 1px rgba(98,185,216,.05),0 0 10px rgba(98,185,216,.035)!important}
+.avatar-stage{border-color:rgba(104,147,126,.28)!important;box-shadow:inset 0 0 22px rgba(75,115,89,.05),0 0 8px rgba(76,155,188,.035)!important}
+.ps4-avatar-video{filter:saturate(.98) contrast(1.04) brightness(1.025)!important}
+.status{box-shadow:inset 0 1px rgba(116,188,125,.035)!important}
+.segmented i{box-shadow:0 0 5px rgba(185,215,127,.12)!important}
+.priority .target{color:#d76b59!important;text-shadow:0 0 6px rgba(215,107,89,.14)!important}
+.week .days b.active{border-color:#a9c978!important;color:#d9e5b5!important;box-shadow:0 0 6px rgba(169,201,120,.13)!important}
+.online{color:#a8cb72!important;text-shadow:0 0 5px rgba(168,203,114,.16)!important}
+.ps4-menu button{border-color:rgba(126,163,180,.25)!important;background:#080c0b!important;color:#aeb9ae!important;box-shadow:inset 0 0 6px rgba(74,145,179,.025)!important}
+.ps4-menu button:hover,.ps4-menu button:focus{border-color:#bca95f!important;color:#eadc9b!important;box-shadow:0 0 7px rgba(188,169,95,.10)!important}
+.ps4-quote{border-color:rgba(126,163,180,.22)!important;box-shadow:0 0 7px rgba(74,145,179,.035)!important}
+/* PS4: no animated sweeps or expensive filters */
+#ps4LightSweep{display:none!important}.panel:after,.stat-card:after,.avatar-stage:after{animation:none!important;-webkit-animation:none!important}

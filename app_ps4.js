@@ -150,12 +150,12 @@ function rankForLevel(level){
 
 function attrDescriptor(key){
   return {
-    lecture:{label:"LECTURE",icon:"▤",tone:"yellow"},
+    lecture:{label:"LECTURE",icon:"▣",tone:"cyan"},
     apprentissage:{label:"APPRENTISSAGE",icon:"✺",tone:"purple"},
     sport:{label:"SPORT",icon:"↔",tone:"red"},
-    nutrition:{label:"NUTRITION",icon:"◉",tone:"teal"},
-    travail:{label:"RECHERCHE D’EMPLOI",icon:"▰",tone:"cyan"},
-    finance:{label:"ARGENT",icon:"≋",tone:"green"}
+    nutrition:{label:"NUTRITION",icon:"●",tone:"green"},
+    travail:{label:"TRAVAIL",icon:"▰",tone:"amber"},
+    finance:{label:"FINANCE",icon:"$",tone:"green"}
   }[key];
 }
 
@@ -233,9 +233,6 @@ function renderSnapshot(snapshot){
       `;
       grid.appendChild(card);
     });
-    const smoke=snapshot.smoking||{streak:0,todayXp:0};
-    const smokeCard=document.createElement("article"); smokeCard.className="stat-card"; smokeCard.dataset.tone="orange"; smokeCard.innerHTML=`<div class="icon">⊘</div><div><h3>SANS CIGARETTE</h3><div class="lvl">SÉRIE</div><div class="xp">${smoke.todayXp||0} XP <span class="pct">${Math.min(100,(smoke.streak||0)*10)}%</span></div><div class="bar"><i style="width:${Math.min(100,(smoke.streak||0)*10)}%"></i></div></div><div class="detail"><span>AUJOURD’HUI</span><b>${smoke.todayXp||0} XP</b><span>JOURS SANS TABAC</span><b>${smoke.streak||0} jours</b></div>`; grid.appendChild(smokeCard);
-    const rec=!!(snapshot.lastEntry&&snapshot.lastEntry.recoveryDay); const recCard=document.createElement("article"); recCard.className="stat-card"; recCard.dataset.tone="blue"; recCard.innerHTML=`<div class="icon">☾</div><div><h3>REPOS</h3><div class="lvl">DIMANCHE</div><div class="xp">${rec?"ACTIF":"VEILLE"} <span class="pct">${rec?100:0}%</span></div><div class="bar"><i style="width:${rec?100:0}%"></i></div></div><div class="detail"><span>RECOVERY DAY</span><b>${rec?"ACTIF":"—"}</b><span>PÉNALITÉ JOUR</span><b>0 XP</b></div>`; grid.appendChild(recCard);
   }
 
   const f = snapshot.finance;
@@ -248,7 +245,6 @@ function renderSnapshot(snapshot){
   const gapText = (f.trajectoryGap>=0?"+":"") + formatEuro(f.trajectoryGap);
   setText("trajectoryGap",gapText);
   setText("gapDetail",gapText);
-  setText("trajectoryBubble",gapText);
 
   ["trajectoryGap","gapDetail"].forEach(id=>{
     const el=$(id);
@@ -437,15 +433,15 @@ window.addEventListener("DOMContentLoaded",()=>{
   setInterval(tickClock,1000);
 });
 
-console.log("SYSTEME PLAYER V1.0 PS4 — native motion chargé");
+console.log("SYSTEME PLAYER V0.5.9 PS4 — native motion chargé");
 
 /* V0.6.0 PS4 VIDEO MODE ENGINE */
 var ps4VideoKey="",ps4VideoReturnTimer=null;
 function startPs4NativeMotion(){}
 function ps4EvolutionKey(e){var f=((e&&e.sprite)||"sprites/brian_lvl_001_base.png").split("/").pop();return f.replace(/\.png$/i,"");}
-function ps4SetVideo(key,kind,loop){var v=$("avatarVideo");if(!v)return;var src="ps4_media/"+key+"_"+kind+".mp4?v=100";if(v.getAttribute("data-src")!==src){v.setAttribute("data-src",src);v.loop=!!loop;v.src=src;try{v.load()}catch(e){}}else v.loop=!!loop;var b=$("videoStartButton");function ok(){if(b)b.classList.remove("show")}function fail(){if(b)b.classList.add("show")}try{var r=v.play();if(r&&typeof r.then==="function")r.then(ok).catch(fail);else setTimeout(function(){v.paused?fail():ok()},500)}catch(e){fail()}}
+function ps4SetVideo(key,kind,loop){var v=$("avatarVideo");if(!v)return;var src="ps4_media/"+key+"_"+kind+".mp4?v=060";if(v.getAttribute("data-src")!==src){v.setAttribute("data-src",src);v.loop=!!loop;v.src=src;try{v.load()}catch(e){}}else v.loop=!!loop;var b=$("videoStartButton");function ok(){if(b)b.classList.remove("show")}function fail(){if(b)b.classList.add("show")}try{var r=v.play();if(r&&typeof r.then==="function")r.then(ok).catch(fail);else setTimeout(function(){v.paused?fail():ok()},500)}catch(e){fail()}}
 function updateCharacterSprite(level){var e=getCharacterEvolution(level);setText("evolutionStage",e.stage);var k=ps4EvolutionKey(e);if(k===ps4VideoKey)return;ps4VideoKey=k;ps4SetVideo(k,"idle",true)}
 function ensureLivingCharacter(level){updateCharacterSprite(level)}
 function playLivingLevelUp(level){var e=getCharacterEvolution(level),k=ps4EvolutionKey(e);ps4VideoKey=k;if(ps4VideoReturnTimer)clearTimeout(ps4VideoReturnTimer);ps4SetVideo(k,"levelup",false);ps4VideoReturnTimer=setTimeout(function(){ps4SetVideo(k,"idle",true)},1900)}
 window.addEventListener("DOMContentLoaded",function(){var b=$("videoStartButton"),v=$("avatarVideo");if(b&&v){b.addEventListener("click",function(){try{var p=v.play();if(p&&p.catch)p.catch(function(){});b.classList.remove("show")}catch(e){}});setTimeout(function(){if(v.paused)b.classList.add("show")},1000)}});
-console.log("SYSTEME PLAYER V1.0 PS4 — video mode chargé");
+console.log("SYSTEME PLAYER V0.6.0 PS4 — video mode chargé");
