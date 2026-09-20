@@ -1,0 +1,16 @@
+PLAYER PS4 V0.9 — APPROVED DESIGN
+
+Base : V0.8 fonctionnelle.
+Cible : navigateur PS4 / GitHub Pages.
+
+IMPORTANT
+- CONSERVEZ votre config.js actuel : il n'est volontairement pas inclus dans ce ZIP.
+- Copiez tout le contenu du ZIP à la racine de player-dashboard.
+- Acceptez le remplacement des anciens fichiers.
+- Ne supprimez pas config.js.
+
+Cette version conserve : synchronisation Google Apps Script, moteur XP, niveaux, difficulté réelle, objectifs, paramètres, citations modifiables, analyse, 24 vidéos PS4 du personnage et Level Up.
+
+Refonte : HUD bleu nuit / cyan / or, panneau joueur, cartes colorées, budget rouge→jaune→vert avec marqueur dynamique, panneaux modaux agrandis, rendu optimisé PS4 (pas d'animations CSS lourdes, pas de filtres coûteux).
+
+Test : ps4.html?v=090
