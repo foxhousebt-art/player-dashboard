@@ -1,0 +1,29 @@
+PLAYER PS4 V1.0 — PIXEL FAITHFUL
+
+Base : V0.9/V0.8 fonctionnelle, habillage entièrement reconstruit d'après la maquette validée du 20/09/2026.
+
+IMPORTANT : CONSERVEZ VOTRE config.js ACTUEL.
+Ce package ne contient volontairement pas config.js.
+
+INSTALLATION GITHUB
+1. Ouvrir le vrai dossier du dépôt player-dashboard.
+2. Ne pas supprimer config.js.
+3. Copier tout le contenu de ce ZIP à la racine du dépôt et accepter les remplacements.
+4. Commit conseillé : PLAYER PS4 V1.0 Pixel Faithful
+5. Push origin.
+6. Tester : ps4.html?v=100
+
+CONTRAINTE PS4
+- animations personnage conservées en MP4 H.264 pré-rendues ;
+- pas de canvas/effets lourds ;
+- interface 16:9 fixe et compacte ;
+- effets essentiellement statiques (bordures, gradients, lueurs légères).
+
+FONCTIONS CONSERVÉES
+- synchronisation Apps Script / Sheets ;
+- moteur XP/niveaux ;
+- Analyse ; Objectifs ; Paramètres ; Mode de difficulté ; Citations ;
+- personnage évolutif et Level Up ;
+- budget dynamique et trajectoire rouge → jaune → vert ;
+- citation éditable ;
+- 6 fondamentaux + cartes statut Sans cigarette / Repos.
