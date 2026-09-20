@@ -1,0 +1,13 @@
+PLAYER V0.6.2 — PS4 STATIC HIGHLIGHT
+
+But:
+- conserver le personnage vidéo fluide;
+- supprimer l'éclairage animé qui saccade sur les items;
+- ajouter uniquement une surbrillance fixe et discrète autour des traits blancs des panneaux/items.
+
+Installation:
+- remplacer ps4.css et ps4.html dans player-dashboard.
+- le reste peut rester tel quel.
+- ne pas toucher à config.js, index.html, app.js, styles.css ou sprites.
+- commit + push.
+- tester avec ps4.html?v=062

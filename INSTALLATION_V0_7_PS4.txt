@@ -1,0 +1,29 @@
+PLAYER V0.7 — PS4 FUNCTIONAL
+
+BASE
+Cette version part directement de PLAYER_V0_6_2_PS4_STATIC_HIGHLIGHT fourni par l'utilisateur.
+Le design historique PS4 est conservé. Pas de Living World, pas de redesign.
+
+AJOUTS DEMANDÉS
+- ANALYSE : XP bruts, pénalités, XP nets, comeback, jours actifs, tabac, sport, Perfect Days et progression des 6 fondamentaux.
+- OBJECTIFS : affiche les objectifs réellement utilisés par le moteur.
+- PARAMÈTRES : permet de modifier budget, lecture, apprentissage, sport, nutrition, recherche d'emploi.
+- DIFFICULTÉ : Explorateur / Engagé / Discipliné / Impitoyable. Le choix modifie réellement le calcul des récompenses et pénalités.
+- CITATIONS : citation principale modifiable avec aperçu direct et sauvegarde.
+- Heure Europe/Paris et semaine/jour dynamiques.
+- PS4 video mode conservé.
+
+INSTALLATION
+1. GitHub Desktop > Repository > Show in Finder.
+2. Copier tout le contenu de ce dossier à la racine de player-dashboard.
+3. IMPORTANT : NE PAS remplacer ni supprimer le config.js déjà connecté.
+4. config.example.js peut être copié.
+5. Accepter le remplacement des autres fichiers.
+6. Laisser .DS_Store décoché.
+7. Commit : PLAYER V0.7 PS4 Functional
+8. Push origin.
+
+URL principale PS4 :
+https://foxhousebt-art.github.io/player-dashboard/ps4.html?v=070
+
+index.html est volontairement la même interface PS4 pendant cette phase.

@@ -1,4 +1,0 @@
-PLAYER V0.8.0 — LIVING VALLEY
-IMPORTANT : gardez votre config.js GitHub actuel connecté.
-Copiez/remplacez les autres fichiers dans player-dashboard, ajoutez living_valley_reference.png, Commit 'V0.8.0 Living Valley', Push origin, puis testez index.html?v=080.
-Cette première version vivante anime profondeur, eau, trafic aérien, mécanoïdes, particules et lumière tout en gardant le HUD lisible.

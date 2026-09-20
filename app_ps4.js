@@ -299,66 +299,16 @@ function renderSnapshot(snapshot){
   renderedGlobalLevel = g.level;
 }
 
-
-function lastSundayUTC(year, monthZeroBased){
-  var d = new Date(Date.UTC(year, monthZeroBased + 1, 0, 1, 0, 0));
-  return d.getUTCDate() - d.getUTCDay();
-}
-
-function parisOffsetHours(nowUtcMs){
-  var d = new Date(nowUtcMs);
-  var y = d.getUTCFullYear();
-  var marchLastSunday = lastSundayUTC(y, 2);
-  var octoberLastSunday = lastSundayUTC(y, 9);
-  var dstStart = Date.UTC(y, 2, marchLastSunday, 1, 0, 0);
-  var dstEnd = Date.UTC(y, 9, octoberLastSunday, 1, 0, 0);
-  return (nowUtcMs >= dstStart && nowUtcMs < dstEnd) ? 2 : 1;
-}
-
-function getParisNow(){
-  var utcMs = Date.now();
-  var offset = parisOffsetHours(utcMs);
-  return new Date(utcMs + offset * 3600000);
-}
-
-function updateWeekFooter(parisDate){
-  var y = parisDate.getUTCFullYear();
-  var m = parisDate.getUTCMonth();
-  var day = parisDate.getUTCDate();
-  var dow = parisDate.getUTCDay();
-
-  /* Calendar week of month, Monday -> Sunday. */
-  var firstDow = new Date(Date.UTC(y, m, 1)).getUTCDay();
-  var mondayIndexFirst = (firstDow + 6) % 7;
-  var currentWeek = Math.floor((mondayIndexFirst + day - 1) / 7) + 1;
-
-  var daysInMonth = new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
-  var totalWeeks = Math.ceil((mondayIndexFirst + daysInMonth) / 7);
-
-  setText("currentWeekLabel", "SEMAINE " + currentWeek + " / " + totalWeeks);
-
-  var dayEls = document.querySelectorAll(".week .days b");
-  for(var i=0;i<dayEls.length;i++){
-    var val = parseInt(dayEls[i].getAttribute("data-day"),10);
-    if(val === dow) dayEls[i].classList.add("active");
-    else dayEls[i].classList.remove("active");
-  }
-}
-
 function tickClock(){
-  var n = getParisNow();
-  var dd = String(n.getUTCDate()).padStart(2,"0");
-  var mm = String(n.getUTCMonth()+1).padStart(2,"0");
-  var yyyy = n.getUTCFullYear();
-  var hh = String(n.getUTCHours()).padStart(2,"0");
-  var mi = String(n.getUTCMinutes()).padStart(2,"0");
-  var ss = String(n.getUTCSeconds()).padStart(2,"0");
-
-  setText("date","DATE : "+dd+"."+mm+"."+yyyy);
-  setText("time","HEURE : "+hh+":"+mi+":"+ss);
-  updateWeekFooter(n);
+  const n=new Date();
+  setText("date","DATE : "+n.toLocaleDateString("fr-FR",{timeZone:"Europe/Paris"}).split("/").join("."));
+  setText("time","HEURE : "+n.toLocaleTimeString("fr-FR",{timeZone:"Europe/Paris",hour:"2-digit",minute:"2-digit"}));
+  const paris=new Date(n.toLocaleString("en-US",{timeZone:"Europe/Paris"}));
+  const days=["DIM","LUN","MAR","MER","JEU","VEN","SAM"];
+  document.querySelectorAll(".week .days b").forEach(b=>b.classList.toggle("active",b.textContent===days[paris.getDay()]));
+  const wk=Math.min(5,Math.ceil(paris.getDate()/7));
+  const w=document.querySelector(".week>span:first-child"); if(w)w.textContent="SEMAINE "+wk+" / "+Math.ceil(new Date(paris.getFullYear(),paris.getMonth()+1,0).getDate()/7);
 }
-
 
 /* =========================================================
    V0.5.9 — PS4 NATIVE MOTION ENGINE
@@ -489,11 +439,9 @@ console.log("SYSTEME PLAYER V0.5.9 PS4 — native motion chargé");
 var ps4VideoKey="",ps4VideoReturnTimer=null;
 function startPs4NativeMotion(){}
 function ps4EvolutionKey(e){var f=((e&&e.sprite)||"sprites/brian_lvl_001_base.png").split("/").pop();return f.replace(/\.png$/i,"");}
-function ps4SetVideo(key,kind,loop){var v=$("avatarVideo");if(!v)return;var src="ps4_media/"+key+"_"+kind+".mp4?v=063";if(v.getAttribute("data-src")!==src){v.setAttribute("data-src",src);v.loop=!!loop;v.src=src;try{v.load()}catch(e){}}else v.loop=!!loop;var b=$("videoStartButton");function ok(){if(b)b.classList.remove("show")}function fail(){if(b)b.classList.add("show")}try{var r=v.play();if(r&&typeof r.then==="function")r.then(ok).catch(fail);else setTimeout(function(){v.paused?fail():ok()},500)}catch(e){fail()}}
+function ps4SetVideo(key,kind,loop){var v=$("avatarVideo");if(!v)return;var src="ps4_media/"+key+"_"+kind+".mp4?v=060";if(v.getAttribute("data-src")!==src){v.setAttribute("data-src",src);v.loop=!!loop;v.src=src;try{v.load()}catch(e){}}else v.loop=!!loop;var b=$("videoStartButton");function ok(){if(b)b.classList.remove("show")}function fail(){if(b)b.classList.add("show")}try{var r=v.play();if(r&&typeof r.then==="function")r.then(ok).catch(fail);else setTimeout(function(){v.paused?fail():ok()},500)}catch(e){fail()}}
 function updateCharacterSprite(level){var e=getCharacterEvolution(level);setText("evolutionStage",e.stage);var k=ps4EvolutionKey(e);if(k===ps4VideoKey)return;ps4VideoKey=k;ps4SetVideo(k,"idle",true)}
 function ensureLivingCharacter(level){updateCharacterSprite(level)}
 function playLivingLevelUp(level){var e=getCharacterEvolution(level),k=ps4EvolutionKey(e);ps4VideoKey=k;if(ps4VideoReturnTimer)clearTimeout(ps4VideoReturnTimer);ps4SetVideo(k,"levelup",false);ps4VideoReturnTimer=setTimeout(function(){ps4SetVideo(k,"idle",true)},1900)}
 window.addEventListener("DOMContentLoaded",function(){var b=$("videoStartButton"),v=$("avatarVideo");if(b&&v){b.addEventListener("click",function(){try{var p=v.play();if(p&&p.catch)p.catch(function(){});b.classList.remove("show")}catch(e){}});setTimeout(function(){if(v.paused)b.classList.add("show")},1000)}});
 console.log("SYSTEME PLAYER V0.6.0 PS4 — video mode chargé");
-
-console.log("SYSTEME PLAYER V0.6.3 PS4 — horloge Paris + semaine dynamique chargées");

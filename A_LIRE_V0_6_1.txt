@@ -1,0 +1,18 @@
+PLAYER V0.6.1 — PS4 LIGHT FX
+
+Base: V0.6.0 PS4 VIDEO MODE.
+
+Objectif:
+- conserver le personnage vidéo fluide;
+- ajouter une lumière globale très légère sur le dashboard;
+- garder les calculs graphiques au minimum pour le navigateur PS4.
+
+Installation:
+1. Remplacer app_ps4.js, ps4.css et ps4.html dans player-dashboard.
+2. Copier/remplacer le dossier ps4_media si Finder le demande.
+3. Ne pas toucher à config.js, index.html, app.js, styles.css ou sprites.
+4. Commit + Push origin.
+5. Tester: ps4.html?v=061
+
+Important:
+La V0.6.1 évite volontairement blur/filter et les animations CSS lourdes.

@@ -1,0 +1,36 @@
+PLAYER — DOSSIER GITHUB COMPLET PS4 V0.7
+
+Ce ZIP est prévu pour le cas suivant :
+le dossier player-dashboard a été vidé et seul config.js a été conservé.
+
+INSTALLATION
+1. GitHub Desktop > Repository > Show in Finder.
+2. Vérifier que config.js est toujours présent.
+3. Copier TOUT le contenu de ce ZIP dans player-dashboard.
+4. NE PAS supprimer, déplacer ou remplacer config.js.
+5. config.example.js peut rester dans le dépôt.
+6. Vérifier que le dossier ps4_media est bien copié en entier.
+7. GitHub Desktop doit afficher de nombreux fichiers nouveaux/modifiés.
+8. Laisser tous les .DS_Store décochés.
+9. Commit : Restore Complete PLAYER PS4 V0.7
+10. Push origin.
+
+PAGE PRINCIPALE :
+index.html?v=070
+
+PAGE PS4 :
+ps4.html?v=070
+
+Le dossier contient la base complète nécessaire :
+- interface PS4
+- CSS
+- scripts
+- moteur XP
+- synchronisation Google Sheets
+- contrôles Analyse/Objectifs/Paramètres/Difficulté/Citations
+- évolution personnage
+- médias vidéo PS4
+- sprites présents dans la base
+- fichiers historiques V0.6.x utiles comme référence
+
+config.js n'est volontairement PAS inclus afin de préserver celui déjà connecté.

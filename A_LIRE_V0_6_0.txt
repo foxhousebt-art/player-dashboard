@@ -1,0 +1,6 @@
+PLAYER V0.6.0 — PS4 VIDEO MODE
+
+Remplacer ps4.html, ps4.css et app_ps4.js, puis ajouter le dossier ps4_media complet.
+Ne pas remplacer config.js.
+Test : https://foxhousebt-art.github.io/player-dashboard/ps4.html?v=060
+Si ACTIVER ANIMATION apparaît, cliquer une fois avec la manette.

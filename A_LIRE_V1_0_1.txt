@@ -1,8 +1,0 @@
-PLAYER V1.0.1 — RECOVERY
-Hotfix construit depuis la V0.9.1 qui affichait correctement le monde.
-Aucune restructuration du décor.
-Correction minimale du personnage : vrais fichiers idle_00 à idle_05.
-IMPORTANT : garder votre config.js GitHub actuel.
-Commit : V1.0.1 Recovery
-Push origin
-Test : index.html?v=101

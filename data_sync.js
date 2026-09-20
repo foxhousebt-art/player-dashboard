@@ -1,14 +1,10 @@
 "use strict";
 (function(){
- const cfg=window.PLAYER_CONFIG||{};let last="";
- function localEntries(){try{return JSON.parse(localStorage.getItem("playerEntries")||"[]")}catch{return[]}}
- function localGame(){try{return JSON.parse(localStorage.getItem("playerGameSettings")||"{}")}catch{return{}}}
- function effective(cloud={}){
-  const l=localGame(),d=+localStorage.getItem("playerDifficulty");
-  const s={...cloud,...l}; if(d>=1&&d<=4)s.difficulty=d;
-  return s;
- }
- function dispatch(entries,settings){const snap=PlayerEngine.compute(entries,effective(settings));const h=JSON.stringify(snap);if(h===last)return;last=h;window.PLAYER_SNAPSHOT=snap;window.dispatchEvent(new CustomEvent("player-data-update",{detail:snap}))}
- async function refresh(){if(!cfg.WEB_APP_URL){dispatch(localEntries(),{});return}try{const u=cfg.WEB_APP_URL+(cfg.WEB_APP_URL.includes("?")?"&":"?")+"action=state&_="+Date.now();const r=await fetch(u,{cache:"no-store"});const p=await r.json();dispatch(p.entries||[],p.settings||{})}catch(e){console.error(e);dispatch(localEntries(),{})}}
- window.PlayerDataSync={refresh};addEventListener("DOMContentLoaded",()=>{refresh();setInterval(refresh,+cfg.POLL_INTERVAL_MS||5000)});addEventListener("storage",refresh);
+let last="";const cfg=window.PLAYER_CONFIG||{};
+function localSettings(){try{return JSON.parse(localStorage.getItem("playerGameSettings")||"{}")}catch(e){return{}}}
+function localEntries(){try{return JSON.parse(localStorage.getItem("playerEntries")||"[]")}catch(e){return[]}}
+function settings(cloud){let s=Object.assign({},cloud||{},localSettings()),d=+localStorage.getItem("playerDifficulty");if(d>=1&&d<=4)s.difficulty=d;return s}
+function emit(entries,s){let snap=PlayerEngine.compute(entries,settings(s)),h=JSON.stringify(snap);if(h===last)return;last=h;window.PLAYER_SNAPSHOT=snap;window.dispatchEvent(new CustomEvent("player-data-update",{detail:snap}))}
+async function refresh(){if(!cfg.WEB_APP_URL){emit(localEntries(),{});return}try{let u=cfg.WEB_APP_URL+(cfg.WEB_APP_URL.indexOf("?")>=0?"&":"?")+"action=state&_="+Date.now(),r=await fetch(u,{cache:"no-store"}),j=await r.json();emit(j.entries||[],j.settings||{})}catch(e){console.error("Sync cloud:",e);emit(localEntries(),{})}}
+window.PlayerDataSync={refresh};window.addEventListener("DOMContentLoaded",function(){refresh();setInterval(refresh,+cfg.POLL_INTERVAL_MS||5000)});window.addEventListener("storage",refresh);
 })();

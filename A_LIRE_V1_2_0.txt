@@ -1,8 +1,0 @@
-PLAYER V1.2.0 — LIVING CITY
-Base conservée : V1.1.1 + tous les paramètres/dashboard existants.
-Ajouts dashboard : trafic aérien accéléré, 3 vaisseaux, 3 mécanoïdes, drones, ascenseurs cargo, balises, circulation sur ponts, impulsions énergétiques, événements monde, réactions visuelles lors d'un gain XP et interactions au clic.
-Analyse : refonte complète dans la même DA, avec vue distincte dérivée du monde existant (aucune nouvelle image générée), verre sombre, scan, télémétrie, mêmes données réelles.
-IMPORTANT : conserver le config.js actuel.
-Commit : V1.2.0 Living City
-Test dashboard : index.html?v=120
-Test analyse : analyse.html?v=120
