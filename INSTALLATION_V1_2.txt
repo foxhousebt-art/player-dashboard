@@ -1,0 +1,22 @@
+PLAYER PS4 V1.2 — CLASSIC GLOW
+
+BASE : PLAYER_GITHUB_COMPLETE_PS4_V0_7 (base fonctionnelle)
+
+MODIFICATIONS :
+- aucune modification du moteur XP ;
+- aucune modification de data_sync.js ;
+- aucune modification de progression_engine.js ;
+- aucune modification de ps4_controls.js ;
+- aucune modification de app_ps4.js ;
+- aucune modification des 24 MP4 du personnage ;
+- aucune modification de la structure du dashboard ;
+- uniquement une couche CSS statique : lueurs discrètes + couleurs légères sur les 6 fondamentaux ;
+- effets animés/lourds désactivés pour la PS4.
+
+INSTALLATION :
+1. NE PAS SUPPRIMER votre config.js actuel.
+2. Copier le contenu de ce ZIP à la racine de player-dashboard.
+3. Accepter le remplacement des fichiers.
+4. Vérifier que config.js est toujours présent dans votre dépôt.
+5. Commit + Push.
+6. Tester ps4.html?v=120.

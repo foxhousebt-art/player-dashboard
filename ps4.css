@@ -369,40 +369,91 @@ body::after,
 /* V0.7 — requested functional panels, PS4-safe */
 .topbar{position:relative}.ps4-menu{display:flex;gap:4px;align-items:center;justify-content:center}.ps4-menu button{font:700 9px/1 monospace;letter-spacing:.04em;color:#aeb9ae;background:#090d0b;border:1px solid rgba(235,245,238,.24);padding:6px 7px}.ps4-menu button:focus,.ps4-menu button:hover{color:#fff0b0;border-color:#d2bc70}.ps4-quote{margin:5px 0 7px;border:1px solid rgba(235,245,238,.22);background:#070b09;color:#c8d2c8;text-align:center;font:600 11px/1.3 monospace;padding:7px;box-shadow:0 0 7px rgba(220,245,228,.08)}.system-panel{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.82);padding:5vh 8vw}.system-panel.open{display:block}.system-window{position:relative;max-width:1050px;max-height:88vh;margin:auto;overflow:auto;padding:24px;background:#070b09!important}.system-window h2{color:#d6c77e;font:700 18px/1 monospace;margin:0 0 20px}.system-window h3{color:#9eaa9a;font:700 11px/1 monospace;margin:24px 0 10px}.close-panel{position:absolute;right:12px;top:10px;border:1px solid #66705e;background:#090d0b;color:#d8ddc8;font-size:22px}.panel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.panel-box,.objective-row,.analysis-row{border:1px solid #293128;background:#080c09;padding:12px}.panel-box span{display:block;color:#8c9585;font:10px monospace}.panel-box b{display:block;color:#d8ddc8;font:700 20px monospace;margin-top:7px}.analysis-row{display:grid;grid-template-columns:180px 90px 1fr;align-items:center;gap:10px;margin:6px 0}.objective-row{display:grid;grid-template-columns:220px 1fr 70px;gap:10px;margin:7px 0}.objective-row em{color:#78d06c;font-style:normal}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.settings-grid label,.system-window>label{display:flex;flex-direction:column;gap:6px;color:#aeb9ae;font:10px monospace}.settings-grid input,.system-window textarea{background:#050706;color:#d8ddc8;border:1px solid #66705e;padding:10px;font:12px monospace}.system-window textarea{min-height:80px;margin-bottom:14px}.action,.difficulty{border:1px solid #66705e;background:#0a0e0b;color:#d8ddc8;padding:11px;font:700 11px monospace}.action{margin-top:16px}.difficulty-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.difficulty{text-align:left}.difficulty.active{border-color:#d6c77e;color:#fff0b0}.difficulty small{display:block;margin-top:7px;color:#8c9585;line-height:1.4}#panelMsg{color:#78d06c;font:10px monospace}
 
-/* =========================================================
-   V1.1 CLASSIC LIGHT — PS4 SAFE
-   Base: last stable classic layout. Visual enhancement only.
-   No engine/data/control logic changed.
-   ========================================================= */
-:root{--fx-blue:#58bff0;--fx-gold:#e6c15c;--fx-violet:#9c72dc;--fx-red:#dc6963;--fx-green:#79bd75;--fx-cyan:#69b9c8}
-body{background:#020403!important}
-.panel{border-color:rgba(140,165,148,.27)!important;box-shadow:inset 0 0 0 1px rgba(185,210,192,.018),0 0 8px rgba(83,154,191,.035)!important}
-.topbar{border-bottom-color:rgba(83,167,205,.28)!important;box-shadow:0 2px 10px rgba(42,130,171,.04)!important}
-.summary{box-shadow:inset 0 1px rgba(115,183,216,.05),0 0 10px rgba(73,142,175,.035)!important}
-.level-number{color:#e9eddc!important;text-shadow:0 0 10px rgba(220,234,186,.10)!important}
-#globalXpBar{background:linear-gradient(90deg,#b9d77f,#d6d990)!important;box-shadow:0 0 7px rgba(185,215,127,.18)!important}
-.mini-card{background:linear-gradient(180deg,rgba(9,14,11,.72),rgba(4,7,5,.86))!important}
-.stat-card{background:linear-gradient(180deg,rgba(8,12,9,.78),rgba(3,6,4,.88))!important;transition:none!important}
-.stat-card[data-tone="cyan"]{--accent:#62b9d8!important;box-shadow:inset 2px 0 rgba(98,185,216,.32),0 0 8px rgba(98,185,216,.035)!important}
-.stat-card[data-tone="purple"]{--accent:#9b79cb!important;box-shadow:inset 2px 0 rgba(155,121,203,.30),0 0 8px rgba(155,121,203,.035)!important}
-.stat-card[data-tone="red"]{--accent:#cf6c68!important;box-shadow:inset 2px 0 rgba(207,108,104,.30),0 0 8px rgba(207,108,104,.035)!important}
-.stat-card[data-tone="green"]{--accent:#82ba78!important;box-shadow:inset 2px 0 rgba(130,186,120,.30),0 0 8px rgba(130,186,120,.035)!important}
-.stat-card[data-tone="amber"]{--accent:#cdb66a!important;box-shadow:inset 2px 0 rgba(205,182,106,.30),0 0 8px rgba(205,182,106,.035)!important}
-.stat-card .icon,.stat-card h3{text-shadow:0 0 7px color-mix(in srgb,var(--accent) 32%,transparent)!important}
-.stat-card .bar i{box-shadow:0 0 6px color-mix(in srgb,var(--accent) 25%,transparent)!important}
-.finance{box-shadow:inset 0 1px rgba(205,182,106,.05),0 0 9px rgba(205,182,106,.025)!important}
-.trajectory-bar{box-shadow:0 0 7px rgba(190,195,115,.10)!important}
-.skill{box-shadow:inset 0 1px rgba(98,185,216,.04),0 0 9px rgba(98,185,216,.025)!important}
-.profile{box-shadow:inset 0 1px rgba(98,185,216,.05),0 0 10px rgba(98,185,216,.035)!important}
-.avatar-stage{border-color:rgba(104,147,126,.28)!important;box-shadow:inset 0 0 22px rgba(75,115,89,.05),0 0 8px rgba(76,155,188,.035)!important}
-.ps4-avatar-video{filter:saturate(.98) contrast(1.04) brightness(1.025)!important}
-.status{box-shadow:inset 0 1px rgba(116,188,125,.035)!important}
-.segmented i{box-shadow:0 0 5px rgba(185,215,127,.12)!important}
-.priority .target{color:#d76b59!important;text-shadow:0 0 6px rgba(215,107,89,.14)!important}
-.week .days b.active{border-color:#a9c978!important;color:#d9e5b5!important;box-shadow:0 0 6px rgba(169,201,120,.13)!important}
-.online{color:#a8cb72!important;text-shadow:0 0 5px rgba(168,203,114,.16)!important}
-.ps4-menu button{border-color:rgba(126,163,180,.25)!important;background:#080c0b!important;color:#aeb9ae!important;box-shadow:inset 0 0 6px rgba(74,145,179,.025)!important}
-.ps4-menu button:hover,.ps4-menu button:focus{border-color:#bca95f!important;color:#eadc9b!important;box-shadow:0 0 7px rgba(188,169,95,.10)!important}
-.ps4-quote{border-color:rgba(126,163,180,.22)!important;box-shadow:0 0 7px rgba(74,145,179,.035)!important}
-/* PS4: no animated sweeps or expensive filters */
-#ps4LightSweep{display:none!important}.panel:after,.stat-card:after,.avatar-stage:after{animation:none!important;-webkit-animation:none!important}
+/* ============================================================
+   V1.2 CLASSIC GLOW — PS4 SAFE
+   Base V0.7 preserved. Visual enhancement only.
+   No animations, no filters, no layout changes.
+   ============================================================ */
+:root{
+  --classic-cyan:#66cfff;
+  --classic-gold:#e4c65d;
+  --classic-green:#86d56f;
+  --classic-violet:#b884ff;
+  --classic-red:#ff7770;
+}
+
+/* Keep the original black/graphite identity, just deepen contrast. */
+body{background:#020403 !important;}
+.hud{filter:none !important;}
+
+/* Main frames: thin cold highlight, static and PS4-friendly. */
+.panel{
+  border-color:rgba(153,190,184,.34) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.018),
+    0 0 8px rgba(86,185,213,.075) !important;
+}
+.topbar,.fundamentals,.finance,.skill,.profile,.status,.priority,.week{
+  background:linear-gradient(180deg,rgba(8,13,12,.98),rgba(3,7,6,.99)) !important;
+}
+
+/* Global XP and discipline retain the original pale green signature. */
+.bar{background:#111713 !important;border-color:rgba(210,232,218,.16) !important;}
+.bar i,#globalXpBar,#skillBar{
+  background:linear-gradient(90deg,#b9d68c,#e0e6a8) !important;
+  box-shadow:0 0 7px rgba(190,222,133,.24) !important;
+}
+.level-number{color:#eef1dc !important;text-shadow:0 0 12px rgba(225,236,188,.12);}
+
+/* Six fundamentals: restrained color identity, no redesign. */
+.stat-card{background:rgba(4,8,7,.94) !important;box-shadow:inset 0 0 12px rgba(255,255,255,.012) !important;}
+.stat-card:nth-child(1){border-color:rgba(102,207,255,.44) !important;box-shadow:inset 2px 0 0 rgba(102,207,255,.50),0 0 7px rgba(102,207,255,.08) !important;}
+.stat-card:nth-child(2){border-color:rgba(184,132,255,.42) !important;box-shadow:inset 2px 0 0 rgba(184,132,255,.48),0 0 7px rgba(184,132,255,.08) !important;}
+.stat-card:nth-child(3){border-color:rgba(255,119,112,.42) !important;box-shadow:inset 2px 0 0 rgba(255,119,112,.48),0 0 7px rgba(255,119,112,.08) !important;}
+.stat-card:nth-child(4){border-color:rgba(134,213,111,.40) !important;box-shadow:inset 2px 0 0 rgba(134,213,111,.46),0 0 7px rgba(134,213,111,.07) !important;}
+.stat-card:nth-child(5){border-color:rgba(102,207,255,.34) !important;box-shadow:inset 2px 0 0 rgba(102,207,255,.40),0 0 7px rgba(102,207,255,.06) !important;}
+.stat-card:nth-child(6){border-color:rgba(228,198,93,.44) !important;box-shadow:inset 2px 0 0 rgba(228,198,93,.50),0 0 7px rgba(228,198,93,.08) !important;}
+
+.stat-card:nth-child(1) .stat-title,.stat-card:nth-child(1) .icon{color:var(--classic-cyan)!important;}
+.stat-card:nth-child(2) .stat-title,.stat-card:nth-child(2) .icon{color:var(--classic-violet)!important;}
+.stat-card:nth-child(3) .stat-title,.stat-card:nth-child(3) .icon{color:var(--classic-red)!important;}
+.stat-card:nth-child(4) .stat-title,.stat-card:nth-child(4) .icon{color:var(--classic-green)!important;}
+.stat-card:nth-child(5) .stat-title,.stat-card:nth-child(5) .icon{color:var(--classic-cyan)!important;}
+.stat-card:nth-child(6) .stat-title,.stat-card:nth-child(6) .icon{color:var(--classic-gold)!important;}
+
+/* Finance: preserve original red -> yellow -> green trajectory. */
+.trajectory-bar{
+  box-shadow:0 0 8px rgba(225,217,124,.12) !important;
+}
+.trajectory-bar::before{
+  background:linear-gradient(90deg,#ef655a 0%,#efb95b 35%,#e8df78 52%,#9bd273 72%,#69c878 100%) !important;
+}
+.good{color:#b7dc70 !important;text-shadow:0 0 6px rgba(183,220,112,.13);}
+
+/* Player: a subtle halo around the stage only; video/assets untouched. */
+.avatar-stage{
+  border-color:rgba(113,190,211,.38) !important;
+  box-shadow:inset 0 0 22px rgba(54,125,145,.045),0 0 10px rgba(79,177,205,.09) !important;
+}
+.ps4-avatar-video{filter:none !important;}
+.player-name{color:#f1f2e8 !important;text-shadow:0 0 8px rgba(255,255,255,.07);}
+
+/* Controls stay exactly where they are, but become easier to read. */
+.ps4-menu button{
+  border-color:rgba(102,181,205,.34) !important;
+  color:#c2d0d0 !important;
+  box-shadow:0 0 5px rgba(74,169,201,.06) !important;
+}
+.ps4-menu button:hover,.ps4-menu button:focus{
+  color:#fff0a6 !important;
+  border-color:rgba(228,198,93,.68) !important;
+  box-shadow:0 0 8px rgba(228,198,93,.12) !important;
+}
+.ps4-quote{border-color:rgba(115,179,194,.28) !important;box-shadow:0 0 6px rgba(71,164,190,.055) !important;}
+
+/* Modal functions: visual polish only. */
+.system-window{border-color:rgba(105,184,204,.42)!important;box-shadow:0 0 14px rgba(73,168,195,.09)!important;}
+.panel-box,.objective-row,.analysis-row{border-color:rgba(115,158,158,.28)!important;}
+
+/* Explicitly disable moving/light sweep effects for PS4 performance. */
+#ps4LightSweep,#ps4-global-light-fx,body::before,body::after{display:none!important;animation:none!important;}
