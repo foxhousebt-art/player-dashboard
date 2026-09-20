@@ -1,0 +1,29 @@
+PLAYER PS4 V0.7.1 — DESIGN REFRESH
+
+Cette version part de la V0.7 fonctionnelle validée.
+
+IMPORTANT :
+- Aucun changement du moteur XP.
+- Aucun changement de la synchronisation Google Sheets.
+- Aucun changement des paramètres, objectifs, difficultés, citations ou analyse.
+- Le travail de cette version est VISUEL uniquement.
+
+DESIGN :
+- fond noir profond ;
+- encadrés renforcés et mis en surbrillance ;
+- lumière discrète autour du personnage ;
+- lumière sur les panneaux/items ;
+- couleurs différentes et sobres sur les fondamentaux ;
+- barres XP plus lumineuses ;
+- menus Analyse/Objectifs/Paramètres/Difficulté/Citations harmonisés.
+
+INSTALLATION :
+1. GitHub Desktop > Repository > Show in Finder.
+2. Conserver votre config.js actuel.
+3. Copier tout le contenu de ce ZIP dans player-dashboard.
+4. Accepter les remplacements.
+5. Commit : PLAYER PS4 V0.7.1 Design
+6. Push origin.
+
+PS4 : ps4.html?v=071
+Principal : index.html?v=071
