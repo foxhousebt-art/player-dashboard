@@ -1,0 +1,25 @@
+PLAYER PS4 V0.8 — FUTURISTIC HUD
+
+Cette version part de la V0.7 fonctionnelle validée.
+Le moteur XP, la synchronisation, les paramètres et les calculs ne sont pas modifiés.
+
+CHANGEMENTS VISUELS
+- design futuriste sombre validé sur la maquette ;
+- panneaux métalliques/bleu nuit et accents lumineux ;
+- couleurs sobres par fondamental ;
+- navigation basse plus grande ;
+- fenêtres Analyse / Objectifs / Paramètres / Mode / Citations nettement agrandies ;
+- typographie harmonisée avec le HUD ;
+- suppression du trait lumineux vertical fixe devant le personnage ;
+- citation du jour dans un panneau dédié ;
+- phrase derrière le personnage reliée au second champ de l'onglet CITATIONS.
+
+INSTALLATION
+1. Conserver config.js.
+2. Copier tout le contenu à la racine de player-dashboard.
+3. Accepter les remplacements.
+4. Commit : PLAYER PS4 V0.8 Futuristic HUD
+5. Push origin.
+
+PS4 : ps4.html?v=080
+Principal : index.html?v=080
