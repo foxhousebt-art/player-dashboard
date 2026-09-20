@@ -19,6 +19,7 @@ input,select,button{width:100%;background:#050705;color:var(--text);border:1px s
 button{background:#101710;border-color:var(--green);color:#dce5d3;cursor:pointer}
 #status{font-size:12px;margin-top:12px;min-height:20px}.good{color:var(--good)}.bad{color:#d65d4c}
 .rules{font-size:11px;color:var(--muted);line-height:1.55}
+.history-title{font-size:13px;color:var(--text);margin:0 0 10px}.history-state{font-size:11px;color:var(--muted);padding:4px 0}.history-row{border-top:1px solid #222a22;padding:10px 0;cursor:pointer}.history-row:first-child{border-top:0}.history-date{color:var(--green);font-size:12px;margin-bottom:5px}.history-stats{font-size:11px;color:var(--muted);line-height:1.5}.history-row:active{background:#101710}.history-hint{font-size:10px;color:#667060;margin-top:8px}
 </style>
 </head>
 <body>
@@ -65,6 +66,12 @@ button{background:#101710;border-color:var(--green);color:#dce5d3;cursor:pointer
     <div id="status"></div>
   </form>
 
+  <div class="panel" id="historyPanel">
+    <div class="history-title">// DERNIÈRES SAISIES</div>
+    <div id="historyList" class="history-state">CHARGEMENT...</div>
+    <div class="history-hint">Touchez une journée pour la recharger dans le formulaire.</div>
+  </div>
+
   <div class="panel rules">
     1 page = 1 XP • 30 min apprentissage = 20 XP • sport = 40 XP/séance • repas conforme = 10 XP • action travail = 2 XP • finance = +10 XP si trajectoire respectée.<br><br>
     SPORT : 4 séances = objectif atteint ; 5/6 = bonus renforcé ; 7 = semaine exceptionnelle ; semaine terminée à 0–3 = pénalité.<br><br>
@@ -105,6 +112,54 @@ function saveLocal(entry){
   localStorage.setItem("playerEntries",JSON.stringify(entries));
 }
 
+function localEntries(){
+  try{return JSON.parse(localStorage.getItem("playerEntries")||"[]")||[]}catch(e){return []}
+}
+function esc(v){return String(v==null?"":v).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function fillForm(e){
+  $("date").value=String(e.date||"").slice(0,10);
+  $("pages").value=Number(e.pages)||0;
+  $("learningMinutes").value=Number(e.learningMinutes)||0;
+  $("sport").checked=!!e.sport;
+  $("compliantMeals").value=Number(e.compliantMeals)||0;
+  $("workActions").value=Number(e.workActions)||0;
+  $("expenses").value=Number(e.expenses)||0;
+  $("cigaretteSmoked").value=e.cigaretteSmoked===true?"true":e.cigaretteSmoked===false?"false":"";
+  window.scrollTo(0,0);
+}
+function renderHistory(entries){
+  var box=$("historyList");
+  entries=(entries||[]).slice().sort(function(a,b){return String(b.date).localeCompare(String(a.date))}).slice(0,7);
+  if(!entries.length){box.className="history-state";box.textContent="AUCUNE SAISIE TROUVÉE";return}
+  box.className=""; box.innerHTML="";
+  entries.forEach(function(e){
+    var row=document.createElement("div"); row.className="history-row";
+    var cig=e.cigaretteSmoked===false?" • SANS CIGARETTE":e.cigaretteSmoked===true?" • CIGARETTE":"";
+    row.innerHTML='<div class="history-date">'+esc(String(e.date).slice(0,10))+'</div><div class="history-stats">'+
+      esc(e.pages||0)+' pages • '+esc(e.learningMinutes||0)+' min • Sport '+(e.sport?'OUI':'NON')+'<br>'+
+      esc(e.compliantMeals||0)+' repas • '+esc(e.workActions||0)+' actions • '+esc(Number(e.expenses||0).toFixed(2))+' €'+cig+'</div>';
+    row.onclick=function(){fillForm(e)}; box.appendChild(row);
+  });
+}
+async function loadHistory(){
+  var box=$("historyList");
+  try{
+    if(cfg.WEB_APP_URL){
+      var sep=cfg.WEB_APP_URL.indexOf("?")>=0?"&":"?";
+      var res=await fetch(cfg.WEB_APP_URL+sep+"action=state&_="+Date.now(),{cache:"no-store"});
+      var out=await res.json();
+      if(!out.ok)throw new Error(out.error||"Erreur serveur");
+      renderHistory(out.entries||[]); return;
+    }
+    renderHistory(localEntries());
+  }catch(err){
+    console.error(err);
+    var local=localEntries();
+    if(local.length)renderHistory(local);
+    else{box.className="history-state bad";box.textContent="IMPOSSIBLE DE CHARGER LES DERNIÈRES SAISIES"}
+  }
+}
+
 $("dailyForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const entry=payload();
@@ -127,12 +182,15 @@ $("dailyForm").addEventListener("submit",async e=>{
 
     status.className="good";
     status.textContent=cfg.WEB_APP_URL ? "✓ JOURNÉE ENREGISTRÉE — DASHBOARD EN COURS DE SYNCHRONISATION" : "✓ JOURNÉE ENREGISTRÉE — MODE LOCAL";
+    saveLocal(entry);
+    await loadHistory();
   }catch(err){
     console.error(err);
     status.className="bad";
     status.textContent="✕ ERREUR : "+err.message;
   }
 });
+loadHistory();
 </script>
 </main>
 </body>

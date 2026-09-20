@@ -1,0 +1,9 @@
+PLAYER PS4 V1.2.2 — MOBILE HISTORY FIX
+
+Correction ciblée : restauration de l’affichage des 7 dernières saisies dans mobile.html.
+Les données sont lues depuis Google Sheets via l’action GET state déjà supportée par Code.gs.
+Touchez une ancienne saisie pour la recharger dans le formulaire.
+Le dashboard PS4, le moteur XP et les contrôles ne sont pas modifiés.
+
+IMPORTANT : conserver votre config.js actuel.
+Après déploiement, ouvrir mobile.html?v=122 pour éviter le cache.
