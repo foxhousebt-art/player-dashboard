@@ -457,3 +457,12 @@ body{background:#020403 !important;}
 
 /* Explicitly disable moving/light sweep effects for PS4 performance. */
 #ps4LightSweep,#ps4-global-light-fx,body::before,body::after{display:none!important;animation:none!important;}
+
+/* ============================================================
+   V1.2.3 CHARACTER BEAM FIX
+   Remove only the vertical light beam over the character.
+   No layout, engine, sync, input, history or media changes.
+   ============================================================ */
+.avatar-stage .player-corners{
+  background:none !important;
+}

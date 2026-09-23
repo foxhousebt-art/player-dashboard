@@ -1,0 +1,8 @@
+PLAYER PS4 V1.2.3 — CHARACTER BEAM FIX
+
+Base: V1.2.2 MOBILE HISTORY, preserved.
+Change: removed only the vertical light beam overlaying the PLAYER character.
+No engine, XP, sync, history, mobile form, controls or media logic changed.
+
+IMPORTANT: keep your existing config.js. It is intentionally not included.
+After deployment, open ps4.html?v=123 to bypass PS4 browser cache.
