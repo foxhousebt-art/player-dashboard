@@ -1,2 +1,3 @@
-PLAYER PS4 V1.3.2 — WORLD VISUAL FIX
-Base: V1.2.3 Classic unchanged + 5 selectable worlds
+PLAYER PS4 V1.4.0 — SIX WORLDS REAL
+Base fonctionnelle: V1.2.3 CHARACTER BEAM FIX
+Themes: CLASSIC + FORET + STATION + OCEAN + DESERT + INFERNO

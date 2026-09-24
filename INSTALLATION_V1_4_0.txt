@@ -1,0 +1,14 @@
+PLAYER PS4 V1.4.0 — SIX WORLDS REAL
+
+1. GARDER LE config.js ACTUEL DE TON DEPOT. Il n'est pas inclus dans ce ZIP.
+2. Copier/remplacer tous les autres fichiers du ZIP dans le depot GitHub player-dashboard.
+3. Commit conseille:
+   PLAYER PS4 V1.4.0 - Six Worlds Real Theme Engine
+4. Push origin.
+5. Sur PS4 ouvrir:
+   ps4.html?v=140
+6. La page de saisie reste:
+   mobile.html?v=140
+7. L'onglet DESIGNS est directement apres CITATIONS.
+
+Le theme CLASSIC conserve l'apparence V1.2.3. Les 5 autres themes utilisent le meme moteur et les memes donnees.

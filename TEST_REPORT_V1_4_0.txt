@@ -1,0 +1,31 @@
+PLAYER PS4 V1.4.0 — TEST REPORT
+
+CORRECTIONS STRUCTURELLES
+- Les nouveaux personnages ne sont plus des balises IMG.
+- Ils utilisent un DIV avec background-image, ce qui contourne la regle legacy PS4 .avatar-stage img{display:none!important}.
+- Les images de maquette complete ne sont plus utilisees comme fond du dashboard.
+- Seuls de petits fragments de decor sans interface sont utilises dans les panneaux.
+- L'onglet DESIGNS est directement apres CITATIONS.
+
+TESTS EFFECTUES
+PASS - Syntaxe Node: progression_engine.js
+PASS - Syntaxe Node: data_sync.js
+PASS - Syntaxe Node: app_ps4.js
+PASS - Syntaxe Node: character_evolution.js
+PASS - Syntaxe Node: ps4_controls.js
+PASS - Syntaxe Node: worlds.js
+PASS - mobile.html identique byte-for-byte a la V1.2.3 stable
+PASS - progression_engine.js identique a la V1.2.3 stable
+PASS - data_sync.js identique a la V1.2.3 stable
+PASS - app_ps4.js identique a la V1.2.3 stable
+PASS - character_evolution.js identique a la V1.2.3 stable
+PASS - 24 videos MP4 CLASSIC presentes
+PASS - 25 personnages theme (5 x 5 evolutions) presents
+PASS - 5 scenes decoratives presentes
+PASS - 5 miniatures de selection presentes
+PASS - aucune image de maquette dashboard complete referencee dans le rendu live
+PASS - test mock du moteur de themes: niveau 20 -> stage 3 FORET, video masquee, retour CLASSIC restaure la video
+PASS - test UI Playwright en document inline: panneau DESIGNS ouvert, 6 choix detectes, passage FORET active le sprite, retour CLASSIC restaure la video
+
+NOTE
+Le navigateur PS4 reel ne peut pas etre emule dans cet environnement. Les choix techniques sont volontairement conservateurs: JPEG statiques, CSS simple, aucune 3D/WebGL, aucun blur, mouvement du personnage uniquement par transform JS leger.

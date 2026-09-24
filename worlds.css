@@ -1,0 +1,197 @@
+/* ============================================================
+   PLAYER PS4 V1.4.0 — SIX WORLDS
+   IMPORTANT: CLASSIC has no visual override here.
+   The 5 new worlds reuse the same functional DOM/data engine.
+   PS4-safe strategy: static JPEG scene fragments + CSS gradients +
+   transform-only character motion. No WebGL, blur or particles.
+   ============================================================ */
+
+/* Dedicated tab remains readable in CLASSIC too. */
+.ps4-menu{gap:3px!important}
+.ps4-menu button{font-size:8px!important;padding:6px 6px!important}
+.designs-menu-button{border-color:rgba(222,194,90,.55)!important;color:#e8d58c!important}
+
+/* Character for new worlds: DIV background, intentionally not IMG.
+   This bypasses the legacy PS4 rule that hides avatar images. */
+.world-avatar-sprite{
+  display:none;
+  position:absolute;
+  left:0;top:0;right:0;bottom:0;
+  z-index:1;
+  background-repeat:no-repeat;
+  background-position:center bottom;
+  background-size:contain;
+  transform:translate3d(0,0,0);
+  -webkit-transform:translate3d(0,0,0);
+  transform-origin:50% 90%;
+  -webkit-transform-origin:50% 90%;
+}
+body[data-world="forest"] .world-avatar-sprite,
+body[data-world="station"] .world-avatar-sprite,
+body[data-world="ocean"] .world-avatar-sprite,
+body[data-world="desert"] .world-avatar-sprite,
+body[data-world="inferno"] .world-avatar-sprite{display:block!important}
+body[data-world="forest"] #avatarVideo,
+body[data-world="station"] #avatarVideo,
+body[data-world="ocean"] #avatarVideo,
+body[data-world="desert"] #avatarVideo,
+body[data-world="inferno"] #avatarVideo,
+body[data-world="forest"] #videoStartButton,
+body[data-world="station"] #videoStartButton,
+body[data-world="ocean"] #videoStartButton,
+body[data-world="desert"] #videoStartButton,
+body[data-world="inferno"] #videoStartButton{display:none!important}
+body[data-world="forest"] .player-stage-label,
+body[data-world="station"] .player-stage-label,
+body[data-world="ocean"] .player-stage-label,
+body[data-world="desert"] .player-stage-label,
+body[data-world="inferno"] .player-stage-label{z-index:4!important}
+
+/* ---------- Shared non-classic layout ---------- */
+body[data-world="forest"] .content,
+body[data-world="ocean"] .content,
+body[data-world="desert"] .content,
+body[data-world="inferno"] .content{
+  grid-template-columns:1.08fr 3.42fr!important;
+  gap:.65vw!important;
+}
+body[data-world="forest"] .right-column,
+body[data-world="ocean"] .right-column,
+body[data-world="desert"] .right-column,
+body[data-world="inferno"] .right-column{grid-column:1;grid-row:1}
+body[data-world="forest"] .left-column,
+body[data-world="ocean"] .left-column,
+body[data-world="desert"] .left-column,
+body[data-world="inferno"] .left-column{grid-column:2;grid-row:1}
+
+body[data-world="forest"] .panel,
+body[data-world="station"] .panel,
+body[data-world="ocean"] .panel,
+body[data-world="desert"] .panel,
+body[data-world="inferno"] .panel{filter:none!important}
+
+/* ============================================================
+   FOREST — enchanted grove / wood + emerald + gold
+   ============================================================ */
+body[data-world="forest"]{--line:#8d7138;--line-soft:#3f4c2e;--text:#f2efd7;--muted:#a6b69b;--green:#6ee5a4;--good:#79eda9;background:#061009!important}
+body[data-world="forest"] .panel{border-color:rgba(195,154,70,.70)!important;border-radius:9px!important;box-shadow:inset 0 0 0 1px rgba(57,109,66,.34),0 0 8px rgba(74,218,137,.10)!important}
+body[data-world="forest"] .topbar{background:linear-gradient(90deg,rgba(10,25,13,.98),rgba(19,49,26,.96),rgba(10,25,13,.98))!important}
+body[data-world="forest"] .ps4-quote{border-color:#8d7138!important;color:#f1e5b8!important;background:linear-gradient(rgba(4,14,7,.76),rgba(4,11,6,.90)),url("assets/themes/forest/scene.jpg") center 36%/cover no-repeat!important}
+body[data-world="forest"] .summary{background:linear-gradient(90deg,rgba(5,17,8,.94),rgba(7,25,12,.83)),url("assets/themes/forest/scene.jpg") center/cover no-repeat!important}
+body[data-world="forest"] .profile{background:linear-gradient(180deg,rgba(5,17,8,.80),rgba(3,10,5,.95))!important}
+body[data-world="forest"] .avatar-stage{background:linear-gradient(180deg,rgba(5,19,8,.16),rgba(2,8,4,.72))!important;border-color:#ad8842!important;border-radius:12px!important;box-shadow:inset 0 0 30px rgba(53,179,101,.08),0 0 10px rgba(90,216,126,.11)!important}
+body[data-world="forest"] .fundamentals{background:linear-gradient(180deg,rgba(4,14,7,.95),rgba(3,9,5,.96))!important}
+body[data-world="forest"] .stat-card{border-radius:8px!important;background:linear-gradient(135deg,rgba(5,18,9,.90),rgba(4,12,7,.78)),url("assets/themes/forest/scene.jpg") center/cover no-repeat!important}
+body[data-world="forest"] .finance{background:linear-gradient(90deg,rgba(5,18,9,.94),rgba(5,16,8,.82)),url("assets/themes/forest/scene.jpg") center/cover no-repeat!important}
+body[data-world="forest"] .skill,body[data-world="forest"] .status,body[data-world="forest"] .priority,body[data-world="forest"] .week{background:linear-gradient(180deg,rgba(6,18,9,.96),rgba(3,10,5,.98))!important}
+body[data-world="forest"] .brand,body[data-world="forest"] .section-title{color:#ecd17c!important}
+body[data-world="forest"] .bar i,body[data-world="forest"] #globalXpBar,body[data-world="forest"] #skillBar{background:linear-gradient(90deg,#45ba77,#a8e977)!important;box-shadow:0 0 6px rgba(103,221,131,.20)!important}
+body[data-world="forest"] .ps4-menu button{background:#0a170d!important;border-color:#506e45!important;color:#cfe5bf!important}
+body[data-world="forest"] .ps4-menu button:focus,body[data-world="forest"] .ps4-menu button:hover{border-color:#e2ba5f!important;color:#ffeaa0!important}
+
+/* ============================================================
+   STATION — orbital command / blue metal + orange telemetry
+   Keeps the original right-side player placement intentionally.
+   ============================================================ */
+body[data-world="station"]{--line:#357aa4;--line-soft:#183c57;--text:#e4f4ff;--muted:#8db7ce;--green:#67d7ff;--good:#60ef99;background:#020914!important}
+body[data-world="station"] .panel{border-color:rgba(63,174,231,.72)!important;border-radius:1px!important;box-shadow:inset 0 0 0 1px rgba(48,112,153,.25),0 0 9px rgba(53,171,235,.11)!important}
+body[data-world="station"] .topbar{background:linear-gradient(90deg,rgba(2,12,24,.98),rgba(7,34,57,.96),rgba(2,12,24,.98))!important}
+body[data-world="station"] .ps4-quote{background:linear-gradient(rgba(1,10,21,.74),rgba(1,7,15,.91)),url("assets/themes/station/scene.jpg") center/cover no-repeat!important;border-color:#347fac!important;color:#ccecff!important}
+body[data-world="station"] .summary{background:linear-gradient(90deg,rgba(2,13,26,.93),rgba(4,28,48,.80)),url("assets/themes/station/scene.jpg") center/cover no-repeat!important}
+body[data-world="station"] .profile{background:linear-gradient(180deg,rgba(3,18,31,.84),rgba(1,8,16,.96))!important}
+body[data-world="station"] .avatar-stage{background:linear-gradient(180deg,rgba(2,19,33,.10),rgba(1,9,17,.70))!important;border-color:#48bcec!important;box-shadow:inset 0 0 28px rgba(39,160,223,.08),0 0 9px rgba(57,190,247,.13)!important}
+body[data-world="station"] .fundamentals,body[data-world="station"] .finance{background:linear-gradient(180deg,rgba(2,12,24,.94),rgba(1,8,17,.96))!important}
+body[data-world="station"] .stat-card{background:linear-gradient(135deg,rgba(3,18,32,.91),rgba(2,11,22,.80)),url("assets/themes/station/scene.jpg") center/cover no-repeat!important}
+body[data-world="station"] .skill,body[data-world="station"] .status,body[data-world="station"] .priority,body[data-world="station"] .week{background:linear-gradient(180deg,rgba(2,15,27,.96),rgba(1,8,15,.98))!important}
+body[data-world="station"] .brand,body[data-world="station"] .section-title{color:#92ddff!important}
+body[data-world="station"] .mode strong{color:#ffb349!important}
+body[data-world="station"] .bar i,body[data-world="station"] #globalXpBar,body[data-world="station"] #skillBar{background:linear-gradient(90deg,#43c8ff,#ffb64a)!important;box-shadow:0 0 6px rgba(73,193,245,.22)!important}
+body[data-world="station"] .ps4-menu button{background:#061526!important;border-color:#2c77a5!important;color:#c7e8fa!important}
+body[data-world="station"] .ps4-menu button:focus,body[data-world="station"] .ps4-menu button:hover{border-color:#f4aa45!important;color:#ffd899!important}
+
+/* ============================================================
+   OCEAN — Atlantis / glassy rounded cyan architecture
+   ============================================================ */
+body[data-world="ocean"]{--line:#2aaeda;--line-soft:#145069;--text:#e9fdff;--muted:#92ccd9;--green:#62e2db;--good:#78efbd;background:#01131d!important}
+body[data-world="ocean"] .panel{border-color:rgba(75,210,239,.72)!important;border-radius:15px!important;box-shadow:inset 0 0 0 1px rgba(94,230,250,.09),0 0 10px rgba(65,206,239,.11)!important}
+body[data-world="ocean"] .topbar{background:linear-gradient(90deg,rgba(1,24,37,.98),rgba(3,53,71,.95),rgba(1,24,37,.98))!important}
+body[data-world="ocean"] .ps4-quote{background:linear-gradient(rgba(1,25,38,.68),rgba(1,13,24,.90)),url("assets/themes/ocean/scene.jpg") center/cover no-repeat!important;border-radius:14px!important;border-color:#34b9e3!important;color:#d8faff!important}
+body[data-world="ocean"] .summary{background:linear-gradient(90deg,rgba(1,23,36,.91),rgba(3,45,62,.78)),url("assets/themes/ocean/scene.jpg") center/cover no-repeat!important}
+body[data-world="ocean"] .profile{background:linear-gradient(180deg,rgba(2,31,44,.82),rgba(1,13,22,.96))!important}
+body[data-world="ocean"] .avatar-stage{background:linear-gradient(180deg,rgba(2,31,44,.10),rgba(1,13,22,.72))!important;border-color:#67ddf3!important;border-radius:18px!important;box-shadow:inset 0 0 30px rgba(55,200,235,.09),0 0 10px rgba(69,218,247,.13)!important}
+body[data-world="ocean"] .fundamentals{background:linear-gradient(180deg,rgba(1,22,33,.94),rgba(1,11,19,.96))!important}
+body[data-world="ocean"] .stat-card{border-radius:14px!important;background:linear-gradient(135deg,rgba(2,35,48,.88),rgba(1,15,26,.79)),url("assets/themes/ocean/scene.jpg") center/cover no-repeat!important}
+body[data-world="ocean"] .finance{background:linear-gradient(90deg,rgba(2,28,40,.93),rgba(1,14,24,.82)),url("assets/themes/ocean/scene.jpg") center/cover no-repeat!important}
+body[data-world="ocean"] .skill,body[data-world="ocean"] .status,body[data-world="ocean"] .priority,body[data-world="ocean"] .week{background:linear-gradient(180deg,rgba(2,27,39,.96),rgba(1,13,22,.98))!important}
+body[data-world="ocean"] .brand,body[data-world="ocean"] .section-title{color:#9defff!important}
+body[data-world="ocean"] .bar i,body[data-world="ocean"] #globalXpBar,body[data-world="ocean"] #skillBar{background:linear-gradient(90deg,#48d7ff,#72e9c8)!important;box-shadow:0 0 6px rgba(68,214,244,.23)!important}
+body[data-world="ocean"] .ps4-menu button{border-radius:10px!important;background:#052332!important;border-color:#2788ad!important;color:#cff6ff!important}
+body[data-world="ocean"] .ps4-menu button:focus,body[data-world="ocean"] .ps4-menu button:hover{border-color:#72e5f5!important;color:#ffffff!important}
+
+/* ============================================================
+   DESERT — explorer / bronze stone + sand + turquoise instruments
+   ============================================================ */
+body[data-world="desert"]{--line:#a36c32;--line-soft:#54381d;--text:#f8ead1;--muted:#c1aa8b;--green:#e0b45c;--good:#89d877;background:#180d05!important}
+body[data-world="desert"] .panel{border-color:rgba(211,148,70,.76)!important;border-radius:3px!important;box-shadow:inset 0 0 0 1px rgba(95,54,22,.38),0 0 8px rgba(210,128,46,.11)!important}
+body[data-world="desert"] .topbar{background:linear-gradient(90deg,rgba(43,25,10,.98),rgba(69,42,17,.94),rgba(43,25,10,.98))!important}
+body[data-world="desert"] .ps4-quote{background:linear-gradient(rgba(52,29,11,.60),rgba(24,13,5,.90)),url("assets/themes/desert/scene.jpg") center/cover no-repeat!important;border-color:#bd7f38!important;color:#ffe4ac!important}
+body[data-world="desert"] .summary{background:linear-gradient(90deg,rgba(45,26,10,.91),rgba(69,40,15,.77)),url("assets/themes/desert/scene.jpg") center/cover no-repeat!important}
+body[data-world="desert"] .profile{background:linear-gradient(180deg,rgba(49,29,12,.81),rgba(19,10,4,.96))!important}
+body[data-world="desert"] .avatar-stage{background:linear-gradient(180deg,rgba(50,28,10,.10),rgba(19,10,4,.72))!important;border-color:#d3994d!important;box-shadow:inset 0 0 28px rgba(215,139,48,.08),0 0 9px rgba(222,142,52,.12)!important}
+body[data-world="desert"] .fundamentals{background:linear-gradient(180deg,rgba(39,22,9,.94),rgba(18,10,4,.96))!important}
+body[data-world="desert"] .stat-card{background:linear-gradient(135deg,rgba(48,28,12,.88),rgba(20,11,5,.79)),url("assets/themes/desert/scene.jpg") center/cover no-repeat!important}
+body[data-world="desert"] .finance{background:linear-gradient(90deg,rgba(44,25,10,.93),rgba(19,11,5,.84)),url("assets/themes/desert/scene.jpg") center/cover no-repeat!important}
+body[data-world="desert"] .skill,body[data-world="desert"] .status,body[data-world="desert"] .priority,body[data-world="desert"] .week{background:linear-gradient(180deg,rgba(44,25,10,.96),rgba(18,10,4,.98))!important}
+body[data-world="desert"] .brand,body[data-world="desert"] .section-title{color:#f2c76e!important}
+body[data-world="desert"] .bar i,body[data-world="desert"] #globalXpBar,body[data-world="desert"] #skillBar{background:linear-gradient(90deg,#de9f45,#f0d677)!important;box-shadow:0 0 6px rgba(231,175,82,.20)!important}
+body[data-world="desert"] .ps4-menu button{background:#2b190a!important;border-color:#96642e!important;color:#f0dcba!important}
+body[data-world="desert"] .ps4-menu button:focus,body[data-world="desert"] .ps4-menu button:hover{border-color:#efbd61!important;color:#fff1ca!important}
+
+/* ============================================================
+   INFERNO — forge / black steel + lava + red-orange highlights
+   ============================================================ */
+body[data-world="inferno"]{--line:#b53a20;--line-soft:#641b0f;--text:#fff0da;--muted:#c99d88;--green:#ff8b2d;--good:#a4e866;background:#130201!important}
+body[data-world="inferno"] .panel{border-color:rgba(255,77,28,.80)!important;border-radius:0!important;box-shadow:inset 0 0 0 1px rgba(255,159,70,.08),0 0 11px rgba(255,63,18,.15)!important}
+body[data-world="inferno"] .topbar{background:linear-gradient(90deg,rgba(41,5,2,.98),rgba(76,10,4,.95),rgba(41,5,2,.98))!important}
+body[data-world="inferno"] .ps4-quote{background:linear-gradient(rgba(45,5,2,.58),rgba(20,2,1,.91)),url("assets/themes/inferno/scene.jpg") center/cover no-repeat!important;border-color:#e34925!important;color:#ffd0a3!important}
+body[data-world="inferno"] .summary{background:linear-gradient(90deg,rgba(40,5,2,.91),rgba(72,9,3,.78)),url("assets/themes/inferno/scene.jpg") center/cover no-repeat!important}
+body[data-world="inferno"] .profile{background:linear-gradient(180deg,rgba(48,6,3,.81),rgba(17,2,1,.96))!important}
+body[data-world="inferno"] .avatar-stage{background:linear-gradient(180deg,rgba(55,6,2,.10),rgba(18,2,1,.72))!important;border-color:#f05429!important;box-shadow:inset 0 0 30px rgba(255,72,21,.09),0 0 11px rgba(255,68,20,.15)!important}
+body[data-world="inferno"] .fundamentals{background:linear-gradient(180deg,rgba(37,4,2,.94),rgba(15,2,1,.97))!important}
+body[data-world="inferno"] .stat-card{background:linear-gradient(135deg,rgba(48,6,3,.89),rgba(17,2,1,.80)),url("assets/themes/inferno/scene.jpg") center/cover no-repeat!important;border-radius:0!important}
+body[data-world="inferno"] .finance{background:linear-gradient(90deg,rgba(45,5,2,.93),rgba(18,2,1,.84)),url("assets/themes/inferno/scene.jpg") center/cover no-repeat!important}
+body[data-world="inferno"] .skill,body[data-world="inferno"] .status,body[data-world="inferno"] .priority,body[data-world="inferno"] .week{background:linear-gradient(180deg,rgba(43,5,2,.96),rgba(16,2,1,.98))!important}
+body[data-world="inferno"] .brand,body[data-world="inferno"] .section-title{color:#ffab4b!important;text-shadow:0 0 5px rgba(255,80,22,.20)!important}
+body[data-world="inferno"] .bar i,body[data-world="inferno"] #globalXpBar,body[data-world="inferno"] #skillBar{background:linear-gradient(90deg,#ff4620,#ffbc3e)!important;box-shadow:0 0 7px rgba(255,70,21,.24)!important}
+body[data-world="inferno"] .bottom-grid{grid-template-columns:.78fr 1.32fr!important}
+body[data-world="inferno"] .finance{grid-column:2;grid-row:1}
+body[data-world="inferno"] .skill{grid-column:1;grid-row:1}
+body[data-world="inferno"] .ps4-menu button{background:#250402!important;border-color:#9e2917!important;color:#ffd5ad!important}
+body[data-world="inferno"] .ps4-menu button:focus,body[data-world="inferno"] .ps4-menu button:hover{border-color:#ff8c31!important;color:#fff0c8!important}
+
+/* ---------- Theme-specific card accent integration ---------- */
+body[data-world="forest"] .stat-card:nth-child(1),body[data-world="station"] .stat-card:nth-child(1),body[data-world="ocean"] .stat-card:nth-child(1),body[data-world="desert"] .stat-card:nth-child(1),body[data-world="inferno"] .stat-card:nth-child(1){border-left-width:3px!important}
+body[data-world="forest"] .stat-card:nth-child(2),body[data-world="station"] .stat-card:nth-child(2),body[data-world="ocean"] .stat-card:nth-child(2),body[data-world="desert"] .stat-card:nth-child(2),body[data-world="inferno"] .stat-card:nth-child(2){border-top-width:2px!important}
+
+/* ---------- Dedicated DESIGN panel ---------- */
+.world-picker-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:14px;border-bottom:1px solid #39423a;padding-bottom:10px}
+.world-picker-head b{font:700 18px/1 monospace;color:#f0dda0}
+.world-picker-head span{font:10px/1.4 monospace;color:#9aa397;text-align:right}
+.world-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.world-choice{height:145px;position:relative;overflow:hidden;border:1px solid #4f5b50;background:#070a08;color:#eef2e8;text-align:left;padding:0;cursor:pointer;background-position:center;background-size:cover;background-repeat:no-repeat}
+.world-choice:first-child{background:linear-gradient(180deg,#0c100d,#020302)}
+.world-choice-shade{position:absolute;left:0;top:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.84))}
+.world-choice b,.world-choice small{position:absolute;z-index:2;left:12px;right:10px;text-shadow:0 1px 2px #000}
+.world-choice b{bottom:35px;font:700 13px/1 monospace;color:#fff5c8}
+.world-choice small{bottom:11px;font:9px/1.25 monospace;color:#d1d8d0}
+.world-choice.active{border-color:#e7c65b;box-shadow:0 0 0 1px rgba(231,198,91,.45),0 0 12px rgba(231,198,91,.16)}
+.world-choice.active:after{content:"ACTIF";position:absolute;z-index:3;right:8px;top:8px;background:#d9bb55;color:#151109;padding:4px 6px;font:700 8px/1 monospace}
+.world-picker-foot{margin-top:14px;color:#99a493;font:10px/1.4 monospace}.world-picker-foot strong{color:#e9d485}
+
+/* Modal remains dark and stable whatever the selected world. */
+body[data-world="forest"] .system-window,body[data-world="station"] .system-window,body[data-world="ocean"] .system-window,body[data-world="desert"] .system-window,body[data-world="inferno"] .system-window{background:#050807!important}
+body[data-world="forest"] .panel-box,body[data-world="forest"] .objective-row,body[data-world="forest"] .analysis-row,
+body[data-world="station"] .panel-box,body[data-world="station"] .objective-row,body[data-world="station"] .analysis-row,
+body[data-world="ocean"] .panel-box,body[data-world="ocean"] .objective-row,body[data-world="ocean"] .analysis-row,
+body[data-world="desert"] .panel-box,body[data-world="desert"] .objective-row,body[data-world="desert"] .analysis-row,
+body[data-world="inferno"] .panel-box,body[data-world="inferno"] .objective-row,body[data-world="inferno"] .analysis-row{background:#070a08!important}
