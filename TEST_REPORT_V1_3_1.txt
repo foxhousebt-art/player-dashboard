@@ -1,0 +1,29 @@
+PLAYER PS4 V1.3.1 — TEST REPORT
+
+PATCH SCOPE
+- Added one dedicated DESIGNS tab next to MODE.
+- Added a dedicated six-theme chooser panel.
+- Kept Classic as default/current V1.2.3 look.
+- Theme selection remains stored in localStorage.
+- No change to mobile input/history or XP/sync engines.
+
+VALIDATED
+PASS — JavaScript syntax: theme_manager.js
+PASS — JavaScript syntax: ps4_controls.js
+PASS — JavaScript syntax: app_ps4.js
+PASS — JavaScript syntax: progression_engine.js
+PASS — JavaScript syntax: data_sync.js
+PASS — ps4.html contains dedicated DESIGNS tab
+PASS — index.html contains dedicated DESIGNS tab
+PASS — controls contain dedicated designs panel branch
+PASS — theme manager exposes mountPicker
+PASS — 6 themes registered
+PASS — 5 new theme backgrounds present
+PASS — 25 new character-stage images present
+PASS — 24 Classic H.264 character videos present
+PASS — config.js absent from package by design
+PASS — mobile.html unchanged from V1.3.0
+PASS — core engines unchanged from V1.3.0
+
+ENVIRONMENT LIMITATION
+A local Chromium visual screenshot run was attempted but the container Chromium process did not terminate successfully, so no claim is made that the exact PS4 browser rendering was reproduced here. Structural/syntax/package checks above passed.

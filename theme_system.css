@@ -132,3 +132,32 @@ body[data-player-theme]:not([data-player-theme="classic"]) .system-window{backgr
 body[data-player-theme]:not([data-player-theme="classic"]) .panel-box,
 body[data-player-theme]:not([data-player-theme="classic"]) .objective-row,
 body[data-player-theme]:not([data-player-theme="classic"]) .analysis-row{background:rgba(3,7,8,.94)!important;border-color:var(--line-soft)!important}
+
+
+/* ============================================================
+   V1.3.1 — DEDICATED DESIGNS TAB
+   Visible access independent from cloud/data state.
+   ============================================================ */
+.design-tab{
+  margin-left:10px;
+  padding:5px 9px;
+  border:1px solid rgba(228,198,93,.72);
+  background:#0a0d0b;
+  color:#ffe59a;
+  font:700 9px/1 "Courier New",monospace;
+  letter-spacing:.06em;
+  vertical-align:middle;
+  box-shadow:0 0 7px rgba(228,198,93,.10);
+}
+.design-tab:focus,.design-tab:hover{
+  outline:none;
+  border-color:#fff0ad;
+  color:#fff8d2;
+  box-shadow:0 0 10px rgba(228,198,93,.18);
+}
+.design-help{margin:-7px 0 14px;color:#aeb9ae;font:10px/1.45 monospace}
+.theme-current{margin:0 0 10px;padding:8px 10px;border:1px solid #293128;background:#080c09;color:#9ca79a;font:10px/1.2 monospace}
+.theme-current b{color:#fff0a6;font-weight:700}
+#designPickerMount .theme-picker-title{margin-top:4px}
+#designPickerMount .theme-picker{grid-template-columns:repeat(3,1fr)}
+#designPickerMount .theme-choice{min-height:108px}

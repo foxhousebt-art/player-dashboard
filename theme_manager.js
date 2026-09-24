@@ -108,9 +108,11 @@
       if(nodes[i].getAttribute("data-theme-choice")===currentTheme)nodes[i].classList.add("active");
       else nodes[i].classList.remove("active");
     }
+    var current=byId("currentThemeName");
+    if(current)current.textContent=themeName(currentTheme);
   }
   function pickerHtml(){
-    var out='<div class="theme-picker-title">// DESIGN DU DASHBOARD</div><div class="theme-picker" id="themePicker">';
+    var out='<div class="theme-picker-title">// CHOISIR UN DASHBOARD</div><div class="theme-current">DESIGN ACTUEL : <b id="currentThemeName">'+themeName(currentTheme)+'</b></div><div class="theme-picker" id="themePicker">';
     for(var i=0;i<THEMES.length;i++){
       var t=THEMES[i];
       var style=t.thumb?' style="background-image:url('+t.thumb+')"':'';
@@ -131,16 +133,22 @@
     }
   }
   function themeName(id){for(var i=0;i<THEMES.length;i++)if(THEMES[i].id===id)return THEMES[i].name;return id}
+  function mountPicker(root){
+    if(!root)return;
+    root.innerHTML=pickerHtml();
+    bindPicker(root);
+    refreshPicker();
+  }
   function injectPicker(){
     var body=byId("systemPanelBody");
-    if(!body||byId("themePicker"))return;
-    var wrap=document.createElement("div");
-    wrap.id="themePickerWrap";
-    wrap.innerHTML=pickerHtml();
-    var action=byId("saveSettings");
-    if(action&&action.parentNode)action.parentNode.insertBefore(wrap,action);
-    else body.appendChild(wrap);
-    bindPicker(wrap);
+    if(!body)return;
+    var wrap=byId("themePickerWrap");
+    if(!wrap){
+      wrap=document.createElement("div");
+      wrap.id="themePickerWrap";
+      body.appendChild(wrap);
+    }
+    mountPicker(wrap);
   }
   function startMotion(){
     if(motionStarted)return;
@@ -181,8 +189,6 @@
     currentTheme=storedTheme();
     applyTheme(currentTheme,false);
     startMotion();
-    var settingsButtons=document.querySelectorAll('[data-panel="settings"]');
-    for(var i=0;i<settingsButtons.length;i++)settingsButtons[i].addEventListener("click",function(){setTimeout(injectPicker,40)},false);
   }
   window.addEventListener("player-data-update",onData,false);
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,false);else init();
@@ -190,6 +196,8 @@
     setTheme:function(t){applyTheme(t,true)},
     getTheme:function(){return currentTheme},
     getThemes:function(){return THEMES.slice(0)},
+    getThemeName:themeName,
+    mountPicker:mountPicker,
     injectPicker:injectPicker,
     refreshCharacter:function(){applyCharacter(true)}
   };

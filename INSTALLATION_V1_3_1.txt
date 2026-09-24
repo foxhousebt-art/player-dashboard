@@ -1,0 +1,11 @@
+PLAYER PS4 V1.3.1 — DEDICATED DESIGNS TAB
+
+1. Conserver votre config.js actuel. Il n'est pas inclus.
+2. Copier tous les autres fichiers à la racine du dépôt GitHub.
+3. Commit : PLAYER PS4 V1.3.1 - Dedicated Designs Tab Fix
+4. Push origin.
+5. Ouvrir ps4.html?v=131 sur PS4.
+6. Cliquer sur le bouton DESIGNS affiché à côté du MODE.
+7. Choisir CLASSIC, FORÊT, STATION, FONDS MARINS, DÉSERT ou FLAMMES.
+
+Le choix est sauvegardé localement et réappliqué au prochain chargement.
