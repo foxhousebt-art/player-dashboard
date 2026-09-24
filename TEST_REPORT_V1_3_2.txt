@@ -1,0 +1,36 @@
+PLAYER PS4 V1.3.2 — TEST REPORT
+
+CORRECTIONS V1.3.2
+- DESIGNS déplacé dans la barre de navigation juste après CITATIONS.
+- Suppression du bouton DESIGNS placé à côté de MODE.
+- Correction de la règle PS4 qui masquait toutes les images <img> du cadre personnage.
+- Les 25 images personnage thématiques disposent maintenant d'une règle display:block!important plus spécifique.
+- Ajout d'un calque de monde statique dédié (#themeWorldBackdrop), indépendant du fond body.
+- Nouveaux fonds 1280x720 optimisés pour PS4, dérivés des cinq designs approuvés.
+- Panneaux thématiques rendus partiellement transparents afin que le décor soit réellement visible derrière les items.
+- CLASSIC reste sans calque thématique et conserve le rendu V1.2.3.
+
+TESTS EFFECTUÉS
+PASS - node --check : app_ps4.js
+PASS - node --check : progression_engine.js
+PASS - node --check : data_sync.js
+PASS - node --check : character_evolution.js
+PASS - node --check : ps4_controls.js
+PASS - node --check : theme_manager.js
+PASS - test calcul ProgressionEngine avec une journée de saisie.
+PASS - 24 MP4 Classic présents.
+PASS - 25 JPEG personnage (5 mondes x 5 évolutions) présents.
+PASS - 5 fonds 1280x720 présents.
+PASS - 5 miniatures présentes.
+PASS - ordre de navigation : ANALYSE > OBJECTIFS > PARAMÈTRES > DIFFICULTÉ > CITATIONS > DESIGNS.
+PASS - mobile.html identique bit à bit à V1.2.3.
+PASS - app_ps4.js identique bit à bit à V1.2.3.
+PASS - progression_engine.js identique bit à bit à V1.2.3.
+PASS - data_sync.js identique bit à bit à V1.2.3.
+PASS - character_evolution.js identique bit à bit à V1.2.3.
+PASS - styles.css identique bit à bit à V1.2.3.
+PASS - ps4.css identique bit à bit à V1.2.3.
+PASS - config.js absent du package final.
+
+LIMITATION DE VALIDATION
+Le navigateur PS4 réel n'est pas disponible dans l'environnement de build. La validation finale du rendu et du décodage graphique reste donc à faire sur la console. Les corrections ciblent directement les deux causes détectées dans le code : image personnage forcée en display:none!important et décor masqué par des panneaux quasi opaques.

@@ -6,9 +6,10 @@
   <title>System Player PS4</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="ps4.css?v=123" />
-  <link rel="stylesheet" href="theme_system.css?v=131" />
+  <link rel="stylesheet" href="theme_system.css?v=132" />
 </head>
 <body>
+  <div id="themeWorldBackdrop" aria-hidden="true"></div>
   <div id="ps4LightSweep" aria-hidden="true"></div>
   <div class="scanlines"></div>
   <canvas id="fxCanvas"></canvas>
@@ -16,9 +17,9 @@
   <main class="hud" id="hud">
     <header class="topbar panel">
       <div class="brand">// SYSTEME PLAYER <span>v0.6.0 PS4 VIDEO MODE</span></div>
-      <div class="mode">MODE : <strong id="difficultyName">ENGAGÉ</strong> <button id="designTab" class="design-tab" data-panel="designs" type="button">DESIGNS</button></div>
+      <div class="mode">MODE : <strong id="difficultyName">ENGAGÉ</strong></div>
       <nav class="ps4-menu">
-        <button data-panel="analysis">ANALYSE</button><button data-panel="objectives">OBJECTIFS</button><button data-panel="settings">PARAMÈTRES</button><button data-panel="difficulty">DIFFICULTÉ</button><button data-panel="quotes">CITATIONS</button>
+        <button data-panel="analysis">ANALYSE</button><button data-panel="objectives">OBJECTIFS</button><button data-panel="settings">PARAMÈTRES</button><button data-panel="difficulty">DIFFICULTÉ</button><button data-panel="quotes">CITATIONS</button><button data-panel="designs" class="designs-menu-button">DESIGNS</button>
       </nav>
       <div class="clock"><span id="date"></span> <span id="time"></span></div>
     </header><div class="ps4-quote" id="mainQuote">« Les petites actions d’aujourd’hui créent les grandes victoires de demain. »</div>
@@ -163,8 +164,8 @@
   <script src="progression_engine.js"></script>
   <script src="data_sync.js"></script>
   <script src="app_ps4.js?v=070"></script>
-  <script src="theme_manager.js?v=131"></script>
-  <script src="ps4_controls.js?v=131"></script>
+  <script src="theme_manager.js?v=132"></script>
+  <script src="ps4_controls.js?v=132"></script>
 
 
 

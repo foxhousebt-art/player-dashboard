@@ -1,0 +1,12 @@
+PLAYER PS4 V1.3.2 — WORLD VISUAL FIX
+
+1. Conserver impérativement votre config.js actuel dans le dépôt GitHub.
+2. Copier/remplacer le reste des fichiers de cette archive dans le dépôt player-dashboard.
+3. Commit recommandé : PLAYER PS4 V1.3.2 - Fix World Backgrounds Characters and Designs Tab
+4. Push origin.
+5. Sur PS4 ouvrir : ps4.html?v=132
+6. Saisie quotidienne : mobile.html?v=132
+
+Nouveauté : onglet DESIGNS juste après CITATIONS.
+6 dashboards : CLASSIC, FORÊT, STATION, FONDS MARINS, DÉSERT, FLAMMES.
+Le CLASSIC conserve la V1.2.3.

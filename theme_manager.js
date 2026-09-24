@@ -20,7 +20,6 @@
   var currentTheme="classic";
   var currentLevel=1;
   var themeImg=null;
-  var lastStage=0;
   var motionStarted=false;
   var motionLast=0;
   var levelupUntil=0;
@@ -35,7 +34,7 @@
   }
   function storedTheme(){
     var q=readQueryTheme();
-    if(q){try{localStorage.setItem(STORAGE_KEY,q)}catch(e){} return q}
+    if(q){try{localStorage.setItem(STORAGE_KEY,q)}catch(e){}return q}
     try{var t=localStorage.getItem(STORAGE_KEY);return VALID[t]?t:"classic"}catch(e){return "classic"}
   }
   function stageForLevel(level){
@@ -54,31 +53,41 @@
     themeImg.id="themeAvatarImage";
     themeImg.className="theme-avatar-image";
     themeImg.alt="Évolution du personnage";
+    themeImg.setAttribute("aria-hidden","true");
+    themeImg.onload=function(){
+      if(currentTheme!=="classic"){
+        themeImg.style.display="block";
+        var video=byId("avatarVideo");
+        if(video)video.style.display="none";
+      }
+    };
+    themeImg.onerror=function(){
+      /* Safe visual fallback: keep dashboard usable and show classic character. */
+      themeImg.style.display="none";
+      var video=byId("avatarVideo");
+      if(video){video.style.display="";try{var p=video.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
+    };
     stage.insertBefore(themeImg,stage.firstChild);
     return themeImg;
   }
-  function pauseClassicVideo(){
-    var v=byId("avatarVideo");
-    if(v){try{v.pause()}catch(e){}}
-  }
-  function resumeClassicVideo(){
-    var v=byId("avatarVideo");
-    if(v){try{var p=v.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
+  function pauseClassicVideo(){var v=byId("avatarVideo");if(v){try{v.pause()}catch(e){}}}
+  function resumeClassicVideo(){var v=byId("avatarVideo");if(v){try{var p=v.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}}
+  function classicStageLabel(){
+    var label=byId("evolutionStage");
+    if(!label||!window.CHARACTER_EVOLUTION)return;
+    for(var i=0;i<window.CHARACTER_EVOLUTION.length;i++){
+      if(currentLevel>=window.CHARACTER_EVOLUTION[i].minLevel){label.textContent=window.CHARACTER_EVOLUTION[i].stage;return}
+    }
   }
   function applyCharacter(force){
     var img=ensureThemeImage();
     var label=byId("evolutionStage");
     var video=byId("avatarVideo");
     if(currentTheme==="classic"){
-      if(img)img.style.display="none";
+      if(img){img.style.display="none";img.removeAttribute("src");img.removeAttribute("data-src")}
       if(video)video.style.display="";
       resumeClassicVideo();
-      /* Restore the exact V1.2.3 stage label without touching its video engine. */
-      if(label&&window.CHARACTER_EVOLUTION){
-        for(var ci=0;ci<window.CHARACTER_EVOLUTION.length;ci++){
-          if(currentLevel>=window.CHARACTER_EVOLUTION[ci].minLevel){label.textContent=window.CHARACTER_EVOLUTION[ci].stage;break}
-        }
-      }
+      classicStageLabel();
       return;
     }
     pauseClassicVideo();
@@ -88,17 +97,26 @@
     var src="assets/characters/"+currentTheme+"/stage_"+s+".jpg";
     if(force||img.getAttribute("data-src")!==src){
       img.setAttribute("data-src",src);
-      img.src=src;
       img.style.display="block";
-      lastStage=s;
+      img.src=src;
+    }else{
+      img.style.display="block";
     }
     if(label&&STAGES[currentTheme])label.textContent=STAGES[currentTheme][s-1];
+  }
+  function preloadTheme(theme){
+    if(theme==="classic")return;
+    try{
+      var bg=new Image();bg.src="assets/themes/"+theme+"/background.jpg";
+      var ch=new Image();ch.src="assets/characters/"+theme+"/stage_"+stageForLevel(currentLevel)+".jpg";
+    }catch(e){}
   }
   function applyTheme(theme,save){
     if(!VALID[theme])theme="classic";
     currentTheme=theme;
     document.body.setAttribute("data-player-theme",theme);
     if(save!==false){try{localStorage.setItem(STORAGE_KEY,theme)}catch(e){}}
+    preloadTheme(theme);
     applyCharacter(true);
     refreshPicker();
   }
@@ -115,10 +133,10 @@
     var out='<div class="theme-picker-title">// CHOISIR UN DASHBOARD</div><div class="theme-current">DESIGN ACTUEL : <b id="currentThemeName">'+themeName(currentTheme)+'</b></div><div class="theme-picker" id="themePicker">';
     for(var i=0;i<THEMES.length;i++){
       var t=THEMES[i];
-      var style=t.thumb?' style="background-image:url('+t.thumb+')"':'';
+      var style=t.thumb?' style="background-image:url(\''+t.thumb+'\')"':'';
       out+='<button type="button" class="theme-choice'+(t.id===currentTheme?' active':'')+'" data-theme-choice="'+t.id+'"'+style+'><b>'+t.name+'</b><small>'+t.desc+'</small></button>';
     }
-    return out+'</div><p class="theme-picker-note">Le changement est immédiat et conserve toutes les données, XP, historique et paramètres.</p>';
+    return out+'</div><p class="theme-picker-note">Le changement est immédiat. XP, historique, paramètres et saisie quotidienne restent identiques.</p>';
   }
   function bindPicker(root){
     var nodes=(root||document).querySelectorAll("[data-theme-choice]");
@@ -133,40 +151,30 @@
     }
   }
   function themeName(id){for(var i=0;i<THEMES.length;i++)if(THEMES[i].id===id)return THEMES[i].name;return id}
-  function mountPicker(root){
-    if(!root)return;
-    root.innerHTML=pickerHtml();
-    bindPicker(root);
-    refreshPicker();
-  }
+  function mountPicker(root){if(!root)return;root.innerHTML=pickerHtml();bindPicker(root);refreshPicker()}
   function injectPicker(){
-    var body=byId("systemPanelBody");
-    if(!body)return;
+    var body=byId("systemPanelBody");if(!body)return;
     var wrap=byId("themePickerWrap");
-    if(!wrap){
-      wrap=document.createElement("div");
-      wrap.id="themePickerWrap";
-      body.appendChild(wrap);
-    }
+    if(!wrap){wrap=document.createElement("div");wrap.id="themePickerWrap";body.appendChild(wrap)}
     mountPicker(wrap);
   }
   function startMotion(){
     if(motionStarted)return;
     motionStarted=true;
-    function raf(fn){var r=window.requestAnimationFrame||window.webkitRequestAnimationFrame;return r?r(fn):setTimeout(function(){fn(Date.now())},50)}
+    function raf(fn){var r=window.requestAnimationFrame||window.webkitRequestAnimationFrame;return r?r(fn):setTimeout(function(){fn(Date.now())},60)}
     function frame(t){
       if(!t)t=Date.now();
-      if(t-motionLast>55){
+      if(t-motionLast>70){
         motionLast=t;
         if(currentTheme!=="classic"&&themeImg&&themeImg.style.display!=="none"){
           var sec=t/1000;
-          var y=Math.sin(sec*1.75)*1.8;
-          var x=Math.sin(sec*.51)*.65;
-          var scale=1.012+((Math.sin(sec*1.75)+1)*.0015);
+          var y=Math.sin(sec*1.55)*1.55;
+          var x=Math.sin(sec*.47)*.50;
+          var scale=1.006+((Math.sin(sec*1.55)+1)*.0012);
           if(t<levelupUntil){
-            var p=1-((levelupUntil-t)/900);
-            y-=Math.sin(Math.min(1,p)*Math.PI)*14;
-            scale+=Math.sin(Math.min(1,p)*Math.PI)*.025;
+            var p=1-((levelupUntil-t)/850);
+            y-=Math.sin(Math.min(1,p)*Math.PI)*10;
+            scale+=Math.sin(Math.min(1,p)*Math.PI)*.018;
           }
           var tr="translate3d("+x.toFixed(2)+"px,"+y.toFixed(2)+"px,0) scale("+scale.toFixed(4)+")";
           themeImg.style.transform=tr;themeImg.style.webkitTransform=tr;
@@ -177,15 +185,15 @@
     raf(frame);
   }
   function onData(e){
-    var s=e&&e.detail?e.detail:null;
-    if(!s||!s.global)return;
+    var s=e&&e.detail?e.detail:null;if(!s||!s.global)return;
     var old=currentLevel;
     currentLevel=Number(s.global.level)||1;
-    if(currentTheme!=="classic"&&currentLevel>old)levelupUntil=(window.performance&&performance.now?performance.now():Date.now())+900;
+    if(currentTheme!=="classic"&&currentLevel>old)levelupUntil=(window.performance&&performance.now?performance.now():Date.now())+850;
     applyCharacter(false);
   }
   function init(){
     ensureThemeImage();
+    if(window.PLAYER_SNAPSHOT&&window.PLAYER_SNAPSHOT.global)currentLevel=Number(window.PLAYER_SNAPSHOT.global.level)||1;
     currentTheme=storedTheme();
     applyTheme(currentTheme,false);
     startMotion();
