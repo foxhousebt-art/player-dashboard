@@ -1,0 +1,134 @@
+/* ============================================================
+   PLAYER PS4 V1.3.0 — SIX WORLDS THEME SYSTEM
+   Classic V1.2.3 is intentionally untouched.
+   New worlds use static/offline assets + cheap CSS only.
+   ============================================================ */
+
+.theme-avatar-image{display:none;position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:center 44%;z-index:1;image-rendering:pixelated;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform-origin:50% 88%}
+body[data-player-theme]:not([data-player-theme="classic"]) .theme-avatar-image{display:block}
+body[data-player-theme]:not([data-player-theme="classic"]) .ps4-avatar-video,
+body[data-player-theme]:not([data-player-theme="classic"]) .video-start-button{display:none!important}
+body[data-player-theme]:not([data-player-theme="classic"]) .avatar-stage::before,
+body[data-player-theme]:not([data-player-theme="classic"]) .avatar-stage::after{display:none!important}
+body[data-player-theme]:not([data-player-theme="classic"]) .player-corners{background:none!important;opacity:1!important}
+body[data-player-theme]:not([data-player-theme="classic"]) .scanlines{opacity:.035!important}
+body[data-player-theme]:not([data-player-theme="classic"]) .hud{background:rgba(0,0,0,.10)!important}
+body[data-player-theme]:not([data-player-theme="classic"]) .panel{box-shadow:inset 0 0 0 1px rgba(255,255,255,.018),0 0 10px rgba(0,0,0,.26)!important}
+body[data-player-theme]:not([data-player-theme="classic"]) .topbar,
+body[data-player-theme]:not([data-player-theme="classic"]) .fundamentals,
+body[data-player-theme]:not([data-player-theme="classic"]) .finance,
+body[data-player-theme]:not([data-player-theme="classic"]) .skill,
+body[data-player-theme]:not([data-player-theme="classic"]) .profile,
+body[data-player-theme]:not([data-player-theme="classic"]) .status,
+body[data-player-theme]:not([data-player-theme="classic"]) .priority,
+body[data-player-theme]:not([data-player-theme="classic"]) .week{background:rgba(4,8,10,.91)!important}
+body[data-player-theme]:not([data-player-theme="classic"]) .stat-card{background:rgba(3,7,9,.88)!important}
+body[data-player-theme]:not([data-player-theme="classic"]) .ps4-quote{background:rgba(3,7,9,.90)!important}
+body[data-player-theme]:not([data-player-theme="classic"]) .avatar-stage{background:#050807!important;overflow:hidden!important}
+
+/* Theme chooser lives inside PARAMÈTRES and has no impact on Classic dashboard layout. */
+.theme-picker-title{margin:24px 0 10px;color:#d6c77e;font:700 11px/1 monospace}
+.theme-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 8px}
+.theme-choice{position:relative;min-height:92px;border:1px solid #465044;background:#080b09 center/cover no-repeat;color:#eef3e8;text-align:left;padding:10px;overflow:hidden;font:700 11px/1.2 monospace}
+.theme-choice::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.78));pointer-events:none}
+.theme-choice b,.theme-choice small{position:relative;z-index:2;display:block}
+.theme-choice b{font-size:12px}.theme-choice small{margin-top:8px;color:#c5cec4;font-size:9px;font-weight:400}
+.theme-choice.active{border-color:#ffe28a;box-shadow:0 0 10px rgba(255,214,92,.22)}
+.theme-choice:focus,.theme-choice:hover{border-color:#fff0a6;outline:none}
+
+/* ---------------- FOREST / ENCHANTED GROVE ---------------- */
+body[data-player-theme="forest"]{
+  --line:#517a50;--line-soft:#243c2b;--text:#f0ead2;--muted:#aab79c;--green:#69e1aa;--good:#73e6a5;
+  background:#07110b url("assets/themes/forest/background.jpg") center center/cover no-repeat fixed!important;
+}
+body[data-player-theme="forest"] .content{grid-template-columns:1.05fr 3.45fr!important;gap:.65vw!important}
+body[data-player-theme="forest"] .left-column{grid-column:2;grid-row:1}
+body[data-player-theme="forest"] .right-column{grid-column:1;grid-row:1}
+body[data-player-theme="forest"] .panel{border-color:rgba(109,194,125,.48)!important;border-radius:9px!important;background:linear-gradient(180deg,rgba(8,25,18,.93),rgba(3,12,8,.95))!important}
+body[data-player-theme="forest"] .topbar,body[data-player-theme="forest"] .week{border-color:rgba(214,178,78,.58)!important;background:linear-gradient(180deg,rgba(34,31,17,.94),rgba(8,20,13,.96))!important}
+body[data-player-theme="forest"] .section-title,body[data-player-theme="forest"] .brand{color:#f1d787!important;text-shadow:0 0 4px rgba(241,215,135,.14)!important}
+body[data-player-theme="forest"] .stat-card{border-radius:7px!important;background:linear-gradient(135deg,rgba(6,27,18,.92),rgba(4,12,9,.94))!important}
+body[data-player-theme="forest"] .bar i,body[data-player-theme="forest"] #globalXpBar,body[data-player-theme="forest"] #skillBar{background:linear-gradient(90deg,#60d7a4,#e4d36f)!important}
+body[data-player-theme="forest"] .avatar-stage{border:1px solid rgba(231,194,88,.64)!important;border-radius:10px!important;box-shadow:0 0 12px rgba(54,173,92,.16)!important}
+body[data-player-theme="forest"] .player-stage-label{background:rgba(5,20,12,.84)!important;border-color:#8cc36c!important}
+body[data-player-theme="forest"] .ps4-menu button{border-color:rgba(109,194,125,.42)!important;background:rgba(6,19,12,.92)!important}
+body[data-player-theme="forest"] .ps4-menu button:focus,body[data-player-theme="forest"] .ps4-menu button:hover{border-color:#f0cf67!important;color:#fff2b0!important}
+
+/* ---------------- ORBITAL STATION ---------------- */
+body[data-player-theme="station"]{
+  --line:#2e8aca;--line-soft:#173653;--text:#e6f4ff;--muted:#91abc1;--green:#62e9ff;--good:#70f08f;
+  background:#030b14 url("assets/themes/station/background.jpg") center center/cover no-repeat fixed!important;
+}
+body[data-player-theme="station"] .panel{border-color:rgba(60,171,238,.55)!important;border-radius:0!important;background:linear-gradient(180deg,rgba(5,19,32,.95),rgba(3,10,18,.96))!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.02),0 0 11px rgba(27,151,231,.11)!important}
+body[data-player-theme="station"] .topbar{border-color:rgba(255,161,48,.62)!important;background:linear-gradient(90deg,rgba(4,17,30,.97),rgba(7,28,46,.97),rgba(4,17,30,.97))!important}
+body[data-player-theme="station"] .brand,body[data-player-theme="station"] .section-title{color:#9bdcff!important}
+body[data-player-theme="station"] .mode strong{color:#ffbd53!important}
+body[data-player-theme="station"] .stat-card{background:linear-gradient(180deg,rgba(6,27,45,.92),rgba(3,12,22,.94))!important;border-radius:0!important}
+body[data-player-theme="station"] .summary{grid-template-columns:.72fr 1.62fr .72fr .46fr .46fr!important}
+body[data-player-theme="station"] .bar i,body[data-player-theme="station"] #globalXpBar,body[data-player-theme="station"] #skillBar{background:linear-gradient(90deg,#48cfff,#ffb44e)!important}
+body[data-player-theme="station"] .avatar-stage{border:1px solid rgba(62,188,255,.72)!important;box-shadow:inset 0 0 18px rgba(42,151,222,.06),0 0 12px rgba(47,178,255,.14)!important}
+body[data-player-theme="station"] .ps4-menu button{background:#061522!important;border-color:#286d9e!important;color:#bfe7ff!important}
+body[data-player-theme="station"] .ps4-menu button:focus,body[data-player-theme="station"] .ps4-menu button:hover{border-color:#ffae3e!important;color:#ffd893!important}
+body[data-player-theme="station"] .trajectory-bar{box-shadow:0 0 8px rgba(73,203,255,.15)!important}
+
+/* ---------------- ABYSS / ATLANTIS ---------------- */
+body[data-player-theme="ocean"]{
+  --line:#1aa6d8;--line-soft:#155073;--text:#e2faff;--muted:#8ec6d3;--green:#5de7e1;--good:#69efbb;
+  background:#02111a url("assets/themes/ocean/background.jpg") center center/cover no-repeat fixed!important;
+}
+body[data-player-theme="ocean"] .content{grid-template-columns:1.10fr 3.40fr!important;gap:.65vw!important}
+body[data-player-theme="ocean"] .left-column{grid-column:2;grid-row:1}
+body[data-player-theme="ocean"] .right-column{grid-column:1;grid-row:1}
+body[data-player-theme="ocean"] .panel{border-color:rgba(64,198,234,.50)!important;border-radius:14px!important;background:linear-gradient(180deg,rgba(3,30,42,.93),rgba(2,15,25,.95))!important;box-shadow:inset 0 0 0 1px rgba(116,226,255,.025),0 0 11px rgba(47,202,255,.10)!important}
+body[data-player-theme="ocean"] .topbar{border-radius:18px!important;background:linear-gradient(90deg,rgba(3,28,44,.96),rgba(6,55,72,.94),rgba(3,28,44,.96))!important}
+body[data-player-theme="ocean"] .section-title,body[data-player-theme="ocean"] .brand{color:#8ee9ff!important}
+body[data-player-theme="ocean"] .stat-card{border-radius:18px!important;background:linear-gradient(135deg,rgba(5,40,55,.92),rgba(3,18,29,.94))!important}
+body[data-player-theme="ocean"] .bottom-grid{grid-template-columns:.82fr 1.28fr!important}
+body[data-player-theme="ocean"] .finance{grid-column:2;grid-row:1}
+body[data-player-theme="ocean"] .skill{grid-column:1;grid-row:1}
+body[data-player-theme="ocean"] .bar i,body[data-player-theme="ocean"] #globalXpBar,body[data-player-theme="ocean"] #skillBar{background:linear-gradient(90deg,#43d8ff,#7be5c8)!important}
+body[data-player-theme="ocean"] .avatar-stage{border:1px solid rgba(96,228,255,.72)!important;border-radius:18px!important;box-shadow:0 0 14px rgba(63,210,255,.14)!important}
+body[data-player-theme="ocean"] .ps4-menu button{border-radius:12px!important;background:rgba(2,25,38,.94)!important;border-color:#247ca5!important;color:#c6f3ff!important}
+
+/* ---------------- DESERT / RUINS ---------------- */
+body[data-player-theme="desert"]{
+  --line:#8f6331;--line-soft:#49331d;--text:#f5e7cb;--muted:#bca98d;--green:#d6b06e;--good:#83d77b;
+  background:#160d06 url("assets/themes/desert/background.jpg") center center/cover no-repeat fixed!important;
+}
+body[data-player-theme="desert"] .content{grid-template-columns:1.08fr 3.42fr!important;gap:.72vw!important}
+body[data-player-theme="desert"] .left-column{grid-column:2;grid-row:1}
+body[data-player-theme="desert"] .right-column{grid-column:1;grid-row:1}
+body[data-player-theme="desert"] .panel{border-color:rgba(187,126,58,.62)!important;border-radius:3px!important;background:linear-gradient(180deg,rgba(40,25,12,.94),rgba(15,10,6,.96))!important;box-shadow:inset 0 0 0 1px rgba(244,204,139,.025),0 0 9px rgba(170,102,30,.12)!important}
+body[data-player-theme="desert"] .topbar,body[data-player-theme="desert"] .week{background:linear-gradient(180deg,rgba(45,27,12,.97),rgba(17,11,6,.97))!important;border-color:rgba(225,169,74,.68)!important}
+body[data-player-theme="desert"] .brand,body[data-player-theme="desert"] .section-title{color:#f0c66e!important}
+body[data-player-theme="desert"] .stat-card{background:linear-gradient(135deg,rgba(47,29,14,.90),rgba(18,12,7,.94))!important;border-radius:2px!important}
+body[data-player-theme="desert"] .bar i,body[data-player-theme="desert"] #globalXpBar,body[data-player-theme="desert"] #skillBar{background:linear-gradient(90deg,#e3a64e,#f4d27b)!important}
+body[data-player-theme="desert"] .avatar-stage{border:1px solid rgba(232,177,80,.70)!important;box-shadow:0 0 12px rgba(223,137,45,.13)!important}
+body[data-player-theme="desert"] .ps4-menu button{background:rgba(34,21,10,.94)!important;border-color:#8c5c2e!important;color:#ead6b2!important}
+body[data-player-theme="desert"] .ps4-menu button:focus,body[data-player-theme="desert"] .ps4-menu button:hover{border-color:#f1bf64!important;color:#fff0ca!important}
+
+/* ---------------- INFERNO / FORGE ---------------- */
+body[data-player-theme="inferno"]{
+  --line:#9b2d1c;--line-soft:#52190f;--text:#fff0d9;--muted:#c69680;--green:#ff8b28;--good:#a8ea65;
+  background:#120302 url("assets/themes/inferno/background.jpg") center center/cover no-repeat fixed!important;
+}
+body[data-player-theme="inferno"] .content{grid-template-columns:1.10fr 3.40fr!important;gap:.65vw!important}
+body[data-player-theme="inferno"] .left-column{grid-column:2;grid-row:1}
+body[data-player-theme="inferno"] .right-column{grid-column:1;grid-row:1}
+body[data-player-theme="inferno"] .panel{border-color:rgba(255,72,27,.64)!important;border-radius:0!important;background:linear-gradient(180deg,rgba(31,7,4,.94),rgba(10,4,3,.97))!important;box-shadow:inset 0 0 0 1px rgba(255,183,90,.025),0 0 12px rgba(255,64,22,.14)!important}
+body[data-player-theme="inferno"] .topbar,body[data-player-theme="inferno"] .week{background:linear-gradient(180deg,rgba(38,7,3,.97),rgba(13,4,3,.98))!important;border-color:rgba(255,92,32,.75)!important}
+body[data-player-theme="inferno"] .brand,body[data-player-theme="inferno"] .section-title{color:#ff9d42!important;text-shadow:0 0 5px rgba(255,91,28,.22)!important}
+body[data-player-theme="inferno"] .stat-card{background:linear-gradient(135deg,rgba(40,8,5,.92),rgba(12,5,4,.95))!important;border-radius:0!important}
+body[data-player-theme="inferno"] .bottom-grid{grid-template-columns:.80fr 1.30fr!important}
+body[data-player-theme="inferno"] .finance{grid-column:2;grid-row:1}
+body[data-player-theme="inferno"] .skill{grid-column:1;grid-row:1}
+body[data-player-theme="inferno"] .bar i,body[data-player-theme="inferno"] #globalXpBar,body[data-player-theme="inferno"] #skillBar{background:linear-gradient(90deg,#ff4a22,#ffbe42)!important;box-shadow:0 0 7px rgba(255,80,23,.22)!important}
+body[data-player-theme="inferno"] .avatar-stage{border:1px solid rgba(255,97,31,.82)!important;box-shadow:0 0 13px rgba(255,58,18,.20)!important}
+body[data-player-theme="inferno"] .ps4-menu button{background:rgba(28,6,4,.95)!important;border-color:#8d2417!important;color:#ffd1a9!important}
+body[data-player-theme="inferno"] .ps4-menu button:focus,body[data-player-theme="inferno"] .ps4-menu button:hover{border-color:#ff8a32!important;color:#fff0c2!important}
+
+/* Keep system modal readable in every world without expensive visual effects. */
+body[data-player-theme]:not([data-player-theme="classic"]) .system-window{background:#050807!important;border-color:var(--line)!important}
+body[data-player-theme]:not([data-player-theme="classic"]) .panel-box,
+body[data-player-theme]:not([data-player-theme="classic"]) .objective-row,
+body[data-player-theme]:not([data-player-theme="classic"]) .analysis-row{background:rgba(3,7,8,.94)!important;border-color:var(--line-soft)!important}

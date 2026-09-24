@@ -1,0 +1,33 @@
+PLAYER PS4 V1.3.0 — SIX WORLDS
+================================
+
+BASE : V1.2.3 CHARACTER BEAM FIX (conservée)
+
+6 dashboards disponibles :
+1. CLASSIC — version noire V1.2.3 inchangée
+2. FORÊT ENCHANTÉE
+3. STATION ORBITALE
+4. FONDS MARINS / ATLANTIS
+5. DÉSERT
+6. FLAMMES / INFERNO
+
+CHANGEMENT DE DESIGN :
+PARAMÈTRES -> DESIGN DU DASHBOARD -> choisir un univers.
+Le choix est mémorisé dans le navigateur PS4.
+Aucune donnée utilisateur, XP, historique ou réglage métier n'est modifié.
+
+PERSONNAGE :
+- CLASSIC garde les 24 vidéos H.264 existantes et les 12 formes actuelles.
+- Chaque nouveau monde utilise le même héros pixel-art reconnaissable avec une tenue dédiée.
+- 5 évolutions par nouveau monde, déclenchées aux niveaux 1 / 5 / 20 / 50 / 84.
+- Mouvement léger effectué par transform uniquement, optimisé pour PS4.
+
+IMPORTANT :
+NE PAS REMPLACER votre config.js actuel.
+Ce package n'inclut volontairement aucun config.js privé.
+
+Après Push origin, ouvrir :
+ps4.html?v=130
+
+Page de saisie :
+mobile.html?v=130
