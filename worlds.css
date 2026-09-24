@@ -195,3 +195,282 @@ body[data-world="station"] .panel-box,body[data-world="station"] .objective-row,
 body[data-world="ocean"] .panel-box,body[data-world="ocean"] .objective-row,body[data-world="ocean"] .analysis-row,
 body[data-world="desert"] .panel-box,body[data-world="desert"] .objective-row,body[data-world="desert"] .analysis-row,
 body[data-world="inferno"] .panel-box,body[data-world="inferno"] .objective-row,body[data-world="inferno"] .analysis-row{background:#070a08!important}
+
+/* ============================================================
+   V1.4.1 WORLD VISUAL REPAIR
+   - Full-body centering for all non-classic characters
+   - Stronger integration of dashboard concept art into panels
+   - PS4-safe static light ambience that changes with each world
+   ============================================================ */
+
+body[data-world="forest"],
+body[data-world="station"],
+body[data-world="ocean"],
+body[data-world="desert"],
+body[data-world="inferno"]{
+  --worldGlowA: rgba(255,255,255,.10);
+  --worldGlowB: rgba(255,255,255,.06);
+}
+
+body[data-world="forest"]{--worldScene:url("assets/themes/forest/dashboard.jpg");--worldQuote:url("assets/themes/forest/quote.jpg");--worldAvatar:url("assets/themes/forest/scene.jpg");--worldCards:url("assets/themes/forest/cards.jpg");--worldLower:url("assets/themes/forest/lower.jpg");--worldGlowA:rgba(110,229,164,.15);--worldGlowB:rgba(255,209,90,.10)}
+body[data-world="station"]{--worldScene:url("assets/themes/station/dashboard.jpg");--worldQuote:url("assets/themes/station/quote.jpg");--worldAvatar:url("assets/themes/station/scene.jpg");--worldCards:url("assets/themes/station/cards.jpg");--worldLower:url("assets/themes/station/lower.jpg");--worldGlowA:rgba(82,170,255,.16);--worldGlowB:rgba(255,170,75,.11)}
+body[data-world="ocean"]{--worldScene:url("assets/themes/ocean/dashboard.jpg");--worldQuote:url("assets/themes/ocean/quote.jpg");--worldAvatar:url("assets/themes/ocean/scene.jpg");--worldCards:url("assets/themes/ocean/cards.jpg");--worldLower:url("assets/themes/ocean/lower.jpg");--worldGlowA:rgba(72,215,255,.16);--worldGlowB:rgba(103,255,200,.10)}
+body[data-world="desert"]{--worldScene:url("assets/themes/desert/dashboard.jpg");--worldQuote:url("assets/themes/desert/quote.jpg");--worldAvatar:url("assets/themes/desert/scene.jpg");--worldCards:url("assets/themes/desert/cards.jpg");--worldLower:url("assets/themes/desert/lower.jpg");--worldGlowA:rgba(235,181,88,.14);--worldGlowB:rgba(128,221,193,.08)}
+body[data-world="inferno"]{--worldScene:url("assets/themes/inferno/dashboard.jpg");--worldQuote:url("assets/themes/inferno/quote.jpg");--worldAvatar:url("assets/themes/inferno/scene.jpg");--worldCards:url("assets/themes/inferno/cards.jpg");--worldLower:url("assets/themes/inferno/lower.jpg");--worldGlowA:rgba(255,90,45,.16);--worldGlowB:rgba(255,192,72,.10)}
+
+body[data-world="forest"] .hud,
+body[data-world="station"] .hud,
+body[data-world="ocean"] .hud,
+body[data-world="desert"] .hud,
+body[data-world="inferno"] .hud{position:relative;overflow:hidden}
+
+body[data-world="forest"] .hud::before,
+body[data-world="station"] .hud::before,
+body[data-world="ocean"] .hud::before,
+body[data-world="desert"] .hud::before,
+body[data-world="inferno"] .hud::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.14;
+  background:var(--worldScene) center/cover no-repeat;
+}
+body[data-world="forest"] .hud::after,
+body[data-world="station"] .hud::after,
+body[data-world="ocean"] .hud::after,
+body[data-world="desert"] .hud::after,
+body[data-world="inferno"] .hud::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 28%, var(--worldGlowA), transparent 23%),
+    radial-gradient(circle at 82% 22%, var(--worldGlowB), transparent 22%),
+    radial-gradient(circle at 52% 82%, var(--worldGlowA), transparent 26%);
+  opacity:.92;
+}
+body[data-world="forest"] .topbar,
+body[data-world="forest"] .ps4-quote,
+body[data-world="forest"] .summary,
+body[data-world="forest"] .fundamentals,
+body[data-world="forest"] .finance,
+body[data-world="forest"] .skill,
+body[data-world="forest"] .profile,
+body[data-world="forest"] .status,
+body[data-world="forest"] .priority,
+body[data-world="forest"] .week,
+body[data-world="station"] .topbar,
+body[data-world="station"] .ps4-quote,
+body[data-world="station"] .summary,
+body[data-world="station"] .fundamentals,
+body[data-world="station"] .finance,
+body[data-world="station"] .skill,
+body[data-world="station"] .profile,
+body[data-world="station"] .status,
+body[data-world="station"] .priority,
+body[data-world="station"] .week,
+body[data-world="ocean"] .topbar,
+body[data-world="ocean"] .ps4-quote,
+body[data-world="ocean"] .summary,
+body[data-world="ocean"] .fundamentals,
+body[data-world="ocean"] .finance,
+body[data-world="ocean"] .skill,
+body[data-world="ocean"] .profile,
+body[data-world="ocean"] .status,
+body[data-world="ocean"] .priority,
+body[data-world="ocean"] .week,
+body[data-world="desert"] .topbar,
+body[data-world="desert"] .ps4-quote,
+body[data-world="desert"] .summary,
+body[data-world="desert"] .fundamentals,
+body[data-world="desert"] .finance,
+body[data-world="desert"] .skill,
+body[data-world="desert"] .profile,
+body[data-world="desert"] .status,
+body[data-world="desert"] .priority,
+body[data-world="desert"] .week,
+body[data-world="inferno"] .topbar,
+body[data-world="inferno"] .ps4-quote,
+body[data-world="inferno"] .summary,
+body[data-world="inferno"] .fundamentals,
+body[data-world="inferno"] .finance,
+body[data-world="inferno"] .skill,
+body[data-world="inferno"] .profile,
+body[data-world="inferno"] .status,
+body[data-world="inferno"] .priority,
+body[data-world="inferno"] .week{
+  position:relative;
+  overflow:hidden;
+}
+
+/* stronger design integration into key panels */
+body[data-world="forest"] .summary,
+body[data-world="station"] .summary,
+body[data-world="ocean"] .summary,
+body[data-world="desert"] .summary,
+body[data-world="inferno"] .summary{
+  background-image:linear-gradient(90deg,rgba(6,8,10,.84),rgba(8,11,13,.58)),var(--worldCards)!important;
+  background-size:cover,cover!important;
+  background-position:center,center!important;
+}
+body[data-world="forest"] .ps4-quote,
+body[data-world="station"] .ps4-quote,
+body[data-world="ocean"] .ps4-quote,
+body[data-world="desert"] .ps4-quote,
+body[data-world="inferno"] .ps4-quote{
+  background-image:linear-gradient(90deg,rgba(6,8,10,.54),rgba(6,8,10,.68)),var(--worldQuote)!important;
+  background-size:cover,cover!important;
+  background-position:center,center!important;
+}
+body[data-world="forest"] .fundamentals,
+body[data-world="station"] .fundamentals,
+body[data-world="ocean"] .fundamentals,
+body[data-world="desert"] .fundamentals,
+body[data-world="inferno"] .fundamentals{
+  background-image:linear-gradient(180deg,rgba(5,7,9,.82),rgba(5,7,9,.91)),var(--worldCards)!important;
+  background-size:cover,cover!important;
+  background-position:center,center!important;
+}
+body[data-world="forest"] .finance,
+body[data-world="station"] .finance,
+body[data-world="ocean"] .finance,
+body[data-world="desert"] .finance,
+body[data-world="inferno"] .finance,
+body[data-world="forest"] .week,
+body[data-world="station"] .week,
+body[data-world="ocean"] .week,
+body[data-world="desert"] .week,
+body[data-world="inferno"] .week{
+  background-image:linear-gradient(90deg,rgba(5,7,9,.80),rgba(5,7,9,.90)),var(--worldLower)!important;
+  background-size:cover,cover!important;
+  background-position:center,center!important;
+}
+body[data-world="forest"] .skill,
+body[data-world="station"] .skill,
+body[data-world="ocean"] .skill,
+body[data-world="desert"] .skill,
+body[data-world="inferno"] .skill,
+body[data-world="forest"] .status,
+body[data-world="station"] .status,
+body[data-world="ocean"] .status,
+body[data-world="desert"] .status,
+body[data-world="inferno"] .status,
+body[data-world="forest"] .priority,
+body[data-world="station"] .priority,
+body[data-world="ocean"] .priority,
+body[data-world="desert"] .priority,
+body[data-world="inferno"] .priority{
+  background-image:linear-gradient(180deg,rgba(5,7,9,.84),rgba(5,7,9,.94)),var(--worldCards)!important;
+  background-size:cover,cover!important;
+  background-position:center,center!important;
+}
+body[data-world="forest"] .profile,
+body[data-world="station"] .profile,
+body[data-world="ocean"] .profile,
+body[data-world="desert"] .profile,
+body[data-world="inferno"] .profile{
+  background-image:linear-gradient(180deg,rgba(5,7,9,.72),rgba(5,7,9,.92)),var(--worldScene)!important;
+  background-size:cover,cover!important;
+  background-position:center top,center top!important;
+}
+body[data-world="forest"] .stat-card,
+body[data-world="station"] .stat-card,
+body[data-world="ocean"] .stat-card,
+body[data-world="desert"] .stat-card,
+body[data-world="inferno"] .stat-card{
+  background-image:linear-gradient(135deg,rgba(5,7,9,.66),rgba(5,7,9,.80)),var(--worldCards)!important;
+  background-size:cover,cover!important;
+  background-repeat:no-repeat,no-repeat!important;
+}
+body[data-world="forest"] .stat-card:nth-child(odd),
+body[data-world="station"] .stat-card:nth-child(odd),
+body[data-world="ocean"] .stat-card:nth-child(odd),
+body[data-world="desert"] .stat-card:nth-child(odd),
+body[data-world="inferno"] .stat-card:nth-child(odd){background-position:center left,center left!important}
+body[data-world="forest"] .stat-card:nth-child(even),
+body[data-world="station"] .stat-card:nth-child(even),
+body[data-world="ocean"] .stat-card:nth-child(even),
+body[data-world="desert"] .stat-card:nth-child(even),
+body[data-world="inferno"] .stat-card:nth-child(even){background-position:center right,center right!important}
+
+/* panel edge light, theme dependent but static and cheap */
+body[data-world="forest"] .panel,
+body[data-world="station"] .panel,
+body[data-world="ocean"] .panel,
+body[data-world="desert"] .panel,
+body[data-world="inferno"] .panel{
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.03),0 0 12px rgba(0,0,0,.16)!important;
+}
+body[data-world="forest"] .panel::after,
+body[data-world="station"] .panel::after,
+body[data-world="ocean"] .panel::after,
+body[data-world="desert"] .panel::after,
+body[data-world="inferno"] .panel::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(120deg,rgba(255,255,255,.045),transparent 28%,transparent 72%,rgba(255,255,255,.02));
+  opacity:.75;
+}
+
+/* full-body, centered sprite */
+.world-avatar-sprite{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:84%!important;
+  height:92%!important;
+  margin-top:0!important;
+  z-index:2!important;
+  background-repeat:no-repeat!important;
+  background-position:center center!important;
+  background-size:contain!important;
+  transform:translate3d(-50%,-50%,0)!important;
+  -webkit-transform:translate3d(-50%,-50%,0)!important;
+  transform-origin:50% 100%!important;
+  -webkit-transform-origin:50% 100%!important;
+}
+body[data-world="forest"] .avatar-stage,
+body[data-world="station"] .avatar-stage,
+body[data-world="ocean"] .avatar-stage,
+body[data-world="desert"] .avatar-stage,
+body[data-world="inferno"] .avatar-stage{
+  background-image:linear-gradient(180deg,rgba(5,7,9,.16),rgba(5,7,9,.56)),var(--worldAvatar)!important;
+  background-size:cover,cover!important;
+  background-position:center top,center top!important;
+}
+body[data-world="forest"] .avatar-stage::before,
+body[data-world="station"] .avatar-stage::before,
+body[data-world="ocean"] .avatar-stage::before,
+body[data-world="desert"] .avatar-stage::before,
+body[data-world="inferno"] .avatar-stage::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:3%;
+  width:66%;
+  height:16%;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(ellipse at center, var(--worldGlowA), transparent 68%);
+  opacity:.95;
+  z-index:1;
+}
+body[data-world="forest"] .player-stage-label,
+body[data-world="station"] .player-stage-label,
+body[data-world="ocean"] .player-stage-label,
+body[data-world="desert"] .player-stage-label,
+body[data-world="inferno"] .player-stage-label{
+  background:linear-gradient(180deg,rgba(4,6,7,.06),rgba(4,6,7,.44))!important;
+}
+
+/* keep ACTIVE picker more distinct */
+.world-choice{border-radius:10px}
+.world-choice::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.08),transparent 28%,rgba(0,0,0,.16))}

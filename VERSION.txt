@@ -1,3 +1,6 @@
-PLAYER PS4 V1.4.0 — SIX WORLDS REAL
-Base fonctionnelle: V1.2.3 CHARACTER BEAM FIX
-Themes: CLASSIC + FORET + STATION + OCEAN + DESERT + INFERNO
+PLAYER PS4 V1.4.1 — WORLD VISUAL REPAIR
+- Full-body centering fix for Forest / Station / Desert / Inferno / Ocean characters
+- Removed adjacent-frame leakage on Inferno and other world sprites
+- Stronger world art integration inside panels (quote, profile, stats, finance, week)
+- Added PS4-safe static light ambience by world color
+- Functional engine unchanged (data, XP, sync, mobile input, history)

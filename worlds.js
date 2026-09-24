@@ -119,9 +119,7 @@
       if(current==="classic"||!sprite||sprite.style.display==="none")return;
       moveUp=!moveUp;
       var y=moveUp?-2:0;
-      var tr="translate3d(0,"+y+"px,0) scale(1.002)";
-      sprite.style.transform=tr;
-      sprite.style.webkitTransform=tr;
+      sprite.style.marginTop=y+"px";
     },1100);
   }
   function init(){
