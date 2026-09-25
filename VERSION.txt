@@ -1,12 +1,1 @@
-PLAYER PS4 V1.5.0 — REFERENCE FAITHFUL
-
-6 dashboards disponibles :
-- CLASSIC : version noire stable, moteur et rendu d'origine conservés.
-- FORÊT ENCHANTÉE
-- STATION ORBITALE / NEXUS
-- ATLANTIS NÉON
-- DÉSERT
-- FLAMMES / INFERNO
-
-Les 5 nouveaux dashboards sont reconstruits à partir des 5 références visuelles validées du 24/09/2026.
-Aucun effet animé supplémentaire n'a été ajouté dans ces 5 thèmes pour préserver la PS4.
+PLAYER PS4 V1.5.1 — WORLD POLISH
