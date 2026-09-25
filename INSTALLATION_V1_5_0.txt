@@ -1,0 +1,12 @@
+PLAYER PS4 V1.5.0 — INSTALLATION
+
+1. NE PAS remplacer votre config.js actuel.
+2. Copier tous les autres fichiers et dossiers à la racine du dépôt GitHub player-dashboard.
+3. Commit recommandé :
+   PLAYER PS4 V1.5.0 - Reference Faithful Six Dashboards
+4. Push origin.
+5. Sur PS4 ouvrir : ps4.html?v=150
+6. Page de saisie : mobile.html?v=150
+7. Dans le dashboard : CITATIONS puis DESIGNS juste après dans la barre de navigation.
+
+Le choix du design est mémorisé localement par le navigateur.

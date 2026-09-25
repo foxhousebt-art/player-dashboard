@@ -1,6 +1,12 @@
-PLAYER PS4 V1.4.1 — WORLD VISUAL REPAIR
-- Full-body centering fix for Forest / Station / Desert / Inferno / Ocean characters
-- Removed adjacent-frame leakage on Inferno and other world sprites
-- Stronger world art integration inside panels (quote, profile, stats, finance, week)
-- Added PS4-safe static light ambience by world color
-- Functional engine unchanged (data, XP, sync, mobile input, history)
+PLAYER PS4 V1.5.0 — REFERENCE FAITHFUL
+
+6 dashboards disponibles :
+- CLASSIC : version noire stable, moteur et rendu d'origine conservés.
+- FORÊT ENCHANTÉE
+- STATION ORBITALE / NEXUS
+- ATLANTIS NÉON
+- DÉSERT
+- FLAMMES / INFERNO
+
+Les 5 nouveaux dashboards sont reconstruits à partir des 5 références visuelles validées du 24/09/2026.
+Aucun effet animé supplémentaire n'a été ajouté dans ces 5 thèmes pour préserver la PS4.

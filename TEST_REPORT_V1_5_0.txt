@@ -1,0 +1,17 @@
+PLAYER PS4 V1.5.0 — TEST REPORT
+
+CONTRÔLES EFFECTUÉS
+- Syntaxe JS : OK (app_ps4.js, ps4_controls.js, progression_engine.js, data_sync.js, worlds_v150.js)
+- Références CSS -> assets : OK, aucun fichier manquant
+- HTML -> scripts / CSS : OK (config.js volontairement externe)
+- 5 mondes : 6 images d'items chacun = 30 assets
+- 5 mondes : 5 paliers personnage chacun = 25 assets
+- Changement de monde / changement de palier : test logique OK
+- ProgressionEngine : test de calcul OK
+- mobile.html : byte-for-byte identique à la base fonctionnelle V1.4.1
+- app_ps4.js / ps4_controls.js / progression_engine.js / data_sync.js / character_evolution.js / styles.css / ps4.css : inchangés
+- Rendu 1672x941 : les 6 dashboards ont été rendus dans Chromium headless avec les assets locaux interceptés ; 6 cartes sont présentes dans chaque thème.
+- CLASSIC : aucun override de layout/couleur par worlds_v150.css.
+
+NOTE DE TEST
+Le harness headless utilisé pour la vérification visuelle bloque localStorage sur son document synthétique. La persistance n'a donc pas été retestée dans ce harness ; son code est inchangé par rapport à la base fonctionnelle.

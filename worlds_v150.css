@@ -1,0 +1,209 @@
+/* =============================================================
+   PLAYER PS4 V1.5.0 — REFERENCE FAITHFUL WORLDS
+   Five approved visual references drive the non-classic themes.
+   CLASSIC receives no layout/visual override from this file.
+   Runtime effects deliberately omitted for PS4 stability.
+   ============================================================= */
+
+/* ---------------- Shared theme variables ---------------- */
+body[data-world="forest"]{--w-bg:#06100a;--w-line:#aa7d2c;--w-line2:#2c7a55;--w-text:#f5eed5;--w-muted:#a8b8a4;--w-accent:#ffd354;--w-good:#4eea9a;--w-ref:url("assets/reference/forest/reference.jpg");--w-ambient:url("assets/reference/forest/ambient.jpg");--w-head:url("assets/reference/forest/header_clean.jpg");--w-quote:url("assets/reference/forest/quote_clean.jpg");--w-low:url("assets/reference/forest/lower_clean.jpg")}
+body[data-world="station"]{--w-bg:#030b15;--w-line:#2f98dc;--w-line2:#fd9f43;--w-text:#e8f7ff;--w-muted:#8eb6cf;--w-accent:#6dd7ff;--w-good:#70ed9a;--w-ref:url("assets/reference/station/reference.jpg");--w-ambient:url("assets/reference/station/ambient.jpg");--w-head:url("assets/reference/station/header_clean.jpg");--w-quote:url("assets/reference/station/quote_clean.jpg");--w-low:url("assets/reference/station/lower_clean.jpg")}
+body[data-world="ocean"]{--w-bg:#031521;--w-line:#1fc4f3;--w-line2:#b946ff;--w-text:#effdff;--w-muted:#9bd6e4;--w-accent:#5fe8ff;--w-good:#63efc6;--w-ref:url("assets/reference/ocean/reference.jpg");--w-ambient:url("assets/reference/ocean/ambient.jpg");--w-head:url("assets/reference/ocean/header_clean.jpg");--w-quote:url("assets/reference/ocean/quote_clean.jpg");--w-low:url("assets/reference/ocean/lower_clean.jpg")}
+body[data-world="desert"]{--w-bg:#160c05;--w-line:#c98537;--w-line2:#2ec3dc;--w-text:#fff0d3;--w-muted:#c4ac8e;--w-accent:#ffc75d;--w-good:#5de7b3;--w-ref:url("assets/reference/desert/reference.jpg");--w-ambient:url("assets/reference/desert/ambient.jpg");--w-head:url("assets/reference/desert/header_clean.jpg");--w-quote:url("assets/reference/desert/quote_clean.jpg");--w-low:url("assets/reference/desert/lower_clean.jpg")}
+body[data-world="inferno"]{--w-bg:#140201;--w-line:#ff4c1e;--w-line2:#ff9b31;--w-text:#fff2dd;--w-muted:#d0a28d;--w-accent:#ffb13a;--w-good:#57e793;--w-ref:url("assets/reference/inferno/reference.jpg");--w-ambient:url("assets/reference/inferno/ambient.jpg");--w-head:url("assets/reference/inferno/header_clean.jpg");--w-quote:url("assets/reference/inferno/quote_clean.jpg");--w-low:url("assets/reference/inferno/lower_clean.jpg")}
+
+/* ---------------- Common non-classic composition ---------------- */
+body[data-world="forest"],body[data-world="station"],body[data-world="ocean"],body[data-world="desert"],body[data-world="inferno"]{
+  background:var(--w-bg)!important;color:var(--w-text)!important;overflow:hidden!important;
+}
+body[data-world="forest"]::before,body[data-world="station"]::before,body[data-world="ocean"]::before,body[data-world="desert"]::before,body[data-world="inferno"]::before{
+  content:""!important;display:block!important;position:fixed!important;inset:0!important;z-index:0!important;pointer-events:none!important;
+  background-image:linear-gradient(rgba(3,7,9,.18),rgba(3,7,9,.28)),var(--w-ambient)!important;
+  background-size:cover!important;background-position:center!important;opacity:1!important;animation:none!important;-webkit-animation:none!important;
+}
+body[data-world="forest"]::after,body[data-world="station"]::after,body[data-world="ocean"]::after,body[data-world="desert"]::after,body[data-world="inferno"]::after{display:none!important}
+body[data-world="forest"] .hud,body[data-world="station"] .hud,body[data-world="ocean"] .hud,body[data-world="desert"] .hud,body[data-world="inferno"] .hud{
+  position:relative!important;z-index:2!important;width:100vw!important;height:100vh!important;padding:.8vh .55vw .7vh 13.2vw!important;box-sizing:border-box!important;
+}
+
+/* Header becomes part of the world, like the approved designs. */
+body[data-world="forest"] .topbar,body[data-world="station"] .topbar,body[data-world="ocean"] .topbar,body[data-world="desert"] .topbar,body[data-world="inferno"] .topbar{
+  height:7.6vh!important;margin:0!important;padding:.5vh 1vw!important;
+  grid-template-columns:1fr .68fr!important;border:1px solid var(--w-line)!important;
+  background-image:linear-gradient(90deg,rgba(2,8,10,.72),rgba(2,8,10,.48),rgba(2,8,10,.76)),var(--w-head)!important;
+  background-size:cover!important;background-position:center!important;box-shadow:none!important;border-radius:3px!important;
+}
+body[data-world="forest"] .brand,body[data-world="station"] .brand,body[data-world="ocean"] .brand,body[data-world="desert"] .brand,body[data-world="inferno"] .brand{
+  position:fixed!important;z-index:9!important;left:.65vw!important;top:1.15vh!important;width:11.6vw!important;height:7.1vh!important;box-sizing:border-box!important;
+  display:flex!important;align-items:center!important;padding:0 .75vw!important;border:1px solid var(--w-line)!important;
+  background:rgba(3,9,10,.80)!important;color:var(--w-text)!important;font-size:1.02vw!important;text-shadow:0 1px 2px #000!important;
+}
+body[data-world="forest"] .brand span,body[data-world="station"] .brand span,body[data-world="ocean"] .brand span,body[data-world="desert"] .brand span,body[data-world="inferno"] .brand span{display:none!important}
+body[data-world="forest"] .mode,body[data-world="station"] .mode,body[data-world="ocean"] .mode,body[data-world="desert"] .mode,body[data-world="inferno"] .mode{justify-self:end!important;color:var(--w-muted)!important;font-size:.72vw!important}
+body[data-world="forest"] .mode strong,body[data-world="station"] .mode strong,body[data-world="ocean"] .mode strong,body[data-world="desert"] .mode strong,body[data-world="inferno"] .mode strong{color:var(--w-accent)!important}
+body[data-world="forest"] .clock,body[data-world="station"] .clock,body[data-world="ocean"] .clock,body[data-world="desert"] .clock,body[data-world="inferno"] .clock{justify-self:end!important;color:#fff!important;font-size:.82vw!important}
+
+/* Dedicated left sidebar exactly as the approved five references. */
+body[data-world="forest"] .ps4-menu,body[data-world="station"] .ps4-menu,body[data-world="ocean"] .ps4-menu,body[data-world="desert"] .ps4-menu,body[data-world="inferno"] .ps4-menu{
+  position:fixed!important;z-index:10!important;left:.55vw!important;top:10.3vh!important;width:11.8vw!important;height:auto!important;
+  display:flex!important;flex-direction:column!important;gap:.7vh!important;align-items:stretch!important;
+}
+body[data-world="forest"] .ps4-menu button,body[data-world="station"] .ps4-menu button,body[data-world="ocean"] .ps4-menu button,body[data-world="desert"] .ps4-menu button,body[data-world="inferno"] .ps4-menu button{
+  min-height:7.6vh!important;padding:.7vh .75vw!important;text-align:left!important;font:700 .77vw/1.15 monospace!important;letter-spacing:.02em!important;
+  color:var(--w-text)!important;background:rgba(3,10,12,.83)!important;border:1px solid var(--w-line)!important;border-radius:3px!important;box-shadow:none!important;
+}
+body[data-world="forest"] .ps4-menu button:focus,body[data-world="station"] .ps4-menu button:focus,body[data-world="ocean"] .ps4-menu button:focus,body[data-world="desert"] .ps4-menu button:focus,body[data-world="inferno"] .ps4-menu button:focus,
+body[data-world="forest"] .ps4-menu button:hover,body[data-world="station"] .ps4-menu button:hover,body[data-world="ocean"] .ps4-menu button:hover,body[data-world="desert"] .ps4-menu button:hover,body[data-world="inferno"] .ps4-menu button:hover{
+  border-color:var(--w-accent)!important;color:var(--w-accent)!important;background:rgba(8,18,20,.92)!important;
+}
+body[data-world="forest"] .designs-menu-button,body[data-world="station"] .designs-menu-button,body[data-world="ocean"] .designs-menu-button,body[data-world="desert"] .designs-menu-button,body[data-world="inferno"] .designs-menu-button{border-color:var(--w-line2)!important}
+
+/* Quote becomes a scenic integrated panel rather than a detached text stripe. */
+body[data-world="forest"] .ps4-quote,body[data-world="station"] .ps4-quote,body[data-world="ocean"] .ps4-quote,body[data-world="desert"] .ps4-quote,body[data-world="inferno"] .ps4-quote{
+  position:absolute!important;z-index:6!important;right:.65vw!important;top:9.15vh!important;width:29vw!important;height:14.7vh!important;box-sizing:border-box!important;
+  margin:0!important;padding:4.8vh 1.3vw 1vh!important;text-align:center!important;font:600 .72vw/1.35 monospace!important;color:var(--w-text)!important;
+  border:1px solid var(--w-line)!important;border-radius:4px!important;
+  background-image:linear-gradient(rgba(2,8,10,.34),rgba(2,8,10,.68)),var(--w-quote)!important;background-size:cover!important;background-position:center!important;box-shadow:none!important;
+  text-shadow:0 1px 3px #000!important;
+}
+
+body[data-world="forest"] .content,body[data-world="station"] .content,body[data-world="ocean"] .content,body[data-world="desert"] .content,body[data-world="inferno"] .content{
+  height:90.2vh!important;margin-top:.65vh!important;gap:.55vw!important;
+}
+body[data-world="forest"] .left-column,body[data-world="station"] .left-column,body[data-world="ocean"] .left-column,body[data-world="desert"] .left-column,body[data-world="inferno"] .left-column{
+  grid-template-rows:16vh 39.7vh 27.2vh 5.7vh!important;gap:.55vh!important;
+}
+body[data-world="forest"] .right-column,body[data-world="station"] .right-column,body[data-world="ocean"] .right-column,body[data-world="desert"] .right-column,body[data-world="inferno"] .right-column{
+  grid-template-rows:52vh 16.1vh 20.1vh!important;gap:.55vh!important;
+}
+/* Forest/desert/inferno approved layouts put player left. */
+body[data-world="forest"] .content,body[data-world="desert"] .content,body[data-world="inferno"] .content{grid-template-columns:1.15fr 3.35fr!important}
+body[data-world="forest"] .right-column,body[data-world="desert"] .right-column,body[data-world="inferno"] .right-column{grid-column:1!important;grid-row:1!important}
+body[data-world="forest"] .left-column,body[data-world="desert"] .left-column,body[data-world="inferno"] .left-column{grid-column:2!important;grid-row:1!important}
+/* Station/Atlantis keep player on the right as in their references. */
+body[data-world="station"] .content,body[data-world="ocean"] .content{grid-template-columns:3.35fr 1.15fr!important}
+
+/* Panels become connected pieces of one coherent world. */
+body[data-world="forest"] .panel,body[data-world="station"] .panel,body[data-world="ocean"] .panel,body[data-world="desert"] .panel,body[data-world="inferno"] .panel{
+  position:relative!important;border:1px solid var(--w-line)!important;background-color:rgba(2,8,10,.88)!important;color:var(--w-text)!important;box-shadow:none!important;filter:none!important;overflow:hidden!important;
+}
+body[data-world="forest"] .panel::after,body[data-world="station"] .panel::after,body[data-world="ocean"] .panel::after,body[data-world="desert"] .panel::after,body[data-world="inferno"] .panel::after{display:none!important}
+body[data-world="forest"] .section-title,body[data-world="station"] .section-title,body[data-world="ocean"] .section-title,body[data-world="desert"] .section-title,body[data-world="inferno"] .section-title,
+body[data-world="forest"] .eyebrow,body[data-world="station"] .eyebrow,body[data-world="ocean"] .eyebrow,body[data-world="desert"] .eyebrow,body[data-world="inferno"] .eyebrow{color:var(--w-text)!important;text-shadow:0 1px 2px #000!important}
+
+/* Summary composition closer to the approved top HUD. */
+body[data-world="forest"] .summary,body[data-world="station"] .summary,body[data-world="ocean"] .summary,body[data-world="desert"] .summary,body[data-world="inferno"] .summary{
+  margin-right:29.6vw!important;padding:.7vh .75vw!important;border-color:var(--w-line)!important;
+  background-image:linear-gradient(90deg,rgba(2,8,10,.92),rgba(2,10,13,.76)),var(--w-head)!important;background-size:cover!important;background-position:center!important;
+}
+body[data-world="forest"] .level-number,body[data-world="station"] .level-number,body[data-world="ocean"] .level-number,body[data-world="desert"] .level-number,body[data-world="inferno"] .level-number{color:#fff8d6!important;text-shadow:0 0 10px rgba(255,205,85,.22)!important}
+body[data-world="forest"] .mini-card,body[data-world="station"] .mini-card,body[data-world="ocean"] .mini-card,body[data-world="desert"] .mini-card,body[data-world="inferno"] .mini-card{background:rgba(2,8,10,.63)!important;border-color:rgba(255,255,255,.12)!important}
+
+/* ---------------- Player panel ---------------- */
+body[data-world="forest"] .profile,body[data-world="station"] .profile,body[data-world="ocean"] .profile,body[data-world="desert"] .profile,body[data-world="inferno"] .profile{
+  padding:.55vh .55vw!important;background:rgba(2,8,10,.78)!important;border-color:var(--w-line)!important;
+}
+body[data-world="forest"] .avatar-stage,body[data-world="station"] .avatar-stage,body[data-world="ocean"] .avatar-stage,body[data-world="desert"] .avatar-stage,body[data-world="inferno"] .avatar-stage{
+  height:43vh!important;margin-top:.3vh!important;background:#05090b!important;border:1px solid var(--w-line)!important;overflow:hidden!important;
+}
+.world-avatar-sprite-v150{
+  display:none;position:absolute!important;inset:0!important;z-index:1!important;background-repeat:no-repeat!important;background-position:center center!important;background-size:cover!important;
+  transform:none!important;-webkit-transform:none!important;margin:0!important;
+}
+body[data-world="forest"] .world-avatar-sprite-v150,body[data-world="station"] .world-avatar-sprite-v150,body[data-world="ocean"] .world-avatar-sprite-v150,body[data-world="desert"] .world-avatar-sprite-v150,body[data-world="inferno"] .world-avatar-sprite-v150{display:block!important}
+body[data-world="forest"] #avatarVideo,body[data-world="station"] #avatarVideo,body[data-world="ocean"] #avatarVideo,body[data-world="desert"] #avatarVideo,body[data-world="inferno"] #avatarVideo,
+body[data-world="forest"] #videoStartButton,body[data-world="station"] #videoStartButton,body[data-world="ocean"] #videoStartButton,body[data-world="desert"] #videoStartButton,body[data-world="inferno"] #videoStartButton{display:none!important}
+body[data-world="forest"] .player-corners,body[data-world="station"] .player-corners,body[data-world="ocean"] .player-corners,body[data-world="desert"] .player-corners,body[data-world="inferno"] .player-corners{display:none!important}
+body[data-world="forest"] .player-name,body[data-world="station"] .player-name,body[data-world="ocean"] .player-name,body[data-world="desert"] .player-name,body[data-world="inferno"] .player-name{position:relative!important;z-index:4!important;color:#fff!important;text-shadow:0 1px 3px #000!important}
+body[data-world="forest"] .player-rank,body[data-world="station"] .player-rank,body[data-world="ocean"] .player-rank,body[data-world="desert"] .player-rank,body[data-world="inferno"] .player-rank{position:relative!important;z-index:4!important;color:var(--w-text)!important}
+body[data-world="forest"] .player-stage-label,body[data-world="station"] .player-stage-label,body[data-world="ocean"] .player-stage-label,body[data-world="desert"] .player-stage-label,body[data-world="inferno"] .player-stage-label{z-index:4!important;background:linear-gradient(transparent,rgba(0,0,0,.76))!important;color:#fff!important}
+
+/* ---------------- Cards: exact approved drawings visible inside each item ---------------- */
+body[data-world="forest"] .fundamentals,body[data-world="station"] .fundamentals,body[data-world="ocean"] .fundamentals,body[data-world="desert"] .fundamentals,body[data-world="inferno"] .fundamentals{
+  padding:.45vh .45vw!important;background:rgba(2,8,10,.42)!important;border-color:var(--w-line)!important;
+}
+body[data-world="forest"] .stat-grid,body[data-world="station"] .stat-grid,body[data-world="ocean"] .stat-grid,body[data-world="desert"] .stat-grid,body[data-world="inferno"] .stat-grid{gap:.42vw!important}
+body[data-world="forest"] .stat-card,body[data-world="station"] .stat-card,body[data-world="ocean"] .stat-card,body[data-world="desert"] .stat-card,body[data-world="inferno"] .stat-card{
+  position:relative!important;overflow:hidden!important;background-color:rgba(2,8,10,.84)!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;
+  border:1px solid rgba(255,255,255,.25)!important;padding:.7vh .65vw!important;text-shadow:0 1px 2px #000!important;
+}
+body[data-world="forest"] .stat-card{border-radius:9px!important} body[data-world="ocean"] .stat-card{border-radius:13px!important} body[data-world="inferno"] .stat-card{border-radius:1px!important}
+/* exact per-world per-item image references */
+body[data-world="forest"] .stat-card:nth-child(1){background-image:linear-gradient(90deg,rgba(2,7,5,.74),rgba(2,7,5,.08)),url("assets/reference/forest/card_1_lecture.jpg")!important}
+body[data-world="forest"] .stat-card:nth-child(2){background-image:linear-gradient(90deg,rgba(2,7,5,.74),rgba(2,7,5,.08)),url("assets/reference/forest/card_2_apprentissage.jpg")!important}
+body[data-world="forest"] .stat-card:nth-child(3){background-image:linear-gradient(90deg,rgba(2,7,5,.74),rgba(2,7,5,.08)),url("assets/reference/forest/card_3_sport.jpg")!important}
+body[data-world="forest"] .stat-card:nth-child(4){background-image:linear-gradient(90deg,rgba(2,7,5,.74),rgba(2,7,5,.08)),url("assets/reference/forest/card_4_nutrition.jpg")!important}
+body[data-world="forest"] .stat-card:nth-child(5){background-image:linear-gradient(90deg,rgba(2,7,5,.74),rgba(2,7,5,.08)),url("assets/reference/forest/card_5_travail.jpg")!important}
+body[data-world="forest"] .stat-card:nth-child(6){background-image:linear-gradient(90deg,rgba(2,7,5,.74),rgba(2,7,5,.08)),url("assets/reference/forest/card_6_finance.jpg")!important}
+body[data-world="station"] .stat-card:nth-child(1){background-image:linear-gradient(90deg,rgba(2,10,20,.76),rgba(2,10,20,.08)),url("assets/reference/station/card_1_lecture.jpg")!important}
+body[data-world="station"] .stat-card:nth-child(2){background-image:linear-gradient(90deg,rgba(2,10,20,.76),rgba(2,10,20,.08)),url("assets/reference/station/card_2_apprentissage.jpg")!important}
+body[data-world="station"] .stat-card:nth-child(3){background-image:linear-gradient(90deg,rgba(2,10,20,.76),rgba(2,10,20,.08)),url("assets/reference/station/card_3_sport.jpg")!important}
+body[data-world="station"] .stat-card:nth-child(4){background-image:linear-gradient(90deg,rgba(2,10,20,.76),rgba(2,10,20,.08)),url("assets/reference/station/card_4_nutrition.jpg")!important}
+body[data-world="station"] .stat-card:nth-child(5){background-image:linear-gradient(90deg,rgba(2,10,20,.76),rgba(2,10,20,.08)),url("assets/reference/station/card_5_travail.jpg")!important}
+body[data-world="station"] .stat-card:nth-child(6){background-image:linear-gradient(90deg,rgba(2,10,20,.76),rgba(2,10,20,.08)),url("assets/reference/station/card_6_finance.jpg")!important}
+body[data-world="ocean"] .stat-card:nth-child(1){background-image:linear-gradient(90deg,rgba(2,18,30,.74),rgba(2,18,30,.08)),url("assets/reference/ocean/card_1_lecture.jpg")!important}
+body[data-world="ocean"] .stat-card:nth-child(2){background-image:linear-gradient(90deg,rgba(2,18,30,.74),rgba(2,18,30,.08)),url("assets/reference/ocean/card_2_apprentissage.jpg")!important}
+body[data-world="ocean"] .stat-card:nth-child(3){background-image:linear-gradient(90deg,rgba(2,18,30,.74),rgba(2,18,30,.08)),url("assets/reference/ocean/card_3_sport.jpg")!important}
+body[data-world="ocean"] .stat-card:nth-child(4){background-image:linear-gradient(90deg,rgba(2,18,30,.74),rgba(2,18,30,.08)),url("assets/reference/ocean/card_4_nutrition.jpg")!important}
+body[data-world="ocean"] .stat-card:nth-child(5){background-image:linear-gradient(90deg,rgba(2,18,30,.74),rgba(2,18,30,.08)),url("assets/reference/ocean/card_5_travail.jpg")!important}
+body[data-world="ocean"] .stat-card:nth-child(6){background-image:linear-gradient(90deg,rgba(2,18,30,.74),rgba(2,18,30,.08)),url("assets/reference/ocean/card_6_finance.jpg")!important}
+body[data-world="desert"] .stat-card:nth-child(1){background-image:linear-gradient(90deg,rgba(30,16,6,.74),rgba(30,16,6,.08)),url("assets/reference/desert/card_1_lecture.jpg")!important}
+body[data-world="desert"] .stat-card:nth-child(2){background-image:linear-gradient(90deg,rgba(30,16,6,.74),rgba(30,16,6,.08)),url("assets/reference/desert/card_2_apprentissage.jpg")!important}
+body[data-world="desert"] .stat-card:nth-child(3){background-image:linear-gradient(90deg,rgba(30,16,6,.74),rgba(30,16,6,.08)),url("assets/reference/desert/card_3_sport.jpg")!important}
+body[data-world="desert"] .stat-card:nth-child(4){background-image:linear-gradient(90deg,rgba(30,16,6,.74),rgba(30,16,6,.08)),url("assets/reference/desert/card_4_nutrition.jpg")!important}
+body[data-world="desert"] .stat-card:nth-child(5){background-image:linear-gradient(90deg,rgba(30,16,6,.74),rgba(30,16,6,.08)),url("assets/reference/desert/card_5_travail.jpg")!important}
+body[data-world="desert"] .stat-card:nth-child(6){background-image:linear-gradient(90deg,rgba(30,16,6,.74),rgba(30,16,6,.08)),url("assets/reference/desert/card_6_finance.jpg")!important}
+body[data-world="inferno"] .stat-card:nth-child(1){background-image:linear-gradient(90deg,rgba(27,2,1,.74),rgba(27,2,1,.08)),url("assets/reference/inferno/card_1_lecture.jpg")!important}
+body[data-world="inferno"] .stat-card:nth-child(2){background-image:linear-gradient(90deg,rgba(27,2,1,.74),rgba(27,2,1,.08)),url("assets/reference/inferno/card_2_apprentissage.jpg")!important}
+body[data-world="inferno"] .stat-card:nth-child(3){background-image:linear-gradient(90deg,rgba(27,2,1,.74),rgba(27,2,1,.08)),url("assets/reference/inferno/card_3_sport.jpg")!important}
+body[data-world="inferno"] .stat-card:nth-child(4){background-image:linear-gradient(90deg,rgba(27,2,1,.74),rgba(27,2,1,.08)),url("assets/reference/inferno/card_4_nutrition.jpg")!important}
+body[data-world="inferno"] .stat-card:nth-child(5){background-image:linear-gradient(90deg,rgba(27,2,1,.74),rgba(27,2,1,.08)),url("assets/reference/inferno/card_5_travail.jpg")!important}
+body[data-world="inferno"] .stat-card:nth-child(6){background-image:linear-gradient(90deg,rgba(27,2,1,.74),rgba(27,2,1,.08)),url("assets/reference/inferno/card_6_finance.jpg")!important}
+
+body[data-world="forest"] .stat-card h3,body[data-world="station"] .stat-card h3,body[data-world="ocean"] .stat-card h3,body[data-world="desert"] .stat-card h3,body[data-world="inferno"] .stat-card h3{color:var(--w-text)!important}
+body[data-world="forest"] .stat-card .detail,body[data-world="station"] .stat-card .detail,body[data-world="ocean"] .stat-card .detail,body[data-world="desert"] .stat-card .detail,body[data-world="inferno"] .stat-card .detail{background:rgba(0,0,0,.32)!important;padding:.25vh .25vw!important;border-radius:2px!important}
+
+/* Functional tone colors retained, like the references. */
+body[data-world="forest"] .stat-card[data-tone="yellow"],body[data-world="station"] .stat-card[data-tone="yellow"],body[data-world="ocean"] .stat-card[data-tone="yellow"],body[data-world="desert"] .stat-card[data-tone="yellow"],body[data-world="inferno"] .stat-card[data-tone="yellow"]{border-color:#ffd45e!important}
+body[data-world="forest"] .stat-card[data-tone="purple"],body[data-world="station"] .stat-card[data-tone="purple"],body[data-world="ocean"] .stat-card[data-tone="purple"],body[data-world="desert"] .stat-card[data-tone="purple"],body[data-world="inferno"] .stat-card[data-tone="purple"]{border-color:#bf58ff!important}
+body[data-world="forest"] .stat-card[data-tone="red"],body[data-world="station"] .stat-card[data-tone="red"],body[data-world="ocean"] .stat-card[data-tone="red"],body[data-world="desert"] .stat-card[data-tone="red"],body[data-world="inferno"] .stat-card[data-tone="red"]{border-color:#ff4f56!important}
+body[data-world="forest"] .stat-card[data-tone="teal"],body[data-world="station"] .stat-card[data-tone="teal"],body[data-world="ocean"] .stat-card[data-tone="teal"],body[data-world="desert"] .stat-card[data-tone="teal"],body[data-world="inferno"] .stat-card[data-tone="teal"]{border-color:#2ae0b5!important}
+body[data-world="forest"] .stat-card[data-tone="cyan"],body[data-world="station"] .stat-card[data-tone="cyan"],body[data-world="ocean"] .stat-card[data-tone="cyan"],body[data-world="desert"] .stat-card[data-tone="cyan"],body[data-world="inferno"] .stat-card[data-tone="cyan"]{border-color:#35c9ff!important}
+body[data-world="forest"] .stat-card[data-tone="green"],body[data-world="station"] .stat-card[data-tone="green"],body[data-world="ocean"] .stat-card[data-tone="green"],body[data-world="desert"] .stat-card[data-tone="green"],body[data-world="inferno"] .stat-card[data-tone="green"]{border-color:#49e98a!important}
+
+/* Lower panels use the approved lower-world imagery as one coherent strip. */
+body[data-world="forest"] .finance,body[data-world="station"] .finance,body[data-world="ocean"] .finance,body[data-world="desert"] .finance,body[data-world="inferno"] .finance,
+body[data-world="forest"] .skill,body[data-world="station"] .skill,body[data-world="ocean"] .skill,body[data-world="desert"] .skill,body[data-world="inferno"] .skill,
+body[data-world="forest"] .week,body[data-world="station"] .week,body[data-world="ocean"] .week,body[data-world="desert"] .week,body[data-world="inferno"] .week{
+  background-image:linear-gradient(rgba(2,8,10,.78),rgba(2,8,10,.88)),var(--w-low)!important;background-size:cover!important;background-position:center!important;border-color:var(--w-line)!important;
+}
+body[data-world="forest"] .status,body[data-world="station"] .status,body[data-world="ocean"] .status,body[data-world="desert"] .status,body[data-world="inferno"] .status,
+body[data-world="forest"] .priority,body[data-world="station"] .priority,body[data-world="ocean"] .priority,body[data-world="desert"] .priority,body[data-world="inferno"] .priority{background:rgba(2,8,10,.88)!important;border-color:var(--w-line)!important}
+body[data-world="forest"] .bar i,body[data-world="station"] .bar i,body[data-world="ocean"] .bar i,body[data-world="desert"] .bar i,body[data-world="inferno"] .bar i{background:linear-gradient(90deg,var(--w-line2),var(--w-accent))!important;box-shadow:none!important}
+body[data-world="forest"] .trajectory-bar,body[data-world="station"] .trajectory-bar,body[data-world="ocean"] .trajectory-bar,body[data-world="desert"] .trajectory-bar,body[data-world="inferno"] .trajectory-bar{box-shadow:none!important}
+body[data-world="forest"] .good,body[data-world="station"] .good,body[data-world="ocean"] .good,body[data-world="desert"] .good,body[data-world="inferno"] .good{color:var(--w-good)!important}
+
+/* Remove runtime glows/scan layers from the five reference designs. */
+body[data-world="forest"] #ps4LightSweep,body[data-world="station"] #ps4LightSweep,body[data-world="ocean"] #ps4LightSweep,body[data-world="desert"] #ps4LightSweep,body[data-world="inferno"] #ps4LightSweep,
+body[data-world="forest"] .scanlines,body[data-world="station"] .scanlines,body[data-world="ocean"] .scanlines,body[data-world="desert"] .scanlines,body[data-world="inferno"] .scanlines,
+body[data-world="forest"] #fxCanvas,body[data-world="station"] #fxCanvas,body[data-world="ocean"] #fxCanvas,body[data-world="desert"] #fxCanvas,body[data-world="inferno"] #fxCanvas{display:none!important}
+
+/* ---------------- Dedicated DESIGN picker ---------------- */
+.world-picker-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:14px;border-bottom:1px solid #39423a;padding-bottom:10px}
+.world-picker-head b{font:700 18px/1 monospace;color:#f0dda0}.world-picker-head span{font:10px/1.4 monospace;color:#9aa397;text-align:right}
+.world-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.world-choice{height:145px;position:relative;overflow:hidden;border:1px solid #4f5b50;background:#070a08;color:#eef2e8;text-align:left;padding:0;cursor:pointer;background-position:center;background-size:cover;background-repeat:no-repeat}.world-choice:first-child{background:linear-gradient(180deg,#0c100d,#020302)}.world-choice-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.86))}.world-choice b,.world-choice small{position:absolute;z-index:2;left:12px;right:10px;text-shadow:0 1px 2px #000}.world-choice b{bottom:35px;font:700 13px/1 monospace;color:#fff5c8}.world-choice small{bottom:11px;font:9px/1.25 monospace;color:#d1d8d0}.world-choice.active{border-color:#e7c65b;box-shadow:0 0 0 1px rgba(231,198,91,.45)}.world-choice.active:after{content:"ACTIF";position:absolute;z-index:3;right:8px;top:8px;background:#d9bb55;color:#151109;padding:4px 6px;font:700 8px/1 monospace}.world-picker-foot{margin-top:14px;color:#99a493;font:10px/1.4 monospace}.world-picker-foot strong{color:#e9d485}
+
+/* System/modal stays stable and readable regardless of selected visual world. */
+body[data-world="forest"] .system-window,body[data-world="station"] .system-window,body[data-world="ocean"] .system-window,body[data-world="desert"] .system-window,body[data-world="inferno"] .system-window{background:#050807!important;border-color:var(--w-line)!important}
+
+/* Theme titles from the approved references. */
+body[data-world="forest"] .brand,body[data-world="station"] .brand,body[data-world="ocean"] .brand,body[data-world="desert"] .brand,body[data-world="inferno"] .brand{font-size:0!important}
+body[data-world="forest"] .brand::before{content:"PLAYER  v0.7\A SYSTÈME DE PROGRESSION";white-space:pre;font:700 .88vw/1.35 monospace}
+body[data-world="station"] .brand::before{content:"NEXUS\A STATION ORBITALE";white-space:pre;font:700 .92vw/1.35 monospace}
+body[data-world="ocean"] .brand::before{content:"ATLANTIS NÉON\A SUIVI DE PROGRESSION";white-space:pre;font:700 .86vw/1.35 monospace}
+body[data-world="desert"] .brand::before{content:"PLAYER  v0.7\A SYSTÈME DE PROGRESSION";white-space:pre;font:700 .88vw/1.35 monospace}
+body[data-world="inferno"] .brand::before{content:"SYSTÈME PLAYER\A SUIVI DE PROGRESSION";white-space:pre;font:700 .83vw/1.35 monospace}
+
+/* Station and Atlantis references use the whole top HUD for progression and player at right. */
+body[data-world="station"] .ps4-quote,body[data-world="ocean"] .ps4-quote{display:none!important}
+body[data-world="station"] .summary,body[data-world="ocean"] .summary{margin-right:0!important}
