@@ -1,0 +1,11 @@
+PLAYER PS4 V1.6.0 — INSTALLATION
+
+1. Conserver votre config.js actuel dans le dépôt GitHub. Il n'est volontairement pas inclus dans cette archive.
+2. Copier le contenu de cette archive à la racine du dépôt player-dashboard.
+3. Valider/remplacer les fichiers demandés par GitHub Desktop.
+4. Commit recommandé : PLAYER PS4 V1.6.0 - Pixel Reference Layout
+5. Push origin.
+6. Ouvrir sur PS4 : ps4.html?v=160
+7. Saisie quotidienne : mobile.html?v=160
+
+L'onglet DESIGNS permet de passer entre CLASSIC, FORÊT, STATION ORBITALE, ATLANTIS NÉON, DÉSERT et FLAMMES.
