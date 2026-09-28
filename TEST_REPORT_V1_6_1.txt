@@ -1,0 +1,23 @@
+PLAYER PS4 V1.6.1 — TEST REPORT
+
+Corrections ciblées :
+- suppression de l'utilisation du screenshot complet reference_exact.jpg comme fond derrière le HUD vivant ;
+- création de 5 décors latéraux V161 sans personnage ;
+- création de 5 backdrops V161 sans personnage ni UI dupliquée ;
+- citations forcées visibles sur les 5 mondes ;
+- chemins d'assets déplacés vers assets/v161 pour forcer un vrai rechargement PS4 ;
+- suppression au runtime des anciens blocs world-menu-art / v150 / v160 ;
+- Classic noir non modifié par worlds_v161.css.
+
+Contrôles exécutés :
+- node --check worlds_v161.js : OK
+- node --check app_ps4.js : OK
+- node --check ps4_controls.js : OK
+- 0 référence d'asset manquante : OK
+- bouton CITATIONS présent : OK
+- mainQuote présent : OK
+- 5 sidebar_scene_v161.jpg inspectés : aucun personnage : OK
+- reference_exact.jpg n'est plus utilisé par le CSS : OK
+- app_ps4.js, data_sync.js, progression_engine.js, character_evolution.js, ps4_controls.js, mobile.html, styles.css, ps4.css : inchangés vs V1.6.0
+
+Limite : le navigateur PS4 réel n'est pas émulé dans cet environnement.

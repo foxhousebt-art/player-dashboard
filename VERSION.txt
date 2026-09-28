@@ -1,6 +1,1 @@
-PLAYER PS4 V1.6.0 — PIXEL REFERENCE
-
-Base fonctionnelle : PLAYER PS4 V1.5.0 REFERENCE FAITHFUL
-Classic noir : logique et rendu de base conservés
-Mondes : Forêt / Station orbitale / Atlantis / Désert / Flammes
-Objectif : rapprocher la composition réelle des 5 références 1672x941 validées.
+PLAYER PS4 V1.6.1 — REFERENCE ROOT FIX

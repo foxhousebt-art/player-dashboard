@@ -1,0 +1,9 @@
+PLAYER PS4 V1.6.1 — REFERENCE ROOT FIX
+
+1. Conserver votre config.js actuel.
+2. Copier tous les autres fichiers dans le dépôt GitHub.
+3. Push origin.
+4. Ouvrir ps4.html?v=161 sur PS4.
+5. Saisie quotidienne : mobile.html?v=161.
+
+Correction principale : aucun screenshot complet de dashboard n’est utilisé derrière le HUD vivant. Les cinq mondes utilisent uniquement des décors sans personnage sous les onglets, afin d’éviter les doublons/effets de personnage fantôme.
