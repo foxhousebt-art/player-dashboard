@@ -1,0 +1,23 @@
+PLAYER DUAL V2.1.0 — PS4 STABLE + MACBOOK PREMIUM
+
+PS4
+- ps4.html est byte-for-byte identique à PLAYER PS4 V1.5.0 REFERENCE FAITHFUL.
+- mobile.html et les moteurs fonctionnels PS4 sont également inchangés.
+- Aucun config.js n'est inclus.
+
+MACBOOK PREMIUM
+- Nouveau point d'entrée : desktop.html
+- 5 mondes : Forêt, Orbite NEXUS, Atlantis, Désert, Flammes.
+- Chaque monde utilise directement l'image de référence validée comme peau graphique de base.
+- Les données réelles sont superposées dans des zones ciblées : niveau global, XP, progression, domaines, budget, cigarette, repos, priorité, citation, rang et personnage.
+- Les 25 formes de personnage existantes (5 mondes x 5 paliers) sont réutilisées.
+- Les menus Analyse, Objectifs, Paramètres, Difficulté, Citations et Designs restent opérationnels via le même moteur et la même synchronisation.
+- Le sélecteur DESIGNS change de monde sans GitHub et permet d'ouvrir le Classic PS4.
+
+TESTS EFFECTUÉS
+- Identité SHA-256 confirmée pour les fichiers PS4 critiques vs V1.5.0.
+- Syntaxe Node : desktop_app.js, progression_engine.js, data_sync.js, ps4_controls.js OK.
+- 25 assets personnage Desktop présents.
+- Moteur de progression exécuté sur un jeu de données test : OK.
+- Tous les IDs requis par le renderer Desktop sont présents.
+- Le navigateur graphique complet n'a pas pu être exécuté dans cet environnement à cause du blocage administrateur des navigations locales ; ne pas présenter le rendu navigateur comme testé ici.

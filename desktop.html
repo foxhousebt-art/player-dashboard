@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PLAYER — Desktop Premium</title>
+  <link rel="stylesheet" href="desktop.css?v=210" />
+</head>
+<body data-world="forest">
+  <main id="desktopFrame" class="desktop-frame" aria-label="PLAYER Desktop Premium">
+    <img id="desktopSkin" class="desktop-skin" alt="" draggable="false" />
+
+    <nav class="desktop-hotspots" aria-label="Navigation">
+      <button class="hotspot h-analysis" data-panel="analysis" aria-label="Analyse"></button>
+      <button class="hotspot h-objectives" data-panel="objectives" aria-label="Objectifs"></button>
+      <button class="hotspot h-settings" data-panel="settings" aria-label="Paramètres"></button>
+      <button class="hotspot h-difficulty" data-panel="difficulty" aria-label="Difficulté"></button>
+      <button class="hotspot h-quotes" data-panel="quotes" aria-label="Citations"></button>
+      <button class="hotspot h-designs" data-panel="designs" aria-label="Designs"></button>
+    </nav>
+
+    <section class="live-global" aria-live="polite">
+      <div class="live-level" id="globalLevel">01</div>
+      <div class="live-global-copy">
+        <b><span id="globalXp">0</span> / <span id="globalXpTarget">120</span> XP</b>
+        <div class="live-bar"><i id="globalXpBar"></i></div>
+        <small><span id="rank">NOVICE I</span> · <span id="xpRemaining">120</span> XP restants</small>
+      </div>
+    </section>
+
+    <section class="live-profile">
+      <img id="desktopAvatar" alt="Personnage" />
+      <div class="profile-badge"><b>BRIAN</b><span id="profileRank">NOVICE I</span><small id="evolutionStage">RECRUE</small></div>
+    </section>
+
+    <blockquote id="mainQuote" class="live-quote">« Les petites actions d’aujourd’hui créent les grandes victoires de demain. »</blockquote>
+
+    <section id="statOverlay" class="stat-overlay" aria-label="Progression des domaines"></section>
+
+    <section class="live-finance">
+      <span>BUDGET <b id="budgetMonthly">1 000 €</b></span>
+      <span>DÉPENSÉ <b id="spentTotal">0 €</b></span>
+      <span>RESTANT <b id="budgetRemaining">1 000 €</b></span>
+      <span>ÉCART <b id="trajectoryGap">+0 €</b></span>
+    </section>
+
+    <section class="live-extras">
+      <span>🚭 <b id="smokeStreak">0</b> J</span>
+      <span>☾ <b id="recoveryState">NORMAL</b></span>
+      <span>● <b id="activeDays">0</b> J ACTIFS</span>
+    </section>
+
+    <section class="live-priority">
+      <b id="priorityName">SPORT</b><span id="priorityPct">0%</span>
+      <div class="live-bar danger"><i id="priorityBar"></i></div>
+    </section>
+
+    <div class="desktop-mode">MODE : <strong id="difficultyName">ENGAGÉ</strong></div>
+    <div class="desktop-clock"><span id="date"></span><b id="time"></b></div>
+  </main>
+
+  <div id="systemPanel" class="system-panel" aria-hidden="true">
+    <div class="system-window">
+      <button id="closePanel" class="close-panel" aria-label="Fermer">×</button>
+      <div id="systemPanelBody"></div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="progression_engine.js"></script>
+  <script src="data_sync.js"></script>
+  <script src="desktop_app.js?v=210"></script>
+  <script src="ps4_controls.js?v=140"></script>
+</body>
+</html>
