@@ -205,5 +205,66 @@ body[data-world="desert"] .brand::before{content:"PLAYER  v0.7\A SYSTÈME DE PRO
 body[data-world="inferno"] .brand::before{content:"SYSTÈME PLAYER\A SUIVI DE PROGRESSION";white-space:pre;font:700 .83vw/1.35 monospace}
 
 /* Station and Atlantis references use the whole top HUD for progression and player at right. */
-body[data-world="station"] .ps4-quote,body[data-world="ocean"] .ps4-quote{display:none!important}
 body[data-world="station"] .summary,body[data-world="ocean"] .summary{margin-right:0!important}
+
+
+/* =============================================================
+   V1.5.2 — MINIMAL POLISH ONLY
+   Scope intentionally limited to the two requested corrections:
+   1) non-classic avatar idle rhythm
+   2) world scenery under the left navigation buttons
+   No extra global/background overlays are added here.
+   ============================================================= */
+
+/* Space below the existing navigation: a single scenery image, never a player image. */
+body[data-world="forest"] .ps4-menu,
+body[data-world="station"] .ps4-menu,
+body[data-world="ocean"] .ps4-menu,
+body[data-world="desert"] .ps4-menu,
+body[data-world="inferno"] .ps4-menu{
+  height:87.5vh!important;
+}
+.world-menu-art-v152{display:none}
+body[data-world="forest"] .world-menu-art-v152,
+body[data-world="station"] .world-menu-art-v152,
+body[data-world="ocean"] .world-menu-art-v152,
+body[data-world="desert"] .world-menu-art-v152,
+body[data-world="inferno"] .world-menu-art-v152{
+  display:block!important;
+  flex:1 1 auto!important;
+  min-height:23vh!important;
+  margin-top:.55vh!important;
+  border:1px solid var(--w-line)!important;
+  border-radius:3px!important;
+  background-size:cover!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  box-shadow:none!important;
+}
+body[data-world="forest"] .world-menu-art-v152{background-image:url("assets/sidebar/forest.jpg")!important}
+body[data-world="station"] .world-menu-art-v152{background-image:url("assets/sidebar/station.jpg")!important}
+body[data-world="ocean"] .world-menu-art-v152{background-image:url("assets/sidebar/ocean.jpg")!important}
+body[data-world="desert"] .world-menu-art-v152{background-image:url("assets/sidebar/desert.jpg")!important}
+body[data-world="inferno"] .world-menu-art-v152{background-image:url("assets/sidebar/inferno.jpg")!important}
+
+/* Same slow breathing rhythm used by the original character presentation. */
+body[data-world="forest"] .world-avatar-sprite-v150,
+body[data-world="station"] .world-avatar-sprite-v150,
+body[data-world="ocean"] .world-avatar-sprite-v150,
+body[data-world="desert"] .world-avatar-sprite-v150,
+body[data-world="inferno"] .world-avatar-sprite-v150{
+  -webkit-animation:worldAvatarBreathV152 2.25s ease-in-out infinite!important;
+  animation:worldAvatarBreathV152 2.25s ease-in-out infinite!important;
+  -webkit-animation-duration:2.25s!important;
+  animation-duration:2.25s!important;
+  transform-origin:50% 58%!important;
+  will-change:transform!important;
+}
+@-webkit-keyframes worldAvatarBreathV152{
+  0%,100%{-webkit-transform:translate3d(0,1px,0) scale3d(1,1,1)}
+  50%{-webkit-transform:translate3d(0,-4px,0) scale3d(1.012,1.018,1)}
+}
+@keyframes worldAvatarBreathV152{
+  0%,100%{transform:translate3d(0,1px,0) scale3d(1,1,1)}
+  50%{transform:translate3d(0,-4px,0) scale3d(1.012,1.018,1)}
+}

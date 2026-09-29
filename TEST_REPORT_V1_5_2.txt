@@ -1,0 +1,7 @@
+PLAYER PS4 V1.5.2 — CONTROLES
+- Base fonctionnelle: V1.5.0 REFERENCE FAITHFUL
+- Fichiers coeur non modifiés: mobile.html, app_ps4.js, progression_engine.js, data_sync.js, character_evolution.js, ps4_controls.js, styles.css, ps4.css
+- 5 images sidebar dédiées inspectées visuellement: aucune ne contient le personnage
+- worlds_v152.js: syntaxe vérifiée
+- citations Station/Atlantis: règle de masquage supprimée
+- aucun nouveau fond plein écran ajouté par V1.5.2
