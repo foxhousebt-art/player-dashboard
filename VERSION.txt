@@ -1,7 +1,1 @@
-PLAYER PS4 V1.5.2 — MINIMAL POLISH
-Base exacte: V1.5.0 REFERENCE FAITHFUL
-Modifications seulement:
-- mouvement léger des personnages des 5 mondes, rythme 2.25 s
-- image de décor sans personnage sous les onglets de navigation
-- citation visible sur les 5 mondes
-Aucune superposition globale supplémentaire.
+PLAYER PS4 V2.0.0 — MULTI LAYOUT

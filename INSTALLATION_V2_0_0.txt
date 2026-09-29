@@ -1,0 +1,7 @@
+PLAYER PS4 V2.0.0 — MULTI LAYOUT
+
+1. Conserver votre config.js actuel dans le dépôt GitHub.
+2. Copier tous les autres fichiers de cette archive à la racine.
+3. Classic : ps4.html?v=200
+4. Les cinq mondes sont accessibles via l’onglet DESIGNS.
+5. mobile.html reste la page de saisie quotidienne.
