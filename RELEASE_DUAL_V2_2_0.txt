@@ -1,0 +1,23 @@
+V2.2.0 — MacBook UI architecture correction
+
+CHANGED (MacBook only):
+- Rebuilt desktop.html as a real DOM dashboard instead of a static full-design image with live overlays.
+- Removed the hidden/misaligned difficulty hotspot. MODE is visible and clickable.
+- Kept CITATIONS as its own visible navigation item and dashboard quote block.
+- Added CLASSIC NOIR to the Desktop design picker; it opens ps4.html unchanged.
+- Removed full-screen design screenshot layering from the Mac dashboard.
+- Cards now use a single clean illustration as art, with real data rendered above it.
+- Added world-specific character idle motion (2.25 s rhythm).
+- Added world-colored dashboard light sweep, progress shimmer, and level-up presentation.
+- Added cleaned avatar images for the 5 premium worlds.
+
+UNCHANGED:
+- ps4.html and PS4 functional files
+- mobile.html
+- progression_engine.js
+- data_sync.js
+- app_ps4.js
+- ps4_controls.js
+- character_evolution.js
+
+config.js is intentionally absent.

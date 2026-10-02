@@ -1,12 +1,20 @@
-PLAYER — DUAL PS4 + MACBOOK PREMIUM
+PLAYER DUAL V2.2.0
 
-Liens GitHub Pages après publication :
-- MacBook Premium : /desktop.html
-- PS4 Classic stable : /ps4.html
-- Saisie quotidienne : /mobile.html
+MACBOOK PREMIUM:
+  desktop.html?v=220
 
-IMPORTANT :
-- Le fichier config.js n'est volontairement PAS inclus. Conserver celui déjà présent dans le dépôt GitHub.
-- La partie PS4 provient de la V1.5.0 stable et n'est pas modifiée par desktop.html.
-- desktop.html utilise le même progression_engine.js, data_sync.js et le même config.js que la PS4.
-- Une saisie mobile alimente donc les deux interfaces.
+PS4 STABLE:
+  ps4.html
+
+PHONE INPUT:
+  mobile.html
+
+IMPORTANT:
+- Keep your existing config.js in the GitHub repository.
+- This package deliberately does NOT include config.js.
+- The MacBook Premium dashboard no longer uses a full generated dashboard screenshot as the live UI background.
+- Each card uses one clean illustration + real HTML data, which avoids duplicated text/items.
+- MODE is now a real visible button and opens Difficulty directly.
+- CITATIONS is aligned and remains visible as a real dashboard panel.
+- DESIGNS includes CLASSIC NOIR, which opens the unchanged original PS4 dashboard.
+- Non-classic characters have a 2.25 s idle motion and a level-up effect.
